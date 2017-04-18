@@ -21,6 +21,8 @@ OMNI_MAIN_REPO="https://github.com/omni-compiler/omni-compiler.git"
 OMNI_FORK_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
 OMNI_REPO=$OMNI_MAIN_REPO
 
+COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
+
 TEST_DIR=buildtemp-omni
 INSTALL_DIR=$PWD/$TEST_DIR/install
 BASE_COMPILER="gnu"
@@ -140,5 +142,6 @@ cd $TEST_DIR
 
 # Retrieve repository and branch
 git clone -b $OMNI_BRANCH $OMNI_REPO omni-compiler
+git clone $COSMO_MAIN_REPO cosmo-pompa
 cd omni-compiler
 
