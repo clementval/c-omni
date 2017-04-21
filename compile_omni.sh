@@ -5,12 +5,13 @@
 #
 
 function show_help(){
-  echo "$0 [-r <repository-url>] [-b <branch-name>] [-c gnu|pgi|cray]"
+  echo "$0 [-r <repository-url>] [-b <branch-name>] [-c gnu|pgi|cray] [-d <target-directory>]"
   echo ""
   echo "Options:"
-  echo " -r <repository-url> Specify the URL of the GIT repository"
-  echo " -b <branch-name>    Specify the branch to be tested"
-  echo " -c <compiler-id>    Define the base compiler to use"
+  echo " -r <repository-url>   Specify the URL of the GIT repository"
+  echo " -b <branch-name>      Specify the branch to be tested"
+  echo " -c <compiler-id>      Define the base compiler to use"
+  echo " -d <target-directory> Specify target directory for the clone and compilation"
 }
 
 # Define default local variable
@@ -25,7 +26,9 @@ OMNI_MPI_FC="mpif90"
 
 COMPUTER=$(hostname)
 
-while getopts "hb:c:r:" opt; do
+TARGET_DIRECTORY="build"
+
+while getopts "hb:c:r:d:" opt; do
   case "$opt" in
   h)
     show_help
@@ -39,6 +42,9 @@ while getopts "hb:c:r:" opt; do
     ;;
   r)
     OMNI_REPO=$OPTARG
+    ;;
+  d)
+    TARGET_DIRECTORY=$OPTARG
     ;;
   esac
 done
@@ -64,11 +70,16 @@ echo " - Base compiler: $BASE_COMPILER"
 echo "  - FC : $OMNI_FC"
 echo "  - CC : $OMNI_CC"
 echo "  - CXX: $OMNI_CXX"
+echo " - Target directory: $TARGET_DIRECTORY"
 echo "========================="
 echo ""
 
 # Retrieve repository and branch
+cd $TARGET_DIRECTORY
 git clone -b $OMNI_BRANCH $OMNI_REPO omni-compiler
 cd omni-compiler
+
+# Configure and compile OMNI
 FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure
 make
+cd -
