@@ -27,12 +27,12 @@ TEST_DIR=buildtemp-omni
 INSTALL_DIR=$PWD/$TEST_DIR/install
 BASE_COMPILER="gnu"
 #
-#while getopts "hfb:c:i:" opt; do
-#  case "$opt" in
-#  h)
-#    show_help
-#    exit 0
-#    ;;
+while getopts "hfb:c:i:" opt; do
+  case "$opt" in
+  h)
+    show_help
+    exit 0
+    ;;
 #  f)  
 #    CLAW_REPO=$CLAW_FORK_REPO
 #    ;;
@@ -45,8 +45,8 @@ BASE_COMPILER="gnu"
 #  i)
 #    CLAW_INSTALL_DIR=$OPTARG
 #    ;;
-#  esac
-#done
+  esac
+done
 
 COMPUTER=$(hostname)
 
