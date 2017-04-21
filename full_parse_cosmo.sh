@@ -1,7 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
 
 #
-# This scripts helps to test the parsing of the full COSMO-POMPA 
+# This scripts helps to test the parsing of the full COSMO-POMPA
 # code by the OMNI Compiler.
 #
 
@@ -26,20 +26,20 @@ COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
 TEST_DIR=buildtemp-omni
 INSTALL_DIR=$PWD/$TEST_DIR/install
 BASE_COMPILER="gnu"
-#
+
 while getopts "hfb:c:i:" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
     ;;
-#  f)  
+#  f)
 #    CLAW_REPO=$CLAW_FORK_REPO
 #    ;;
-#  b)  
+#  b)
 #    CLAW_BRANCH=$OPTARG
 #    ;;
-#  c)  
+#  c)
 #    CLAW_BASE_COMPILER=$OPTARG
 #    ;;
 #  i)
@@ -71,7 +71,7 @@ COMPUTER=$(hostname)
 #    module rm PrgEnv-pgi && module rm PrgEnv-cray
 #    module load PrgEnv-gnu
 #    if [[ $COMPUTER == "kesch" ]]
-#    then 
+#    then
 #      CLAW_FC=gfortran
 #      CLAW_CC=gcc
 #      CLAW_CXX=g++
@@ -80,7 +80,7 @@ COMPUTER=$(hostname)
 #      CLAW_FC=ftn
 #      CLAW_CC=cc
 #      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc" 
+#      OMNI_MPI_CC="MPI_CC=cc"
 #      OMNI_MPI_FC="MPI_FC=ftn"
 #      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
 #    fi
@@ -89,7 +89,7 @@ COMPUTER=$(hostname)
 #    module rm PrgEnv-gnu && module rm PrgEnv-cray
 #    module load PrgEnv-pgi
 #    if [[ $COMPUTER == "kesch" ]]
-#    then 
+#    then
 #      CLAW_FC=mpif90
 #      CLAW_CC=mpicc
 #      CLAW_CXX=pgc++
@@ -99,7 +99,7 @@ COMPUTER=$(hostname)
 #      CLAW_FC=ftn
 #      CLAW_CC=cc
 #      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc" 
+#      OMNI_MPI_CC="MPI_CC=cc"
 #      OMNI_MPI_FC="MPI_FC=ftn"
 #      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
 #    fi
@@ -130,7 +130,7 @@ echo "- Base compiler: $CLAW_BASE_COMPILER"
 echo "  - FC : $CLAW_FC"
 echo "  - CC : $CLAW_CC"
 echo "  - CXX: $CLAW_CXX"
-echo "- Dest dir: $CLAW_TEST_DIR" 
+echo "- Dest dir: $CLAW_TEST_DIR"
 echo "================================"
 echo ""
 
@@ -138,10 +138,11 @@ echo ""
 # Prepare directory
 rm -rf $TEST_DIR
 mkdir $TEST_DIR
-cd $TEST_DIR
 
-# Retrieve repository and branch
-git clone -b $OMNI_BRANCH $OMNI_REPO omni-compiler
-git clone $COSMO_MAIN_REPO cosmo-pompa
-cd omni-compiler
+# OMNI Compiler
+echo ">>> OMNI COMPILER STEP: Clone and compile"
+./compile_omni.sh -d $TEST_DIR -c $BASE_COMPILER
 
+# COSMO
+
+# Parsing test
