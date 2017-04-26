@@ -26,7 +26,7 @@ OMNI_MPI_FC="mpif90"
 
 COMPUTER=$(hostname)
 if [[ $COMPUTER == daint* ]]
-then 
+then
   COMPUTER="daint"
 fi
 
@@ -81,6 +81,7 @@ echo ""
 
 # Create target directory
 mkdir -p $TARGET_DIRECTORY
+rm -rf $TARGET_DIRECTORY/omni-compiler
 
 # Retrieve repository and branch
 cd $TARGET_DIRECTORY
