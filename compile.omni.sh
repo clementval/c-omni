@@ -25,6 +25,10 @@ OMNI_MPI_CC="mpicc"
 OMNI_MPI_FC="mpif90"
 
 COMPUTER=$(hostname)
+if [[ $COMPUTER == daint* ]]
+then 
+  COMPUTER="daint"
+fi
 
 TARGET_DIRECTORY="build"
 
@@ -66,6 +70,7 @@ echo " - Repo: $OMNI_REPO"
 echo " - Branch: $OMNI_BRANCH"
 echo " - OMNI MPI CC: $OMNI_MPI_CC"
 echo " - OMNI MPI FC: $OMNI_MPI_FC"
+echo " - OMNI ADDITIONAL CONFIG: $OMNI_CONF"
 echo " - Base compiler: $BASE_COMPILER"
 echo "  - FC : $OMNI_FC"
 echo "  - CC : $OMNI_CC"
@@ -74,12 +79,15 @@ echo " - Target directory: $TARGET_DIRECTORY"
 echo "========================="
 echo ""
 
+# Create target directory
+mkdir -p $TARGET_DIRECTORY
+
 # Retrieve repository and branch
 cd $TARGET_DIRECTORY
 git clone -b $OMNI_BRANCH $OMNI_REPO omni-compiler
 cd omni-compiler
 
 # Configure and compile OMNI
-FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure
+FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure $OMNI_CONF $OMNI_MPI_CC $OMNI_MPI_FC
 make
 cd -
