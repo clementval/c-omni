@@ -117,21 +117,19 @@ COMPUTER=$(hostname)
 #esac
 
 echo ""
+echo "======================================="
 echo "COSMO-POMPA -> OMNI Compiler parse test"
-echo "================================"
-echo "- Computer: $COMPUTER"
-echo "- Install path: $CLAW_INSTALL_DIR"
+echo "======================================="
+echo "- COMSO information: $COSMO_MAIN_REPO"
+echo "  - Git repository: $COSMO_MAIN_REPO"
 echo "- OMNI Compiler information:"
-echo "  - Repo: $OMNI_REPO"
-echo "  - Branch: $OMNI_BRANCH"
-echo "  - OMNI MPI CC: $OMNI_MPI_CC"
-echo "  - OMNI MPI FC: $OMNI_MPI_FC"
-echo "- Base compiler: $CLAW_BASE_COMPILER"
-echo "  - FC : $CLAW_FC"
-echo "  - CC : $CLAW_CC"
-echo "  - CXX: $CLAW_CXX"
+echo "  - Git repository: $OMNI_REPO"
+echo "  - Git branch: $OMNI_BRANCH"
+echo "  - Base compiler: $BASE_COMPILER"
+echo "  - Target directory: $TEST_DIR"
+echo "- Install path: $CLAW_INSTALL_DIR"
 echo "- Dest dir: $CLAW_TEST_DIR"
-echo "================================"
+echo "======================================="
 echo ""
 
 
@@ -141,7 +139,7 @@ mkdir $TEST_DIR
 
 # OMNI Compiler
 echo ">>> OMNI COMPILER STEP: Clone and compile"
-./compile_omni.sh -d $TEST_DIR -c $BASE_COMPILER
+./compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
 
 # COSMO
 
