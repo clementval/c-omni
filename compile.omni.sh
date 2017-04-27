@@ -89,6 +89,8 @@ git clone -b $OMNI_BRANCH $OMNI_REPO omni-compiler
 cd omni-compiler
 
 # Configure and compile OMNI
+echo "FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure $OMNI_CONF $OMNI_MPI_CC $OMNI_MPI_FC"
 FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure $OMNI_CONF $OMNI_MPI_CC $OMNI_MPI_FC
+
 make
 cd -
