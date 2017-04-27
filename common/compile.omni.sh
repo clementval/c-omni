@@ -54,7 +54,7 @@ while getopts "hb:c:r:d:" opt; do
 done
 
 # Try to load machine specific compiler information
-COMPILER_FILE="${COMPUTER}.${BASE_COMPILER}.sh"
+COMPILER_FILE="../compiler/${COMPUTER}.${BASE_COMPILER}.sh"
 if [ -f $COMPILER_FILE ]
 then
   source $COMPILER_FILE
