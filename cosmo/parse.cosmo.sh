@@ -139,7 +139,7 @@ mkdir $TEST_DIR
 
 # OMNI Compiler
 echo ">>> OMNI COMPILER STEP: Clone and compile"
-./compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
+../common/compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
 
 # Fetch COSMO
 cd $TEST_DIR
