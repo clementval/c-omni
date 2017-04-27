@@ -134,13 +134,19 @@ echo ""
 
 
 # Prepare directory
-rm -rf $TEST_DIR
+#rm -rf $TEST_DIR
 mkdir $TEST_DIR
 
 # OMNI Compiler
 echo ">>> OMNI COMPILER STEP: Clone and compile"
-./compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
+#./compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
 
-# COSMO
+# Fetch COSMO
+cd $TEST_DIR
+git clone $COSMO_MAIN_REPO
+
 
 # Parsing test
+F_FRONT=./omni-compiler/F-FrontEnd/src/F_Front
+
+${F_FRONT} ./cosmo-pompa/cosmo/src/mo_kind.f90 -o
