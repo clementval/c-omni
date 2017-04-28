@@ -21,8 +21,8 @@ BASE_COMPILER="gnu"
 OMNI_FC="gfortran"
 OMNI_CC="gcc"
 OMNI_CXX="g++"
-OMNI_MPI_CC="mpicc"
-OMNI_MPI_FC="mpif90"
+OMNI_MPI_CC="MPI_CC=mpicc"
+OMNI_MPI_FC="MPI_FC=mpif90"
 
 COMPUTER=$(hostname)
 if [[ $COMPUTER == daint* ]]
