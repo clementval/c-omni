@@ -13,6 +13,7 @@ function show_help(){
   echo " -f                Use the forked repository for test"
   echo " -c <compiler-id>  Define the base compiler to use"
   echo " -i <install-path> Set an install path"
+  echo " -s                Skip CLAW/OMNI compilation/install"
 }
 
 # Define local variable
@@ -27,11 +28,16 @@ TEST_DIR=$(PWD)/build
 INSTALL_DIR=$PWD/$TEST_DIR/install
 BASE_COMPILER="gnu"
 
-while getopts "hfb:c:i:" opt; do
+SKIP=false
+
+while getopts "hfb:c:i:s" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
+    ;;
+  s)
+    SKIP=true
     ;;
 #  f)
 #    CLAW_REPO=$CLAW_FORK_REPO
@@ -120,26 +126,31 @@ echo ""
 echo "============================================"
 echo "COSMO-POMPA -> CLAW/OMNI Compiler parse test"
 echo "============================================"
-echo "- COMSO information: $COSMO_MAIN_REPO"
+echo "- COMSO information"
 echo "  - Git repository: $COSMO_MAIN_REPO"
-echo "- CLAW/OMNI Compiler information:"
-echo "  - Git repository: $CLAW_REPO"
-echo "  - Git branch: $CLAW_BRANCH"
-echo "  - Base compiler: $BASE_COMPILER"
-echo "  - Target directory: $TEST_DIR"
-echo "- Install path: $CLAW_INSTALL_DIR"
-echo "- Dest dir: $CLAW_TEST_DIR"
+
+if [[ $SKIP == false ]]
+then
+  # Specific CLAW/OMNI information
+  echo "- CLAW/OMNI Compiler information:"
+  echo "  - Git repository: $CLAW_REPO"
+  echo "  - Git branch: $CLAW_BRANCH"
+  echo "  - Base compiler: $BASE_COMPILER"
+  echo "  - Target directory: $TEST_DIR"
+  echo "- Install path: $CLAW_INSTALL_DIR"
+  echo "- Dest dir: $CLAW_TEST_DIR"
+
+  rm -rf $TEST_DIR
+  mkdir $TEST_DIR
+  # OMNI Compiler
+  echo ">>> CLAW COMPILER STEP: Clone and compile"
+  ./common/compile.claw.sh -d $TEST_DIR -c $BASE_COMPILER -r $CLAW_REPO -b $CLAW_BRANCH
+else
+  rm -rf $TEST_DIR/cosmo-pompa
+fi
+
 echo "============================================"
 echo ""
-
-
-# Prepare directory
-rm -rf $TEST_DIR
-mkdir $TEST_DIR
-
-# OMNI Compiler
-echo ">>> CLAW COMPILER STEP: Clone and compile"
-./common/compile.claw.sh -d $TEST_DIR -c $BASE_COMPILER -r $CLAW_REPO -b $CLAW_BRANCH
 
 # Fetch COSMO
 cd $TEST_DIR
@@ -148,10 +159,16 @@ git clone $COSMO_MAIN_REPO
 # Parsing test
 CLAWFC=./claw/bin/clawfc
 COSMO_SRC="./cosmo-pompa/cosmo/src/"
+CLAW_OUTPUT="./processed"
 mkdir -p xmods
+mkdir -p $CLAW_OUTPUT
 
+
+
+echo ">>> Parsing steps"
 # TODO gather file list from dependency resolver
 for FILE in "mo_kind.f90"
 do
-  ${CLAWFC} -J xmods --force --stop-frontend -o ${FILE}.f90 ${COSMO_SRC}${FILE}
+  echo "Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
+  ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
 done
