@@ -139,19 +139,18 @@ mkdir $TEST_DIR
 
 # OMNI Compiler
 echo ">>> OMNI COMPILER STEP: Clone and compile"
-../common/compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
+./common/compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
 
 # Fetch COSMO
 cd $TEST_DIR
 git clone $COSMO_MAIN_REPO
-
 
 # Parsing test
 F_FRONT=./omni-compiler/F-FrontEnd/src/F_Front
 COSMO_SRC="./cosmo-pompa/cosmo/src/"
 mkdir -p xmods
 
-
+# TODO gather file list from dependency resolver
 for FILE in "mo_kind.f90"
 do
   ${F_FRONT} -M xmods -o ${FILE}.xml ${COSMO_SRC}${FILE}
