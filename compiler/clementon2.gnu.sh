@@ -1,5 +1,5 @@
 # Basic compiler used for OMNI Compiler compilation
-OMNI_FC="gfortan"
+OMNI_FC="gfortran"
 OMNI_CC="gcc-5"
 OMNI_CXX="gcc-5"
 
