@@ -16,14 +16,14 @@ function show_help(){
 }
 
 # Define local variable
-OMNI_BRANCH="master"
-OMNI_MAIN_REPO="https://github.com/omni-compiler/omni-compiler.git"
-OMNI_FORK_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
-OMNI_REPO=$OMNI_MAIN_REPO
+CLAW_BRANCH="master"
+CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
+#CLAW_FORK_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
+CLAW_REPO=$CLAW_MAIN_REPO
 
 COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
 
-TEST_DIR=buildtemp-omni
+TEST_DIR=$(PWD)/build
 INSTALL_DIR=$PWD/$TEST_DIR/install
 BASE_COMPILER="gnu"
 
@@ -117,19 +117,19 @@ COMPUTER=$(hostname)
 #esac
 
 echo ""
-echo "======================================="
-echo "COSMO-POMPA -> OMNI Compiler parse test"
-echo "======================================="
+echo "============================================"
+echo "COSMO-POMPA -> CLAW/OMNI Compiler parse test"
+echo "============================================"
 echo "- COMSO information: $COSMO_MAIN_REPO"
 echo "  - Git repository: $COSMO_MAIN_REPO"
-echo "- OMNI Compiler information:"
-echo "  - Git repository: $OMNI_REPO"
-echo "  - Git branch: $OMNI_BRANCH"
+echo "- CLAW/OMNI Compiler information:"
+echo "  - Git repository: $CLAW_REPO"
+echo "  - Git branch: $CLAW_BRANCH"
 echo "  - Base compiler: $BASE_COMPILER"
 echo "  - Target directory: $TEST_DIR"
 echo "- Install path: $CLAW_INSTALL_DIR"
 echo "- Dest dir: $CLAW_TEST_DIR"
-echo "======================================="
+echo "============================================"
 echo ""
 
 
@@ -138,20 +138,20 @@ rm -rf $TEST_DIR
 mkdir $TEST_DIR
 
 # OMNI Compiler
-echo ">>> OMNI COMPILER STEP: Clone and compile"
-./common/compile.omni.sh -d $TEST_DIR -c $BASE_COMPILER -r $OMNI_REPO -b $OMNI_BRANCH
+echo ">>> CLAW COMPILER STEP: Clone and compile"
+./common/compile.claw.sh -d $TEST_DIR -c $BASE_COMPILER -r $CLAW_REPO -b $CLAW_BRANCH
 
 # Fetch COSMO
 cd $TEST_DIR
 git clone $COSMO_MAIN_REPO
 
 # Parsing test
-F_FRONT=./omni-compiler/F-FrontEnd/src/F_Front
+CLAWFC=./claw/bin/clawfc
 COSMO_SRC="./cosmo-pompa/cosmo/src/"
 mkdir -p xmods
 
 # TODO gather file list from dependency resolver
 for FILE in "mo_kind.f90"
 do
-  ${F_FRONT} -M xmods -o ${FILE}.xml ${COSMO_SRC}${FILE}
+  ${CLAWFC} -J xmods --force --stop-frontend -o ${FILE}.f90 ${COSMO_SRC}${FILE}
 done
