@@ -163,11 +163,8 @@ CLAW_OUTPUT="./processed"
 mkdir -p xmods
 mkdir -p $CLAW_OUTPUT
 
-
-
 echo ">>> Parsing steps"
-# TODO gather file list from dependency resolver
-for FILE in "mo_kind.f90"
+for FILE in $(cat ../cosmo/files)
 do
   echo "Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
   ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
