@@ -63,6 +63,7 @@ else
 fi
 
 echo ""
+echo "========================="
 echo "OMNI Compiler information"
 echo "========================="
 echo " - Computer: $COMPUTER"
