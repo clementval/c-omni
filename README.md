@@ -30,3 +30,5 @@ To run the COSMO parsing test, execute the following command:
 ```bash
 ./cosmo/parse.cosmo.sh
 ```
+
+For more information, see the COSMO full parsing test [README](./cosmo/README.md).
