@@ -195,6 +195,13 @@ then
   echo ">>> Generate dependencies list"
   ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies.out
 
+  # Check existence of the dependencies file
+  if [[ ! -f ${COSMO_DEP} ]]
+  then
+    echo "ERROR: ${COSMO_DEP} does not exists!"
+    exit 1
+  fi
+
 
   #################
   # 4. Parsing step
@@ -203,7 +210,7 @@ then
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]
   then
-    echo "ERROR: ${CLAWFC} does not exists"
+    echo "ERROR: ${CLAWFC} does not exists!"
     exit 1
   fi
 
