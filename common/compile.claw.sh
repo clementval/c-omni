@@ -31,6 +31,7 @@ then
 elif [[ $COMPUTER == kesch* ]]
 then
   COMPUTER="kesch"
+  module load cmake
   module load PrgEnv-gnu
 fi
 

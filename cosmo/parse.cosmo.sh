@@ -78,8 +78,6 @@ COMPUTER=$(hostname)
 if [[ $COMPUTER == *"kesch"* ]]
 then
   COMPUTER="kesch"
-  module load cmake
-  module load GCC
 fi
 #
 #
