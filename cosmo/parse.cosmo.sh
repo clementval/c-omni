@@ -17,24 +17,27 @@ function show_help(){
   echo " -p                Skip parsing step"
 }
 
-# Define local variable
+# CLAW repository variables
 CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
 #CLAW_FORK_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
 CLAW_REPO=$CLAW_MAIN_REPO
+CLAWFC=./claw/bin/clawfc
 
-COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
-
+# Working directories for the test
 TEST_DIR=./build
 INSTALL_DIR=$TEST_DIR/install
+CLAW_OUTPUT="./processed"
+
+# Default compiler used
 BASE_COMPILER="gnu"
 
+# Option switches
 SKIP_CLAW=false
 SKIP_PARSING=false
 
-CLAWFC=./claw/bin/clawfc
-CLAW_OUTPUT="./processed"
-
+# COSMO related variables
+COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
 COSMO_SRC="./cosmo-pompa/cosmo/src/"
 COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
@@ -195,6 +198,13 @@ then
   #################
   # 4. Parsing step
   #################
+
+  # Check existence of the CLAW FORTRAN Compiler
+  if [[ ! -f ${CLAWFC} ]]
+  then
+    echo "ERROR: ${CLAWFC} does not exists"
+    exit 1
+  fi
 
   mkdir -p xmods
   mkdir -p $CLAW_OUTPUT
