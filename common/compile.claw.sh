@@ -30,7 +30,7 @@ then
   COMPUTER="daint"
 fi
 
-TARGET_DIRECTORY=$(PWD)/build
+TARGET_DIRECTORY=./build
 
 while getopts "hb:c:r:d:" opt; do
   case "$opt" in
