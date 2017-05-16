@@ -28,6 +28,9 @@ COMPUTER=$(hostname)
 if [[ $COMPUTER == daint* ]]
 then
   COMPUTER="daint"
+elif [[ $COMPUTER == *"kesch"* ]]
+then
+  COMPUTER="kesch"
 fi
 
 TARGET_DIRECTORY=./build
