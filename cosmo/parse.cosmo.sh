@@ -14,6 +14,7 @@ function show_help(){
   echo " -c <compiler-id>  Define the base compiler to use"
   echo " -i <install-path> Set an install path"
   echo " -s                Skip CLAW/OMNI compilation/install"
+  echo " -p                Skip parsing step"
 }
 
 # Define local variable
@@ -28,16 +29,20 @@ TEST_DIR=$(PWD)/build
 INSTALL_DIR=$PWD/$TEST_DIR/install
 BASE_COMPILER="gnu"
 
-SKIP=false
+SKIP_CLAW=false
+SKIP_PARSING=false
 
-while getopts "hfb:c:i:s" opt; do
+while getopts "hfb:c:i:sp" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
     ;;
   s)
-    SKIP=true
+    SKIP_CLAW=true
+    ;;
+  p)
+    SKIP_PARSING=true
     ;;
 #  f)
 #    CLAW_REPO=$CLAW_FORK_REPO
@@ -129,7 +134,7 @@ echo "============================================"
 echo "- COMSO information"
 echo "  - Git repository: $COSMO_MAIN_REPO"
 
-if [[ $SKIP == false ]]
+if [[ $SKIP_CLAW == false ]]
 then
   # Specific CLAW/OMNI information
   echo "- CLAW/OMNI Compiler information:"
@@ -152,40 +157,49 @@ fi
 echo "============================================"
 echo ""
 
-# Fetch COSMO
-cd $TEST_DIR
-git clone $COSMO_MAIN_REPO
+if [[ $SKIP_PARSING == false ]]
+then
+  # Fetch COSMO
+  cd $TEST_DIR
+  git clone $COSMO_MAIN_REPO
 
-COSMO_SRC="./cosmo-pompa/cosmo/src/"
-COSMO_START="lmorg.f90"
-COSMO_DEP="dependencies_cosmo"
+  COSMO_SRC="./cosmo-pompa/cosmo/src/"
+  COSMO_START="lmorg.f90"
+  COSMO_DEP="dependencies_cosmo"
 
-#################
-# Dependency step
-#################
+  #################
+  # Dependency step
+  #################
 
-# Generate the dependency list for the parsing order
-echo ">>> Generate dependencies list"
-../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies.out
+  # Generate the dependency list for the parsing order
+  echo ">>> Generate dependencies list"
+  ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies.out
 
 
-##############
-# Parsing step
-##############
+  ##############
+  # Parsing step
+  ##############
 
-CLAWFC=./claw/bin/clawfc
+  CLAWFC=./claw/bin/clawfc
 
-CLAW_OUTPUT="./processed"
-mkdir -p xmods
-mkdir -p $CLAW_OUTPUT
+  CLAW_OUTPUT="./processed"
+  mkdir -p xmods
+  mkdir -p $CLAW_OUTPUT
 
-echo ">>> Pasring files"
-for FILE in $(cat ./${COSMO_DEP})
-do
-  echo "Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
-  ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
-done
+  echo ">>> Pasring files"
+  for FILE in $(cat ./${COSMO_DEP})
+  do
+    echo "Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
+    ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
+  done
+fi
 
 ##############
 # Control step
 ##############
+
+echo ">>> Control .xmod files"
+for xmod in $(ls ./xmods/*.xmod)
+do
+  echo $xmod
+done
