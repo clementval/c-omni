@@ -261,3 +261,22 @@ then
   echo "------"
   echo "ERROR: ${f90_errors} .f90 files have not been parsed correctly"
 fi
+
+
+##############
+# Report error
+##############
+
+echo ""
+echo "====================================="
+echo "COSMO-POMPA full parsing test results"
+echo "====================================="
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]
+then
+  echo "ERROR: Some errors have been detected"
+  echo "       ${xmod_errors} errors with .xmod files"
+  echo "       ${f90_errors} errors with .f90 files"
+else
+  echo "SUCCESS: Test has be executed correctly."
+fi
+echo "====================================="
