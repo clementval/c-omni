@@ -25,7 +25,7 @@ CLAW_REPO=$CLAW_MAIN_REPO
 CLAWFC=./claw/bin/clawfc
 
 # Working directories for the test
-TEST_DIR=./build
+TEST_DIR=${PWD}/build
 INSTALL_DIR=$TEST_DIR/install
 CLAW_OUTPUT="./processed"
 

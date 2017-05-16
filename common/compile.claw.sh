@@ -35,7 +35,7 @@ then
   module load PrgEnv-gnu
 fi
 
-TARGET_DIRECTORY=./build
+TARGET_DIRECTORY=${PWD}/build
 
 while getopts "hb:c:r:d:" opt; do
   case "$opt" in
