@@ -32,6 +32,10 @@ BASE_COMPILER="gnu"
 SKIP_CLAW=false
 SKIP_PARSING=false
 
+COSMO_SRC="./cosmo-pompa/cosmo/src/"
+COSMO_START="lmorg.f90"
+COSMO_DEP="dependencies_cosmo"
+
 while getopts "hfb:c:i:sp" opt; do
   case "$opt" in
   h)
@@ -147,9 +151,15 @@ then
 
   rm -rf $TEST_DIR
   mkdir $TEST_DIR
-  # OMNI Compiler
+
+
+  ###############################
+  # 1. CLAW FORTRAN Compiler step
+  ###############################
+
   echo ">>> CLAW COMPILER STEP: Clone and compile"
   ./common/compile.claw.sh -d $TEST_DIR -c $BASE_COMPILER -r $CLAW_REPO -b $CLAW_BRANCH
+
 else
   rm -rf $TEST_DIR/cosmo-pompa
 fi
@@ -157,28 +167,30 @@ fi
 echo "============================================"
 echo ""
 
+cd $TEST_DIR
+
 if [[ $SKIP_PARSING == false ]]
 then
-  # Fetch COSMO
-  cd $TEST_DIR
+
+  #####################
+  # 2. COSMO-POMPA step
+  #####################
+
   git clone $COSMO_MAIN_REPO
 
-  COSMO_SRC="./cosmo-pompa/cosmo/src/"
-  COSMO_START="lmorg.f90"
-  COSMO_DEP="dependencies_cosmo"
 
-  #################
-  # Dependency step
-  #################
+  ####################
+  # 3. Dependency step
+  ####################
 
   # Generate the dependency list for the parsing order
   echo ">>> Generate dependencies list"
   ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies.out
 
 
-  ##############
-  # Parsing step
-  ##############
+  #################
+  # 4. Parsing step
+  #################
 
   CLAWFC=./claw/bin/clawfc
 
@@ -189,17 +201,29 @@ then
   echo ">>> Pasring files"
   for FILE in $(cat ./${COSMO_DEP})
   do
-    echo "Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
+    echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
     ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
   done
 fi
 
-##############
-# Control step
-##############
+
+#################
+# 5. Control step
+#################
 
 echo ">>> Control .xmod files"
-for xmod in $(ls ./xmods/*.xmod)
+for xmod in $(ls xmods/*.xmod)
 do
-  echo $xmod
+  xmod_well_formatted=true
+  cat $xmod | grep "<OmniFortranModule version=\"1.0\">" > /dev/null
+  [[ $? -ne 0 ]] && xmod_well_formatted=false
+  cat $xmod | grep "</OmniFortranModule>" > /dev/null
+  [[ $? -ne 0 ]] && xmod_well_formatted=false
+
+  if [[ $xmod_well_formatted == false ]]
+  then
+    echo "ERROR: ${xmod} file is not formatted correctly"
+  else
+    echo "$xmod control passed"
+  fi
 done
