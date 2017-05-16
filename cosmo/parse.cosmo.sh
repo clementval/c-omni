@@ -32,6 +32,9 @@ BASE_COMPILER="gnu"
 SKIP_CLAW=false
 SKIP_PARSING=false
 
+CLAWFC=./claw/bin/clawfc
+CLAW_OUTPUT="./processed"
+
 COSMO_SRC="./cosmo-pompa/cosmo/src/"
 COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
@@ -192,9 +195,6 @@ then
   # 4. Parsing step
   #################
 
-  CLAWFC=./claw/bin/clawfc
-
-  CLAW_OUTPUT="./processed"
   mkdir -p xmods
   mkdir -p $CLAW_OUTPUT
 
@@ -211,19 +211,53 @@ fi
 # 5. Control step
 #################
 
+echo ""
+echo "-----------------------"
 echo ">>> Control .xmod files"
-for xmod in $(ls xmods/*.xmod)
+echo "-----------------------"
+# Control if present .xmod file has been produced correctly
+xmod_errors=0
+for xmod_file in $(ls xmods/*.xmod)
 do
   xmod_well_formatted=true
-  cat $xmod | grep "<OmniFortranModule version=\"1.0\">" > /dev/null
+  cat ${xmod_file} | grep "<OmniFortranModule version=\"1.0\">" > /dev/null
   [[ $? -ne 0 ]] && xmod_well_formatted=false
-  cat $xmod | grep "</OmniFortranModule>" > /dev/null
+  cat ${xmod_file} | grep "</OmniFortranModule>" > /dev/null
   [[ $? -ne 0 ]] && xmod_well_formatted=false
 
   if [[ $xmod_well_formatted == false ]]
   then
-    echo "ERROR: ${xmod} file is not formatted correctly"
-  else
-    echo "$xmod control passed"
+    echo "ERROR: ${xmod_file} file is not formatted correctly"
+    let xmod_errors=xmod_errors+1
   fi
 done
+
+# Report number of detected errors
+if [[ ${xmod_errors} -ne 0 ]]
+then
+  echo "------"
+  echo "ERROR: ${xmod_errors} .xmod files didn't pass the check"
+fi
+
+
+echo ""
+echo "----------------------"
+echo ">>> Control .f90 files"
+echo "----------------------"
+# Control if target file has been produced
+f90_errors=0
+for f90_file in $(cat ./${COSMO_DEP})
+do
+  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
+  then
+    echo "ERROR: ${f90_file} has not been parsed correctly"
+    let f90_errors=f90_errors+1
+  fi
+done
+
+# Report number of detected errors
+if [[ ${f90_errors} -ne 0 ]]
+then
+  echo "------"
+  echo "ERROR: ${f90_errors} .f90 files have not been parsed correctly"
+fi
