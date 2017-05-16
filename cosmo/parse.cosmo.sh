@@ -72,11 +72,12 @@ COMPUTER=$(hostname)
 #then
 #  COMPUTER="daint"
 #  CMAKE_MOD="CMake"
-#elif [[ $COMPUTER == *"kesch"* ]]
-#then
-#  COMPUTER="kesch"
-#  CMAKE_MOD="cmake"
-#fi
+if [[ $COMPUTER == *"kesch"* ]]
+then
+  COMPUTER="kesch"
+  module load cmake
+  module load GCC
+fi
 #
 #
 #
