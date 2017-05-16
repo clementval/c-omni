@@ -159,6 +159,9 @@ then
   rm -rf $TEST_DIR
   mkdir $TEST_DIR
 
+  # Fetch the submodules
+  git submodule init
+  git submodule update
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
