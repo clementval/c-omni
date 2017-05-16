@@ -25,8 +25,8 @@ CLAW_REPO=$CLAW_MAIN_REPO
 
 COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
 
-TEST_DIR=$(PWD)/build
-INSTALL_DIR=$PWD/$TEST_DIR/install
+TEST_DIR=./build
+INSTALL_DIR=$TEST_DIR/install
 BASE_COMPILER="gnu"
 
 SKIP_CLAW=false
