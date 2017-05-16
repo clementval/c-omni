@@ -156,16 +156,36 @@ echo ""
 cd $TEST_DIR
 git clone $COSMO_MAIN_REPO
 
-# Parsing test
-CLAWFC=./claw/bin/clawfc
 COSMO_SRC="./cosmo-pompa/cosmo/src/"
+COSMO_START="lmorg.f90"
+COSMO_DEP="dependencies_cosmo"
+
+#################
+# Dependency step
+#################
+
+# Generate the dependency list for the parsing order
+echo ">>> Generate dependencies list"
+../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies.out
+
+
+##############
+# Parsing step
+##############
+
+CLAWFC=./claw/bin/clawfc
+
 CLAW_OUTPUT="./processed"
 mkdir -p xmods
 mkdir -p $CLAW_OUTPUT
 
-echo ">>> Parsing steps"
-for FILE in $(cat ../cosmo/files)
+echo ">>> Pasring files"
+for FILE in $(cat ./${COSMO_DEP})
 do
   echo "Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
   ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
 done
+
+##############
+# Control step
+##############
