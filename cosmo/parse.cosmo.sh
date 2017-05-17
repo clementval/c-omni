@@ -230,6 +230,7 @@ then
   for FILE in $(cat ./${COSMO_DEP})
   do
     echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
+    echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}" >> ${PARSING_OUTPUT}
     ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE} >> ${PARSING_OUTPUT} 2>&1
   done
 fi
@@ -304,6 +305,7 @@ then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} errors with .xmod files"
   echo "       ${f90_errors} errors with .f90 files"
+  echo "       More information in the file: ${PARSING_OUTPUT}"
 else
   echo "SUCCESS: Test has be executed correctly."
 fi
