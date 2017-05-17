@@ -29,3 +29,6 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ```bash
 ./cosmo/parse.cosmo.sh -s
 ```
+
+## Currently known issues
+* `bad constant expression in PARAMETER statement` (Status: OPEN): [omni-compiler:#131](https://github.com/omni-compiler/omni-compiler/issues/131)
