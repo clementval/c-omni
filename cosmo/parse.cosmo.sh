@@ -42,6 +42,9 @@ COSMO_SRC="./cosmo-pompa/cosmo/src/"
 COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
 
+# Parsing output
+PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_results
+
 while getopts "hfb:c:i:sp" opt; do
   case "$opt" in
   h)
@@ -202,6 +205,11 @@ then
     exit 1
   fi
 
+  if [[ $(wc -l < ${COSMO_DEP}) -lt 2 ]]
+  then
+    echo "ERROR: ${COSMO_DEP} is empty!"
+    exit 1
+  fi
 
   #################
   # 4. Parsing step
@@ -218,10 +226,11 @@ then
   mkdir -p $CLAW_OUTPUT
 
   echo ">>> Pasring files"
+  echo "COSMO PARSING RESULTS" > ${PARSING_OUTPUT}
   for FILE in $(cat ./${COSMO_DEP})
   do
     echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
-    ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE}
+    ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE} >> ${PARSING_OUTPUT} 2>&1
   done
 fi
 
