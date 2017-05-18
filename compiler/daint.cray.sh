@@ -9,3 +9,5 @@ OMNI_MPI_FC="MPI_FC=ftn"
 
 # Switch to dynamic linking
 export CRAYPE_LINK_TYPE=dynamic
+
+INCLUDE_MPI="/usr/local/include/"

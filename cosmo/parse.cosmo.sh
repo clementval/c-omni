@@ -82,6 +82,16 @@ if [[ $COMPUTER == *"kesch"* ]]
 then
   COMPUTER="kesch"
 fi
+
+# Try to load machine specific compiler information
+COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
+if [ -f $COMPILER_FILE ]
+then
+  source $COMPILER_FILE
+else
+  echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
+fi
+
 #
 #
 #
@@ -231,7 +241,7 @@ then
   do
     echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
     echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}" >> ${PARSING_OUTPUT}
-    ${CLAWFC} -J xmods --force -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE} >> ${PARSING_OUTPUT} 2>&1
+    ${CLAWFC} -J xmods --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE} >> ${PARSING_OUTPUT} 2>&1
   done
 fi
 

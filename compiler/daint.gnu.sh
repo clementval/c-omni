@@ -6,3 +6,5 @@ OMNI_CXX="CC"
 # MPI wrapper used by OMNI compiler
 OMNI_MPI_CC="MPI_CC=cc"
 OMNI_MPI_FC="MPI_FC=ftn"
+
+INCLUDE_MPI="/usr/local/include/"
