@@ -1,4 +1,7 @@
 # OMNI Parsing tests
+
+[![Build Status](https://travis-ci.org/clementval/omni-parse-tests.svg?branch=master)](https://travis-ci.org/clementval/omni-parse-tests)
+
 Test repository to parse complex code with the OMNI Compiler and report bugs or
 missing features
 
