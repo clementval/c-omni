@@ -5,13 +5,14 @@
 #
 
 function show_help(){
-  echo "$0 [-r <repository-url>] [-b <branch-name>] [-c gnu|pgi|cray] [-d <target-directory>]"
+  echo "$0 [-r <repository-url>] [-b <branch-name>] [-c gnu|pgi|cray] [-d <target-directory>] [-o]"
   echo ""
   echo "Options:"
   echo " -r <repository-url>   Specify the URL of the GIT repository"
   echo " -b <branch-name>      Specify the branch to be tested"
   echo " -c <compiler-id>      Define the base compiler to use"
   echo " -d <target-directory> Specify target directory for the clone and compilation"
+  echo " -o                    Use the latest version of OMNI Compiler for the test"
 }
 
 # Define default local variable
@@ -23,6 +24,7 @@ OMNI_CC="gcc"
 OMNI_CXX="g++"
 OMNI_MPI_CC="MPI_CC=mpicc"
 OMNI_MPI_FC="MPI_FC=mpif90"
+OMNI_LATEST=false
 
 COMPUTER=$(hostname)
 if [[ $COMPUTER == daint* ]]
@@ -37,7 +39,7 @@ fi
 
 TARGET_DIRECTORY=${PWD}/build
 
-while getopts "hb:c:r:d:" opt; do
+while getopts "hb:c:r:d:o" opt; do
   case "$opt" in
   h)
     show_help
@@ -54,6 +56,9 @@ while getopts "hb:c:r:d:" opt; do
     ;;
   d)
     TARGET_DIRECTORY=$OPTARG
+    ;;
+  o)
+    OMNI_LATEST=true
     ;;
   esac
 done
@@ -98,6 +103,13 @@ cd claw-compiler || exit 1
 # Get submodules
 git submodule init
 git submodule update
+
+# Update to latest OMNI Compiler
+if [[ ${OMNI_LATEST} == true ]]
+then
+  git submodule update --remote
+  git submodule foreach git pull origin master
+fi
 
 # Configure CLAW repo
 echo "FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIRECTORY/claw -DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC ."

@@ -6,15 +6,16 @@
 #
 
 function show_help(){
-  echo "$0 [-b <branch-name>] [-f] [-c gnu|pgi|cray] [-i <install-path>]"
+  echo "$0 [-s] [-p] [--with-omni]"
   echo ""
   echo "Options:"
 #  echo " -b <branch-name>  Specifiy the branch to be tested"
 #  echo " -f                Use the forked repository for test"
 #  echo " -c <compiler-id>  Define the base compiler to use"
-  echo " -i <install-path> Set an install path"
+#  echo " -i <install-path> Set an install path"
   echo " -s                Skip CLAW/OMNI compilation/install"
   echo " -p                Skip parsing step"
+  echo " -o                Use the latest OMNI Compiler version for the test"
 }
 
 source ./common/check.omni.lib.sh
@@ -23,7 +24,7 @@ source ./common/check.omni.lib.sh
 CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
 #CLAW_FORK_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
-CLAW_REPO=$CLAW_MAIN_REPO
+CLAW_REPO=${CLAW_MAIN_REPO}
 CLAWFC=./claw/bin/clawfc
 
 # Working directories for the test
@@ -37,6 +38,7 @@ BASE_COMPILER="gnu"
 # Option switches
 SKIP_CLAW=false
 SKIP_PARSING=false
+OMNI_LATEST=false
 
 # COSMO related variables
 COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
@@ -47,7 +49,7 @@ COSMO_DEP="dependencies_cosmo"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_results
 
-while getopts "hfb:c:i:sp" opt; do
+while getopts "hfb:c:i:spo" opt; do
   case "$opt" in
   h)
     show_help
@@ -58,6 +60,9 @@ while getopts "hfb:c:i:sp" opt; do
     ;;
   p)
     SKIP_PARSING=true
+    ;;
+  o)
+    OMNI_LATEST=true
     ;;
 #  f)
 #    CLAW_REPO=$CLAW_FORK_REPO
@@ -166,13 +171,11 @@ git submodule update
 if [[ $SKIP_CLAW == false ]]
 then
   # Specific CLAW/OMNI information
-  echo "- CLAW/OMNI Compiler information:"
+  echo "- CLAW Compiler information:"
   echo "  - Git repository: $CLAW_REPO"
   echo "  - Git branch: $CLAW_BRANCH"
   echo "  - Base compiler: $BASE_COMPILER"
   echo "  - Target directory: $TEST_DIR"
-  echo "- Install path: $CLAW_INSTALL_DIR"
-  echo "- Dest dir: $CLAW_TEST_DIR"
 
   rm -rf "$TEST_DIR"
   mkdir "$TEST_DIR"
@@ -181,9 +184,13 @@ then
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
-  echo ">>> CLAW COMPILER STEP: Clone and compile"
-  ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
-
+  echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
+  if [[ $OMNI_LATEST == true ]]
+  then
+    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+  else
+    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+  fi
 else
   rm -rf "$TEST_DIR"/cosmo-pompa
 fi
@@ -224,14 +231,15 @@ then
     exit 1
   fi
 
+
   #################
   # 4. Parsing step
   #################
 
   # Check existence of the CLAW FORTRAN Compiler
-  if [[ ! -f ${CLAWFC} ]]
+  if [[ ! -f ${FRONT_END} ]]
   then
-    echo "ERROR: ${CLAWFC} does not exists!"
+    echo "ERROR: ${FRONT_END} does not exists!"
     exit 1
   fi
 
