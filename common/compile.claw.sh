@@ -62,6 +62,7 @@ done
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
 if [ -f $COMPILER_FILE ]
 then
+  # shellcheck source=$COMPILER_FILE
   source $COMPILER_FILE
 else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
@@ -90,9 +91,9 @@ mkdir -p $TARGET_DIRECTORY
 rm -rf $TARGET_DIRECTORY/claw-compiler
 
 # Retrieve repository and branch
-cd $TARGET_DIRECTORY
+cd $TARGET_DIRECTORY || exit 1
 git clone -b $CLAW_BRANCH $CLAW_REPO claw-compiler
-cd claw-compiler
+cd claw-compiler || exit 1
 
 # Get submodules
 git submodule init
@@ -106,4 +107,4 @@ FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIREC
 make
 make install
 
-cd -
+cd - || exit 1

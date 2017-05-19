@@ -1,10 +1,12 @@
+#!/bin/bash
+
 # Basic compiler used for OMNI Compiler compilation
-OMNI_FC="gfortran"
-OMNI_CC="gcc"
-OMNI_CXX="g++"
+export OMNI_FC="gfortran"
+export OMNI_CC="gcc"
+export OMNI_CXX="g++"
 
 # MPI wrapper used by OMNI compiler
-OMNI_MPI_CC="MPI_CC=mpicc"
-OMNI_MPI_FC="MPI_FC=mpif90"
+export OMNI_MPI_CC="MPI_CC=mpicc"
+export OMNI_MPI_FC="MPI_FC=mpif90"
 
-INCLUDE_MPI="/usr/local/include/"
+export INCLUDE_MPI="/usr/local/include/"

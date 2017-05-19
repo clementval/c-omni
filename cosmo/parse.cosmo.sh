@@ -26,7 +26,7 @@ CLAWFC=./claw/bin/clawfc
 
 # Working directories for the test
 TEST_DIR=${PWD}/build
-INSTALL_DIR=$TEST_DIR/install
+#INSTALL_DIR=$TEST_DIR/install
 CLAW_OUTPUT="./processed"
 
 # Default compiler used
@@ -87,6 +87,7 @@ fi
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
 if [ -f $COMPILER_FILE ]
 then
+  # shellcheck source=$COMPILER_FILE
   source $COMPILER_FILE
 else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
@@ -188,7 +189,7 @@ fi
 echo "============================================"
 echo ""
 
-cd $TEST_DIR
+cd $TEST_DIR || exit 1
 
 if [[ $SKIP_PARSING == false ]]
 then
@@ -256,7 +257,7 @@ echo ">>> Control .xmod files"
 echo "-----------------------"
 # Control if present .xmod file has been produced correctly
 xmod_errors=0
-for xmod_file in $(ls xmods/*.xmod)
+for xmod_file in xmods/*.xmod
 do
   xmod_well_formatted=true
   cat ${xmod_file} | grep "<OmniFortranModule version=\"1.0\">" > /dev/null

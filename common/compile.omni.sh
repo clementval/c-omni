@@ -57,6 +57,7 @@ done
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
 if [ -f $COMPILER_FILE ]
 then
+  # shellcheck source=$COMPILER_FILE
   source $COMPILER_FILE
 else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
@@ -85,13 +86,13 @@ mkdir -p $TARGET_DIRECTORY
 rm -rf $TARGET_DIRECTORY/omni-compiler
 
 # Retrieve repository and branch
-cd $TARGET_DIRECTORY
+cd $TARGET_DIRECTORY || exit 1
 git clone -b $OMNI_BRANCH $OMNI_REPO omni-compiler
-cd omni-compiler
+cd omni-compiler || exit 1
 
 # Configure and compile OMNI
 echo "FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure $OMNI_CONF $OMNI_MPI_CC $OMNI_MPI_FC"
 FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure $OMNI_CONF $OMNI_MPI_CC $OMNI_MPI_FC
 
 make
-cd -
+cd - || exit 1
