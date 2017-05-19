@@ -237,7 +237,7 @@ then
   #################
 
   # Check existence of the CLAW FORTRAN Compiler
-  if [[ ! -f ${FRONT_END} ]]
+  if [[ ! -f ${CLAWFC} ]]
   then
     echo "ERROR: ${FRONT_END} does not exists!"
     exit 1
