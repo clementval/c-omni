@@ -87,7 +87,7 @@ fi
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
 if [ -f $COMPILER_FILE ]
 then
-  # shellcheck source=$COMPILER_FILE
+  # shellcheck source=./compiler/clementon2.gnu.sh
   source $COMPILER_FILE
 else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
@@ -172,24 +172,24 @@ then
   echo "- Install path: $CLAW_INSTALL_DIR"
   echo "- Dest dir: $CLAW_TEST_DIR"
 
-  rm -rf $TEST_DIR
-  mkdir $TEST_DIR
+  rm -rf "$TEST_DIR"
+  mkdir "$TEST_DIR"
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
   echo ">>> CLAW COMPILER STEP: Clone and compile"
-  ./common/compile.claw.sh -d $TEST_DIR -c $BASE_COMPILER -r $CLAW_REPO -b $CLAW_BRANCH
+  ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
 
 else
-  rm -rf $TEST_DIR/cosmo-pompa
+  rm -rf "$TEST_DIR"/cosmo-pompa
 fi
 
 echo "============================================"
 echo ""
 
-cd $TEST_DIR || exit 1
+cd "$TEST_DIR" || exit 1
 
 if [[ $SKIP_PARSING == false ]]
 then
@@ -237,13 +237,13 @@ then
   mkdir -p $CLAW_OUTPUT
 
   echo ">>> Pasring files"
-  echo "COSMO PARSING RESULTS" > ${PARSING_OUTPUT}
-  for FILE in $(cat ./${COSMO_DEP})
+  echo "COSMO PARSING RESULTS" > "${PARSING_OUTPUT}"
+  while IFS= read -r f90_file
   do
-    echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}"
-    echo "    Processing file ${COSMO_SRC}${FILE} -> ${CLAW_OUTPUT}/${FILE}" >> ${PARSING_OUTPUT}
-    ${CLAWFC} -J xmods --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${FILE} ${COSMO_SRC}${FILE} >> ${PARSING_OUTPUT} 2>&1
-  done
+    echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+    ${CLAWFC} -J xmods --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+  done < ./${COSMO_DEP}
 fi
 
 
@@ -260,10 +260,14 @@ xmod_errors=0
 for xmod_file in xmods/*.xmod
 do
   xmod_well_formatted=true
-  cat ${xmod_file} | grep "<OmniFortranModule version=\"1.0\">" > /dev/null
-  [[ $? -ne 0 ]] && xmod_well_formatted=false
-  cat ${xmod_file} | grep "</OmniFortranModule>" > /dev/null
-  [[ $? -ne 0 ]] && xmod_well_formatted=false
+  if ! grep "<OmniFortranModule version=\"1.0\">" "${xmod_file}" > /dev/null
+  then
+    xmod_well_formatted=false
+  fi
+  if ! grep "</OmniFortranModule>" "${xmod_file}" > /dev/null
+  then
+    xmod_well_formatted=false
+  fi
 
   if [[ $xmod_well_formatted == false ]]
   then
@@ -286,14 +290,14 @@ echo ">>> Control .f90 files"
 echo "----------------------"
 # Control if target file has been produced
 f90_errors=0
-for f90_file in $(cat ./${COSMO_DEP})
+while IFS= read -r f90_file
 do
   if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
   then
     echo "ERROR: ${f90_file} has not been parsed correctly"
     let f90_errors=f90_errors+1
   fi
-done
+done < ./${COSMO_DEP}
 
 # Report number of detected errors
 if [[ ${f90_errors} -ne 0 ]]
