@@ -60,9 +60,9 @@ done
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f $COMPILER_FILE ]
+if [ -f "$COMPILER_FILE" ]
 then
-  # shellcheck source=$COMPILER_FILE
+  # shellcheck source=./compiler/clementon2.gnu.sh
   source $COMPILER_FILE
 else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
@@ -87,12 +87,12 @@ echo "================================="
 echo ""
 
 # Create target directory
-mkdir -p $TARGET_DIRECTORY
-rm -rf $TARGET_DIRECTORY/claw-compiler
+mkdir -p "$TARGET_DIRECTORY"
+rm -rf "$TARGET_DIRECTORY"/claw-compiler
 
 # Retrieve repository and branch
-cd $TARGET_DIRECTORY || exit 1
-git clone -b $CLAW_BRANCH $CLAW_REPO claw-compiler
+cd "$TARGET_DIRECTORY" || exit 1
+git clone -b "$CLAW_BRANCH" "$CLAW_REPO" claw-compiler
 cd claw-compiler || exit 1
 
 # Get submodules
@@ -101,7 +101,7 @@ git submodule update
 
 # Configure CLAW repo
 echo "FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIRECTORY/claw -DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC ."
-FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIRECTORY/claw -DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC .
+FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX="$TARGET_DIRECTORY"/claw -DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC .
 
 # Compile CLAW and OMNI
 make
