@@ -30,7 +30,7 @@ then
   COMPUTER="daint"
 fi
 
-TARGET_DIRECTORY=$(PWD)/build
+TARGET_DIRECTORY=${PWD}/build
 
 while getopts "hb:c:r:d:" opt; do
   case "$opt" in
@@ -92,7 +92,7 @@ cd omni-compiler || exit 1
 
 # Configure and compile OMNI
 echo "FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure $OMNI_CONF $OMNI_MPI_CC $OMNI_MPI_FC"
-FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure "$OMNI_CONF" "$OMNI_MPI_CC" "$OMNI_MPI_FC"
+FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX ./configure --prefix="$TARGET_DIRECTORY"/omni "$OMNI_CONF" "$OMNI_MPI_CC" "$OMNI_MPI_FC"
 
 make
 make install
