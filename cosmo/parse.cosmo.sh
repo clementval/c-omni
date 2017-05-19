@@ -17,6 +17,8 @@ function show_help(){
   echo " -p                Skip parsing step"
 }
 
+source ./common/check.omni.lib.sh
+
 # CLAW repository variables
 CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
@@ -259,16 +261,7 @@ echo "-----------------------"
 xmod_errors=0
 for xmod_file in xmods/*.xmod
 do
-  xmod_well_formatted=true
-  if ! grep "<OmniFortranModule version=\"1.0\">" "${xmod_file}" > /dev/null
-  then
-    xmod_well_formatted=false
-  fi
-  if ! grep "</OmniFortranModule>" "${xmod_file}" > /dev/null
-  then
-    xmod_well_formatted=false
-  fi
-
+  xmod_well_formatted=$(check_xmod_file "${xmod_file}")
   if [[ $xmod_well_formatted == false ]]
   then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
