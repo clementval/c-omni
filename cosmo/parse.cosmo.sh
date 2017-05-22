@@ -246,7 +246,7 @@ then
   mkdir -p xmods
   mkdir -p $CLAW_OUTPUT
 
-  echo ">>> Pasring files"
+  echo ">>> Parsing files"
   echo "COSMO PARSING RESULTS" > "${PARSING_OUTPUT}"
   while IFS= read -r f90_file
   do
