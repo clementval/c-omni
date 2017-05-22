@@ -19,6 +19,7 @@ function show_help(){
 }
 
 source ./common/check.omni.lib.sh
+source ./common/utility.sh
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -246,13 +247,19 @@ then
   mkdir -p xmods
   mkdir -p $CLAW_OUTPUT
 
+  parsed_files=0
   echo ">>> Parsing files"
   echo "COSMO PARSING RESULTS" > "${PARSING_OUTPUT}"
   while IFS= read -r f90_file
   do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    ${CLAWFC} -J xmods --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} --debug -J xmods --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    let parsed_files=parsed_files+1
+    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
+    then
+      print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
+    fi
   done < ./${COSMO_DEP}
 fi
 
@@ -304,7 +311,7 @@ done < ./${COSMO_DEP}
 if [[ ${f90_errors} -ne 0 ]]
 then
   echo "------"
-  echo "ERROR: ${f90_errors} .f90 files have not been parsed correctly"
+  echo "ERROR: ${f90_errors}/${parsed_files} .f90 files have not been parsed correctly"
 fi
 
 
