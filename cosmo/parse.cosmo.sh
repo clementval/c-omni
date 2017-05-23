@@ -31,7 +31,8 @@ CLAWFC=./claw/bin/clawfc
 # Working directories for the test
 TEST_DIR=${PWD}/build
 #INSTALL_DIR=$TEST_DIR/install
-CLAW_OUTPUT="./processed"
+CLAW_OUTPUT="./processed/cosmo"
+XMOD_DIR="./xmods/cosmo"
 
 # Default compiler used
 BASE_COMPILER="gnu"
@@ -237,7 +238,7 @@ then
 
   # Generate the dependency list for the parsing order
   echo ">>> Generate dependencies list"
-  ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies.out
+  ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies_cosmo.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${COSMO_DEP} ]]
@@ -264,8 +265,8 @@ then
     exit 1
   fi
 
-  mkdir -p xmods
-  mkdir -p $CLAW_OUTPUT
+  mkdir -p ${XMOD_DIR}
+  mkdir -p ${CLAW_OUTPUT}
 
   parsed_files=0
   echo ">>> Parsing files"
@@ -275,7 +276,7 @@ then
   do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    ${CLAWFC} --debug -J xmods --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} --debug -J ${XMOD_DIR} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
     then
@@ -295,7 +296,7 @@ echo ">>> Control .xmod files"
 echo "-----------------------"
 # Control if present .xmod file has been produced correctly
 xmod_errors=0
-for xmod_file in xmods/*.xmod
+for xmod_file in ${XMOD_DIR}/*.xmod
 do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
   if [[ $xmod_well_formatted == false ]]
