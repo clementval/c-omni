@@ -48,7 +48,7 @@ COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
 
 # Parsing output
-PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_results
+PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
 while getopts "hfb:c:i:spo" opt; do
   case "$opt" in
@@ -199,16 +199,36 @@ fi
 echo "============================================"
 echo ""
 
+
 cd "$TEST_DIR" || exit 1
+WORKING_DIR="$PWD"
+
+# Get git hashes for the log
+echo "COSMO PARSING TESTS" > "${PARSING_OUTPUT}"
+echo "-------------------" >> "${PARSING_OUTPUT}"
+echo "Git version information:" >> "${PARSING_OUTPUT}"
+cd claw-compiler || exit 1
+CLAW_HASH=$(git rev-parse HEAD)
+echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
+cd omni-compiler || exit 1
+OMNI_HASH=$(git rev-parse HEAD)
+echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
+cd "$WORKING_DIR" || exit 1
+
 
 if [[ $SKIP_PARSING == false ]]
 then
+
 
   #####################
   # 2. COSMO-POMPA step
   #####################
 
   git clone $COSMO_MAIN_REPO
+  cd cosmo-pompa || exit 1
+  COSMO_HASH=$(git rev-parse HEAD)
+  echo "- COSMO-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
+  cd "$WORKING_DIR" || exit 1
 
 
   ####################
@@ -249,7 +269,8 @@ then
 
   parsed_files=0
   echo ">>> Parsing files"
-  echo "COSMO PARSING RESULTS" > "${PARSING_OUTPUT}"
+  echo "" >> "${PARSING_OUTPUT}"
+  echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file
   do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
