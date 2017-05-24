@@ -21,18 +21,17 @@ function show_help(){
 source ./common/check.omni.lib.sh
 source ./common/utility.sh
 
+# Working directories for the test
+TEST_DIR=${PWD}/build
+CLAW_OUTPUT="./processed/cosmo"
+XMOD_DIR="./xmods/cosmo"
+
 # CLAW repository variables
 CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
-#CLAW_FORK_REPO="https://github.com/MeteoSwiss-APN/omni-compiler.git"
 CLAW_REPO=${CLAW_MAIN_REPO}
 CLAWFC=./claw/bin/clawfc
-
-# Working directories for the test
-TEST_DIR=${PWD}/build
-#INSTALL_DIR=$TEST_DIR/install
-CLAW_OUTPUT="./processed/cosmo"
-XMOD_DIR="./xmods/cosmo"
+CLAW_OPT="--no-dep --debug-omni -J ${XMOD_DIR} --force"
 
 # Default compiler used
 BASE_COMPILER="gnu"
@@ -44,9 +43,11 @@ OMNI_LATEST=false
 
 # COSMO related variables
 COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
-COSMO_SRC="./cosmo-pompa/cosmo/src/"
+COSMO_REP="cosmo-pompa"
+COSMO_SRC="./${COSMO_REP}/cosmo/src/"
 COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
+
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
@@ -194,7 +195,7 @@ then
     ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
   fi
 else
-  rm -rf "$TEST_DIR"/cosmo-pompa
+  rm -rf "${TEST_DIR:?}"/${COSMO_REP}
 fi
 
 echo "============================================"
@@ -226,7 +227,7 @@ then
   #####################
 
   git clone $COSMO_MAIN_REPO
-  cd cosmo-pompa || exit 1
+  cd ${COSMO_REP} || exit 1
   COSMO_HASH=$(git rev-parse HEAD)
   echo "- COSMO-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
   cd "$WORKING_DIR" || exit 1
@@ -276,7 +277,7 @@ then
   do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    ${CLAWFC} --debug -J ${XMOD_DIR} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} ${CLAW_OPT} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
     then
