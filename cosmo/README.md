@@ -36,3 +36,5 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 [omni-compiler:#138](https://github.com/omni-compiler/omni-compiler/issues/138)
 * `argument(s) mismatch for an intrinsic 'ishftc()'`: (Status: OPEN):
 [omni-compiler:#139](https://github.com/omni-compiler/omni-compiler/issues/139)
+* `only function/subroutine statement are allowed in contains top level` (Status: OPEN):
+[omni-compiler:#142](https://github.com/omni-compiler/omni-compiler/issues/142)
