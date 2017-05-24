@@ -31,7 +31,7 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ```
 
 ## Currently known issues
-* ~~`bad constant expression in PARAMETER statement`~~ (Status: FIXED, Type: Bug): [omni-compiler:#131](https://github.com/omni-compiler/omni-compiler/issues/131)
+* ~~`bad constant expression in PARAMETER statement`~~ (Status: FIXED and CLOSED, Type: Bug): [omni-compiler:#131](https://github.com/omni-compiler/omni-compiler/issues/131)
 * `length specification must be positive` (Status: OPEN, Type: Bug):
 [omni-compiler:#138](https://github.com/omni-compiler/omni-compiler/issues/138)
 * `argument(s) mismatch for an intrinsic 'ishftc()'`: (Status: OPEN, Type: Bug, Priority: high):
