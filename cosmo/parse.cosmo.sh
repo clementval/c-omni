@@ -277,7 +277,7 @@ then
   do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    ${CLAWFC} ${CLAW_OPT} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} "${CLAW_OPT}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
     then
