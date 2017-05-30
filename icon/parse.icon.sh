@@ -239,7 +239,7 @@ then
 
   # Generate the dependency list for the parsing order
   echo ">>> Generate dependencies list"
-  ../fdependencies/generate_dep.py ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  ../fdependencies/generate_dep.py --recursive ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${ICON_DEP} ]]
