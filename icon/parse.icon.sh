@@ -46,7 +46,7 @@ OMNI_LATEST=false
 ICON_MAIN_REPO="git@github.com:C2SM-RCM/icon-eniac.git"
 ICON_REP="icon-eniac"
 ICON_SRC="./${ICON_REP}/src/"
-ICON_START="lmorg.f90"
+ICON_START="drivers/icon.f90"
 ICON_DEP="dependencies_icon"
 
 # Parsing output
