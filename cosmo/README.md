@@ -61,3 +61,8 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: low
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler:#144](https://github.com/omni-compiler/omni-compiler/issues/144)
+* `unknown node/failed to import module`
+  * Type: Bug
+  * Priority: medium
+  * Status PR OPEN [PR#150](https://github.com/omni-compiler/omni-compiler/pull/150)
+  * Issue on OMNI Compiler repository: [omni-compiler#31](https://github.com/omni-compiler/omni-compiler/issues/31)
