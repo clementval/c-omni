@@ -27,7 +27,7 @@ It is possible to run the test only from the step 2 with the following command:
 #### Skip the parsing step
 It is possible to skip the parsing step the test only from the step 2 with the following command:
 ```bash
-./cosmo/parse.cosmo.sh -s
+./cosmo/parse.cosmo.sh -p
 ```
 
 ## Currently known issues
