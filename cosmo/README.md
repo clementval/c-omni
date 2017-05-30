@@ -31,14 +31,33 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ```
 
 ## Currently known issues
-* ~~`bad constant expression in PARAMETER statement`~~ (Status: FIXED and CLOSED, Type: Bug): [omni-compiler:#131](https://github.com/omni-compiler/omni-compiler/issues/131)
-* ~~`length specification must be positive`~~ (Status: FIXED and CLOSED, Type: Bug):
-[omni-compiler:#138](https://github.com/omni-compiler/omni-compiler/issues/138)
-* ~~`argument(s) mismatch for an intrinsic 'ishftc()'`~~ (Status: FIXED and CLOSED, Type: Bug, Priority: high):
-[omni-compiler:#139](https://github.com/omni-compiler/omni-compiler/issues/139)
-* `only function/subroutine statement are allowed in contains top level` (Status: [PR#149](https://github.com/omni-compiler/omni-compiler/pull/149), Type: Bug, Priority: high):
-[omni-compiler:#142](https://github.com/omni-compiler/omni-compiler/issues/142)
-* `can't determine a function to be actually called for a generic interface function call` (Status: OPEN, Type: Warning, Priority: low):
-[omni-compiler:#143](https://github.com/omni-compiler/omni-compiler/issues/143)
-* `implicitly declared and used, should be declared explicitly as a parameter` (Status: OPEN, Type: Warning, Priority: low):
-[omni-compiler:#144](https://github.com/omni-compiler/omni-compiler/issues/144)
+* ~~`bad constant expression in PARAMETER statement`~~
+  * Type: Bug
+  * Priority: high
+  * Status: FIXED and CLOSED
+  * Issue on OMNI Compiler repository: [omni-compiler:#131](https://github.com/omni-compiler/omni-compiler/issues/131)
+* ~~`length specification must be positive`~~
+  * Type: Bug
+  * Priority: high
+  * Status: FIXED and CLOSED
+  * Issue on OMNI Compiler repository: [omni-compiler:#138](https://github.com/omni-compiler/omni-compiler/issues/138)
+* ~~`argument(s) mismatch for an intrinsic 'ishftc()'`~~
+  * Type: Bug
+  * Priority: high
+  * Status: FIXED and CLOSED
+  * Issue on OMNI Compiler repository: [omni-compiler:#139](https://github.com/omni-compiler/omni-compiler/issues/139)
+* `only function/subroutine statement are allowed in contains top level`
+  * Type: Bug
+  * Priority: high
+  * Status: PR OPEN [PR#149](https://github.com/omni-compiler/omni-compiler/pull/149)
+  * Issue on OMNI Compiler repository: [omni-compiler:#142](https://github.com/omni-compiler/omni-compiler/issues/142)
+* `can't determine a function to be actually called for a generic interface function call`
+  * Type: Warning
+  * Priority: low
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#143](https://github.com/omni-compiler/omni-compiler/issues/143)
+* `implicitly declared and used, should be declared explicitly as a parameter`
+  * Type: Warning
+  * Priority: low
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#144](https://github.com/omni-compiler/omni-compiler/issues/144)
