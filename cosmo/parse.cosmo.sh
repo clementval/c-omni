@@ -31,7 +31,6 @@ CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
 CLAW_REPO=${CLAW_MAIN_REPO}
 CLAWFC=./claw/bin/clawfc
-CLAW_OPT="--no-dep --debug-omni -J ${XMOD_DIR} --force"
 
 # Default compiler used
 BASE_COMPILER="gnu"
@@ -277,7 +276,7 @@ then
   do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    ${CLAWFC} "${CLAW_OPT}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
     then
@@ -342,15 +341,30 @@ fi
 # Report error
 ##############
 
+# Check potential known errors in log file
+error_type1=$(grep -c "only function/subroutine statement are allowed in contains top level" "${PARSING_OUTPUT}")
+error_type2=$(grep -c "declaration among executables" "${PARSING_OUTPUT}")
+error_type3=$(grep -c "syntax error" "${PARSING_OUTPUT}")
+error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodbye!" "${PARSING_OUTPUT}")
+error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
+
 echo ""
 echo "====================================="
 echo "COSMO-POMPA full parsing test results"
 echo "====================================="
-if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]] \
+  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]] \
+  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]] \
+  || [[ ${error_type5} -ne 0 ]]
 then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} errors with .xmod files"
   echo "       ${f90_errors} errors with .f90 files"
+  echo "       ${error_type1} errors [only function/subroutine statement are allowed in contains top level] found in log"
+  echo "       ${error_type2} errors [declaration among executables] found in log"
+  echo "       ${error_type3} errors [syntax error] found in log"
+  echo "       ${error_type4} errors [too many error, cannot recover from earlier errors: goodbye!] found in log"
+  echo "       ${error_type5} errors [failed to import module] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
 else
   echo "SUCCESS: Test has be executed correctly."
