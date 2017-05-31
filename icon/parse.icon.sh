@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This scripts helps to test the parsing of the full COSMO-POMPA
+# This scripts helps to test the parsing of the full ICON
 # code by the OMNI Compiler.
 #
 
@@ -42,7 +42,7 @@ SKIP_CLAW=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 
-# COSMO related variables
+# ICON related variables
 ICON_MAIN_REPO="git@github.com:C2SM-RCM/icon-eniac.git"
 ICON_REP="icon-eniac"
 ICON_SRC="./${ICON_REP}/src/"
@@ -222,14 +222,14 @@ if [[ $SKIP_PARSING == false ]]
 then
 
 
-  #####################
-  # 2. COSMO-POMPA step
-  #####################
+  ####################
+  # 2. ICON-ENIAC step
+  ####################
 
   git clone $ICON_MAIN_REPO
   cd ${ICON_REP} || exit 1
-  COSMO_HASH=$(git rev-parse HEAD)
-  echo "- ICON-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
+  ICON_HASH=$(git rev-parse HEAD)
+  echo "- ICON-POMPA git version: $ICON_HASH" >> "${PARSING_OUTPUT}"
   cd "$WORKING_DIR" || exit 1
 
 
@@ -352,9 +352,9 @@ error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodb
 error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
 
 echo ""
-echo "====================================="
-echo "COSMO-POMPA full parsing test results"
-echo "====================================="
+echo "===================================="
+echo "ICON-ENIAC full parsing test results"
+echo "===================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]
 then
   echo "ERROR: Some errors have been detected"
