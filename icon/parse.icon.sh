@@ -228,6 +228,8 @@ then
 
   git clone $ICON_MAIN_REPO
   cd ${ICON_REP} || exit 1
+  git submodule init
+  git submodule update
   ICON_HASH=$(git rev-parse HEAD)
   echo "- ICON-POMPA git version: $ICON_HASH" >> "${PARSING_OUTPUT}"
   cd "$WORKING_DIR" || exit 1
