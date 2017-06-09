@@ -46,10 +46,10 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: high
   * Status: FIXED and CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#139](https://github.com/omni-compiler/omni-compiler/issues/139)
-* `only function/subroutine statement are allowed in contains top level`
+* ~~`only function/subroutine statement are allowed in contains top level`~~
   * Type: Bug
   * Priority: high
-  * Status: PR OPEN [PR#149](https://github.com/omni-compiler/omni-compiler/pull/149)
+  * Status: FIXED and CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#142](https://github.com/omni-compiler/omni-compiler/issues/142)
 * `can't determine a function to be actually called for a generic interface function call`
   * Type: Warning
