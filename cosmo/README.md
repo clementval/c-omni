@@ -31,6 +31,7 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ```
 
 ## Currently known issues
+**Bug**
 * ~~`bad constant expression in PARAMETER statement`~~
   * Type: Bug
   * Priority: high
@@ -51,6 +52,13 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: high
   * Status: FIXED and CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#142](https://github.com/omni-compiler/omni-compiler/issues/142)
+* `unknown node/failed to import module`
+  * Type: Bug
+  * Priority: medium
+  * Status PR OPEN [PR#150](https://github.com/omni-compiler/omni-compiler/pull/150)
+  * Issue on OMNI Compiler repository: [omni-compiler#31](https://github.com/omni-compiler/omni-compiler/issues/31)
+
+**Warning**
 * `can't determine a function to be actually called for a generic interface function call`
   * Type: Warning
   * Priority: low
@@ -61,8 +69,3 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: low
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler:#144](https://github.com/omni-compiler/omni-compiler/issues/144)
-* `unknown node/failed to import module`
-  * Type: Bug
-  * Priority: medium
-  * Status PR OPEN [PR#150](https://github.com/omni-compiler/omni-compiler/pull/150)
-  * Issue on OMNI Compiler repository: [omni-compiler#31](https://github.com/omni-compiler/omni-compiler/issues/31)
