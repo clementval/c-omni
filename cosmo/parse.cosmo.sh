@@ -268,6 +268,10 @@ then
   mkdir -p ${XMOD_DIR}
   mkdir -p ${CLAW_OUTPUT}
 
+  # Clean-up directories of potential previous run
+  rm "${CLAW_OUTPUT}"/*.f90
+  rm "${XMOD_DIR}"/*.xmod
+
   parsed_files=0
   echo ">>> Parsing files"
   echo "" >> "${PARSING_OUTPUT}"
