@@ -368,7 +368,10 @@ then
   echo "         ${error_type4} errors/warnings [too many error, cannot recover from earlier errors: goodbye!] found in log"
   echo "         ${error_type5} errors/warnings [failed to import module] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
+  echo "====================================="
+  exit 1
 else
   echo "SUCCESS: Test has be executed correctly."
+  echo "====================================="
+  exit 0
 fi
-echo "====================================="
