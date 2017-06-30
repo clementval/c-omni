@@ -363,8 +363,8 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]] \
   || [[ ${error_type5} -ne 0 ]]
 then
   echo "ERROR: Some errors have been detected"
-  echo "       ${xmod_errors} errors with .xmod files"
-  echo "       ${f90_errors} errors with .f90 files"
+  echo "       ${xmod_errors} files .mod with errors"
+  echo "       ${f90_errors} files .f90 with errors"
   echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
   echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
   echo "         ${error_type3} errors/warnings [syntax error] found in log"
