@@ -13,7 +13,9 @@ function show_help(){
 #  echo " -f                Use the forked repository for test"
 #  echo " -c <compiler-id>  Define the base compiler to use"
 #  echo " -i <install-path> Set an install path"
+
   echo " -s                Skip CLAW/OMNI compilation/install"
+  echo " -c                Skip fetching step for COSMO-POMPA"
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
 }
@@ -37,6 +39,7 @@ BASE_COMPILER="gnu"
 
 # Option switches
 SKIP_CLAW=false
+SKIP_FETCH=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 
@@ -51,21 +54,16 @@ COSMO_DEP="dependencies_cosmo"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hfb:c:i:spo" opt; do
+while getopts "hfb:ci:spo" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
     ;;
-  s)
-    SKIP_CLAW=true
-    ;;
-  p)
-    SKIP_PARSING=true
-    ;;
-  o)
-    OMNI_LATEST=true
-    ;;
+  s) SKIP_CLAW=true ;;
+  p) SKIP_PARSING=true ;;
+  c) SKIP_FETCH=true ;;
+  o) OMNI_LATEST=true ;;
 #  f)
 #    CLAW_REPO=$CLAW_FORK_REPO
 #    ;;
@@ -87,15 +85,13 @@ COMPUTER=$(hostname)
 #then
 #  COMPUTER="daint"
 #  CMAKE_MOD="CMake"
-if [[ $COMPUTER == *"kesch"* ]]
-then
+if [[ $COMPUTER == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f $COMPILER_FILE ]
-then
+if [ -f $COMPILER_FILE ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
   source $COMPILER_FILE
 else
@@ -170,8 +166,7 @@ echo "  - Git repository: $COSMO_MAIN_REPO"
 git submodule init
 git submodule update
 
-if [[ $SKIP_CLAW == false ]]
-then
+if [[ $SKIP_CLAW == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
   echo "  - Git repository: $CLAW_REPO"
@@ -186,14 +181,13 @@ then
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
-  echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
-  if [[ $OMNI_LATEST == true ]]
-  then
+  print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
+  if [[ $OMNI_LATEST == true ]]; then
     ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
   else
     ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
   fi
-else
+elif [[ $SKIP_FETCH == false ]]; then
   rm -rf "${TEST_DIR:?}"/${COSMO_REP}
 fi
 
@@ -217,38 +211,38 @@ echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
 cd "$WORKING_DIR" || exit 1
 
 
-if [[ $SKIP_PARSING == false ]]
-then
 
 
+if [[ $SKIP_FETCH == false ]]; then
   #####################
   # 2. COSMO-POMPA step
   #####################
-
+  print_green "[INFO] Fetching COSMO-POMPA"
   git clone $COSMO_MAIN_REPO
-  cd ${COSMO_REP} || exit 1
-  COSMO_HASH=$(git rev-parse HEAD)
-  echo "- COSMO-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
-  cd "$WORKING_DIR" || exit 1
+fi
 
+cd ${COSMO_REP} || exit 1
+COSMO_HASH=$(git rev-parse HEAD)
+echo "- COSMO-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
+cd "$WORKING_DIR" || exit 1
 
+if [[ $SKIP_PARSING == false ]]; then
   ####################
   # 3. Dependency step
   ####################
 
   # Generate the dependency list for the parsing order
-  echo ">>> Generate dependencies list"
+  print_green "[INFO] Generate dependencies list"
   ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies_cosmo.out
+  echo "   ${COSMO_DEP}"
 
   # Check existence of the dependencies file
-  if [[ ! -f ${COSMO_DEP} ]]
-  then
+  if [[ ! -f ${COSMO_DEP} ]]; then
     echo "ERROR: ${COSMO_DEP} does not exists!"
     exit 1
   fi
 
-  if [[ $(wc -l < ${COSMO_DEP}) -lt 2 ]]
-  then
+  if [[ $(wc -l < ${COSMO_DEP}) -lt 2 ]]; then
     echo "ERROR: ${COSMO_DEP} is empty!"
     exit 1
   fi
@@ -259,8 +253,7 @@ then
   #################
 
   # Check existence of the CLAW FORTRAN Compiler
-  if [[ ! -f ${CLAWFC} ]]
-  then
+  if [[ ! -f ${CLAWFC} ]]; then
     echo "ERROR: ${FRONT_END} does not exists!"
     exit 1
   fi
@@ -273,18 +266,16 @@ then
   rm "${XMOD_DIR}"/*.xmod
 
   parsed_files=0
-  echo ">>> Parsing files"
+  print_green "[INFO] Parsing files"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
-  while IFS= read -r f90_file
-  do
+  while IFS= read -r f90_file; do
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
-    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
-    then
+    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
     fi
   done < ./${COSMO_DEP}
@@ -296,47 +287,41 @@ fi
 #################
 
 echo ""
-echo "-----------------------"
-echo ">>> Control .xmod files"
-echo "-----------------------"
+print_green "--------------------------"
+print_green "[INFO] Control .xmod files"
+print_green "--------------------------"
 # Control if present .xmod file has been produced correctly
 xmod_errors=0
-for xmod_file in ${XMOD_DIR}/*.xmod
-do
+for xmod_file in ${XMOD_DIR}/*.xmod; do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
-  if [[ $xmod_well_formatted == false ]]
-  then
+  if [[ $xmod_well_formatted == false ]]; then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
     let xmod_errors=xmod_errors+1
   fi
 done
 
 # Report number of detected errors
-if [[ ${xmod_errors} -ne 0 ]]
-then
+if [[ ${xmod_errors} -ne 0 ]]; then
   echo "------"
   echo "ERROR: ${xmod_errors} .xmod files didn't pass the check"
 fi
 
 
 echo ""
-echo "----------------------"
-echo ">>> Control .f90 files"
-echo "----------------------"
+print_green "-------------------------"
+print_green "[INFO] Control .f90 files"
+print_green "-------------------------"
 # Control if target file has been produced
 f90_errors=0
-while IFS= read -r f90_file
-do
-  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
-  then
+while IFS= read -r f90_file; do
+  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
     echo "ERROR: ${f90_file} has not been parsed correctly"
     let f90_errors=f90_errors+1
   fi
 done < ./${COSMO_DEP}
 
 # Report number of detected errors
-if [[ ${f90_errors} -ne 0 ]]
-then
+if [[ ${f90_errors} -ne 0 ]]; then
   echo "------"
   echo "ERROR: ${f90_errors}/${parsed_files} .f90 files have not been parsed correctly"
 fi
@@ -360,8 +345,7 @@ echo "====================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]] \
   || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]] \
   || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]] \
-  || [[ ${error_type5} -ne 0 ]]
-then
+  || [[ ${error_type5} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .mod with errors"
   echo "       ${f90_errors} files .f90 with errors"
