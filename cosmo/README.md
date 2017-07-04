@@ -35,28 +35,29 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 * ~~`bad constant expression in PARAMETER statement`~~
   * Type: Bug
   * Priority: high
-  * Status: FIXED and CLOSED
+  * Status: FIXED, ISSUE CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#131](https://github.com/omni-compiler/omni-compiler/issues/131)
 * ~~`length specification must be positive`~~
   * Type: Bug
   * Priority: high
-  * Status: FIXED and CLOSED
+  * Status: PR MERGED, ISSUE CLOSED ([PR#145](https://github.com/omni-compiler/omni-compiler/pull/145))
   * Issue on OMNI Compiler repository: [omni-compiler:#138](https://github.com/omni-compiler/omni-compiler/issues/138)
 * ~~`argument(s) mismatch for an intrinsic 'ishftc()'`~~
   * Type: Bug
   * Priority: high
-  * Status: FIXED and CLOSED
+  * Status: FIXED, ISSUE CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#139](https://github.com/omni-compiler/omni-compiler/issues/139)
 * ~~`only function/subroutine statement are allowed in contains top level`~~
   * Type: Bug
   * Priority: high
-  * Status: FIXED and CLOSED
+  * Status: PR MERGED, ISSUE CLOSED ([PR#149](https://github.com/omni-compiler/omni-compiler/pull/149))
   * Issue on OMNI Compiler repository: [omni-compiler:#142](https://github.com/omni-compiler/omni-compiler/issues/142)
 * `unknown node/failed to import module`
   * Type: Bug
   * Priority: medium
-  * Status PR OPEN [PR#150](https://github.com/omni-compiler/omni-compiler/pull/150)
+  * Status: PR MERGED, ISSUE CLOSED ([PR#150](https://github.com/omni-compiler/omni-compiler/pull/150))
   * Issue on OMNI Compiler repository: [omni-compiler#31](https://github.com/omni-compiler/omni-compiler/issues/31)
+
 
 **Warning**
 * `can't determine a function to be actually called for a generic interface function call`
