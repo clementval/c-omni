@@ -57,10 +57,10 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED ([PR#150](https://github.com/omni-compiler/omni-compiler/pull/150))
   * Issue on OMNI Compiler repository: [omni-compiler#31](https://github.com/omni-compiler/omni-compiler/issues/31)
-`not allowed statement in the FORALL construct`
+* `not allowed statement in the FORALL construct`
   * Type: Bug
   * Priority: medium
-  * Status: OPEN
+  * Status: FIXED, ISSUE CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler#164](https://github.com/omni-compiler/omni-compiler/issues/164)
 
 
