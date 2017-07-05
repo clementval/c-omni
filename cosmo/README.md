@@ -70,7 +70,7 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 * `incompatible dimension for the operation`
   * Type: Bug
   * Priority: high
-  * Status: OPEN
+  * Status: OPEN, WAITING MERGE ([PR#169](https://github.com/omni-compiler/omni-compiler/pull/169))
   * Issue on OMNI Compiler repository: [omni-compiler#168](https://github.com/omni-compiler/omni-compiler/issues/168)
 
 **Warnings**
