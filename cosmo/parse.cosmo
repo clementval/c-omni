@@ -338,6 +338,7 @@ error_type2=$(grep -c "declaration among executables" "${PARSING_OUTPUT}")
 error_type3=$(grep -c "syntax error" "${PARSING_OUTPUT}")
 error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodbye!" "${PARSING_OUTPUT}")
 error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
+error_type6=$(grep -c "incompatible dimension for the operation" "${PARSING_OUTPUT}")
 
 echo ""
 echo "====================================="
@@ -346,7 +347,7 @@ echo "====================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]] \
   || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]] \
   || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]] \
-  || [[ ${error_type5} -ne 0 ]]; then
+  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .mod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -355,6 +356,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]] \
   echo "         ${error_type3} errors/warnings [syntax error] found in log"
   echo "         ${error_type4} errors/warnings [too many error, cannot recover from earlier errors: goodbye!] found in log"
   echo "         ${error_type5} errors/warnings [failed to import module] found in log"
+  echo "         ${error_type6} errors/warnings [incompatible dimension for the operation] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
