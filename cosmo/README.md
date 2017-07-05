@@ -31,7 +31,7 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ```
 
 ## Currently known issues
-**Bug**
+**Bugs**
 * ~~`bad constant expression in PARAMETER statement`~~
   * Type: Bug
   * Priority: high
@@ -60,7 +60,7 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 * ~~`not allowed statement in the FORALL construct`~~
   * Type: Bug
   * Priority: medium
-  * Status: FIXED, ISSUE CLOSED
+  * Status: PR MERGED, ISSUE CLOSED ([PR#166](https://github.com/omni-compiler/omni-compiler/pull/166))
   * Issue on OMNI Compiler repository: [omni-compiler#164](https://github.com/omni-compiler/omni-compiler/issues/164)
 * `argument(s) mismatch for an intrinsic 'reshape()'`
   * Type: Bug
@@ -73,7 +73,7 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler#168](https://github.com/omni-compiler/omni-compiler/issues/168)
 
-**Warning**
+**Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
   * Type: Warning
   * Priority: low
