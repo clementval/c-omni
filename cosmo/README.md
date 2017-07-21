@@ -67,15 +67,15 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: medium
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler#167](https://github.com/omni-compiler/omni-compiler/issues/167)
-* `incompatible dimension for the operation`
+* ~~`incompatible dimension for the operation`~~
   * Type: Bug
   * Priority: high
-  * Status: OPEN, WAITING MERGE ([PR#169](https://github.com/omni-compiler/omni-compiler/pull/169))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#169](https://github.com/omni-compiler/omni-compiler/pull/169))
   * Issue on OMNI Compiler repository: [omni-compiler#168](https://github.com/omni-compiler/omni-compiler/issues/168)
-* `failed to import module 'ieee_arithmetic'`
+* ~~`failed to import module 'ieee_arithmetic'`~~
   * Type: Bug
   * Priority: High
-  * Status: OPEN, WAITING MERGE ([PR#180](https://github.com/omni-compiler/omni-compiler/pull/180))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#180](https://github.com/omni-compiler/omni-compiler/pull/180))
   * Issue on OMNI Compiler repository: None (missing feature)
 
 **Warnings**
