@@ -1,7 +1,17 @@
 #!/bin/bash
 
-shellcheck common/check.omni.lib.sh
-shellcheck common/compile.claw.sh compiler/clementon2.gnu.sh
-shellcheck common/compile.omni.sh compiler/clementon2.gnu.sh
-shellcheck cosmo/parse.cosmo.sh compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh
-shellcheck icon/parse.icon.sh compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh
+if ! shellcheck common/check.omni.lib.sh; then
+  exit 1;
+fi
+if ! shellcheck common/compile.claw.sh compiler/clementon2.gnu.sh; then
+  exit 1;
+fi
+if ! shellcheck common/compile.omni.sh compiler/clementon2.gnu.sh; then
+  exit 1;
+fi
+if ! shellcheck cosmo/parse.cosmo compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh; then
+  exit 1;
+fi
+if ! shellcheck icon/parse.icon compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh; then
+  exit 1;
+fi
