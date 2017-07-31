@@ -62,10 +62,10 @@ It is possible to skip the parsing step the test only from the step 2 with the f
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED ([PR#166](https://github.com/omni-compiler/omni-compiler/pull/166))
   * Issue on OMNI Compiler repository: [omni-compiler#164](https://github.com/omni-compiler/omni-compiler/issues/164)
-* `argument(s) mismatch for an intrinsic 'reshape()'`
+* ~~`argument(s) mismatch for an intrinsic 'reshape()'`~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING FOR MERGE ([PR#189](https://github.com/omni-compiler/omni-compiler/pull/189))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#189](https://github.com/omni-compiler/omni-compiler/pull/189))
   * Issue on OMNI Compiler repository: [omni-compiler#167](https://github.com/omni-compiler/omni-compiler/issues/167)
 * ~~`incompatible dimension for the operation`~~
   * Type: Bug
