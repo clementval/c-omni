@@ -92,7 +92,7 @@ Fixed bugs are strikethrough.
 * `syntax error/parameter value not specified`
   * Type: Bug
   * Priority: medium
-  * Status: ISSUE OPEN
+  * Status: PR OPEN, WAITING FOR MERGE ([PR#192](https://github.com/omni-compiler/omni-compiler/pull/193))
   * Issue on OMNI Compiler repository: [omni-compiler#192](https://github.com/omni-compiler/omni-compiler/issues/191)
 
 
