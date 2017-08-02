@@ -31,7 +31,8 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ```
 
 ## Known issues
-Fixed issues are over
+Fixed bugs are strikethrough.
+
 **Bugs**
 * ~~`bad constant expression in PARAMETER statement`~~
   * Type: Bug
