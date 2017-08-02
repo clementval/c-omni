@@ -52,8 +52,14 @@ COSMO_DEP="dependencies_cosmo"
 
 COSMO_MACRO="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR -DCRAY_FIX_REALLOC"
 COSMO_MACRO+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR -D__COSMO__"
-COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DSMARTCARB -DNUDGING -DPOLLEN"
-COSMO_MACRO+=" -DGRIBDWD -DGRIBAPI -DNETCDF -DCPP_DYCORE -DGCL_COMM"
+COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING"
+
+COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
+
+# COSMO_MACRO="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR -DCRAY_FIX_REALLOC"
+# COSMO_MACRO+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR -D__COSMO__"
+# COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN"
+# COSMO_MACRO+=" -DGRIBDWD -DGRIBAPI -DNETCDF -DCPP_DYCORE -DGCL_COMM"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
@@ -237,7 +243,7 @@ if [[ $SKIP_PARSING == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} > ${COSMO_DEP} 2> dependencies_cosmo.out
+  ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} --exclude atab.f90:test_src_lbc.f90 > ${COSMO_DEP} 2> dependencies_cosmo.out
   echo "   ${COSMO_DEP}"
 
   # Check existence of the dependencies file
