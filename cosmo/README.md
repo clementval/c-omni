@@ -13,7 +13,7 @@ Without any option, the test will execute the following actions:
 5) Control all the resulting files and report any issues.
 
 ```bash
-./cosmo/parse.cosmo.sh
+./cosmo/parse.cosmo
 ```
 
 All the work is performed in a `<repo-root>/build` directory.
@@ -21,16 +21,17 @@ All the work is performed in a `<repo-root>/build` directory.
 #### Skip the CLAW FORTRAN Compiler step
 It is possible to run the test only from the step 2 with the following command:
 ```bash
-./cosmo/parse.cosmo.sh -s
+./cosmo/parse.cosmo -s
 ```
 
 #### Skip the parsing step
 It is possible to skip the parsing step the test only from the step 2 with the following command:
 ```bash
-./cosmo/parse.cosmo.sh -p
+./cosmo/parse.cosmo -p
 ```
 
-## Currently known issues
+## Known issues
+Fixed issues are over
 **Bugs**
 * ~~`bad constant expression in PARAMETER statement`~~
   * Type: Bug
