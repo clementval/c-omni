@@ -79,6 +79,22 @@ Fixed bugs are strikethrough.
   * Priority: High
   * Status: PR MERGED, ISSUE CLOSED ([PR#180](https://github.com/omni-compiler/omni-compiler/pull/180))
   * Issue on OMNI Compiler repository: None (missing feature)
+* `declaration among executables` (DATA statement)
+  * Type: Bug
+  * Priority: medium
+  * Status: ISSUE OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler#190](https://github.com/omni-compiler/omni-compiler/issues/190)
+* `syntax error` (function name with fortran keyword)
+  * Type: Bug
+  * Priority: medium
+  * Status: ISSUE OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler#191](https://github.com/omni-compiler/omni-compiler/issues/191)
+* `syntax error/parameter value not specified`
+  * Type: Bug
+  * Priority: medium
+  * Status: ISSUE OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler#192](https://github.com/omni-compiler/omni-compiler/issues/191)
+
 
 **Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
