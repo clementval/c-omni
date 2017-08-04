@@ -87,7 +87,7 @@ Fixed bugs are strikethrough.
 * `syntax error` (function name with fortran keyword)
   * Type: Bug
   * Priority: medium
-  * Status: ISSUE OPEN
+  * Status: PR OPEN, WAITING FOR MERGE ([PR#195](https://github.com/omni-compiler/omni-compiler/pull/195))
   * Issue on OMNI Compiler repository: [omni-compiler#191](https://github.com/omni-compiler/omni-compiler/issues/191)
 * `syntax error/parameter value not specified`
   * Type: Bug
