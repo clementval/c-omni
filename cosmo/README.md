@@ -82,7 +82,7 @@ Fixed bugs are strikethrough.
 * `declaration among executables` (DATA statement)
   * Type: Bug
   * Priority: medium
-  * Status: ISSUE OPEN
+  * Status: PR OPEN, WAITING FOR MERGE ([PR#196](https://github.com/omni-compiler/omni-compiler/pull/196))
   * Issue on OMNI Compiler repository: [omni-compiler#190](https://github.com/omni-compiler/omni-compiler/issues/190)
 * `syntax error` (function name with fortran keyword)
   * Type: Bug
