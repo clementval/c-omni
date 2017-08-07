@@ -99,7 +99,21 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR OPEN, WAITING TO BE MERGED ([PR#203](https://github.com/omni-compiler/omni-compiler/pull/203))
   * Issue on OMNI Compiler repository: [omni-compiler#202](https://github.com/omni-compiler/omni-compiler/issues/202)
-
+* `is not found for`
+  * Type: Bug
+  * Priority: medium
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler#204](https://github.com/omni-compiler/omni-compiler/issues/204)
+* `if-where syntax error`
+  * Type: Bug
+  * Priority: medium
+  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#206](https://github.com/omni-compiler/omni-compiler/pull/206))
+  * Issue on OMNI Compiler repository: [omni-compiler#205](https://github.com/omni-compiler/omni-compiler/issues/205)  
+* `Attempt to use undefined type variable`
+  * Type: Bug
+  * Priority: medium
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler#207](https://github.com/omni-compiler/omni-compiler/issues/207)  
 
 **Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
