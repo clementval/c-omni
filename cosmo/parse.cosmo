@@ -6,10 +6,10 @@
 #
 
 function show_help(){
-  echo "$0 [-s] [-p] [--with-omni]"
+  echo "$0 [-b <branch-name>] [-s] [-c] [-p] [-o]"
   echo ""
   echo "Options:"
-#  echo " -b <branch-name>  Specifiy the branch to be tested"
+  echo " -b <branch-name>  Specifiy which CLAW branch to be used for the test"
 #  echo " -f                Use the forked repository for test"
 #  echo " -c <compiler-id>  Define the base compiler to use"
 #  echo " -i <install-path> Set an install path"
@@ -76,18 +76,10 @@ while getopts "hfb:ci:spo" opt; do
   p) SKIP_PARSING=true ;;
   c) SKIP_FETCH=true ;;
   o) OMNI_LATEST=true ;;
-#  f)
-#    CLAW_REPO=$CLAW_FORK_REPO
-#    ;;
-#  b)
-#    CLAW_BRANCH=$OPTARG
-#    ;;
-#  c)
-#    CLAW_BASE_COMPILER=$OPTARG
-#    ;;
-#  i)
-#    CLAW_INSTALL_DIR=$OPTARG
-#    ;;
+  b) CLAW_BRANCH=$OPTARG ;;
+  # f) CLAW_REPO=$CLAW_FORK_REPO ;;
+  # c) CLAW_BASE_COMPILER=$OPTARG ;;
+  # i) CLAW_INSTALL_DIR=$OPTARG ;;
   esac
 done
 
