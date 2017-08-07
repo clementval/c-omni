@@ -114,6 +114,12 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler#207](https://github.com/omni-compiler/omni-compiler/issues/207)  
+* `Invalid left operand for '%'`
+  * Type: Bug
+  * Priority: medium
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler#208](https://github.com/omni-compiler/omni-compiler/issues/208)  
+
 
 **Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
