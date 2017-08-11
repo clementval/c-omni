@@ -1,0 +1,147 @@
+<OmniFortranModule version="1.0">
+  <name>typesizes</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fe6f0c08ad0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6f0c0a0b0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6f0c0b5b0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6f0c0cab0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6f0c0f170" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6f0c10930" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7fe6f0d00290" return_type="Flogical" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe6f0d00c80" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe6f0d00e80" ref="I7fe6f0d00c80"/>
+    <FbasicType type="I7fe6f0d01670" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe6f0d01870" ref="I7fe6f0d01670"/>
+    <FbasicType type="I7fe6f0d02060" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe6f0d02260" ref="I7fe6f0d02060"/>
+    <FbasicType type="I7fe6f0d02a50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe6f0d02c50" ref="I7fe6f0d02a50"/>
+    <FfunctionType type="F7fe6f0d061a0" return_type="I7fe6f0d02c50"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7fe6f0c08ad0" sclass="flocal" original_name="onebyteint" declared_in="typesizes">
+      <name>onebyteint</name>
+    </id>
+    <id type="I7fe6f0c0a0b0" sclass="flocal" original_name="twobyteint" declared_in="typesizes">
+      <name>twobyteint</name>
+    </id>
+    <id type="I7fe6f0c0b5b0" sclass="flocal" original_name="fourbyteint" declared_in="typesizes">
+      <name>fourbyteint</name>
+    </id>
+    <id type="I7fe6f0c0cab0" sclass="flocal" original_name="eightbyteint" declared_in="typesizes">
+      <name>eightbyteint</name>
+    </id>
+    <id type="I7fe6f0c0f170" sclass="flocal" original_name="fourbytereal" declared_in="typesizes">
+      <name>fourbytereal</name>
+    </id>
+    <id type="I7fe6f0c10930" sclass="flocal" original_name="eightbytereal" declared_in="typesizes">
+      <name>eightbytereal</name>
+    </id>
+    <id type="F7fe6f0d00290" sclass="ffunc" original_name="bytesizesok" declared_in="typesizes">
+      <name>bytesizesok</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="33" file="typeSizes.f90">
+      <name type="I7fe6f0c08ad0">onebyteint</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_int_kind</name>
+          <arguments>
+            <FintConstant type="Fint">2</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="33" file="typeSizes.f90">
+      <name type="I7fe6f0c0a0b0">twobyteint</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_int_kind</name>
+          <arguments>
+            <FintConstant type="Fint">4</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="33" file="typeSizes.f90">
+      <name type="I7fe6f0c0b5b0">fourbyteint</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_int_kind</name>
+          <arguments>
+            <FintConstant type="Fint">9</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="33" file="typeSizes.f90">
+      <name type="I7fe6f0c0cab0">eightbyteint</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_int_kind</name>
+          <arguments>
+            <FintConstant type="Fint">18</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="38" file="typeSizes.f90">
+      <name type="I7fe6f0c0f170">fourbytereal</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <namedValue name="p">
+              <FintConstant type="Fint">6</FintConstant>
+            </namedValue>
+            <namedValue name="r">
+              <FintConstant type="Fint">37</FintConstant>
+            </namedValue>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="38" file="typeSizes.f90">
+      <name type="I7fe6f0c10930">eightbytereal</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <namedValue name="p">
+              <FintConstant type="Fint">13</FintConstant>
+            </namedValue>
+            <namedValue name="r">
+              <FintConstant type="Fint">307</FintConstant>
+            </namedValue>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
