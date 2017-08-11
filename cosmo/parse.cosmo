@@ -18,6 +18,7 @@ function show_help(){
   echo " -c                Skip fetching step for COSMO-POMPA"
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
+  echo " -n                Test with NETCDF enabled"
 }
 
 source ./common/check.omni.lib.sh
@@ -43,6 +44,7 @@ SKIP_CLAW=false
 SKIP_FETCH=false
 SKIP_PARSING=false
 OMNI_LATEST=false
+NETCDF_ENABLE=false
 
 # COSMO related variables
 COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
@@ -50,13 +52,13 @@ COSMO_REP="cosmo-pompa"
 COSMO_SRC="./${COSMO_REP}/cosmo/src/"
 COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
-COSMO_EXCLUDED_FILES="test_src_lbc.f90:dummy_netcdf.f90"
+COSMO_EXCLUDED_FILES="test_src_lbc.f90"
 COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
 
 COSMO_MACRO="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR -DCRAY_FIX_REALLOC"
 COSMO_MACRO+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR -D__COSMO__"
 COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
-COSMO_MACRO+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -DNETCDF"
+COSMO_MACRO+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI"
 COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
 
 # This to avoid the outside OpenACC problem
@@ -65,7 +67,7 @@ COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hfb:ci:spo" opt; do
+while getopts "hfb:ci:spon" opt; do
   case "$opt" in
   h)
     show_help
@@ -76,11 +78,17 @@ while getopts "hfb:ci:spo" opt; do
   c) SKIP_FETCH=true ;;
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=$OPTARG ;;
+  n) NETCDF_ENABLE=true ;;
   # f) CLAW_REPO=$CLAW_FORK_REPO ;;
   # c) CLAW_BASE_COMPILER=$OPTARG ;;
   # i) CLAW_INSTALL_DIR=$OPTARG ;;
   esac
 done
+
+if [[ $NETCDF_ENABLE == false ]]; then
+  COSMO_MACRO+=" -DNETCDF"
+  COSMO_EXCLUDED_FILES="${COSMO_EXCLUDED_FILES}:dummy_netcdf.f90"
+fi
 
 COMPUTER=$(hostname)
 
