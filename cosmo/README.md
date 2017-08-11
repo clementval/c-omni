@@ -108,18 +108,27 @@ Fixed bugs are strikethrough.
   * Type: Bug
   * Priority: medium
   * Status: PR OPEN, WAITING TO BE MERGED  ([PR#206](https://github.com/omni-compiler/omni-compiler/pull/206))
-  * Issue on OMNI Compiler repository: [omni-compiler#205](https://github.com/omni-compiler/omni-compiler/issues/205)  
+  * Issue on OMNI Compiler repository: [omni-compiler#205](https://github.com/omni-compiler/omni-compiler/issues/205)
 * `Attempt to use undefined type variable`
   * Type: Bug
   * Priority: medium
-  * Status: OPEN
-  * Issue on OMNI Compiler repository: [omni-compiler#207](https://github.com/omni-compiler/omni-compiler/issues/207)  
+  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#210](https://github.com/omni-compiler/omni-compiler/pull/210))
+  * Issue on OMNI Compiler repository: [omni-compiler#207](https://github.com/omni-compiler/omni-compiler/issues/207)
 * `Invalid left operand for '%'`
   * Type: Bug
   * Priority: medium
+  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#212](https://github.com/omni-compiler/omni-compiler/pull/212))
+  * Issue on OMNI Compiler repository: [omni-compiler#208](https://github.com/omni-compiler/omni-compiler/issues/208)
+* `only function/subroutine statement are allowed in contains top level` (Pragma in top-level)
+  * Type: Bug
+  * Priority: medium
   * Status: OPEN
-  * Issue on OMNI Compiler repository: [omni-compiler#208](https://github.com/omni-compiler/omni-compiler/issues/208)  
-
+  * Issue on OMNI Compiler repository: [omni-compiler#213](https://github.com/omni-compiler/omni-compiler/issues/213)
+* `syntax error` (Function suffix)
+  * Type: Bug
+  * Priority: medium
+  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#215](https://github.com/omni-compiler/omni-compiler/pull/215))
+  * Issue on OMNI Compiler repository: [omni-compiler#214](https://github.com/omni-compiler/omni-compiler/issues/214)
 
 **Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
