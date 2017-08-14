@@ -21,13 +21,13 @@ All the work is performed in a `<repo-root>/build` directory.
 #### Skip the CLAW FORTRAN Compiler step
 It is possible to run the test only from the step 2 with the following command:
 ```bash
-./cosmo/parse -s
+./icon/parse -s
 ```
 
 #### Skip the parsing step
 It is possible to skip the parsing step the test only from the step 5 with the following command:
 ```bash
-./cosmo/parse -p
+./icon/parse -p
 ```
 
 ## Currently known issues
