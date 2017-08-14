@@ -1,0 +1,324 @@
+#!/bin/bash
+
+#
+# This scripts helps to test the parsing of the full IFS
+# code by the OMNI Compiler.
+#
+
+function show_help(){
+  echo "$0 [-b <branch-name>] [-s] [-c] [-p] [-o]"
+  echo ""
+  echo "Options:"
+  echo " -b <branch-name>  Specifiy which CLAW branch to be used for the test"
+  echo " -s                Skip CLAW/OMNI compilation/install"
+  echo " -c                Skip fetching step for IFS"
+  echo " -p                Skip parsing step"
+  echo " -o                Use the latest OMNI Compiler version for the test"
+}
+
+source ./common/check.omni.lib.sh
+source ./common/utility.sh
+
+# Working directories for the test
+TEST_DIR=${PWD}/build
+CLAW_OUTPUT="./processed/cosmo"
+XMOD_DIR="./xmods/cosmo"
+EXTERNAL_XMODS="../cosmo/external_xmods"
+
+# CLAW repository variables
+CLAW_BRANCH="master"
+CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
+CLAW_REPO=${CLAW_MAIN_REPO}
+CLAWFC=./claw/bin/clawfc
+
+# Default compiler used
+BASE_COMPILER="gnu"
+
+# Option switches
+SKIP_CLAW=false
+SKIP_FETCH=false
+SKIP_PARSING=false
+OMNI_LATEST=false
+
+# # COSMO related variables
+# COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
+IFS_REP="ifs"
+# IFS_SRC="./${COSMO_REP}/cosmo/src/"
+IFS_SRC="" # TODO
+IFS_START="XX.f90" # TODO
+IFS_DEP="dependencies_ifs"
+IFS_EXCLUDED_FILES="" # TODO
+# COSMO_NETCDF_INC="${IFS_SRC}/../include/netcdf/"
+#
+# COSMO_MACRO="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR -DCRAY_FIX_REALLOC"
+# COSMO_MACRO+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR -D__COSMO__"
+# COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
+# COSMO_MACRO+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI"
+# COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
+
+# This to avoid the outside OpenACC problem
+# COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
+
+# Parsing output
+PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
+
+while getopts "hfb:ci:spo" opt; do
+  case "$opt" in
+  h)
+    show_help
+    exit 0
+    ;;
+  s) SKIP_CLAW=true ;;
+  p) SKIP_PARSING=true ;;
+  c) SKIP_FETCH=true ;;
+  o) OMNI_LATEST=true ;;
+  b) CLAW_BRANCH=$OPTARG ;;
+  esac
+done
+
+COMPUTER=$(hostname)
+
+#if [[ $COMPUTER == *"daint"* ]]
+#then
+#  COMPUTER="daint"
+#  CMAKE_MOD="CMake"
+if [[ $COMPUTER == *"kesch"* ]]; then
+  COMPUTER="kesch"
+fi
+
+# Try to load machine specific compiler information
+COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
+if [ -f $COMPILER_FILE ]; then
+  # shellcheck source=./compiler/clementon2.gnu.sh
+  source $COMPILER_FILE
+else
+  echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
+fi
+
+echo ""
+echo "============================================"
+echo "IFS -> CLAW/OMNI Compiler parse test"
+echo "============================================"
+echo "- IFS information"
+echo "  - Git repository: $COSMO_MAIN_REPO" # TODO
+
+# Fetch the submodules
+git submodule init
+git submodule update
+
+if [[ $SKIP_CLAW == false ]]; then
+  # Specific CLAW/OMNI information
+  echo "- CLAW Compiler information:"
+  echo "  - Git repository: $CLAW_REPO"
+  echo "  - Git branch: $CLAW_BRANCH"
+  echo "  - Base compiler: $BASE_COMPILER"
+  echo "  - Target directory: $TEST_DIR"
+
+  rm -rf "$TEST_DIR"
+  mkdir "$TEST_DIR"
+
+  ###############################
+  # 1. CLAW FORTRAN Compiler step
+  ###############################
+
+  print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
+  if [[ $OMNI_LATEST == true ]]; then
+    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+  else
+    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+  fi
+elif [[ $SKIP_FETCH == false ]]; then
+  rm -rf "${TEST_DIR:?}"/${IFS_REP}
+fi
+
+echo "============================================"
+echo ""
+
+
+cd "$TEST_DIR" || exit 1
+WORKING_DIR="$PWD"
+
+# Get git hashes for the log
+echo "IFS PARSING TESTS" > "${PARSING_OUTPUT}"
+echo "-------------------" >> "${PARSING_OUTPUT}"
+echo "Git version information:" >> "${PARSING_OUTPUT}"
+cd claw-compiler || exit 1
+CLAW_HASH=$(git rev-parse HEAD)
+echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
+cd omni-compiler || exit 1
+OMNI_HASH=$(git rev-parse HEAD)
+echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
+cd "$WORKING_DIR" || exit 1
+
+
+
+
+if [[ $SKIP_FETCH == false ]]; then
+  #####################
+  # 2. IFS step
+  #####################
+
+  # TODO
+  print_green "[INFO] Fetching IFS"
+  # TODO no git fetching it clone $COSMO_MAIN_REPO
+fi
+
+cd ${IFS_REP} || exit 1
+IFS_HASH=$(git rev-parse HEAD)
+echo "- IFS git version: $IFS_HASH" >> "${PARSING_OUTPUT}"
+cd "$WORKING_DIR" || exit 1
+
+if [[ $SKIP_PARSING == false ]]; then
+  ####################
+  # 3. Dependency step
+  ####################
+
+  # Generate the dependency list for the parsing order
+  print_green "[INFO] Generate dependencies list"
+  ../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --exclude ${IFS_EXCLUDED_FILES} > ${IFS_DEP} 2> dependencies_cosmo.out
+  echo "   ${IFS_DEP}"
+
+  # Check existence of the dependencies file
+  if [[ ! -f ${IFS_DEP} ]]; then
+    echo "ERROR: ${IFS_DEP} does not exists!"
+    exit 1
+  fi
+
+  if [[ $(wc -l < ${IFS_DEP}) -lt 2 ]]; then
+    echo "ERROR: ${IFS_DEP} is empty!"
+    exit 1
+  fi
+
+
+  #################
+  # 4. Parsing step
+  #################
+
+  # Check existence of the CLAW FORTRAN Compiler
+  if [[ ! -f ${CLAWFC} ]]; then
+    echo "ERROR: ${FRONT_END} does not exists!"
+    exit 1
+  fi
+
+  mkdir -p ${XMOD_DIR}
+  mkdir -p ${CLAW_OUTPUT}
+
+  # Clean-up directories of potential previous run
+  rm "${CLAW_OUTPUT}"/*.f90
+  rm "${XMOD_DIR}"/*.xmod
+
+  parsed_files=0
+  print_green "[INFO] Parsing files"
+  echo "" >> "${PARSING_OUTPUT}"
+  echo "Parsing files:" >> "${PARSING_OUTPUT}"
+  while IFS= read -r f90_file; do
+    echo "    Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    echo "    Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+    mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
+    echo "cmd: ${CLAWFC} ${COSMO_MACRO} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${COSMO_NETCDF_INC} -I ${IFS_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} "${COSMO_MACRO}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${COSMO_NETCDF_INC}" -I "${IFS_SRC}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    let parsed_files=parsed_files+1
+    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+      print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
+    fi
+  done < ./${IFS_DEP}
+fi
+
+
+#################
+# 5. Control step
+#################
+
+echo ""
+print_green "--------------------------"
+print_green "[INFO] Control .xmod files"
+print_green "--------------------------"
+# Control if present .xmod file has been produced correctly
+xmod_errors=0
+for xmod_file in ${XMOD_DIR}/*.xmod; do
+  xmod_well_formatted=$(check_xmod_file "${xmod_file}")
+  if [[ $xmod_well_formatted == false ]]; then
+    echo "ERROR: ${xmod_file} file is not formatted correctly"
+    let xmod_errors=xmod_errors+1
+  fi
+done
+
+# Report number of detected errors
+if [[ ${xmod_errors} -ne 0 ]]; then
+  echo "------"
+  echo "ERROR: ${xmod_errors} .xmod files didn't pass the check"
+fi
+
+
+echo ""
+print_green "-------------------------"
+print_green "[INFO] Control .f90 files"
+print_green "-------------------------"
+# Control if target file has been produced
+f90_errors=0
+while IFS= read -r f90_file; do
+  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+    echo "ERROR: ${f90_file} has not been parsed correctly"
+    let f90_errors=f90_errors+1
+  fi
+done < ./${IFS_DEP}
+
+# Report number of detected errors
+if [[ ${f90_errors} -ne 0 ]]; then
+  echo "------"
+  echo "ERROR: ${f90_errors}/${parsed_files} .f90 files have not been parsed correctly"
+fi
+
+
+##############
+# Report error
+##############
+
+# Check potential known errors in log file
+error_type1=$(grep -c "only function/subroutine statement are allowed in contains top level" "${PARSING_OUTPUT}")
+error_type2=$(grep -c "declaration among executables" "${PARSING_OUTPUT}")
+error_type3=$(grep -c "syntax error" "${PARSING_OUTPUT}")
+error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodbye!" "${PARSING_OUTPUT}")
+error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
+error_type6=$(grep -c "incompatible dimension for the operation" "${PARSING_OUTPUT}")
+error_type7=$(grep -c "argument(s) mismatch for an intrinsic" "${PARSING_OUTPUT}")
+error_type8=$(grep -c "java.lang.OutOfMemoryError" "${PARSING_OUTPUT}")
+error_type9=$(grep -c "compiler error: type attr error" "${PARSING_OUTPUT}")
+error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
+error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
+error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
+
+echo ""
+echo "====================================="
+echo "COSMO-POMPA full parsing test results"
+echo "====================================="
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]     \
+  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]  \
+  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]  \
+  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]  \
+  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]  \
+  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]] \
+  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]]; then
+  echo "ERROR: Some errors have been detected"
+  echo "       ${xmod_errors} files .xmod with errors"
+  echo "       ${f90_errors} files .f90 with errors"
+  echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
+  echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
+  echo "         ${error_type3} errors/warnings [syntax error] found in log"
+  echo "         ${error_type4} errors/warnings [too many error, cannot recover from earlier errors: goodbye!] found in log"
+  echo "         ${error_type5} errors/warnings [failed to import module] found in log"
+  echo "         ${error_type6} errors/warnings [incompatible dimension for the operation] found in log"
+  echo "         ${error_type7} errors/warnings [argument(s) mismatch for an intrinsic] found in log"
+  echo "         ${error_type8} errors/warnings [java.lang.OutOfMemoryError] found in log"
+  echo "         ${error_type9} errors/warnings [compiler error: type attr error] found in log"
+  echo "         ${error_type10} errors/warnings [X if not found for end X] found in log"
+  echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
+  echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
+  echo "       More information in the file: ${PARSING_OUTPUT}"
+  echo "====================================="
+  exit 1
+else
+  echo "SUCCESS: Test has be executed correctly."
+  echo "====================================="
+  exit 0
+fi
