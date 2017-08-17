@@ -25,8 +25,7 @@ OMNI_MPI_CC="MPI_CC=mpicc"
 OMNI_MPI_FC="MPI_FC=mpif90"
 
 COMPUTER=$(hostname)
-if [[ $COMPUTER == daint* ]]
-then
+if [[ $COMPUTER == daint* ]]; then
   COMPUTER="daint"
 fi
 
@@ -55,8 +54,7 @@ done
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f "$COMPILER_FILE" ]
-then
+if [ -f "$COMPILER_FILE" ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
   source $COMPILER_FILE
 else
