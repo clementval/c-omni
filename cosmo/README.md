@@ -89,15 +89,15 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR OPEN, WAITING FOR MERGE ([PR#195](https://github.com/omni-compiler/omni-compiler/pull/195))
   * Issue on OMNI Compiler repository: [omni-compiler#191](https://github.com/omni-compiler/omni-compiler/issues/191)
-* `syntax error/parameter value not specified, un-terminated Hollerith constant`
+* ~~`syntax error/parameter value not specified, un-terminated Hollerith constant`~~
   * Type: Bug
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED ([PR#193](https://github.com/omni-compiler/omni-compiler/pull/193))
   * Issue on OMNI Compiler repository: [omni-compiler#192](https://github.com/omni-compiler/omni-compiler/issues/191)
-* `warning: array has allocatable`
+* ~~`warning: array has allocatable`~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING TO BE MERGED ([PR#203](https://github.com/omni-compiler/omni-compiler/pull/203))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#203](https://github.com/omni-compiler/omni-compiler/pull/203))
   * Issue on OMNI Compiler repository: [omni-compiler#202](https://github.com/omni-compiler/omni-compiler/issues/202)
 * `is not found for`
   * Type: Bug
@@ -114,20 +114,20 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR OPEN, WAITING TO BE MERGED  ([PR#210](https://github.com/omni-compiler/omni-compiler/pull/210))
   * Issue on OMNI Compiler repository: [omni-compiler#207](https://github.com/omni-compiler/omni-compiler/issues/207)
-* `Invalid left operand for '%'`
+* ~~`Invalid left operand for '%'`~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#212](https://github.com/omni-compiler/omni-compiler/pull/212))
+  * Status: PR MERGED, ISSUE CLOSED  ([PR#212](https://github.com/omni-compiler/omni-compiler/pull/212))
   * Issue on OMNI Compiler repository: [omni-compiler#208](https://github.com/omni-compiler/omni-compiler/issues/208)
 * `only function/subroutine statement are allowed in contains top level` (Pragma in top-level)
   * Type: Bug
   * Priority: medium
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler#213](https://github.com/omni-compiler/omni-compiler/issues/213)
-* `syntax error` (Function suffix)
+* ~~`syntax error` (Function suffix)~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#215](https://github.com/omni-compiler/omni-compiler/pull/215))
+  * Status: PR MERGED, ISSUE CLOSED  ([PR#215](https://github.com/omni-compiler/omni-compiler/pull/215))
   * Issue on OMNI Compiler repository: [omni-compiler#214](https://github.com/omni-compiler/omni-compiler/issues/214)
 
 **Warnings**
