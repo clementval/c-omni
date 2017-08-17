@@ -31,9 +31,35 @@ It is possible to skip the parsing step the test only from the step 5 with the f
 ```
 
 ## Currently known issues
-Example
-* `information about the error`
-  * Type: Bug|Waring
-  * Priority: high|medium|low
-  * Status: OPEN|FIXED|CLOSED
-  * Issue on OMNI Compiler repository: [link to issue](https://github.com/omni-compiler/omni-compiler)
+
+**Bugs**
+* ~~`Failed to import module with GENERIC type-bound procedure`~~
+  * Type: Bug
+  * Priority: medium
+  * Status: PR MERGED, ISSUE CLOSED [PR#237](https://github.com/omni-compiler/omni-compiler/pull/237)
+  * Issue on OMNI Compiler repository: [omni-compiler:#234](https://github.com/omni-compiler/omni-compiler/issues/234)
+* ~~`TARGET attribute compatibility with INTENT`~~
+  * Type: Bug
+  * Priority: medium
+  * Status: PR MERGED, ISSUE CLOSED [PR#233](https://github.com/omni-compiler/omni-compiler/pull/233)
+  * Issue on OMNI Compiler repository: [omni-compiler:#232](https://github.com/omni-compiler/omni-compiler/issues/232)
+* ~~`Type declaration doesn't accept ABSTRACT and PUBLIC attribute specifier`~~
+  * Type: Bug
+  * Priority: medium
+  * Status: PR MERGED, ISSUE CLOSED [PR#231](https://github.com/omni-compiler/omni-compiler/pull/231)
+  * Issue on OMNI Compiler repository: [omni-compiler:#230](https://github.com/omni-compiler/omni-compiler/issues/230)
+* `Declaration doesn't accept BIND name`
+  * Type: Bug
+  * Priority: medium
+  * Status: PR OPEN, WAITING FOR MERGE [PR#229](https://github.com/omni-compiler/omni-compiler/pull/229)
+  * Issue on OMNI Compiler repository: [omni-compiler:#228](https://github.com/omni-compiler/omni-compiler/issues/228)
+* `Declaration of procedure pointer fails`
+  * Type: Missing feature
+  * Priority: medium
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#227](https://github.com/omni-compiler/omni-compiler/issues/227)
+* ~~`BIND attribute fails compatibility with some other ATTRIBUTE`~~
+  * Type: Bug
+  * Priority: medium
+  * Status: PR MERGED, ISSUE CLOSED [PR#226](https://github.com/omni-compiler/omni-compiler/pull/226)
+  * Issue on OMNI Compiler repository: [omni-compiler:#225](https://github.com/omni-compiler/omni-compiler/issues/225)
