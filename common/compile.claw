@@ -27,11 +27,9 @@ OMNI_MPI_FC="MPI_FC=mpif90"
 OMNI_LATEST=false
 
 COMPUTER=$(hostname)
-if [[ $COMPUTER == daint* ]]
-then
+if [[ $COMPUTER == daint* ]]; then
   COMPUTER="daint"
-elif [[ $COMPUTER == kesch* ]]
-then
+elif [[ $COMPUTER == kesch* ]]; then
   COMPUTER="kesch"
   module load cmake
   module load PrgEnv-gnu
@@ -65,8 +63,7 @@ done
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f "$COMPILER_FILE" ]
-then
+if [ -f "$COMPILER_FILE" ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
   source $COMPILER_FILE
 else
@@ -105,8 +102,7 @@ git submodule init
 git submodule update
 
 # Update to latest OMNI Compiler
-if [[ ${OMNI_LATEST} == true ]]
-then
+if [[ ${OMNI_LATEST} == true ]]; then
   git submodule update --remote
   git submodule foreach git pull origin master
 fi

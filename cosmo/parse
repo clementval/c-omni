@@ -194,9 +194,9 @@ if [[ $SKIP_CLAW == false ]]; then
 
   print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
   if [[ $OMNI_LATEST == true ]]; then
-    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
   else
-    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
   fi
 elif [[ $SKIP_FETCH == false ]]; then
   rm -rf "${TEST_DIR:?}"/${COSMO_REP}
