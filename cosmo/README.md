@@ -79,10 +79,10 @@ Fixed bugs are strikethrough.
   * Priority: High
   * Status: PR MERGED, ISSUE CLOSED ([PR#180](https://github.com/omni-compiler/omni-compiler/pull/180))
   * Issue on OMNI Compiler repository: None (missing feature)
-* `declaration among executables` (DATA statement)
+* ~~`declaration among executables` (DATA statement)~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING FOR MERGE ([PR#196](https://github.com/omni-compiler/omni-compiler/pull/196))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#196](https://github.com/omni-compiler/omni-compiler/pull/196))
   * Issue on OMNI Compiler repository: [omni-compiler#190](https://github.com/omni-compiler/omni-compiler/issues/190)
 * `syntax error` (function name with fortran keyword)
   * Type: Bug
@@ -99,15 +99,15 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED ([PR#203](https://github.com/omni-compiler/omni-compiler/pull/203))
   * Issue on OMNI Compiler repository: [omni-compiler#202](https://github.com/omni-compiler/omni-compiler/issues/202)
-* `is not found for`
+* ~~`is not found for`~~
   * Type: Bug
   * Priority: medium
-  * Status: OPEN
+  * Status: ISSUE CLOSED via dae5374388ee8c8842e3a16ee3b7acc64658aa31
   * Issue on OMNI Compiler repository: [omni-compiler#204](https://github.com/omni-compiler/omni-compiler/issues/204)
-* `if-where syntax error`
+* ~~`if-where syntax error`~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#206](https://github.com/omni-compiler/omni-compiler/pull/206))
+  * Status: PR MERGED, ISSUE CLOSED  ([PR#206](https://github.com/omni-compiler/omni-compiler/pull/206))
   * Issue on OMNI Compiler repository: [omni-compiler#205](https://github.com/omni-compiler/omni-compiler/issues/205)
 * `Attempt to use undefined type variable`
   * Type: Bug
