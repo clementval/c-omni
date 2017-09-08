@@ -30,6 +30,11 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 ./cosmo/parse -p
 ```
 
+#### Test with NetCDF enabled
+```bash
+./cosmo/parse -n
+```
+
 ## Known issues
 Fixed bugs are strikethrough.
 
