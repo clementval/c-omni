@@ -134,7 +134,16 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED  ([PR#215](https://github.com/omni-compiler/omni-compiler/pull/215))
   * Issue on OMNI Compiler repository: [omni-compiler#214](https://github.com/omni-compiler/omni-compiler/issues/214)
-
+* `bad char &(0x26)` (lexer mess up with ! and &)
+  * Type: Bug
+  * Priority: high
+  * Status: PR OPEN, WAITING TO BE MERGED ([PR#254](https://github.com/omni-compiler/omni-compiler/pull/254))
+  * Issue on OMNI Compiler repository: [omni-compiler#253](https://github.com/omni-compiler/omni-compiler/issues/253)  
+* `identifier 'selected_real_kind' is used as a function`
+  * Type: Bug
+  * Priority: high
+  * Status: PR OPEN, WAITING TO BE MERGED ([PR#257](https://github.com/omni-compiler/omni-compiler/pull/257))
+  * Issue on OMNI Compiler repository: [omni-compiler#255](https://github.com/omni-compiler/omni-compiler/issues/255)  
 **Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
   * Type: Warning
