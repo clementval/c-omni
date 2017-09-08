@@ -357,18 +357,20 @@ error_type9=$(grep -c "compiler error: type attr error" "${PARSING_OUTPUT}")
 error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
 error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
 error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
+error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
 
 echo ""
 echo "====================================="
 echo "COSMO-POMPA full parsing test results"
 echo "====================================="
-if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]     \
-  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]  \
-  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]  \
-  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]  \
-  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]  \
-  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]] \
-  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]]; then
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
+  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
+  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
+  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]   \
+  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]   \
+  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
+  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
+  || [[ ${error_type13} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .xmod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -384,6 +386,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]     \
   echo "         ${error_type10} errors/warnings [X if not found for end X] found in log"
   echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
   echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
+  echo "         ${error_type13} errors/warnings [bad char] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
