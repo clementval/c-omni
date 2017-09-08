@@ -24,6 +24,7 @@ source ./common/utility.sh
 TEST_DIR=${PWD}/build
 CLAW_OUTPUT="./processed/ifs"
 XMOD_DIR="./xmods/ifs"
+EXTERNAL_XMODS="../ifs/external_xmods"
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -48,17 +49,7 @@ IFS_REP="ifs"
 IFS_SRC="./${IFS_REP}/"
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
-IFS_EXCLUDED_FILES="" # TODO
-# COSMO_NETCDF_INC="${IFS_SRC}/../include/netcdf/"
-#
-# COSMO_MACRO="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR -DCRAY_FIX_REALLOC"
-# COSMO_MACRO+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR -D__COSMO__"
-# COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
-# COSMO_MACRO+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI"
-# COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
-
-# This to avoid the outside OpenACC problem
-# COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
+#IFS_EXCLUDED_FILES="" # TODO
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
@@ -295,18 +286,20 @@ error_type9=$(grep -c "compiler error: type attr error" "${PARSING_OUTPUT}")
 error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
 error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
 error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
+error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
 
 echo ""
 echo "====================================="
 echo "COSMO-POMPA full parsing test results"
 echo "====================================="
-if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]     \
-  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]  \
-  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]  \
-  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]  \
-  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]  \
-  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]] \
-  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]]; then
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
+  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
+  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
+  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]   \
+  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]   \
+  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
+  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
+  || [[ ${error_type13} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .xmod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -322,6 +315,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]     \
   echo "         ${error_type10} errors/warnings [X if not found for end X] found in log"
   echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
   echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
+  echo "         ${error_type13} errors/warnings [bad char] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
