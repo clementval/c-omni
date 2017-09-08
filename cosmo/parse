@@ -244,7 +244,7 @@ if [[ $SKIP_PARSING == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} --exclude ${COSMO_EXCLUDED_FILES} > ${COSMO_DEP} 2> dependencies_cosmo.out" > "${PARSING_OUTPUT}"
+  echo "../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} --exclude ${COSMO_EXCLUDED_FILES} > ${COSMO_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
   ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} --exclude ${COSMO_EXCLUDED_FILES} > ${COSMO_DEP} 2> dependencies_cosmo.out
   echo "   ${COSMO_DEP}"
 
