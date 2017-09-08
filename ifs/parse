@@ -14,6 +14,7 @@ function show_help(){
   echo " -c                Skip fetching step for IFS"
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
+  echo " -i <path-to-ifs>  Path to the directory where ifs dir is located"
 }
 
 source ./common/check.omni.lib.sh
@@ -21,9 +22,8 @@ source ./common/utility.sh
 
 # Working directories for the test
 TEST_DIR=${PWD}/build
-CLAW_OUTPUT="./processed/cosmo"
-XMOD_DIR="./xmods/cosmo"
-EXTERNAL_XMODS="../cosmo/external_xmods"
+CLAW_OUTPUT="./processed/ifs"
+XMOD_DIR="./xmods/ifs"
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -42,10 +42,11 @@ OMNI_LATEST=false
 
 # # COSMO related variables
 # COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
+IFS_PATH=""
 IFS_REP="ifs"
 # IFS_SRC="./${COSMO_REP}/cosmo/src/"
-IFS_SRC="" # TODO
-IFS_START="XX.f90" # TODO
+IFS_SRC="${TEST_DIR}"/ifs
+IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
 IFS_EXCLUDED_FILES="" # TODO
 # COSMO_NETCDF_INC="${IFS_SRC}/../include/netcdf/"
@@ -62,7 +63,7 @@ IFS_EXCLUDED_FILES="" # TODO
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
 
-while getopts "hfb:ci:spo" opt; do
+while getopts "hfb:ci:spi:o" opt; do
   case "$opt" in
   h)
     show_help
@@ -73,8 +74,14 @@ while getopts "hfb:ci:spo" opt; do
   c) SKIP_FETCH=true ;;
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=$OPTARG ;;
+  i) IFS_PATH=$OPTARG ;;
   esac
 done
+
+if [[ $IFS_PATH == "" ]]; then
+  echo "ERROR: ifs path must be specified"
+  exit 1
+fi
 
 COMPUTER=$(hostname)
 
@@ -123,9 +130,9 @@ if [[ $SKIP_CLAW == false ]]; then
 
   print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
   if [[ $OMNI_LATEST == true ]]; then
-    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
   else
-    ./common/compile.claw.sh -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
   fi
 elif [[ $SKIP_FETCH == false ]]; then
   rm -rf "${TEST_DIR:?}"/${IFS_REP}
@@ -153,14 +160,14 @@ cd "$WORKING_DIR" || exit 1
 
 
 
-if [[ $SKIP_FETCH == false ]]; then
+if [[ ${SKIP_FETCH} == false ]]; then
   #####################
   # 2. IFS step
   #####################
 
-  # TODO
   print_green "[INFO] Fetching IFS"
-  # TODO no git fetching it clone $COSMO_MAIN_REPO
+  rm -rf "${IFS_SRC}"
+  cp -R "$IFS_PATH"/ifs "${TEST_DIR}"
 fi
 
 cd ${IFS_REP} || exit 1
@@ -175,7 +182,8 @@ if [[ $SKIP_PARSING == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  ../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --exclude ${IFS_EXCLUDED_FILES} > ${IFS_DEP} 2> dependencies_cosmo.out
+  echo "../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --recursive  > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --recursive > ${IFS_DEP} 2> dependencies_ifs.out
   echo "   ${IFS_DEP}"
 
   # Check existence of the dependencies file
