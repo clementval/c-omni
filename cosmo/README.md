@@ -89,10 +89,10 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED ([PR#196](https://github.com/omni-compiler/omni-compiler/pull/196))
   * Issue on OMNI Compiler repository: [omni-compiler#190](https://github.com/omni-compiler/omni-compiler/issues/190)
-* `syntax error` (function name with fortran keyword)
+* ~~`syntax error` (function name with fortran keyword)~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING FOR MERGE ([PR#195](https://github.com/omni-compiler/omni-compiler/pull/195))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#195](https://github.com/omni-compiler/omni-compiler/pull/195))
   * Issue on OMNI Compiler repository: [omni-compiler#191](https://github.com/omni-compiler/omni-compiler/issues/191)
 * ~~`syntax error/parameter value not specified, un-terminated Hollerith constant`~~
   * Type: Bug
