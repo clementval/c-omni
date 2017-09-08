@@ -45,7 +45,7 @@ OMNI_LATEST=false
 IFS_PATH=""
 IFS_REP="ifs"
 # IFS_SRC="./${COSMO_REP}/cosmo/src/"
-IFS_SRC="${TEST_DIR}"/ifs
+IFS_SRC="./${IFS_REP}/"
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
 IFS_EXCLUDED_FILES="" # TODO
@@ -183,7 +183,7 @@ if [[ $SKIP_PARSING == false ]]; then
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
   echo "../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --recursive  > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --recursive > ${IFS_DEP} 2> dependencies_ifs.out
+  ../fdependencies/generate_dep.py --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
   echo "   ${IFS_DEP}"
 
   # Check existence of the dependencies file
@@ -204,7 +204,7 @@ if [[ $SKIP_PARSING == false ]]; then
 
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]; then
-    echo "ERROR: ${FRONT_END} does not exists!"
+    echo "ERROR: CLAW FORTRAN Compiler not found!"
     exit 1
   fi
 
