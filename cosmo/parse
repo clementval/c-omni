@@ -85,6 +85,11 @@ while getopts "hfb:ci:spon" opt; do
   esac
 done
 
+if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
+  echo "Incompatible options -p and -s ..."
+  exit 1
+fi
+
 if [[ $NETCDF_ENABLE == true ]]; then
   COSMO_MACRO+=" -DNETCDF"
   COSMO_EXCLUDED_FILES="${COSMO_EXCLUDED_FILES}:dummy_netcdf.f90"
@@ -175,7 +180,12 @@ echo "  - Git repository: $COSMO_MAIN_REPO"
 
 # Fetch the submodules
 git submodule init
-git submodule update
+if [[ ${OMNI_LATEST} == true ]]; then
+  echo "- OMNI fetch latest commit from submodule!"
+  git submodule update --remote
+else
+  git submodule update
+fi
 
 if [[ $SKIP_CLAW == false ]]; then
   # Specific CLAW/OMNI information
