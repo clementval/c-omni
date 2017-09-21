@@ -138,12 +138,22 @@ Fixed bugs are strikethrough.
   * Type: Bug
   * Priority: high
   * Status: PR MERGED, ISSUE CLOSED ([PR#254](https://github.com/omni-compiler/omni-compiler/pull/254))
-  * Issue on OMNI Compiler repository: [omni-compiler#253](https://github.com/omni-compiler/omni-compiler/issues/253)  
+  * Issue on OMNI Compiler repository: [omni-compiler#253](https://github.com/omni-compiler/omni-compiler/issues/253)
 * ~~`identifier 'selected_real_kind' is used as a function`~~
   * Type: Bug
   * Priority: high
   * Status: PR MERGED, ISSUE CLOSED ([PR#257](https://github.com/omni-compiler/omni-compiler/pull/257))
-  * Issue on OMNI Compiler repository: [omni-compiler#255](https://github.com/omni-compiler/omni-compiler/issues/255)  
+  * Issue on OMNI Compiler repository: [omni-compiler#255](https://github.com/omni-compiler/omni-compiler/issues/255)
+* `varDecl from external module in interface declaration`
+  * Type: Bug
+  * Priority: high
+  * Status: PR WAITING TO BE MERGED, ISSUE OPEN ([PR#275](https://github.com/omni-compiler/omni-compiler/pull/275))
+  * Issue on OMNI Compiler repository: [omni-compiler#274](https://github.com/omni-compiler/omni-compiler/issues/274)
+* `Reference type of 'function definition' is defined as 'FbasicType', but it must be 'FfunctionType'`
+  * Type: Bug
+  * Priority: high
+  * Status: PR WAITING TO BE MERGED, ISSUE OPEN ([PR#280](https://github.com/omni-compiler/omni-compiler/pull/280))
+  * Issue on OMNI Compiler repository: [omni-compiler#279](https://github.com/omni-compiler/omni-compiler/issues/279)
 
 **Warnings**
 * `can't determine a function to be actually called for a generic interface function call`
