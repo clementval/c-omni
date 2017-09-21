@@ -114,10 +114,10 @@ Fixed bugs are strikethrough.
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED  ([PR#206](https://github.com/omni-compiler/omni-compiler/pull/206))
   * Issue on OMNI Compiler repository: [omni-compiler#205](https://github.com/omni-compiler/omni-compiler/issues/205)
-* `Attempt to use undefined type variable`
+* ~~`Attempt to use undefined type variable`~~
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING TO BE MERGED  ([PR#210](https://github.com/omni-compiler/omni-compiler/pull/210))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#210](https://github.com/omni-compiler/omni-compiler/pull/210))
   * Issue on OMNI Compiler repository: [omni-compiler#207](https://github.com/omni-compiler/omni-compiler/issues/207)
 * ~~`Invalid left operand for '%'`~~
   * Type: Bug
