@@ -149,6 +149,11 @@ Fixed bugs are strikethrough.
   * Priority: high
   * Status: PR WAITING TO BE MERGED, ISSUE OPEN ([PR#275](https://github.com/omni-compiler/omni-compiler/pull/275))
   * Issue on OMNI Compiler repository: [omni-compiler#274](https://github.com/omni-compiler/omni-compiler/issues/274)
+* `TYPE name from external module is not reachable in decompiler`
+  * Type: Bug
+  * Priority: high
+  * Status: PR MERGED, ISSUE CLOSE ([PR#281](https://github.com/omni-compiler/omni-compiler/pull/281))
+  * Issue on OMNI Compiler repository: [omni-compiler#276](https://github.com/omni-compiler/omni-compiler/issues/276)
 * `Reference type of 'function definition' is defined as 'FbasicType', but it must be 'FfunctionType'`
   * Type: Bug
   * Priority: high
