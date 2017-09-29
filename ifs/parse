@@ -41,11 +41,10 @@ SKIP_FETCH=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 
-# # COSMO related variables
-# COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
+# IFS related variables
 IFS_PATH=""
+IFS_MAIN_REPO="Local"
 IFS_REP="ifs"
-# IFS_SRC="./${COSMO_REP}/cosmo/src/"
 IFS_SRC="./${IFS_REP}/"
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
@@ -55,7 +54,7 @@ IFS_DEP="dependencies_ifs"
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
 
 while getopts "hfb:ci:spi:o" opt; do
-  case "$opt" in
+  case "${opt}" in
   h)
     show_help
     exit 0
@@ -64,33 +63,33 @@ while getopts "hfb:ci:spi:o" opt; do
   p) SKIP_PARSING=true ;;
   c) SKIP_FETCH=true ;;
   o) OMNI_LATEST=true ;;
-  b) CLAW_BRANCH=$OPTARG ;;
-  i) IFS_PATH=$OPTARG ;;
+  b) CLAW_BRANCH=${OPTARG} ;;
+  i) IFS_PATH=${OPTARG} ;;
   esac
 done
 
-if [[ $IFS_PATH == "" ]]; then
+if [[ ${IFS_PATH} == "" ]]; then
   echo "ERROR: ifs path must be specified"
   exit 1
 fi
 
 COMPUTER=$(hostname)
 
-#if [[ $COMPUTER == *"daint"* ]]
+#if [[ ${COMPUTER} == *"daint"* ]]
 #then
 #  COMPUTER="daint"
 #  CMAKE_MOD="CMake"
-if [[ $COMPUTER == *"kesch"* ]]; then
+if [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f $COMPILER_FILE ]; then
+if [ -f ${COMPILER_FILE} ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
-  source $COMPILER_FILE
+  source ${COMPILER_FILE}
 else
-  echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
+  echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
 echo ""
@@ -98,34 +97,39 @@ echo "============================================"
 echo "IFS -> CLAW/OMNI Compiler parse test"
 echo "============================================"
 echo "- IFS information"
-echo "  - Git repository: $COSMO_MAIN_REPO" # TODO
+echo "  - Git repository: ${IFS_MAIN_REPO}" # TODO
 
 # Fetch the submodules
 git submodule init
-git submodule update
+if [[ ${OMNI_LATEST} == true ]]; then
+  echo "- OMNI fetch latest commit from submodule!"
+  git submodule update --remote
+else
+  git submodule update
+fi
 
-if [[ $SKIP_CLAW == false ]]; then
+if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
-  echo "  - Git repository: $CLAW_REPO"
-  echo "  - Git branch: $CLAW_BRANCH"
-  echo "  - Base compiler: $BASE_COMPILER"
-  echo "  - Target directory: $TEST_DIR"
+  echo "  - Git repository: ${CLAW_REPO}"
+  echo "  - Git branch: ${CLAW_BRANCH}"
+  echo "  - Base compiler: ${BASE_COMPILER}"
+  echo "  - Target directory: ${TEST_DIR}"
 
-  rm -rf "$TEST_DIR"
-  mkdir "$TEST_DIR"
+  rm -rf "${TEST_DIR}"
+  mkdir "${TEST_DIR}"
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
   print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
-  if [[ $OMNI_LATEST == true ]]; then
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+  if [[ ${OMNI_LATEST} == true ]]; then
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
-elif [[ $SKIP_FETCH == false ]]; then
+elif [[ ${SKIP_FETCH} == false ]]; then
   rm -rf "${TEST_DIR:?}"/${IFS_REP}
 fi
 
@@ -133,8 +137,8 @@ echo "============================================"
 echo ""
 
 
-cd "$TEST_DIR" || exit 1
-WORKING_DIR="$PWD"
+cd "${TEST_DIR}" || exit 1
+WORKING_DIR="${PWD}"
 
 # Get git hashes for the log
 echo "IFS PARSING TESTS" > "${PARSING_OUTPUT}"
@@ -142,11 +146,11 @@ echo "-------------------" >> "${PARSING_OUTPUT}"
 echo "Git version information:" >> "${PARSING_OUTPUT}"
 cd claw-compiler || exit 1
 CLAW_HASH=$(git rev-parse HEAD)
-echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
+echo "- CLAW git version: ${CLAW_HASH}" >> "${PARSING_OUTPUT}"
 cd omni-compiler || exit 1
 OMNI_HASH=$(git rev-parse HEAD)
-echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
+echo "- OMNI git version: ${OMNI_HASH}" >> "${PARSING_OUTPUT}"
+cd "${WORKING_DIR}" || exit 1
 
 
 
@@ -156,17 +160,17 @@ if [[ ${SKIP_FETCH} == false ]]; then
   # 2. IFS step
   #####################
 
-  print_green "[INFO] Fetching IFS"
+  print_green "[INFO] Fetching IFS from ${IFS_PATH}"
   rm -rf "${IFS_SRC}"
-  cp -R "$IFS_PATH"/ifs "${TEST_DIR}"
+  cp -R "${IFS_PATH}"/ifs "${TEST_DIR}"
 fi
 
 cd ${IFS_REP} || exit 1
 IFS_HASH=$(git rev-parse HEAD)
-echo "- IFS git version: $IFS_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
+echo "- IFS git version: ${IFS_HASH}" >> "${PARSING_OUTPUT}"
+cd "${WORKING_DIR}" || exit 1
 
-if [[ $SKIP_PARSING == false ]]; then
+if [[ ${SKIP_PARSING} == false ]]; then
   ####################
   # 3. Dependency step
   ####################
@@ -236,7 +240,7 @@ print_green "--------------------------"
 xmod_errors=0
 for xmod_file in ${XMOD_DIR}/*.xmod; do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
-  if [[ $xmod_well_formatted == false ]]; then
+  if [[ ${xmod_well_formatted} == false ]]; then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
     let xmod_errors=xmod_errors+1
   fi
