@@ -287,6 +287,7 @@ error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
 error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
 error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
 error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
+error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPUT}")
 
 echo ""
 echo "====================================="
@@ -299,7 +300,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]   \
   || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
   || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
-  || [[ ${error_type13} -ne 0 ]]; then
+  || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .xmod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -316,6 +317,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
   echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
   echo "         ${error_type13} errors/warnings [bad char] found in log"
+  echo "         ${error_type14} errors/warnings [Unable to decompile XcodeML to Fortran] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
