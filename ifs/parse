@@ -15,6 +15,7 @@ function show_help(){
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
   echo " -i <path-to-ifs>  Path to the directory where ifs dir is located"
+  echo " -x                Stop on first failure"
 }
 
 source ./common/check.omni.lib.sh
@@ -40,6 +41,7 @@ SKIP_CLAW=false
 SKIP_FETCH=false
 SKIP_PARSING=false
 OMNI_LATEST=false
+STOP_ON_FAILURE=false
 
 # IFS related variables
 IFS_PATH=""
@@ -53,7 +55,7 @@ IFS_DEP="dependencies_ifs"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
 
-while getopts "hb:ci:spo" opt; do
+while getopts "hb:ci:spox" opt; do
   case "${opt}" in
   h)
     show_help
@@ -65,6 +67,7 @@ while getopts "hb:ci:spo" opt; do
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=${OPTARG} ;;
   i) IFS_PATH=${OPTARG} ;;
+  x) STOP_ON_FAILURE=true ;;
   esac
 done
 
@@ -225,6 +228,11 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
+      if [[ ${STOP_ON_FAILURE} == true ]]; then
+        tail -n 20 "${PARSING_OUTPUT}"
+        print_red "[ABORTED]"
+        exit 1
+      fi
     fi
   done < ./${IFS_DEP}
 fi
