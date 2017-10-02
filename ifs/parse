@@ -47,7 +47,8 @@ STOP_ON_FAILURE=false
 IFS_PATH=""
 IFS_MAIN_REPO="Local"
 IFS_REP="ifs"
-IFS_AUX_REP="./ifsaux"
+IFS_AUX_REP="ifsaux"
+IFS_AUX_INCLUDE="./${IFS_AUX_REP}/include"
 IFS_SRC="./${IFS_REP}/"
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
@@ -225,8 +226,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    s(${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${IFS_SRC} -I ${IFS_AUX_REP} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${IFS_SRC}" -I "${IFS_AUX_REP}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${IFS_SRC} -I ${IFS_AUX_INCLUDE} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${IFS_SRC}" -I "${IFS_AUX_INCLUDE}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
