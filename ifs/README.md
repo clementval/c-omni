@@ -34,9 +34,10 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 Fixed bugs are strikethrough.
 
 **Bugs**
+
 Any bugs found during parsing tests that should be/has been addressed.
 
-* ~~`argument(s) mismatch for an intrinsic 'any()'. Wrong arg type`~~
+* `argument(s) mismatch for an intrinsic 'any()'. Wrong arg type`
   * Type: Bug
   * Priority: high
   * Status: OPEN
