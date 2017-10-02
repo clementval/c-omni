@@ -34,12 +34,13 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 Fixed bugs are strikethrough.
 
 **Bugs**
-  Any bugs found during parsing tests that should be/has been addressed.
-* ~~`Skeleton`~~
-  * Type: Bug/Warning
-  * Priority: high/medium/low
-  * Status: OPEN/FIXED, ISSUE CLOSED/PR MERGED, ISSUE CLOSED
-  * Issue on OMNI Compiler repository: [omni-compiler:#00](https://github.com/omni-compiler/omni-compiler/issues/00)
+Any bugs found during parsing tests that should be/has been addressed.
+
+* ~~`argument(s) mismatch for an intrinsic 'any()'. Wrong arg type`~~
+  * Type: Bug
+  * Priority: high
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#302](https://github.com/omni-compiler/omni-compiler/issues/302)
 
 **Warnings**
   Any warning found during parsing tests that should be/has been addressed.
