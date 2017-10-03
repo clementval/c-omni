@@ -42,6 +42,17 @@ Any bugs found during parsing tests that should be/has been addressed.
   * Priority: high
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler:#302](https://github.com/omni-compiler/omni-compiler/issues/302)
+* `[Missing feature] ASSOCIATE construct`
+  * Type: Missing feature
+  * Priority: high
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#303](https://github.com/omni-compiler/omni-compiler/issues/303)
+* `incompatible type declarations (fct result with dimension)`
+  * Type: Bug
+  * Priority: medium
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#304](https://github.com/omni-compiler/omni-compiler/issues/304)
+
 
 **Warnings**
   Any warning found during parsing tests that should be/has been addressed.
