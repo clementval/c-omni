@@ -55,14 +55,14 @@ COSMO_DEP="dependencies_cosmo"
 COSMO_EXCLUDED_FILES="test_src_lbc.f90"
 COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
 
-COSMO_MACRO="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR -DCRAY_FIX_REALLOC"
-COSMO_MACRO+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR -D__COSMO__"
-COSMO_MACRO+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
-COSMO_MACRO+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC"
-COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
+COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
+COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
+COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
+COSMO_DEFINITIONS+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
+COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC"
 
 # This to avoid the outside OpenACC problem
-# COSMO_MACRO+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
+# COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
@@ -91,7 +91,7 @@ if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
 fi
 
 if [[ $NETCDF_ENABLE == true ]]; then
-  COSMO_MACRO+=" -DNETCDF"
+  COSMO_DEFINITIONS+=" -DNETCDF"
   COSMO_EXCLUDED_FILES="${COSMO_EXCLUDED_FILES}:dummy_netcdf.f90"
 fi
 
@@ -295,8 +295,8 @@ if [[ $SKIP_PARSING == false ]]; then
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} ${COSMO_MACRO} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    ${CLAWFC} "${COSMO_MACRO}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${COSMO_NETCDF_INC}" -I "${COSMO_SRC}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${COSMO_NETCDF_INC}" -I "${COSMO_SRC}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
