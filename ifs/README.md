@@ -52,6 +52,16 @@ Any bugs found during parsing tests that should be/has been addressed.
   * Priority: medium
   * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#305](https://github.com/omni-compiler/omni-compiler/pull/305)
   * Issue on OMNI Compiler repository: [omni-compiler:#304](https://github.com/omni-compiler/omni-compiler/issues/304)
+* `CHARACTER with len=: or len=* and kind fails, syntax error`
+  * Type: Bug
+  * Priority: medium
+  * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#307](https://github.com/omni-compiler/omni-compiler/pull/307)
+  * Issue on OMNI Compiler repository: [omni-compiler:#306](https://github.com/omni-compiler/omni-compiler/issues/306)
+* `Wrong information in .xmod`
+  * Type: Bug
+  * Priority: high
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#308](https://github.com/omni-compiler/omni-compiler/issues/308)
 
 
 **Warnings**
