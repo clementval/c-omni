@@ -50,7 +50,7 @@ Any bugs found during parsing tests that should be/has been addressed.
 * `incompatible type declarations (fct result with dimension)`
   * Type: Bug
   * Priority: medium
-  * Status: OPEN
+  * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#305](https://github.com/omni-compiler/omni-compiler/pull/305)
   * Issue on OMNI Compiler repository: [omni-compiler:#304](https://github.com/omni-compiler/omni-compiler/issues/304)
 
 
