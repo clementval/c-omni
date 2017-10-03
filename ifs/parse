@@ -9,13 +9,14 @@ function show_help(){
   echo "$0 [-b <branch-name>] [-s] [-c] [-p] [-o]"
   echo ""
   echo "Options:"
-  echo " -b <branch-name>  Specifiy which CLAW branch to be used for the test"
-  echo " -s                Skip CLAW/OMNI compilation/install"
-  echo " -c                Skip fetching step for IFS"
-  echo " -p                Skip parsing step"
-  echo " -o                Use the latest OMNI Compiler version for the test"
-  echo " -i <path-to-ifs>  Path to the directory where ifs dir is located"
-  echo " -x                Stop on first failure"
+  echo " -b <branch-name>     Specifiy which CLAW branch to be used for the test"
+  echo " -s                   Skip CLAW/OMNI compilation/install"
+  echo " -c                   Skip fetching step for IFS"
+  echo " -p                   Skip parsing step"
+  echo " -o                   Use the latest OMNI Compiler version for the test"
+  echo " -i <path-to-ifs>     Path to the directory where ifs dir is located"
+  echo " -t <path-to-ifs-int> Path to automatically generated interfaces"
+  echo " -x                   Stop on first failure"
 }
 
 source ./common/check.omni.lib.sh
@@ -45,10 +46,13 @@ STOP_ON_FAILURE=false
 
 # IFS related variables
 IFS_PATH=""
+IFS_INT_PATH=""
 IFS_MAIN_REPO="Local"
 IFS_REP="ifs"
 IFS_AUX_REP="ifsaux"
+IFS_INT_REP="ifs-interfaces"
 IFS_AUX_INCLUDE="./${IFS_AUX_REP}/include"
+IFS_INT_INCLUDE="./${IFS_INT_REP}/"
 IFS_SRC="./${IFS_REP}/"
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
@@ -62,7 +66,7 @@ IFS_DEP="dependencies_ifs"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
 
-while getopts "hb:ci:spox" opt; do
+while getopts "hb:ci:t:spox" opt; do
   case "${opt}" in
   h)
     show_help
@@ -74,12 +78,13 @@ while getopts "hb:ci:spox" opt; do
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=${OPTARG} ;;
   i) IFS_PATH=${OPTARG} ;;
+  t) IFS_INT_PATH=${OPTARG} ;;
   x) STOP_ON_FAILURE=true ;;
   esac
 done
 
-if [[ "${IFS_PATH}" == "" ]]; then
-  echo "ERROR: ifs path must be specified"
+if [[ "${IFS_PATH}" == "" ]] || [[ "${IFS_INT_PATH}" == "" ]]; then
+  echo "ERROR: ifs and ifs-interface path must be specified"
   exit 1
 fi
 
@@ -174,6 +179,7 @@ if [[ ${SKIP_FETCH} == false ]]; then
   rm -rf "${IFS_SRC}"
   cp -R "${IFS_PATH}"/"${IFS_REP}" "${TEST_DIR}"
   cp -R "${IFS_PATH}"/"${IFS_AUX_REP}" "${TEST_DIR}"
+  cp -R "${IFS_INT_PATH}"/"${IFS_INT_REP}" "${TEST_DIR}"
 fi
 
 cd ${IFS_REP} || exit 1
@@ -231,8 +237,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    s(${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${IFS_SRC} -I ${IFS_AUX_INCLUDE} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${IFS_SRC}" -I "${IFS_AUX_INCLUDE}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${IFS_SRC} -I ${IFS_AUX_INCLUDE} -I ${IFS_INT_INCLUDE} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${IFS_SRC}" -I "${IFS_AUX_INCLUDE}" -I "${IFS_INT_INCLUDE}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
