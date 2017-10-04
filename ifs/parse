@@ -19,6 +19,12 @@ function show_help(){
   echo " -x                   Stop on first failure"
 }
 
+# Ensure location of execution
+if [ ! -f LICENSE ] ; then
+    echo "[ERROR] The script has to be executed from the root directory ./ifs/parse"
+    exit 1
+fi
+
 source ./common/check.omni.lib.sh
 source ./common/utility.sh
 
@@ -61,7 +67,7 @@ IFS_DEP="dependencies_ifs"
 # IFS_DEFINITIONS="-DBLAS  -DECMWF -DINTEGER_IS_INT -DPATHSCALE -D_ABI64"
 # IFS_DEFINITIONS+=" -DF90 -DPARAL -DNONCRAYF -D_RTTOV_DO_DISTRIBCOEF"
 # IFS_DEFINITIONS+=" -D_RTTOV_NETCDF -DWITH_WAVE -DWITH_ATLAS"
-#IFS_EXCLUDED_FILES="" # TODO
+IFS_EXCLUDED_FILES="module/coupling.F90" # ASSOCIATE construct not supported yet
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
@@ -194,8 +200,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py ${IFS_SRC} ${IFS_START} --recursive  > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
+  echo "../fdependencies/generate_dep.py --exclude ${IFS_EXCLUDED_FILES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --exclude ${IFS_EXCLUDED_FILES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
   echo "   ${IFS_DEP}"
 
   # Check existence of the dependencies file
