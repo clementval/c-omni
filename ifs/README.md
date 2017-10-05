@@ -37,12 +37,12 @@ Fixed bugs are strikethrough.
 
 Any bugs found during parsing tests that should be/has been addressed.
 
-* `argument(s) mismatch for an intrinsic 'any()'. Wrong arg type`
+* ~~`argument(s) mismatch for an intrinsic 'any()'. Wrong arg type`~~
   * Type: Bug
   * Priority: high
-  * Status: OPEN
+  * Status: PR MERGED, ISSUE CLOSED [PR#313](https://github.com/omni-compiler/omni-compiler/pull/313)
   * Issue on OMNI Compiler repository: [omni-compiler:#302](https://github.com/omni-compiler/omni-compiler/issues/302)
-* `[Missing feature] ASSOCIATE construct`
+* `ASSOCIATE construct`
   * Type: Missing feature
   * Priority: high
   * Status: OPEN
@@ -52,16 +52,21 @@ Any bugs found during parsing tests that should be/has been addressed.
   * Priority: medium
   * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#305](https://github.com/omni-compiler/omni-compiler/pull/305)
   * Issue on OMNI Compiler repository: [omni-compiler:#304](https://github.com/omni-compiler/omni-compiler/issues/304)
-* `CHARACTER with len=: or len=* and kind fails, syntax error`
+* ~~`CHARACTER with len=: or len=* and kind fails, syntax error`~~
   * Type: Bug
   * Priority: medium
-  * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#307](https://github.com/omni-compiler/omni-compiler/pull/307)
+  * Status: PR MERGED, ISSUE CLOSED [PR#307](https://github.com/omni-compiler/omni-compiler/pull/307)
   * Issue on OMNI Compiler repository: [omni-compiler:#306](https://github.com/omni-compiler/omni-compiler/issues/306)
 * `Wrong information in .xmod`
   * Type: Bug
   * Priority: high
   * Status: OPEN
   * Issue on OMNI Compiler repository: [omni-compiler:#308](https://github.com/omni-compiler/omni-compiler/issues/308)
+* `type-bound GENERIC statement does not accept access specifier`
+  * Type: Bug
+  * Priority: medium
+  * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#315](https://github.com/omni-compiler/omni-compiler/pull/315)
+  * Issue on OMNI Compiler repository: [omni-compiler:#314](https://github.com/omni-compiler/omni-compiler/issues/314)
 
 
 **Warnings**
