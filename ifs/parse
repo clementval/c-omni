@@ -203,13 +203,13 @@ if [[ ${SKIP_FETCH} == false ]]; then
 
   print_green "[INFO] Fetching IFS from ${IFS_PATH}"
   rm -rf "${IFS_SRC}"
-  cp -R "${IFS_PATH}"/"${IFS_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_PATH}"/"${IFS_SRC_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
   cp -R "${IFS_PATH}"/"${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
   cp -R "${IFS_INT_PATH}"/"${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
   cp -R "${IFS_PATH}"/"${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
 fi
 
-cd ${IFS_REP} || exit 1
+cd "${IFS_SRC_REP}" || exit 1
 IFS_HASH=$(git rev-parse HEAD)
 echo "- IFS git version: ${IFS_HASH}" >> "${PARSING_OUTPUT}"
 cd "${WORKING_DIR}" || exit 1
@@ -265,6 +265,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    s(${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${IFS_INCLUDES} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    # shellcheck disable=SC2086
     ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${IFS_INCLUDES} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
