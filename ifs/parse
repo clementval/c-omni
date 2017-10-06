@@ -33,6 +33,7 @@ TEST_DIR=${PWD}/build
 CLAW_OUTPUT="./processed/ifs"
 XMOD_DIR="./xmods/ifs"
 EXTERNAL_XMODS="../ifs/external_xmods"
+GLOBAL_XMODS="../global_modules"
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -54,15 +55,24 @@ STOP_ON_FAILURE=false
 IFS_PATH=""
 IFS_INT_PATH=""
 IFS_MAIN_REPO="Local"
-IFS_REP="ifs"
+IFS_WRK_DIR="ifs"
+IFS_SRC_REP="ifs"
 IFS_AUX_REP="ifsaux"
 IFS_INT_REP="ifs-interfaces"
-IFS_AUX_INCLUDE="./${IFS_AUX_REP}/include"
-IFS_INT_INCLUDE="./${IFS_INT_REP}/"
-IFS_SRC="./${IFS_REP}/"
+IFS_TRANS_INT_REP="trans/interface"
+IFS_SRC="./${IFS_WRK_DIR}/${IFS_SRC_REP}/"
+
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
 
+IFS_AUX_INCLUDE="./${IFS_WRK_DIR}/${IFS_AUX_REP}/include"
+IFS_INT_INCLUDE="./${IFS_WRK_DIR}/${IFS_INT_REP}"
+IFS_TRANS_INT_INCLUDE="./${IFS_WRK_DIR}/${IFS_TRANS_INT_REP}"
+
+IFS_NAMELIST_INCLUDE="${IFS_SRC}/namelist"
+IFS_ALD_INC_NAMELIST="${IFS_SRC}/ald_inc/namelist"
+IFS_ALD_INC_INT="${IFS_SRC}/ald_inc/interface"
+IFS_ALD_INC_FCT="${IFS_SRC}/ald_inc/function"
 
 # IFS_DEFINITIONS="-DBLAS  -DECMWF -DINTEGER_IS_INT -DPATHSCALE -D_ABI64"
 # IFS_DEFINITIONS+=" -DF90 -DPARAL -DNONCRAYF -D_RTTOV_DO_DISTRIBCOEF"
@@ -113,6 +123,16 @@ else
   echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
+IFS_INCLUDES="-I ${IFS_SRC}"
+IFS_INCLUDES+=" -I ${INCLUDE_MPI}"
+IFS_INCLUDES+=" -I ${IFS_INT_INCLUDE}"
+IFS_INCLUDES+=" -I ${IFS_AUX_INCLUDE}"
+IFS_INCLUDES+=" -I ${IFS_TRANS_INT_INCLUDE}"
+IFS_INCLUDES+=" -I ${IFS_ALD_INC_NAMELIST}"
+IFS_INCLUDES+=" -I ${IFS_NAMELIST_INCLUDE}"
+IFS_INCLUDES+=" -I ${IFS_ALD_INC_INT}"
+IFS_INCLUDES+=" -I ${IFS_ALD_INC_FCT}"
+
 echo ""
 echo "============================================"
 echo "IFS -> CLAW/OMNI Compiler parse test"
@@ -151,7 +171,7 @@ if [[ ${SKIP_CLAW} == false ]]; then
     ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
 elif [[ ${SKIP_FETCH} == false ]]; then
-  rm -rf "${TEST_DIR:?}"/${IFS_REP}
+  rm -rf "${TEST_DIR:?}"/${IFS_WRK_DIR}
 fi
 
 echo "============================================"
@@ -183,9 +203,10 @@ if [[ ${SKIP_FETCH} == false ]]; then
 
   print_green "[INFO] Fetching IFS from ${IFS_PATH}"
   rm -rf "${IFS_SRC}"
-  cp -R "${IFS_PATH}"/"${IFS_REP}" "${TEST_DIR}"
-  cp -R "${IFS_PATH}"/"${IFS_AUX_REP}" "${TEST_DIR}"
-  cp -R "${IFS_INT_PATH}"/"${IFS_INT_REP}" "${TEST_DIR}"
+  cp -R "${IFS_PATH}"/"${IFS_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_PATH}"/"${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_INT_PATH}"/"${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_PATH}"/"${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
 fi
 
 cd ${IFS_REP} || exit 1
@@ -243,8 +264,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    s(${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${IFS_SRC} -I ${IFS_AUX_INCLUDE} -I ${IFS_INT_INCLUDE} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${IFS_SRC}" -I "${IFS_AUX_INCLUDE}" -I "${IFS_INT_INCLUDE}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${IFS_INCLUDES} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${IFS_INCLUDES} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
