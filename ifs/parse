@@ -55,12 +55,12 @@ STOP_ON_FAILURE=false
 IFS_PATH=""
 IFS_INT_PATH=""
 IFS_MAIN_REPO="Local"
-IFS_WRK_DIR="ifs"
+IFS_WRK_DIR="ifs-wrk"
 IFS_SRC_REP="ifs"
 IFS_AUX_REP="ifsaux"
 IFS_INT_REP="ifs-interfaces"
 IFS_TRANS_INT_REP="trans/interface"
-IFS_SRC="./${IFS_WRK_DIR}/${IFS_SRC_REP}/"
+IFS_SRC="./${IFS_WRK_DIR}/"
 
 IFS_START="programs/master.F90"
 IFS_DEP="dependencies_ifs"
@@ -203,13 +203,13 @@ if [[ ${SKIP_FETCH} == false ]]; then
 
   print_green "[INFO] Fetching IFS from ${IFS_PATH}"
   rm -rf "${IFS_SRC}"
-  cp -R "${IFS_PATH}"/"${IFS_SRC_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-  cp -R "${IFS_PATH}"/"${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-  cp -R "${IFS_INT_PATH}"/"${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-  cp -R "${IFS_PATH}"/"${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_PATH}/${IFS_SRC_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_PATH}/${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_INT_PATH}/${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  cp -R "${IFS_PATH}/${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
 fi
 
-cd "${IFS_SRC_REP}" || exit 1
+cd "${IFS_WRK_DIR}" || exit 1
 IFS_HASH=$(git rev-parse HEAD)
 echo "- IFS git version: ${IFS_HASH}" >> "${PARSING_OUTPUT}"
 cd "${WORKING_DIR}" || exit 1
