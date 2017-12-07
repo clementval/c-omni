@@ -27,9 +27,11 @@ OMNI_MPI_FC="MPI_FC=mpif90"
 OMNI_LATEST=false
 
 COMPUTER=$(hostname)
-if [[ $COMPUTER == daint* ]]; then
+if [[ ${COMPUTER} == daint* ]]; then
   COMPUTER="daint"
-elif [[ $COMPUTER == kesch* ]]; then
+elif [[ ${COMPUTER} == kesch* ]]; then
+  export ANT_HOME="/project/c14/install/${COMPUTER}/ant/apache-ant-1.9.9/"
+  export PATH=${ANT_HOME}/bin:${PATH}
   COMPUTER="kesch"
   module load cmake
   module load PrgEnv-gnu
