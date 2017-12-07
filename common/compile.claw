@@ -32,6 +32,7 @@ if [[ ${COMPUTER} == daint* ]]; then
 elif [[ ${COMPUTER} == kesch* ]]; then
   export ANT_HOME="/project/c14/install/${COMPUTER}/ant/apache-ant-1.9.9/"
   export PATH=${ANT_HOME}/bin:${PATH}
+  export YACC="bison -y"
   COMPUTER="kesch"
   module load cmake
   module load PrgEnv-gnu
