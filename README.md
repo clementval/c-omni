@@ -1,9 +1,10 @@
-# OMNI Parsing tests
+# OMNI Compiler FORTRAN Parsing Tests
 
 [![Build Status](https://travis-ci.org/clementval/omni-parse-tests.svg?branch=master)](https://travis-ci.org/clementval/omni-parse-tests)
 
-Test repository to parse complex code with the OMNI Compiler and report bugs or
-missing features
+Test repository to parse complex code with the OMNI Compiler FORTRAN front-end
+and report bugs or missing features. The scripts use the CLAW Compiler without
+transformation.
 
 ## How to parse large code base with the FORTRAN front-end of OMNI Compiler
 
@@ -55,13 +56,37 @@ version of it as well as a `.xmod` file. The second command will read the
 
 
 #### External dependencies
-TODO
+For external dependency, please refer to the CLAW Compiler repository.
 
-## COSMO parsing test
+
+#### Specific tests
+For each specific test, the user needs appropriate access to the private
+repository of each model.
+
+
+##### COSMO parsing test
 To run the COSMO parsing test, execute the following command:
 
 ```bash
 ./cosmo/parse
 ```
+For more information, see the COSMO full parsing test
+[README](./cosmo/README.md).
 
-For more information, see the COSMO full parsing test [README](./cosmo/README.md).
+##### ICON parsing test
+To run the ICON parsing test, execute the following command:
+
+```bash
+./icon/parse
+```
+For more information, see the ICON full parsing test
+[README](./icon/README.md).
+
+##### IFS parsing test
+To run the IFS parsing test, execute the following command:
+
+```bash
+./ifs/parse
+```
+For more information, see the IFS full parsing test
+[README](./ifs/README.md).
