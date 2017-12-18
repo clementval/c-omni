@@ -53,7 +53,7 @@ COSMO_REP="cosmo-pompa"
 COSMO_SRC="./${COSMO_REP}/cosmo/src/"
 COSMO_START="lmorg.f90"
 COSMO_DEP="dependencies_cosmo"
-COSMO_EXCLUDED_FILES="test_src_lbc.f90"
+COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
 COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
 
 COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
