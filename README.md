@@ -1,6 +1,6 @@
 # OMNI Compiler FORTRAN Parsing Tests
 
-[![Build Status](https://travis-ci.org/clementval/omni-parse-tests.svg?branch=master)](https://travis-ci.org/clementval/omni-parse-tests)
+[![Build Status](https://travis-ci.org/claw-project/omni-parse-tests.svg?branch=master)](https://travis-ci.org/claw-project/omni-parse-tests)
 
 Test repository to parse complex code with the OMNI Compiler FORTRAN front-end
 and report bugs or missing features. The scripts use the CLAW Compiler without
