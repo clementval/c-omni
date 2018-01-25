@@ -58,15 +58,9 @@ while getopts "hfb:c:i:spo" opt; do
     show_help
     exit 0
     ;;
-  s)
-    SKIP_CLAW=true
-    ;;
-  p)
-    SKIP_PARSING=true
-    ;;
-  o)
-    OMNI_LATEST=true
-    ;;
+  s) SKIP_CLAW=true;;
+  p) SKIP_PARSING=true;;
+  o) OMNI_LATEST=true;;
 #  f)
 #    CLAW_REPO=$CLAW_FORK_REPO
 #    ;;
@@ -82,23 +76,28 @@ while getopts "hfb:c:i:spo" opt; do
   esac
 done
 
+if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
+  echo "Incompatible options -o and -s ..."
+  exit 1
+fi
+
 COMPUTER=$(hostname)
 
 #if [[ $COMPUTER == *"daint"* ]]
 #then
 #  COMPUTER="daint"
 #  CMAKE_MOD="CMake"
-if [[ $COMPUTER == *"kesch"* ]]; then
+if [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f $COMPILER_FILE ]; then
+if [ -f ${COMPILER_FILE} ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
-  source $COMPILER_FILE
+  source ${COMPILER_FILE}
 else
-  echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
+  echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
 #
@@ -169,7 +168,7 @@ echo "  - Git repository: $ICON_MAIN_REPO"
 git submodule init
 git submodule update
 
-if [[ $SKIP_CLAW == false ]]; then
+if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
   echo "  - Git repository: $CLAW_REPO"
@@ -185,7 +184,7 @@ if [[ $SKIP_CLAW == false ]]; then
   ###############################
 
   echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
-  if [[ $OMNI_LATEST == true ]]; then
+  if [[ ${OMNI_LATEST} == true ]]; then
     ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
   else
     ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
@@ -214,13 +213,13 @@ echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
 cd "$WORKING_DIR" || exit 1
 
 
-if [[ $SKIP_PARSING == false ]]; then
+if [[ ${SKIP_PARSING} == false ]]; then
 
   ####################
   # 2. ICON-ENIAC step
   ####################
 
-  git clone $ICON_MAIN_REPO
+  git clone ${ICON_MAIN_REPO}
   cd ${ICON_REP} || exit 1
   git submodule init
   git submodule update
@@ -268,16 +267,14 @@ if [[ $SKIP_PARSING == false ]]; then
   echo ">>> Parsing files"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
-  while IFS= read -r f90_file
-  do
+  while IFS= read -r f90_file; do
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
-    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
-    then
+    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
     fi
   done < ./${ICON_DEP}
@@ -294,19 +291,16 @@ echo ">>> Control .xmod files"
 echo "-----------------------"
 # Control if present .xmod file has been produced correctly
 xmod_errors=0
-for xmod_file in ${XMOD_DIR}/*.xmod
-do
+for xmod_file in ${XMOD_DIR}/*.xmod; do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
-  if [[ $xmod_well_formatted == false ]]
-  then
+  if [[ ${xmod_well_formatted} == false ]]; then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
     let xmod_errors=xmod_errors+1
   fi
 done
 
 # Report number of detected errors
-if [[ ${xmod_errors} -ne 0 ]]
-then
+if [[ ${xmod_errors} -ne 0 ]]; then
   echo "------"
   echo "ERROR: ${xmod_errors} .xmod files didn't pass the check"
 fi
@@ -320,16 +314,14 @@ echo "----------------------"
 f90_errors=0
 while IFS= read -r f90_file
 do
-  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]
-  then
+  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
     echo "ERROR: ${f90_file} has not been parsed correctly"
     let f90_errors=f90_errors+1
   fi
 done < ./${ICON_DEP}
 
 # Report number of detected errors
-if [[ ${f90_errors} -ne 0 ]]
-then
+if [[ ${f90_errors} -ne 0 ]]; then
   echo "------"
   echo "ERROR: ${f90_errors}/${parsed_files} .f90 files have not been parsed correctly"
 fi
@@ -345,21 +337,45 @@ error_type2=$(grep -c "declaration among executables" "${PARSING_OUTPUT}")
 error_type3=$(grep -c "syntax error" "${PARSING_OUTPUT}")
 error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodbye!" "${PARSING_OUTPUT}")
 error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
+error_type6=$(grep -c "incompatible dimension for the operation" "${PARSING_OUTPUT}")
+error_type7=$(grep -c "argument(s) mismatch for an intrinsic" "${PARSING_OUTPUT}")
+error_type8=$(grep -c "java.lang.OutOfMemoryError" "${PARSING_OUTPUT}")
+error_type9=$(grep -c "compiler error: type attr error" "${PARSING_OUTPUT}")
+error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
+error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
+error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
+error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
+error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPUT}")
 
 echo ""
 echo "===================================="
 echo "ICON-ENIAC full parsing test results"
 echo "===================================="
-if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]
-then
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
+  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
+  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
+  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]   \
+  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]   \
+  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
+  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
+  || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
-  echo "       ${xmod_errors} errors with .xmod files"
-  echo "       ${f90_errors} errors with .f90 files"
+  echo "       ${xmod_errors} files .xmod with errors"
+  echo "       ${f90_errors} files .f90 with errors"
   echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
   echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
   echo "         ${error_type3} errors/warnings [syntax error] found in log"
   echo "         ${error_type4} errors/warnings [too many error, cannot recover from earlier errors: goodbye!] found in log"
   echo "         ${error_type5} errors/warnings [failed to import module] found in log"
+  echo "         ${error_type6} errors/warnings [incompatible dimension for the operation] found in log"
+  echo "         ${error_type7} errors/warnings [argument(s) mismatch for an intrinsic] found in log"
+  echo "         ${error_type8} errors/warnings [java.lang.OutOfMemoryError] found in log"
+  echo "         ${error_type9} errors/warnings [compiler error: type attr error] found in log"
+  echo "         ${error_type10} errors/warnings [X if not found for end X] found in log"
+  echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
+  echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
+  echo "         ${error_type13} errors/warnings [bad char] found in log"
+  echo "         ${error_type14} errors/warnings [Unable to decompile XcodeML to Fortran] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
