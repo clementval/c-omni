@@ -91,7 +91,7 @@ if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
   exit 1
 fi
 
-if [[ $NETCDF_ENABLE == true ]]; then
+if [[ ${NETCDF_ENABLE} == true ]]; then
   COSMO_DEFINITIONS+=" -DNETCDF"
   COSMO_EXCLUDED_FILES="${COSMO_EXCLUDED_FILES}:dummy_netcdf.f90"
 fi
@@ -102,15 +102,15 @@ COMPUTER=$(hostname)
 #then
 #  COMPUTER="daint"
 #  CMAKE_MOD="CMake"
-if [[ $COMPUTER == *"kesch"* ]]; then
+if [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f $COMPILER_FILE ]; then
+if [ -f ${COMPILER_FILE} ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
-  source $COMPILER_FILE
+  source ${COMPILER_FILE}
 else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
 fi
@@ -188,7 +188,7 @@ else
   git submodule update
 fi
 
-if [[ $SKIP_CLAW == false ]]; then
+if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
   echo "  - Git repository: $CLAW_REPO"
@@ -204,12 +204,12 @@ if [[ $SKIP_CLAW == false ]]; then
   ###############################
 
   print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
-  if [[ $OMNI_LATEST == true ]]; then
+  if [[ ${OMNI_LATEST} == true ]]; then
     ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
   else
     ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
   fi
-elif [[ $SKIP_FETCH == false ]]; then
+elif [[ ${SKIP_FETCH} == false ]]; then
   rm -rf "${TEST_DIR:?}"/${COSMO_REP}
 fi
 
@@ -235,12 +235,12 @@ cd "$WORKING_DIR" || exit 1
 
 
 
-if [[ $SKIP_FETCH == false ]]; then
+if [[ ${SKIP_FETCH} == false ]]; then
   #####################
   # 2. COSMO-POMPA step
   #####################
   print_green "[INFO] Fetching COSMO-POMPA"
-  git clone $COSMO_MAIN_REPO
+  git clone ${COSMO_MAIN_REPO}
 fi
 
 cd ${COSMO_REP} || exit 1
@@ -248,7 +248,7 @@ COSMO_HASH=$(git rev-parse HEAD)
 echo "- COSMO-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
 cd "$WORKING_DIR" || exit 1
 
-if [[ $SKIP_PARSING == false ]]; then
+if [[ ${SKIP_PARSING} == false ]]; then
   ####################
   # 3. Dependency step
   ####################
