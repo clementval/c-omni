@@ -51,7 +51,7 @@ It is possible to skip the parsing step the test only from the step 5 with the f
 * `Declaration doesn't accept BIND name`
   * Type: Bug
   * Priority: medium
-  * Status: PR OPEN, WAITING FOR MERGE [PR#229](https://github.com/omni-compiler/omni-compiler/pull/229)
+  * Status: PR MRGED, ISSUE CLOSED [PR#229](https://github.com/omni-compiler/omni-compiler/pull/229)
   * Issue on OMNI Compiler repository: [omni-compiler:#228](https://github.com/omni-compiler/omni-compiler/issues/228)
 * `Declaration of procedure pointer fails`
   * Type: Missing feature
