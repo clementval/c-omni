@@ -48,6 +48,7 @@ ICON_REP="icon-eniac"
 ICON_SRC="./${ICON_REP}/src/"
 ICON_START="drivers/icon.f90"
 ICON_DEP="dependencies_icon"
+EXTERNAL_XMODS="../icon/external_xmods"
 
 # Preprocessor macros definition
 ICON_DEFINITIONS="-D__ICON__"
@@ -273,9 +274,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
   while IFS= read -r f90_file; do
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
