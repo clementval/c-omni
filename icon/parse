@@ -49,9 +49,10 @@ ICON_SRC="./${ICON_REP}/src/"
 ICON_START="drivers/icon.f90"
 ICON_DEP="dependencies_icon"
 EXTERNAL_XMODS="../icon/external_xmods"
+ICON_INC="${ICON_REP}/src/include/"
 
 # Preprocessor macros definition
-ICON_DEFINITIONS="-D__ICON__"
+ICON_DEFINITIONS="-D__ICON__ -DNOMPI"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
@@ -274,9 +275,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
   while IFS= read -r f90_file; do
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${ICON_INC}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     let parsed_files=parsed_files+1
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
@@ -351,6 +352,7 @@ error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPU
 error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
 error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPUT}")
 error_type15=$(grep -c "bad expression in constant kind parameter" "${PARSING_OUTPUT}")
+error_type16=$(grep -c "is not a subroutine" "${PARSING_OUTPUT}")
 
 echo ""
 echo "===================================="
@@ -364,7 +366,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
   || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
   || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]] \
-  || [[ ${error_type15} -ne 0 ]]; then
+  || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .xmod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -382,6 +384,8 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
   echo "         ${error_type13} errors/warnings [bad char] found in log"
   echo "         ${error_type14} errors/warnings [Unable to decompile XcodeML to Fortran] found in log"
+  echo "         ${error_type15} errors/warnings [bad expression in constant kind parameter] found in log"
+  echo "         ${error_type16} errors/warnings [is not a subroutine] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
