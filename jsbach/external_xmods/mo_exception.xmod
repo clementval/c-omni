@@ -1,0 +1,789 @@
+<OmniFortranModule version="1.0">
+  <name>mo_exception</name>
+  <depends>
+    <name>mo_io_units</name>
+    <name>mo_mpi</name>
+    <name>mo_kind</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="C7f8ed49a3670" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1000</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49a3790" is_public="true" ref="C7f8ed49a3670"/>
+    <FbasicType type="C7f8ed49a38b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed49ca890" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f8ed49cc540">name</name>
+        <name type="C7f8ed49cce50">text</name>
+        <name type="I7f8ed49cd660">out</name>
+        <name type="I7f8ed49cde70">level</name>
+        <name type="L7f8ed49ce680">all_print</name>
+        <name type="L7f8ed49cee90">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49cc420" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49cc540" intent="in" ref="C7f8ed49cc420"/>
+    <FbasicType type="C7f8ed49ccd30" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49cce50" intent="in" ref="C7f8ed49ccd30"/>
+    <FbasicType type="I7f8ed49cd660" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f8ed49cde70" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7f8ed49ce680" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7f8ed49cee90" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7f8ed49d1b80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49d1d80" ref="C7f8ed49d1b80"/>
+    <FfunctionType type="F7f8ed49d2ac0" return_type="Fint"/>
+    <FbasicType type="C7f8ed49d2d50" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len</name>
+          <arguments>
+            <Var type="C7f8ed49a3790" scope="local">message_text</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49d37a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49d39a0" ref="C7f8ed49d37a0"/>
+    <FbasicType type="C7f8ed49d41e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49d43e0" ref="C7f8ed49d41e0"/>
+    <FfunctionType type="F7f8ed49d55d0" return_type="Flogical"/>
+    <FfunctionType type="F7f8ed49d9070" return_type="Flogical"/>
+    <FbasicType type="I7f8ed49a5840" is_public="true" ref="Fint"/>
+    <FbasicType type="I7f8ed49a6040" is_public="true" ref="Fint"/>
+    <FfunctionType type="F7f8ed49dfcf0" return_type="C7f8ed49d2d50"/>
+    <FfunctionType type="F7f8ed49f4c60" return_type="C7f8ed49d2d50"/>
+    <FfunctionType type="F7f8ed49df8c0" return_type="C7f8ed49df7a0"/>
+    <FbasicType type="C7f8ed49df7a0" ref="C7f8ed49ccd30"/>
+    <FfunctionType type="F7f8ed49ee6f0" return_type="Fvoid"/>
+    <FbasicType type="C7f8ed49da5f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49db020" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49dba00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49dcac0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49ddb80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49de560" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49dfbd0" ref="C7f8ed49ccd30"/>
+    <FbasicType type="C7f8ed49e0560" ref="C7f8ed49ccd30"/>
+    <FbasicType type="C7f8ed49e0e50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e2710" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e2070" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e1b40" ref="C7f8ed49cc420"/>
+    <FbasicType type="C7f8ed49e1ef0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">2</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e2360" ref="C7f8ed49a3670"/>
+    <FbasicType type="C7f8ed49e45a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1033</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e3f00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">33</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e39d0" ref="C7f8ed49d1b80"/>
+    <FbasicType type="C7f8ed49e41f0" ref="C7f8ed49a3670"/>
+    <FfunctionType type="F7f8ed498eff0" return_type="Flogical" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7f8ed49a40c0" is_private="true" ref="Flogical"/>
+    <FbasicType type="C7f8ed49e6ae0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49e6cd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed498f5c0" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49e72e0" ref="C7f8ed49a3670"/>
+    <FbasicType type="L7f8ed498fb20" is_private="true" ref="Flogical"/>
+    <FbasicType type="I7f8ed498fd70" is_private="true" ref="Fint"/>
+    <FfunctionType type="F7f8ed498f8d0" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed498ed30" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49e9d10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49ea320" ref="C7f8ed49a3670"/>
+    <FfunctionType type="F7f8ed498f2b0" return_type="Flogical" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7f8ed49a5190" is_public="true" ref="Flogical"/>
+    <FbasicType type="C7f8ed49ef5d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f0900" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f0260" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">22</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49eff10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">20</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49efcf0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49ef9a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f00e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">2</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="L7f8ed49a49d0" is_private="true" ref="Flogical"/>
+    <FbasicType type="C7f8ed49f1a40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f2d70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f26d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f2380" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">20</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f2160" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f1e10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f2550" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f36c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f4820" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed49f5c00" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f8ed49f6cf0">mstring</name>
+        <name type="L7f8ed49f7480">flag</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49f6bd0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f6cf0" intent="in" ref="C7f8ed49f6bd0"/>
+    <FbasicType type="L7f8ed49f7480" intent="in" ref="Flogical"/>
+    <FbasicType type="C7f8ed49f8200" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f84d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f8c60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f8ee0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49f96f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed49fa5a0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7f8ed49fb690">mstring</name>
+        <name type="L7f8ed49fbe20">lvalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49fb570" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49fb690" intent="in" ref="C7f8ed49fb570"/>
+    <FbasicType type="L7f8ed49fbe20" intent="in" ref="Flogical"/>
+    <FbasicType type="C7f8ed4a00b20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a00df0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a01580" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a01800" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">5</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a02010" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed4a030c0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7f8ed4a041b0">mstring</name>
+        <name type="I7f8ed4a04940">ivalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed4a04090" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a041b0" intent="in" ref="C7f8ed4a04090"/>
+    <FbasicType type="I7f8ed4a04940" intent="in" ref="Fint"/>
+    <FbasicType type="C7f8ed4a05240" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a05b70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed4a06c20" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7f8ed4a07d10">mstring</name>
+        <name type="R7f8ed4a085e0">rvalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed4a07bf0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a07d10" intent="in" ref="C7f8ed4a07bf0"/>
+    <FbasicType type="I7f8ed4990950" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7f8ed4a084c0" ref="Freal">
+      <kind>
+        <Var type="I7f8ed4990950" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f8ed4a085e0" intent="in" ref="R7f8ed4a084c0"/>
+    <FbasicType type="C7f8ed4a08ee0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a09810" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed4a0a840" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f8ed4a0b640">logfile_name</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed4a0b520" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a0b640" intent="in" ref="C7f8ed4a0b520"/>
+    <FfunctionType type="F7f8ed4a0fd30" return_type="C7f8ed4a0fc10"/>
+    <FbasicType type="C7f8ed4a0fc10" ref="C7f8ed4a0b520"/>
+    <FbasicType type="C7f8ed4a0d190" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a0d390" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">36</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a0d9b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a0e250" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a0e450" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">35</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed4a0eba0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed4a10e30" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed49c7200" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f8ed49c82f0">name</name>
+        <name type="C7f8ed49c8c00">text</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49c81d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c82f0" intent="in" ref="C7f8ed49c81d0"/>
+    <FbasicType type="C7f8ed49c8ae0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c8c00" intent="in" ref="C7f8ed49c8ae0"/>
+    <FfunctionType type="F7f8ed49b0ec0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f8ed49b22e0">name</name>
+        <name type="C7f8ed49b2c70">text</name>
+        <name type="I7f8ed49b3480">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49b21c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49b22e0" intent="in" ref="C7f8ed49b21c0"/>
+    <FbasicType type="C7f8ed49b2b50" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49b2c70" intent="in" is_optional="true" ref="C7f8ed49b2b50"/>
+    <FbasicType type="I7f8ed49b3480" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f8ed49c62d0" return_type="Fvoid" is_external="true"/>
+    <FfunctionType type="F7f8ed49c40c0" return_type="Fvoid" is_external="true"/>
+    <FfunctionType type="F7f8ed49b6e40" return_type="Flogical"/>
+    <FfunctionType type="F7f8ed49b8260" return_type="Flogical"/>
+    <FfunctionType type="F7f8ed49b9ea0" return_type="C7f8ed49c0e90"/>
+    <FbasicType type="C7f8ed49c0e90" ref="C7f8ed49b21c0"/>
+    <FfunctionType type="F7f8ed49c0fb0" return_type="C7f8ed49c0e90"/>
+    <FbasicType type="C7f8ed49b5890" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49b6250" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49b9780" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49b9980" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49b9d80" ref="C7f8ed49b21c0"/>
+    <FbasicType type="C7f8ed49ba160" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">2</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49ba430" ref="C7f8ed49b2b50"/>
+    <FbasicType type="C7f8ed49bb170" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bb490" ref="C7f8ed49b21c0"/>
+    <FbasicType type="C7f8ed49bb870" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">2</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bbb40" ref="C7f8ed49b2b50"/>
+    <FbasicType type="C7f8ed49bccf0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bd010" ref="C7f8ed49b21c0"/>
+    <FbasicType type="C7f8ed49bd3f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">2</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bd6c0" ref="C7f8ed49b2b50"/>
+    <FbasicType type="C7f8ed49bea50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">5</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bec50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bef20" ref="C7f8ed49b21c0"/>
+    <FbasicType type="C7f8ed49bf980" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49bfca0" ref="C7f8ed49b21c0"/>
+    <FbasicType type="C7f8ed49c0b70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">5</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c1930" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c1b30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c2830" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c2a30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c31b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c3b20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c47f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49c5160" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f8ed498ea70" return_type="Fvoid" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed49a7b50" return_type="Fvoid" is_public="true"/>
+    <FbasicType type="I7f8ed499f0b0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f8ed499fc20" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f8ed49a0790" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f8ed49a1300" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f8ed49a1e70" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f8ed49a29e0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7f8ed49a86f0" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed49a9810" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed49aaa70" result_name="filename" return_type="C7f8ed49ac100" is_public="true">
+      <params>
+        <name type="C7f8ed49ab860">name</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f8ed49abf00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49ac100" ref="C7f8ed49abf00"/>
+    <FbasicType type="C7f8ed49ab740" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f8ed49ab860" intent="in" ref="C7f8ed49ab740"/>
+    <FfunctionType type="F7f8ed49ad990" return_type="Fint"/>
+    <FfunctionType type="F7f8ed49b0080" return_type="C7f8ed49aff60"/>
+    <FbasicType type="C7f8ed49aff60" ref="C7f8ed49ab740"/>
+    <FbasicType type="C7f8ed49af7a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7f8ed49af0e0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <minusExpr type="Fint">
+            <Var type="Fint" scope="local">end_name</Var>
+            <FintConstant type="Fint">1</FintConstant>
+          </minusExpr>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7f8ed4a026d0" return_type="Fvoid">
+      <params>
+        <name type="C7f8ed49fb690">mstring</name>
+        <name type="L7f8ed49fbe20">lvalue</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed4a06230" return_type="Fvoid">
+      <params>
+        <name type="C7f8ed4a041b0">mstring</name>
+        <name type="I7f8ed4a04940">ivalue</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f8ed4a09ed0" return_type="Fvoid">
+      <params>
+        <name type="C7f8ed4a07d10">mstring</name>
+        <name type="R7f8ed4a085e0">rvalue</name>
+      </params>
+    </FfunctionType>
+  </typeTable>
+  <identifiers>
+    <id type="C7f8ed49a3790" sclass="flocal" original_name="message_text" declared_in="mo_exception">
+      <name>message_text</name>
+    </id>
+    <id type="F7f8ed49ca890" sclass="ffunc" original_name="message" declared_in="mo_exception">
+      <name>message</name>
+    </id>
+    <id type="F7f8ed49c7200" sclass="ffunc" original_name="warning" declared_in="mo_exception">
+      <name>warning</name>
+    </id>
+    <id type="F7f8ed49b0ec0" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="F7f8ed49f5c00" sclass="ffunc" original_name="print_status" declared_in="mo_exception">
+      <name>print_status</name>
+    </id>
+    <id type="F7f8ed49a7b50" sclass="ffunc" original_name="print_value" declared_in="mo_exception">
+      <name>print_value</name>
+    </id>
+    <id type="I7f8ed499f0b0" sclass="flocal" original_name="em_none" declared_in="mo_exception">
+      <name>em_none</name>
+    </id>
+    <id type="I7f8ed499fc20" sclass="flocal" original_name="em_info" declared_in="mo_exception">
+      <name>em_info</name>
+    </id>
+    <id type="I7f8ed49a0790" sclass="flocal" original_name="em_warn" declared_in="mo_exception">
+      <name>em_warn</name>
+    </id>
+    <id type="I7f8ed49a1300" sclass="flocal" original_name="em_error" declared_in="mo_exception">
+      <name>em_error</name>
+    </id>
+    <id type="I7f8ed49a1e70" sclass="flocal" original_name="em_param" declared_in="mo_exception">
+      <name>em_param</name>
+    </id>
+    <id type="I7f8ed49a29e0" sclass="flocal" original_name="em_debug" declared_in="mo_exception">
+      <name>em_debug</name>
+    </id>
+    <id type="F7f8ed4a0a840" sclass="ffunc" original_name="open_log" declared_in="mo_exception">
+      <name>open_log</name>
+    </id>
+    <id type="F7f8ed4a10e30" sclass="ffunc" original_name="close_log" declared_in="mo_exception">
+      <name>close_log</name>
+    </id>
+    <id type="F7f8ed49a86f0" sclass="ffunc" original_name="debug_messages_on" declared_in="mo_exception">
+      <name>debug_messages_on</name>
+    </id>
+    <id type="F7f8ed49a9810" sclass="ffunc" original_name="debug_messages_off" declared_in="mo_exception">
+      <name>debug_messages_off</name>
+    </id>
+    <id type="I7f8ed49a5840" sclass="fsave" original_name="number_of_warnings" declared_in="mo_exception">
+      <name>number_of_warnings</name>
+    </id>
+    <id type="I7f8ed49a6040" sclass="fsave" original_name="number_of_errors" declared_in="mo_exception">
+      <name>number_of_errors</name>
+    </id>
+    <id type="F7f8ed49aaa70" sclass="ffunc" original_name="get_filename_noext" declared_in="mo_exception">
+      <name>get_filename_noext</name>
+    </id>
+    <id type="L7f8ed49a5190" sclass="flocal" original_name="msg_timestamp" declared_in="mo_exception">
+      <name>msg_timestamp</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="47" file="__omni_tmp__/mo_exception.f90">
+      <name type="I7f8ed499f0b0">em_none</name>
+      <value>
+        <FintConstant type="Fint">0</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="48" file="__omni_tmp__/mo_exception.f90">
+      <name type="I7f8ed499fc20">em_info</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="49" file="__omni_tmp__/mo_exception.f90">
+      <name type="I7f8ed49a0790">em_warn</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="50" file="__omni_tmp__/mo_exception.f90">
+      <name type="I7f8ed49a1300">em_error</name>
+      <value>
+        <FintConstant type="Fint">3</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="51" file="__omni_tmp__/mo_exception.f90">
+      <name type="I7f8ed49a1e70">em_param</name>
+      <value>
+        <FintConstant type="Fint">4</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="52" file="__omni_tmp__/mo_exception.f90">
+      <name type="I7f8ed49a29e0">em_debug</name>
+      <value>
+        <FintConstant type="Fint">5</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="print_value" lineno="67" file="__omni_tmp__/mo_exception.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="68" file="__omni_tmp__/mo_exception.f90">
+        <name type="F7f8ed4a026d0">print_lvalue</name>
+        <name type="F7f8ed4a06230">print_ivalue</name>
+        <name type="F7f8ed4a09ed0">print_rvalue</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="69" file="__omni_tmp__/mo_exception.f90">
+        <name type="F7f8ed4a026d0">print_lvalue</name>
+        <name type="F7f8ed4a06230">print_ivalue</name>
+        <name type="F7f8ed4a09ed0">print_rvalue</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="70" file="__omni_tmp__/mo_exception.f90">
+        <name type="F7f8ed4a026d0">print_lvalue</name>
+        <name type="F7f8ed4a06230">print_ivalue</name>
+        <name type="F7f8ed4a09ed0">print_rvalue</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
