@@ -1,0 +1,675 @@
+<OmniFortranModule version="1.0">
+  <name>mo_time_config</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mtime</name>
+    <name>mo_impl_constants</name>
+    <name>mo_util_string</name>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7ffa079ea580" result_name="ret" return_type="C7ffa079eb300" is_public="true">
+      <params>
+        <name type="I7ffa079eba90">icalendar</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa079eb100" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079eb300" ref="C7ffa079eb100"/>
+    <FbasicType type="I7ffa079eba90" intent="in" ref="Fint"/>
+    <FbasicType type="C7ffa079ec3a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079ec5a0" is_parameter="true" ref="C7ffa079ec3a0"/>
+    <FbasicType type="C7ffa079ecce0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">37</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079e97c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079ecb50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079ed320" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079ee000" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079eea50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">19</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079ef440" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffa079f01f0" result_name="ret" return_type="Fint" is_private="true">
+      <params>
+        <name type="C7ffa079f1700">cal_str</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa079f15e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f1700" intent="in" ref="C7ffa079f15e0"/>
+    <FbasicType type="C7ffa079f1fe0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f21e0" is_parameter="true" ref="C7ffa079f1fe0"/>
+    <FbasicType type="C7ffa079f2920" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">37</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f2790" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffa079f3ef0" return_type="C7ffa079f6600"/>
+    <FbasicType type="C7ffa0791e320" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa0791dfa0" intent="in" ref="C7ffa0791e320"/>
+    <FbasicType type="C7ffa079f6600" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len_trim</name>
+          <arguments>
+            <Var type="C7ffa0791dfa0" scope="local">uppercase</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffa079f6720" return_type="C7ffa079f6600"/>
+    <FbasicType type="C7ffa079f3dd0" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len_trim</name>
+          <arguments>
+            <Var type="C7ffa0791dfa0" scope="local">uppercase</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079d67c0" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len_trim</name>
+          <arguments>
+            <Var type="C7ffa0791dfa0" scope="local">uppercase</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffa079d66a0" return_type="C7ffa079d67c0" is_private="true">
+      <params>
+        <name type="C7ffa079d69c0">uppercase</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa079d6ae0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079d69c0" intent="in" ref="C7ffa079d6ae0"/>
+    <FbasicType type="C7ffa079f4180" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f51f0" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len_trim</name>
+          <arguments>
+            <Var type="C7ffa0791dfa0" scope="local">uppercase</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f55a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">19</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f69b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffa079f7c30" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa079f8a20">experimentreferencedate</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa079f8900" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079f8a20" intent="in" ref="C7ffa079f8900"/>
+    <FstructType type="S7ffa06d914d0" is_private="true">
+      <symbols>
+        <id type="S7ffa06d92370">
+          <name>date</name>
+        </id>
+        <id type="S7ffa06d93490">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7ffa06d925b0">
+      <symbols>
+        <id type="I7ffa06d92910">
+          <name>year</name>
+        </id>
+        <id type="I7ffa06d92c70">
+          <name>month</name>
+        </id>
+        <id type="I7ffa06d92fd0">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ffa06d92910" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d92c70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d92fd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ffa06d92490" ref="S7ffa06d925b0"/>
+    <FbasicType type="S7ffa06d92370" ref="S7ffa06d92490"/>
+    <FstructType type="S7ffa06d93710">
+      <symbols>
+        <id type="I7ffa06d93a70">
+          <name>hour</name>
+        </id>
+        <id type="I7ffa06d93dd0">
+          <name>minute</name>
+        </id>
+        <id type="I7ffa06d94130">
+          <name>second</name>
+        </id>
+        <id type="I7ffa06d94490">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ffa06d93a70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d93dd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d94130" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d94490" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ffa06d935d0" ref="S7ffa06d93710"/>
+    <FbasicType type="S7ffa06d93490" ref="S7ffa06d935d0"/>
+    <FbasicType type="S7ffa079dfe50" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa079e0050" is_pointer="true" ref="S7ffa079dfe50"/>
+    <FbasicType type="S7ffa079f92b0" is_pointer="true" ref="S7ffa079e0050"/>
+    <FstructType type="S7ffa079ddfd0" is_public="true">
+      <symbols>
+        <id type="R7ffa079de8e0">
+          <name>dt_restart</name>
+        </id>
+        <id type="Fint">
+          <name>calendar</name>
+        </id>
+        <id type="Flogical">
+          <name>is_relative_time</name>
+        </id>
+        <id type="S7ffa079e0050">
+          <name>tc_exp_refdate</name>
+          <value>
+            <functionCall type="V7ffa079e0410" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e0f80">
+          <name>tc_exp_startdate</name>
+          <value>
+            <functionCall type="V7ffa079e1260" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e1db0">
+          <name>tc_exp_stopdate</name>
+          <value>
+            <functionCall type="V7ffa079e2090" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e2c00">
+          <name>tc_startdate</name>
+          <value>
+            <functionCall type="V7ffa079e2ee0" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e3a30">
+          <name>tc_stopdate</name>
+          <value>
+            <functionCall type="V7ffa079e3d10" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e4880">
+          <name>tc_current_date</name>
+          <value>
+            <functionCall type="V7ffa079e4b60" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e56e0">
+          <name>tc_dt_checkpoint</name>
+          <value>
+            <functionCall type="V7ffa079e59c0" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7ffa079e6510">
+          <name>tc_dt_restart</name>
+          <value>
+            <functionCall type="V7ffa079e67f0" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="Flogical">
+          <name>tc_write_restart</name>
+          <value>
+            <FlogicalConstant type="Flogical">.TRUE.</FlogicalConstant>
+          </value>
+        </id>
+        <id type="S7ffa079e7ca0">
+          <name>tc_dt_model</name>
+          <value>
+            <functionCall type="V7ffa079e7f80" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ffa06c14750" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7ffa079de6e0" ref="Freal">
+      <kind>
+        <Var type="I7ffa06c14750" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ffa079de8e0" ref="R7ffa079de6e0"/>
+    <FbasicType type="V7ffa079e0410" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e0d80" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa079e0f80" is_pointer="true" ref="S7ffa079e0d80"/>
+    <FbasicType type="V7ffa079e1260" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e1bb0" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa079e1db0" is_pointer="true" ref="S7ffa079e1bb0"/>
+    <FbasicType type="V7ffa079e2090" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e2a00" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa079e2c00" is_pointer="true" ref="S7ffa079e2a00"/>
+    <FbasicType type="V7ffa079e2ee0" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e3830" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa079e3a30" is_pointer="true" ref="S7ffa079e3830"/>
+    <FbasicType type="V7ffa079e3d10" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e4680" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa079e4880" is_pointer="true" ref="S7ffa079e4680"/>
+    <FbasicType type="V7ffa079e4b60" is_target="true" ref="FnumericAll"/>
+    <FstructType type="S7ffa06d91cf0" is_private="true">
+      <symbols>
+        <id type="I7ffa06d95450">
+          <name>flag_std_form</name>
+        </id>
+        <id type="Fcharacter">
+          <name>sign</name>
+        </id>
+        <id type="I7ffa06d959d0">
+          <name>year</name>
+        </id>
+        <id type="I7ffa06d95d30">
+          <name>month</name>
+        </id>
+        <id type="I7ffa06d96090">
+          <name>day</name>
+        </id>
+        <id type="I7ffa06d963f0">
+          <name>hour</name>
+        </id>
+        <id type="I7ffa06d96750">
+          <name>minute</name>
+        </id>
+        <id type="I7ffa06d96ab0">
+          <name>second</name>
+        </id>
+        <id type="I7ffa06d96e10">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ffa06d95450" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d959d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d95d30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d96090" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d963f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d96750" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d96ab0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ffa06d96e10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ffa079e54e0" ref="S7ffa06d91cf0"/>
+    <FbasicType type="S7ffa079e56e0" is_pointer="true" ref="S7ffa079e54e0"/>
+    <FbasicType type="V7ffa079e59c0" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e6310" ref="S7ffa06d91cf0"/>
+    <FbasicType type="S7ffa079e6510" is_pointer="true" ref="S7ffa079e6310"/>
+    <FbasicType type="V7ffa079e67f0" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e7aa0" ref="S7ffa06d91cf0"/>
+    <FbasicType type="S7ffa079e7ca0" is_pointer="true" ref="S7ffa079e7aa0"/>
+    <FbasicType type="V7ffa079e7f80" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7ffa079e88c0" ref="S7ffa079ddfd0"/>
+    <FbasicType type="S7ffa079e89e0" is_public="true" is_save="true" ref="S7ffa079e88c0"/>
+    <FfunctionType type="F7ffa06d91790" return_type="FnumericAll" is_private="true"/>
+    <FfunctionType type="F7ffa079fa150" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa079faf40">experimentstartdate</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa079fae20" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079faf40" intent="in" ref="C7ffa079fae20"/>
+    <FbasicType type="S7ffa079fb780" is_pointer="true" ref="S7ffa079e0f80"/>
+    <FfunctionType type="F7ffa07a005a0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a01390">experimentstopdate</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a01270" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a01390" intent="in" ref="C7ffa07a01270"/>
+    <FbasicType type="S7ffa07a01bd0" is_pointer="true" ref="S7ffa079e1db0"/>
+    <FfunctionType type="F7ffa07a02a60" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a03850">startdate</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a03730" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a03850" intent="in" ref="C7ffa07a03730"/>
+    <FbasicType type="S7ffa07a04090" is_pointer="true" ref="S7ffa079e2c00"/>
+    <FfunctionType type="F7ffa07a04f20" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a05d10">stopdate</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a05bf0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a05d10" intent="in" ref="C7ffa07a05bf0"/>
+    <FbasicType type="S7ffa07a06550" is_pointer="true" ref="S7ffa079e3a30"/>
+    <FfunctionType type="F7ffa07a073f0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a081e0">checkpointtimeintval</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a080c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a081e0" intent="in" ref="C7ffa07a080c0"/>
+    <FbasicType type="S7ffa07a08a20" is_pointer="true" ref="S7ffa079e56e0"/>
+    <FfunctionType type="F7ffa06d92000" return_type="FnumericAll" is_private="true"/>
+    <FfunctionType type="F7ffa07a098c0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a0a6b0">restarttimeintval</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a0a590" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a0a6b0" intent="in" ref="C7ffa07a0a590"/>
+    <FbasicType type="S7ffa07a0aef0" is_pointer="true" ref="S7ffa079e6510"/>
+    <FfunctionType type="F7ffa07a0bd80" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a0cb70">current_date</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a0ca50" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a0cb70" intent="in" ref="C7ffa07a0ca50"/>
+    <FfunctionType type="F7ffa07a0da30" return_type="Flogical"/>
+    <FbasicType type="S7ffa07a0d5a0" is_pointer="true" ref="S7ffa079e4880"/>
+    <FfunctionType type="F7ffa06d91aa0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7ffa06d94df0">my_datetime</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7ffa06d94f30" is_pointer="true" ref="S7ffa06d914d0"/>
+    <FbasicType type="S7ffa06d94df0" is_pointer="true" ref="S7ffa06d94f30"/>
+    <FbasicType type="S7ffa07a0e2a0" is_pointer="true" ref="S7ffa079e4880"/>
+    <FbasicType type="S7ffa07a0ecd0" is_pointer="true" ref="S7ffa079e4880"/>
+    <FfunctionType type="F7ffa07a0fb30" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ffa07a107a0">icalendar</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ffa07a107a0" intent="in" ref="Fint"/>
+    <FfunctionType type="F7ffa07a11aa0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7ffa07a12710">lvalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7ffa07a12710" intent="in" ref="Flogical"/>
+    <FfunctionType type="F7ffa07a13a10" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffa07a14800">modeltimestep</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffa07a146e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa07a14800" intent="in" ref="C7ffa07a146e0"/>
+    <FbasicType type="S7ffa07a15040" is_pointer="true" ref="S7ffa079e7ca0"/>
+    <FfunctionType type="F7ffa07a15ed0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7ffa07a16b40">writerestart</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7ffa07a16b40" intent="in" ref="Flogical"/>
+    <FbasicType type="C7ffa079dc550" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079dc670" is_public="true" ref="C7ffa079dc550"/>
+    <FbasicType type="C7ffa079dce80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079dcfa0" is_public="true" ref="C7ffa079dce80"/>
+    <FbasicType type="I7ffa079dbd40" is_public="true" ref="Fint"/>
+    <FbasicType type="C7ffa079da670" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079da790" is_public="true" ref="C7ffa079da670"/>
+    <FbasicType type="C7ffa079dafa0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffa079db0c0" is_public="true" ref="C7ffa079dafa0"/>
+    <FbasicType type="I7ffa079db700" is_public="true" ref="Fint"/>
+    <FbasicType type="R7ffa079dd600" ref="Freal">
+      <kind>
+        <Var type="I7ffa06c14750" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ffa079dd720" is_public="true" ref="R7ffa079dd600"/>
+    <FbasicType type="L7ffa079ddd60" is_public="true" ref="Flogical"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7ffa079ea580" sclass="ffunc" original_name="calendar_index2string" declared_in="mo_time_config">
+      <name>calendar_index2string</name>
+    </id>
+    <id type="C7ffa079dc670" sclass="fsave" original_name="ini_datetime_string" declared_in="mo_time_config">
+      <name>ini_datetime_string</name>
+    </id>
+    <id type="C7ffa079dcfa0" sclass="fsave" original_name="end_datetime_string" declared_in="mo_time_config">
+      <name>end_datetime_string</name>
+    </id>
+    <id type="I7ffa079dbd40" sclass="fsave" original_name="icalendar" declared_in="mo_time_config">
+      <name>icalendar</name>
+    </id>
+    <id type="C7ffa079da790" sclass="fsave" original_name="restart_ini_datetime_string" declared_in="mo_time_config">
+      <name>restart_ini_datetime_string</name>
+    </id>
+    <id type="C7ffa079db0c0" sclass="fsave" original_name="restart_end_datetime_string" declared_in="mo_time_config">
+      <name>restart_end_datetime_string</name>
+    </id>
+    <id type="I7ffa079db700" sclass="fsave" original_name="restart_calendar" declared_in="mo_time_config">
+      <name>restart_calendar</name>
+    </id>
+    <id type="R7ffa079dd720" sclass="fsave" original_name="dt_restart" declared_in="mo_time_config">
+      <name>dt_restart</name>
+    </id>
+    <id type="L7ffa079ddd60" sclass="fsave" original_name="is_relative_time" declared_in="mo_time_config">
+      <name>is_relative_time</name>
+    </id>
+    <id type="S7ffa079ddfd0" sclass="ftype_name" original_name="t_time_config" declared_in="mo_time_config">
+      <name>t_time_config</name>
+    </id>
+    <id type="S7ffa079e89e0" sclass="fsave" original_name="time_config" declared_in="mo_time_config">
+      <name>time_config</name>
+    </id>
+    <id type="F7ffa079f7c30" sclass="ffunc" original_name="set_tc_exp_refdate" declared_in="mo_time_config">
+      <name>set_tc_exp_refdate</name>
+    </id>
+    <id type="F7ffa079fa150" sclass="ffunc" original_name="set_tc_exp_startdate" declared_in="mo_time_config">
+      <name>set_tc_exp_startdate</name>
+    </id>
+    <id type="F7ffa07a005a0" sclass="ffunc" original_name="set_tc_exp_stopdate" declared_in="mo_time_config">
+      <name>set_tc_exp_stopdate</name>
+    </id>
+    <id type="F7ffa07a02a60" sclass="ffunc" original_name="set_tc_startdate" declared_in="mo_time_config">
+      <name>set_tc_startdate</name>
+    </id>
+    <id type="F7ffa07a04f20" sclass="ffunc" original_name="set_tc_stopdate" declared_in="mo_time_config">
+      <name>set_tc_stopdate</name>
+    </id>
+    <id type="F7ffa07a073f0" sclass="ffunc" original_name="set_tc_dt_checkpoint" declared_in="mo_time_config">
+      <name>set_tc_dt_checkpoint</name>
+    </id>
+    <id type="F7ffa07a098c0" sclass="ffunc" original_name="set_tc_dt_restart" declared_in="mo_time_config">
+      <name>set_tc_dt_restart</name>
+    </id>
+    <id type="F7ffa07a0bd80" sclass="ffunc" original_name="set_tc_current_date" declared_in="mo_time_config">
+      <name>set_tc_current_date</name>
+    </id>
+    <id type="F7ffa07a11aa0" sclass="ffunc" original_name="set_is_relative_time" declared_in="mo_time_config">
+      <name>set_is_relative_time</name>
+    </id>
+    <id type="F7ffa07a0fb30" sclass="ffunc" original_name="set_calendar" declared_in="mo_time_config">
+      <name>set_calendar</name>
+    </id>
+    <id type="F7ffa07a13a10" sclass="ffunc" original_name="set_tc_dt_model" declared_in="mo_time_config">
+      <name>set_tc_dt_model</name>
+    </id>
+    <id type="F7ffa07a15ed0" sclass="ffunc" original_name="set_tc_write_restart" declared_in="mo_time_config">
+      <name>set_tc_write_restart</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
