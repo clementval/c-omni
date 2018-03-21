@@ -23,7 +23,7 @@ source ./common/utility.sh
 
 # CLAW repository variables
 CLAW_BRANCH="master"
-CLAW_MAIN_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
+CLAW_MAIN_REPO="https://github.com/claw-project/claw-compiler.git"
 CLAW_REPO=${CLAW_MAIN_REPO}
 CLAWFC=./claw/bin/clawfc
 
@@ -109,10 +109,6 @@ echo "JSBACH -> CLAW/OMNI Compiler parse test"
 echo "======================================="
 echo "- JSBACH information"
 echo "  - Git repository: $JSBACH_MAIN_REPO"
-
-# Fetch the submodules
-git submodule init
-git submodule update
 
 if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
@@ -206,7 +202,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]; then
-    echo "ERROR: ${FRONT_END} does not exists!"
+    echo "ERROR: ${CLAWFC} does not exists!"
     exit 1
   fi
 
