@@ -17,7 +17,7 @@ function show_help(){
 
 # Define default local variable
 CLAW_BRANCH="master"
-CLAW_REPO="https://github.com/C2SM-RCM/claw-compiler.git"
+CLAW_REPO="https://github.com/claw-project/claw-compiler.git"
 BASE_COMPILER="gnu"
 OMNI_FC="gfortran"
 OMNI_CC="gcc"
@@ -44,21 +44,11 @@ while getopts "hb:c:r:d:o" opt; do
     show_help
     exit 0
     ;;
-  b)
-    CLAW_BRANCH=$OPTARG
-    ;;
-  c)
-    BASE_COMPILER=$OPTARG
-    ;;
-  r)
-    CLAW_REPO=$OPTARG
-    ;;
-  d)
-    TARGET_DIRECTORY=$OPTARG
-    ;;
-  o)
-    OMNI_LATEST=true
-    ;;
+  b) CLAW_BRANCH=$OPTARG;;
+  c) BASE_COMPILER=$OPTARG;;
+  r) CLAW_REPO=$OPTARG;;
+  d) TARGET_DIRECTORY=$OPTARG;;
+  o) OMNI_LATEST=true;;
   esac
 done
 
