@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This scripts helps to test the parsing of the full ICON
+# This scripts helps to test the parsing of the full JSBACH
 # code by the OMNI Compiler.
 #
 
@@ -264,7 +264,7 @@ do
     echo "ERROR: ${f90_file} has not been parsed correctly"
     let f90_errors=f90_errors+1
   fi
-done < ./${ICON_DEP}
+done < ./${JSBACH_DEP}
 
 # Report number of detected errors
 if [[ ${f90_errors} -ne 0 ]]; then
