@@ -41,7 +41,9 @@ SKIP_PARSING=false
 OMNI_LATEST=false
 
 # JSBACH related variables
-JSBACH_MAIN_REPO="git@git.mpimet.mpg.de:jsbach.git"
+JSBACH_GIT_REPO="git@git.mpimet.mpg.de:jsbach.git"
+JSBACH_GIT_BRANCH="develop"
+JSBACH_GIT_HASH=5ab00c692a73030eb4fe000a535f905d112b704c
 JSBACH_REP="jsbach"
 JSBACH_SRC="./${JSBACH_REP}/pp"
 JSBACH_START="jsb4_driver_dsl4jsb.f90"
@@ -108,7 +110,8 @@ echo "======================================="
 echo "JSBACH -> CLAW/OMNI Compiler parse test"
 echo "======================================="
 echo "- JSBACH information"
-echo "  - Git repository: $JSBACH_MAIN_REPO"
+echo "  - Git repository: $JSBACH_GIT_REPO"
+echo "  - Git branch: $JSBACH_GIT_BRANCH"
 
 if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
@@ -161,9 +164,10 @@ if [[ ${SKIP_PARSING} == false ]]; then
   # 2. JSBACH clone step
   ######################
 
-  git clone ${JSBACH_MAIN_REPO}
+  git clone -b ${JSBACH_GIT_BRANCH} ${JSBACH_GIT_REPO}
   mkdir -p ${JSBACH_SRC}
   cd ${JSBACH_REP} || exit 1
+  git checkout ${JSBACH_GIT_HASH}
   JSBACH_HASH=$(git rev-parse HEAD)
   echo "- JSBACH git version: $JSBACH_HASH" >> "${PARSING_OUTPUT}"
   cd "$WORKING_DIR" || exit 1
