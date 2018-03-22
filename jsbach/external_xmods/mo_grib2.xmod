@@ -1,0 +1,251 @@
+<OmniFortranModule version="1.0">
+  <name>mo_grib2</name>
+  <depends>
+    <name>mo_kind</name>
+  </depends>
+  <typeTable>
+    <FstructType type="S7fccfdd065f0" is_public="true">
+      <symbols>
+        <id type="Fint">
+          <name>centre</name>
+        </id>
+        <id type="Fint">
+          <name>subcentre</name>
+        </id>
+        <id type="Fint">
+          <name>generating_process</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7fccfdd08160" is_public="true">
+      <symbols>
+        <id type="C7fccfdd08c80">
+          <name>key</name>
+        </id>
+        <id type="Fint">
+          <name>val</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="C7fccfdd08a80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">50</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fccfdd08c80" ref="C7fccfdd08a80"/>
+    <FstructType type="S7fccfdd09860" is_public="true">
+      <symbols>
+        <id type="C7fccfdd0a350">
+          <name>key</name>
+        </id>
+        <id type="R7fccfdd0abb0">
+          <name>val</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="C7fccfdd0a150" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">50</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fccfdd0a350" ref="C7fccfdd0a150"/>
+    <FbasicType type="I7fccfdd045b0" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fccfdd0a9b0" ref="Freal">
+      <kind>
+        <Var type="I7fccfdd045b0" scope="local">dp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fccfdd0abb0" ref="R7fccfdd0a9b0"/>
+    <FstructType type="S7fccfdd0d6c0" is_public="true">
+      <symbols>
+        <id type="Fint">
+          <name>discipline</name>
+        </id>
+        <id type="Fint">
+          <name>category</name>
+        </id>
+        <id type="Fint">
+          <name>number</name>
+        </id>
+        <id type="Fint">
+          <name>bits</name>
+        </id>
+        <id type="Fint">
+          <name>gridtype</name>
+        </id>
+        <id type="Fint">
+          <name>subgridtype</name>
+        </id>
+        <id type="S7fccfdc0b5f0">
+          <name>additional_keys</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7fccfdd0b050" is_private="true">
+      <symbols>
+        <id type="Fint">
+          <name>nint_keys</name>
+        </id>
+        <id type="Fint">
+          <name>ndbl_keys</name>
+        </id>
+        <id type="A7fccfdd0c900">
+          <name>int_key</name>
+        </id>
+        <id type="A7fccfdd0d230">
+          <name>dbl_key</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="S7fccfdd0c5e0" ref="S7fccfdd08160"/>
+    <FbasicType type="S7fccfdd0c7e0" ref="S7fccfdd0c5e0"/>
+    <FbasicType type="A7fccfdd0c900" ref="S7fccfdd0c7e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fccfdd0cf10" ref="S7fccfdd09860"/>
+    <FbasicType type="S7fccfdd0d110" ref="S7fccfdd0cf10"/>
+    <FbasicType type="A7fccfdd0d230" ref="S7fccfdd0d110">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">5</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fccfdc0b3f0" ref="S7fccfdd0b050"/>
+    <FbasicType type="S7fccfdc0b5f0" ref="S7fccfdc0b3f0"/>
+    <FfunctionType type="F7fccfdc0ce40" return_type="V7fccfdc0cd20" is_public="true"/>
+    <FbasicType type="V7fccfdc0cd20" ref="FnumericAll"/>
+    <FfunctionType type="F7fccfdc17ed0" return_type="S7fccfdc18c80" is_private="true">
+      <params>
+        <name type="S7fccfdc193b0">a</name>
+        <name type="S7fccfdc19ae0">b</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fccfdc18b60" ref="S7fccfdd0d6c0"/>
+    <FbasicType type="S7fccfdc18c80" ref="S7fccfdc18b60"/>
+    <FbasicType type="S7fccfdc19290" ref="S7fccfdd0d6c0"/>
+    <FbasicType type="S7fccfdc193b0" intent="in" ref="S7fccfdc19290"/>
+    <FbasicType type="S7fccfdc199c0" ref="S7fccfdd08160"/>
+    <FbasicType type="S7fccfdc19ae0" intent="in" ref="S7fccfdc199c0"/>
+    <FfunctionType type="F7fccfdc202e0" return_type="S7fccfdc21090" is_private="true">
+      <params>
+        <name type="S7fccfdc217c0">a</name>
+        <name type="S7fccfdc21ef0">b</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fccfdc20f70" ref="S7fccfdd0d6c0"/>
+    <FbasicType type="S7fccfdc21090" ref="S7fccfdc20f70"/>
+    <FbasicType type="S7fccfdc216a0" ref="S7fccfdd0d6c0"/>
+    <FbasicType type="S7fccfdc217c0" intent="in" ref="S7fccfdc216a0"/>
+    <FbasicType type="S7fccfdc21dd0" ref="S7fccfdd09860"/>
+    <FbasicType type="S7fccfdc21ef0" intent="in" ref="S7fccfdc21dd0"/>
+    <FfunctionType type="F7fccfdc0e9f0" return_type="S7fccfdc130c0" is_public="true">
+      <params>
+        <name type="I7fccfdc10510">discipline</name>
+        <name type="I7fccfdc10ca0">category</name>
+        <name type="I7fccfdc11430">number</name>
+        <name type="I7fccfdc11bc0">bits</name>
+        <name type="I7fccfdc12350">gridtype</name>
+        <name type="I7fccfdc12ae0">subgridtype</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fccfdc12fa0" ref="S7fccfdd0d6c0"/>
+    <FbasicType type="S7fccfdc130c0" ref="S7fccfdc12fa0"/>
+    <FbasicType type="I7fccfdc10510" intent="in" ref="Fint"/>
+    <FbasicType type="I7fccfdc10ca0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fccfdc11430" intent="in" ref="Fint"/>
+    <FbasicType type="I7fccfdc11bc0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fccfdc12350" intent="in" ref="Fint"/>
+    <FbasicType type="I7fccfdc12ae0" intent="in" ref="Fint"/>
+    <FbasicType type="S7fccfdc164c0" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc16f00" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc1b020" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc1bc00" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc1c610" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc1dec0" ref="S7fccfdd0c7e0"/>
+    <FbasicType type="A7fccfdc1dfe0" ref="S7fccfdc1dec0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fccfdc1d430" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc23400" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc23fe0" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc249f0" ref="S7fccfdc0b5f0"/>
+    <FbasicType type="S7fccfdc262a0" ref="S7fccfdd0d110"/>
+    <FbasicType type="A7fccfdc263c0" ref="S7fccfdc262a0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">5</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fccfdc25810" ref="S7fccfdc0b5f0"/>
+    <FfunctionType type="F7fccfdc27d40" return_type="S7fccfdc21090">
+      <params>
+        <name type="S7fccfdc217c0">a</name>
+        <name type="S7fccfdc21ef0">b</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fccfdc1f960" return_type="S7fccfdc18c80">
+      <params>
+        <name type="S7fccfdc193b0">a</name>
+        <name type="S7fccfdc19ae0">b</name>
+      </params>
+    </FfunctionType>
+  </typeTable>
+  <identifiers>
+    <id type="S7fccfdd065f0" sclass="ftype_name" original_name="t_grib2_global" declared_in="mo_grib2">
+      <name>t_grib2_global</name>
+    </id>
+    <id type="S7fccfdd08160" sclass="ftype_name" original_name="t_grib2_int_key" declared_in="mo_grib2">
+      <name>t_grib2_int_key</name>
+    </id>
+    <id type="S7fccfdd09860" sclass="ftype_name" original_name="t_grib2_dbl_key" declared_in="mo_grib2">
+      <name>t_grib2_dbl_key</name>
+    </id>
+    <id type="S7fccfdd0d6c0" sclass="ftype_name" original_name="t_grib2_var" declared_in="mo_grib2">
+      <name>t_grib2_var</name>
+    </id>
+    <id type="F7fccfdc0ce40" sclass="ffunc" original_name="+" declared_in="mo_grib2">
+      <name>+</name>
+    </id>
+    <id type="F7fccfdc0e9f0" sclass="ffunc" original_name="grib2_var" declared_in="mo_grib2">
+      <name>grib2_var</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="+" is_operator="true" lineno="58" file="../../../icon-eniac/src/io/shared/mo_grib2.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="59" file="../../../icon-eniac/src/io/shared/mo_grib2.f90">
+        <name type="F7fccfdc27d40">grib2_key_list_plus_dbl</name>
+        <name type="F7fccfdc1f960">grib2_key_list_plus_int</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="60" file="../../../icon-eniac/src/io/shared/mo_grib2.f90">
+        <name type="F7fccfdc27d40">grib2_key_list_plus_dbl</name>
+        <name type="F7fccfdc1f960">grib2_key_list_plus_int</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

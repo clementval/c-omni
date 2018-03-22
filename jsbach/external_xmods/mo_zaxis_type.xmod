@@ -1,0 +1,1289 @@
+<OmniFortranModule version="1.0">
+  <name>mo_zaxis_type</name>
+  <depends>
+    <name>iso_c_binding</name>
+    <name>mo_exception</name>
+    <name>mo_fortran_tools</name>
+    <name>mo_hash_table</name>
+    <name>mo_cdi</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fa135f051a0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa135f05080" is_parameter="true" ref="I7fa135f051a0"/>
+    <FfunctionType type="F7fa135f31b90" return_type="Fvoid">
+      <params>
+        <name type="C7fa135f31eb0">name</name>
+        <name type="C7fa135f321d0">text</name>
+        <name type="I7fa135f324f0">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fa135f31fd0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135f31eb0" intent="in" ref="C7fa135f31fd0"/>
+    <FbasicType type="C7fa135f322f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135f321d0" intent="in" is_optional="true" ref="C7fa135f322f0"/>
+    <FbasicType type="I7fa135f324f0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fa135f1c6e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135f1bcf0" intent="in" ref="C7fa135f1c6e0"/>
+    <FbasicType type="C7fa135f1cc20" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135f1c050" intent="in" is_optional="true" ref="C7fa135f1cc20"/>
+    <FbasicType type="I7fa135f1c3b0" intent="in" is_optional="true" ref="Fint"/>
+    <FstructType type="S7fa135c8dd90" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa135c8df90">
+          <name>destruct</name>
+          <binding>
+            <name>interface_destructor</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fa135ca30e0">
+      <symbols>
+        <id type="F7fa135ca35f0">
+          <name>gethash</name>
+        </id>
+        <id type="F7fa135ca4c70">
+          <name>equalkeys</name>
+        </id>
+        <id type="A7fa135ca5630">
+          <name>table</name>
+        </id>
+        <id type="I7fa135ca7310">
+          <name>entrycount</name>
+        </id>
+        <id type="Fint">
+          <name>hashbits</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa135ca7750">
+          <name>setentry</name>
+          <binding>
+            <name>hashtable_setentry</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa135ca8350">
+          <name>removeentry</name>
+          <binding>
+            <name>hashtable_removeentry</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa135ca9030">
+          <name>getentry</name>
+          <binding>
+            <name>hashtable_getentry</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa135caa010">
+          <name>destruct</name>
+          <binding>
+            <name>hashtable_destruct</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa135caaeb0">
+          <name>findbin</name>
+          <binding>
+            <name>hashtable_findbin</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa135cac190">
+          <name>growtable</name>
+          <binding>
+            <name>hashtable_growtable</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa135cad1f0">
+          <name>removefromlist</name>
+          <binding>
+            <name>hashtable_removefromlist</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fa135ca5b30">
+      <symbols>
+        <id type="S7fa135ca5d50">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7fa135ca5fd0">
+      <symbols>
+        <id type="S7fa135ca61f0">
+          <name>key</name>
+        </id>
+        <id type="S7fa135ca61f0">
+          <name>val</name>
+        </id>
+        <id type="S7fa135ca65d0">
+          <name>next</name>
+        </id>
+        <id type="I7fa135ca6b50">
+          <name>hash</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7fa135ca3e10" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa135ca42b0">
+          <name>destruct</name>
+          <binding>
+            <name>interface_destructor</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7fa135ca61f0" is_pointer="true" is_class="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="S7fa135ca6710" ref="S7fa135ca5b30"/>
+    <FbasicType type="S7fa135ca65d0" ref="S7fa135ca6710"/>
+    <FbasicType type="I7fa135eb6710" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa135eb6cf0" is_parameter="true" ref="I7fa135eb6710"/>
+    <FbasicType type="I7fa135ca6b50" ref="Fint">
+      <kind>
+        <Var type="I7fa135eb6cf0" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa135ca5e90" ref="S7fa135ca5fd0"/>
+    <FbasicType type="S7fa135ca5d50" is_pointer="true" ref="S7fa135ca5e90"/>
+    <FbasicType type="S7fa135ca59f0" ref="S7fa135ca5b30"/>
+    <FbasicType type="S7fa135ca58b0" is_pointer="true" ref="S7fa135ca59f0"/>
+    <FbasicType type="S7fa135ca5770" is_pointer="true" ref="S7fa135ca58b0"/>
+    <FbasicType type="A7fa135ca5630" is_pointer="true" ref="S7fa135ca5770">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fa135ca7310" ref="Fint">
+      <kind>
+        <Var type="I7fa135eb6cf0" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fa135ca33a0" return_type="S7fa135cb1550">
+      <params>
+        <name type="F7fa135cb2330">hashfunction</name>
+        <name type="F7fa135cb2550">comparefunction</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135cb1690" is_pointer="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="S7fa135cb1550" is_pointer="true" ref="S7fa135cb1690"/>
+    <FbasicType type="I7fa135cbd260" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa135cbd830" is_parameter="true" ref="I7fa135cbd260"/>
+    <FbasicType type="I7fa1384ef330" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ec240" is_parameter="true" ref="I7fa1384ef330"/>
+    <FbasicType type="I7fa1384ef470" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ec440" is_parameter="true" ref="I7fa1384ef470"/>
+    <FbasicType type="I7fa1384ef5b0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ec640" is_parameter="true" ref="I7fa1384ef5b0"/>
+    <FbasicType type="I7fa1384ef6f0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ec890" is_parameter="true" ref="I7fa1384ef6f0"/>
+    <FbasicType type="I7fa1384ef830" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ecae0" is_parameter="true" ref="I7fa1384ef830"/>
+    <FbasicType type="I7fa1384ef970" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ecd30" is_parameter="true" ref="I7fa1384ef970"/>
+    <FbasicType type="I7fa1384efab0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ecf80" is_parameter="true" ref="I7fa1384efab0"/>
+    <FbasicType type="I7fa1384efbf0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ed1f0" is_parameter="true" ref="I7fa1384efbf0"/>
+    <FbasicType type="I7fa1384efd30" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ed460" is_parameter="true" ref="I7fa1384efd30"/>
+    <FbasicType type="I7fa1384efe70" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ed6d0" is_parameter="true" ref="I7fa1384efe70"/>
+    <FbasicType type="I7fa1384effb0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ed940" is_parameter="true" ref="I7fa1384effb0"/>
+    <FbasicType type="I7fa1384f00f0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384edbb0" is_parameter="true" ref="I7fa1384f00f0"/>
+    <FbasicType type="I7fa1384f0230" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ede20" is_parameter="true" ref="I7fa1384f0230"/>
+    <FbasicType type="I7fa1384f0370" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ee090" is_parameter="true" ref="I7fa1384f0370"/>
+    <FbasicType type="I7fa1384f04b0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ee300" is_parameter="true" ref="I7fa1384f04b0"/>
+    <FbasicType type="I7fa1384f05f0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ee570" is_parameter="true" ref="I7fa1384f05f0"/>
+    <FbasicType type="I7fa1384f0730" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ee7e0" is_parameter="true" ref="I7fa1384f0730"/>
+    <FbasicType type="I7fa1384f0870" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384eea50" is_parameter="true" ref="I7fa1384f0870"/>
+    <FbasicType type="I7fa1384f09b0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384eecc0" is_parameter="true" ref="I7fa1384f09b0"/>
+    <FbasicType type="I7fa1384f0af0" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384eef30" is_parameter="true" ref="I7fa1384f0af0"/>
+    <FbasicType type="I7fa1384f0c30" ref="Fint">
+      <kind>
+        <Var type="I7fa135cbd830" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa1384ef1a0" is_parameter="true" ref="I7fa1384f0c30"/>
+    <FstructType type="S7fa138602bf0" is_public="true" extends="S7fa135c8dd90">
+      <symbols>
+        <id type="Fint">
+          <name>icon_zaxis_type</name>
+        </id>
+        <id type="Fint">
+          <name>cdi_zaxis_type</name>
+        </id>
+        <id type="Flogical">
+          <name>is_2d</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa138604ad0" pass="pass">
+          <name>destruct</name>
+          <binding>
+            <name>t_zaxistype_destruct</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure is_operator="true" is_public="true">
+          <name>.eq.</name>
+          <binding>
+            <name>eqv</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fa138605910" pass="pass">
+          <name>eqv</name>
+          <binding>
+            <name>t_zaxistype_eqv</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FfunctionType type="F7fa13860ab20" return_type="V7fa13860aa00"/>
+    <FbasicType type="V7fa13860aa00" ref="FnumericAll"/>
+    <FfunctionType type="F7fa138611bb0" result_name="za_list" return_type="S7fa138612460">
+      <params>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa138605ca0" is_public="true">
+      <symbols>
+        <id type="S7fa138606440">
+          <name>list</name>
+        </id>
+        <id type="Fint">
+          <name>max_icon_zaxis_type</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa138607340" pass="pass">
+          <name>finalize</name>
+          <binding>
+            <name>t_zaxistypelist_finalize</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa138607a40" pass="pass">
+          <name>is_2d</name>
+          <binding>
+            <name>t_zaxistypelist_is_2d</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa138608170" pass="pass">
+          <name>register</name>
+          <binding>
+            <name>t_zaxistypelist_register</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa138608870" pass="pass">
+          <name>getentry</name>
+          <binding>
+            <name>t_zaxistypelist_getentry</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa138608f70" pass="pass">
+          <name>cdi_zaxis_type</name>
+          <binding>
+            <name>t_zaxistypelist_cdi_zaxis_type</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa1386096a0" pass="pass">
+          <name>za_count</name>
+          <binding>
+            <name>t_zaxistypelist_za_count</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7fa138606240" ref="S7fa135ca30e0"/>
+    <FbasicType type="S7fa138606440" ref="S7fa138606240"/>
+    <FbasicType type="S7fa138612260" ref="S7fa138605ca0"/>
+    <FbasicType type="S7fa138612460" ref="S7fa138612260"/>
+    <FfunctionType type="F7fa135fe4730" result_name="result" return_type="I7fa135fe4610">
+      <params>
+        <name type="S7fa138638440">key</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa135fe4610" ref="Fint">
+      <kind>
+        <Var type="I7fa135f05080" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa138638440" intent="in" is_pointer="true" is_class="true" ref="S7fa135c8dd90"/>
+    <FfunctionType type="F7fa13863c5f0" result_name="result" return_type="Flogical">
+      <params>
+        <name type="S7fa13863d690">keya</name>
+        <name type="S7fa13863d690">keyb</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa13863d690" intent="in" is_pointer="true" is_class="true" ref="S7fa135c8dd90"/>
+    <FbasicType type="I7fa1384f7bb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f7db0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f7fb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f81b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f83b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f85b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f87b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f89b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f8bb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f8db0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f8fb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f91b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f93b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f95b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f97b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f99b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f9bb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f9db0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384f9fb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fa1b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fa3b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fa5b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fa7b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fa9b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fabb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fadb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fafb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fb1b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fb3b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fb5b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fb7b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fb9b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fbbb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa1384fbdb0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600000" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600200" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600400" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600600" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600800" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600a00" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600c00" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138600e00" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138601000" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fa138601200" is_public="true" ref="Fint"/>
+    <FbasicType type="S7fa13860b010" ref="S7fa138605ca0"/>
+    <FbasicType type="S7fa13860b130" is_public="true" ref="S7fa13860b010"/>
+    <FbasicType type="C7fa1384f1c10" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa1384f1e10" is_parameter="true" ref="C7fa1384f1c10"/>
+    <FbasicType type="C7fa1384f21d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FstructType type="S7fa138601650" extends="S7fa135c8dd90">
+      <symbols>
+        <id type="Fint">
+          <name>icon_zaxis_type</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa1386026c0" pass="pass">
+          <name>destruct</name>
+          <binding>
+            <name>t_zaxiskey_destruct</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FfunctionType type="F7fa13860c210" return_type="Flogical">
+      <params>
+        <name type="S7fa13860d230">zaxis1</name>
+        <name type="S7fa13860d230">zaxis2</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa13860d230" intent="in" is_class="true" ref="S7fa138602bf0"/>
+    <FbasicType type="S7fa138613420" ref="S7fa138606440"/>
+    <FfunctionType type="F7fa1386366d0" return_type="Fvoid">
+      <params>
+        <name type="S7fa138637240">zaxistypelist</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa138637240" intent="inout" is_class="true" ref="S7fa138605ca0"/>
+    <FbasicType type="S7fa138637a00" ref="S7fa138606440"/>
+    <FbasicType type="C7fa138638d40" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa138638f40" is_parameter="true" ref="C7fa138638d40"/>
+    <FbasicType type="C7fa138639660" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">26</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa1386394e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7fa13863a150" ref="S7fa138601650"/>
+    <FbasicType type="C7fa13863b250" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135fe57a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135fe59a0" is_parameter="true" ref="C7fa135fe57a0"/>
+    <FbasicType type="C7fa135fe60c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135fe5f40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7fa135fe6d30" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135fe75f0" ref="S7fa138601650"/>
+    <FbasicType type="C7fa135fe8dd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">22</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135fe9a40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">22</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fa135d7adf0" result_name="icon_type" return_type="Fint">
+      <params>
+        <name type="S7fa138520000">zaxistypelist</name>
+        <name type="I7fa138520790">cdi_zaxis_type</name>
+        <name type="L7fa13863e120">is_2d</name>
+        <name type="I7fa13863e930">icon_zaxis_type</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa138520000" intent="inout" is_class="true" ref="S7fa138605ca0"/>
+    <FbasicType type="I7fa138520790" intent="in" ref="Fint"/>
+    <FbasicType type="L7fa13863e120" intent="in" ref="Flogical"/>
+    <FbasicType type="I7fa13863e930" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fa13863f220" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa13863f420" is_parameter="true" ref="C7fa13863f220"/>
+    <FbasicType type="C7fa13863fb60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">39</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa13863f9d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">26</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7fa138640260" is_pointer="true" is_class="true" ref="S7fa135c8dd90"/>
+    <FbasicType type="S7fa138520fb0" is_pointer="true" is_class="true" ref="S7fa135c8dd90"/>
+    <FfunctionType type="F7fa135d7c300" return_type="Flogical"/>
+    <FfunctionType type="F7fa135d7f270" return_type="Flogical"/>
+    <FfunctionType type="F7fa135d86240" return_type="Fint"/>
+    <FbasicType type="S7fa135d7ca50" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135d7d2f0" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135ca93f0" is_pointer="true" is_class="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="S7fa135d7e510" ref="S7fa138606440"/>
+    <FbasicType type="C7fa135d7fa10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7fa135d813b0" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135d81970" ref="S7fa138602bf0"/>
+    <FbasicType type="S7fa135d821c0" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135d83260" ref="S7fa138602bf0"/>
+    <FbasicType type="S7fa135d85100" ref="S7fa138606440"/>
+    <FfunctionType type="F7fa135d87170" result_name="zaxistype" return_type="S7fa135d882f0">
+      <params>
+        <name type="S7fa135d88980">zaxistypelist</name>
+        <name type="I7fa135d89110">icon_zaxis_type</name>
+        <name type="I7fa135d89920">ierror</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135d880f0" ref="S7fa138602bf0"/>
+    <FbasicType type="S7fa135d882f0" ref="S7fa135d880f0"/>
+    <FbasicType type="S7fa135d88980" intent="in" is_class="true" ref="S7fa138605ca0"/>
+    <FbasicType type="I7fa135d89110" intent="in" ref="Fint"/>
+    <FbasicType type="I7fa135d89920" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fa135d8a210" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135d8a410" is_parameter="true" ref="C7fa135d8a210"/>
+    <FbasicType type="C7fa135d8ab50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">39</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa135d8a9c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">26</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7fa135d8b210" is_pointer="true" is_class="true" ref="S7fa135c8dd90"/>
+    <FbasicType type="S7fa135d8b900" is_pointer="true" is_class="true" ref="S7fa135c8dd90"/>
+    <FfunctionType type="F7fa135d8ca00" return_type="Flogical"/>
+    <FfunctionType type="F7fa138643520" return_type="Flogical"/>
+    <FfunctionType type="F7fa135d8fc40" return_type="Flogical"/>
+    <FbasicType type="S7fa135d8d420" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135d8dc70" ref="S7fa138601650"/>
+    <FbasicType type="S7fa135d8eee0" ref="S7fa138606440"/>
+    <FbasicType type="S7fa138640760" ref="S7fa138602bf0"/>
+    <FbasicType type="C7fa138642670" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa138644120" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fa138522bc0" result_name="is_2d" return_type="Flogical">
+      <params>
+        <name type="S7fa135d912d0">zaxistypelist</name>
+        <name type="I7fa135d91a60">icon_zaxis_type</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135d912d0" intent="in" is_class="true" ref="S7fa138605ca0"/>
+    <FbasicType type="I7fa135d91a60" intent="in" ref="Fint"/>
+    <FbasicType type="S7fa135d91f20" ref="S7fa138602bf0"/>
+    <FbasicType type="S7fa135d92120" ref="S7fa135d91f20"/>
+    <FfunctionType type="F7fa135d94060" result_name="cdi_zaxis_type" return_type="Fint">
+      <params>
+        <name type="S7fa135d955e0">zaxistypelist</name>
+        <name type="I7fa135d95d70">icon_zaxis_type</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135d955e0" intent="in" is_class="true" ref="S7fa138605ca0"/>
+    <FbasicType type="I7fa135d95d70" intent="in" ref="Fint"/>
+    <FbasicType type="S7fa135d96230" ref="S7fa138602bf0"/>
+    <FbasicType type="S7fa135d96430" ref="S7fa135d96230"/>
+    <FfunctionType type="F7fa135d997f0" result_name="za_count" return_type="Fint">
+      <params>
+        <name type="S7fa135d9aa80">zaxistypelist</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135d9aa80" intent="in" is_class="true" ref="S7fa138605ca0"/>
+    <FfunctionType type="F7fa135d9be90" return_type="Fvoid">
+      <params>
+        <name type="S7fa135d9ca00">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135d9ca00" intent="inout" is_class="true" ref="S7fa138601650"/>
+    <FfunctionType type="F7fa135d9d7c0" return_type="Fvoid">
+      <params>
+        <name type="S7fa135d9e330">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135d9e330" intent="inout" is_class="true" ref="S7fa138602bf0"/>
+    <FfunctionType type="F7fa138635d70" result_name="za_list" return_type="S7fa138612460">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fa135c8e1d0" return_type="Fvoid">
+      <params>
+        <name type="S7fa135c8e4f0">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135c8e610" ref="S7fa135c8dd90"/>
+    <FbasicType type="S7fa135c8e4f0" intent="inout" is_class="true" ref="S7fa135c8e610"/>
+    <FbasicType type="F7fa135c8e0b0" ref="F7fa135c8e1d0"/>
+    <FbasicType type="F7fa135c8df90" ref="F7fa135c8e0b0"/>
+    <FfunctionType type="F7fa135ca3710" return_type="I7fa135ca3970">
+      <params>
+        <name type="S7fa135ca3b90">key</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa135ca3970" ref="Fint">
+      <kind>
+        <Var type="Freal" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa135ca3cd0" is_pointer="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="S7fa135ca3b90" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca3cd0"/>
+    <FbasicType type="F7fa135ca35f0" is_pointer="true" is_procedure="true" ref="F7fa135ca3710"/>
+    <FfunctionType type="F7fa135ca4db0" return_type="Flogical">
+      <params>
+        <name type="S7fa135ca5110">keya</name>
+        <name type="S7fa135ca5110">keyb</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca5250" is_pointer="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="S7fa135ca5110" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca5250"/>
+    <FbasicType type="F7fa135ca4c70" is_pointer="true" is_procedure="true" ref="F7fa135ca4db0"/>
+    <FfunctionType type="F7fa135ca43f0" return_type="Fvoid">
+      <params>
+        <name type="S7fa135ca4750">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca4890" ref="S7fa135ca3e10"/>
+    <FbasicType type="S7fa135ca4750" intent="inout" is_class="true" ref="S7fa135ca4890"/>
+    <FbasicType type="F7fa135ca42b0" ref="F7fa135ca43f0"/>
+    <FbasicType type="F7fa135ca7750" ref="F7fa135ca7890"/>
+    <FfunctionType type="F7fa135ca85d0" return_type="Fvoid">
+      <params>
+        <name type="S7fa135ca87f0">me</name>
+        <name type="S7fa135cb0330">key</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca87f0" intent="inout" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="S7fa135cb0330" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="F7fa135ca8490" ref="F7fa135ca85d0"/>
+    <FbasicType type="F7fa135ca8350" ref="F7fa135ca8490"/>
+    <FfunctionType type="F7fa135ca92b0" return_type="S7fa135ca93f0">
+      <params>
+        <name type="S7fa135ca96f0">me</name>
+        <name type="S7fa135cafb70">key</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca96f0" intent="in" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="S7fa135cafb70" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="F7fa135ca9170" ref="F7fa135ca92b0"/>
+    <FbasicType type="F7fa135ca9030" ref="F7fa135ca9170"/>
+    <FbasicType type="F7fa135caa010" ref="F7fa135caa150"/>
+    <FfunctionType type="F7fa135cab130" return_type="S7fa135cab270">
+      <params>
+        <name type="S7fa135cab6b0">me</name>
+        <name type="I7fa135caf270">hash</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135cab3b0" is_pointer="true" ref="S7fa135ca5b30"/>
+    <FbasicType type="S7fa135cab270" is_pointer="true" ref="S7fa135cab3b0"/>
+    <FbasicType type="S7fa135cab6b0" intent="in" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="I7fa135caf270" ref="Fint">
+      <kind>
+        <Var type="I7fa135eb6cf0" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="F7fa135caaff0" ref="F7fa135cab130"/>
+    <FbasicType type="F7fa135caaeb0" ref="F7fa135caaff0"/>
+    <FfunctionType type="F7fa135cac410" return_type="Fvoid">
+      <params>
+        <name type="S7fa135cac630">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135cac630" intent="inout" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="F7fa135cac2d0" ref="F7fa135cac410"/>
+    <FbasicType type="F7fa135cac190" ref="F7fa135cac2d0"/>
+    <FfunctionType type="F7fa135cad470" return_type="Fvoid">
+      <params>
+        <name type="S7fa135cad690">me</name>
+        <name type="S7fa135cae330">list</name>
+        <name type="S7fa135cae770">key</name>
+        <name type="I7fa135caebb0">hash</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135cad690" intent="inout" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="S7fa135cae470" is_pointer="true" ref="S7fa135ca5b30"/>
+    <FbasicType type="S7fa135cae330" intent="inout" is_pointer="true" ref="S7fa135cae470"/>
+    <FbasicType type="S7fa135cae770" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="I7fa135caebb0" ref="Fint">
+      <kind>
+        <Var type="I7fa135eb6cf0" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="F7fa135cad330" ref="F7fa135cad470"/>
+    <FbasicType type="F7fa135cad1f0" ref="F7fa135cad330"/>
+    <FbasicType type="F7fa135cb2330" is_procedure="true" ref="F7fa135ca3710"/>
+    <FbasicType type="F7fa135cb2550" is_procedure="true" ref="F7fa135ca4db0"/>
+    <FfunctionType type="F7fa135ca0af0" return_type="I7fa135c90b20">
+      <params>
+        <name type="S7fa135ca0d80">key</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa135c90b20" ref="Fint">
+      <kind>
+        <Var type="Freal" scope="local">c_int32_t</Var>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7fa135eb5af0" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa135ca1e80">
+          <name>destruct</name>
+          <binding>
+            <name>interface_destructor</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FfunctionType type="F7fa135ca24d0" return_type="Fvoid">
+      <params>
+        <name type="S7fa135ca2760">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca2ac0" ref="S7fa135eb5af0"/>
+    <FbasicType type="S7fa135ca2760" intent="inout" is_class="true" ref="S7fa135ca2ac0"/>
+    <FbasicType type="F7fa135ca1e80" ref="F7fa135ca24d0"/>
+    <FbasicType type="S7fa135ca1190" is_pointer="true" ref="S7fa135eb5af0"/>
+    <FbasicType type="S7fa135ca0d80" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca1190"/>
+    <FbasicType type="F7fa135eb86c0" is_procedure="true" ref="F7fa135ca0af0"/>
+    <FfunctionType type="F7fa135ca1320" return_type="Flogical">
+      <params>
+        <name type="S7fa135ca1700">keya</name>
+        <name type="S7fa135ca1700">keyb</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca1d20" is_pointer="true" ref="S7fa135eb5af0"/>
+    <FbasicType type="S7fa135ca1700" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca1d20"/>
+    <FbasicType type="F7fa135eb8a40" is_procedure="true" ref="F7fa135ca1320"/>
+    <FbasicType type="F7fa138604ad0" ref="F7fa135d9d7c0"/>
+    <FbasicType type="F7fa138605910" ref="F7fa13860c210"/>
+    <FbasicType type="F7fa138607340" ref="F7fa1386366d0"/>
+    <FbasicType type="F7fa138607a40" ref="F7fa138522bc0"/>
+    <FbasicType type="F7fa138608170" ref="F7fa135d7adf0"/>
+    <FbasicType type="F7fa138608870" ref="F7fa135d87170"/>
+    <FbasicType type="S7fa138608750" ref="S7fa135d882f0"/>
+    <FbasicType type="F7fa138608f70" ref="F7fa135d94060"/>
+    <FbasicType type="F7fa1386096a0" ref="F7fa135d997f0"/>
+    <FbasicType type="F7fa1386026c0" ref="F7fa135d9be90"/>
+    <FfunctionType type="F7fa135caa290" return_type="Fvoid">
+      <params>
+        <name type="S7fa135caa4b0">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135caa4b0" intent="inout" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="F7fa135caa150" ref="F7fa135caa290"/>
+    <FfunctionType type="F7fa135ca79d0" return_type="Fvoid">
+      <params>
+        <name type="S7fa135ca7bf0">me</name>
+        <name type="S7fa135cb0bd0">key</name>
+        <name type="S7fa135cb0bd0">val</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa135ca7bf0" intent="inout" is_class="true" ref="S7fa135ca30e0"/>
+    <FbasicType type="S7fa135cb0bd0" intent="in" is_pointer="true" is_class="true" ref="S7fa135ca3e10"/>
+    <FbasicType type="F7fa135ca7890" ref="F7fa135ca79d0"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7fa135f05080" sclass="flocal" original_name="c_int32_t" declared_in="iso_c_binding">
+      <name>c_int32_t</name>
+    </id>
+    <id type="F7fa135f31b90" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="S7fa135c8dd90" sclass="ftype_name" original_name="t_destructible" declared_in="mo_fortran_tools">
+      <name>t_destructible</name>
+    </id>
+    <id type="S7fa135ca30e0" sclass="ftype_name" original_name="t_hashtable" declared_in="mo_hash_table">
+      <name>t_hashtable</name>
+    </id>
+    <id type="F7fa135ca33a0" sclass="ffunc" original_name="hashtable_make" declared_in="mo_hash_table">
+      <name>hashtable_make</name>
+    </id>
+    <id type="I7fa1384ec240" sclass="flocal" original_name="cdi_undefid" declared_in="mo_cdi">
+      <name>cdi_undefid</name>
+    </id>
+    <id type="I7fa1384ec440" sclass="flocal" original_name="zaxis_surface" declared_in="mo_cdi">
+      <name>zaxis_surface</name>
+    </id>
+    <id type="I7fa1384ec640" sclass="flocal" original_name="zaxis_generic" declared_in="mo_cdi">
+      <name>zaxis_generic</name>
+    </id>
+    <id type="I7fa1384ec890" sclass="flocal" original_name="zaxis_hybrid" declared_in="mo_cdi">
+      <name>zaxis_hybrid</name>
+    </id>
+    <id type="I7fa1384ecae0" sclass="flocal" original_name="zaxis_hybrid_half" declared_in="mo_cdi">
+      <name>zaxis_hybrid_half</name>
+    </id>
+    <id type="I7fa1384ecd30" sclass="flocal" original_name="zaxis_pressure" declared_in="mo_cdi">
+      <name>zaxis_pressure</name>
+    </id>
+    <id type="I7fa1384ecf80" sclass="flocal" original_name="zaxis_height" declared_in="mo_cdi">
+      <name>zaxis_height</name>
+    </id>
+    <id type="I7fa1384ed1f0" sclass="flocal" original_name="zaxis_depth_below_sea" declared_in="mo_cdi">
+      <name>zaxis_depth_below_sea</name>
+    </id>
+    <id type="I7fa1384ed460" sclass="flocal" original_name="zaxis_depth_below_land" declared_in="mo_cdi">
+      <name>zaxis_depth_below_land</name>
+    </id>
+    <id type="I7fa1384ed6d0" sclass="flocal" original_name="zaxis_isentropic" declared_in="mo_cdi">
+      <name>zaxis_isentropic</name>
+    </id>
+    <id type="I7fa1384ed940" sclass="flocal" original_name="zaxis_altitude" declared_in="mo_cdi">
+      <name>zaxis_altitude</name>
+    </id>
+    <id type="I7fa1384edbb0" sclass="flocal" original_name="zaxis_meansea" declared_in="mo_cdi">
+      <name>zaxis_meansea</name>
+    </id>
+    <id type="I7fa1384ede20" sclass="flocal" original_name="zaxis_toa" declared_in="mo_cdi">
+      <name>zaxis_toa</name>
+    </id>
+    <id type="I7fa1384ee090" sclass="flocal" original_name="zaxis_atmosphere" declared_in="mo_cdi">
+      <name>zaxis_atmosphere</name>
+    </id>
+    <id type="I7fa1384ee300" sclass="flocal" original_name="zaxis_cloud_base" declared_in="mo_cdi">
+      <name>zaxis_cloud_base</name>
+    </id>
+    <id type="I7fa1384ee570" sclass="flocal" original_name="zaxis_cloud_top" declared_in="mo_cdi">
+      <name>zaxis_cloud_top</name>
+    </id>
+    <id type="I7fa1384ee7e0" sclass="flocal" original_name="zaxis_isotherm_zero" declared_in="mo_cdi">
+      <name>zaxis_isotherm_zero</name>
+    </id>
+    <id type="I7fa1384eea50" sclass="flocal" original_name="zaxis_lake_bottom" declared_in="mo_cdi">
+      <name>zaxis_lake_bottom</name>
+    </id>
+    <id type="I7fa1384eecc0" sclass="flocal" original_name="zaxis_sediment_bottom_tw" declared_in="mo_cdi">
+      <name>zaxis_sediment_bottom_tw</name>
+    </id>
+    <id type="I7fa1384eef30" sclass="flocal" original_name="zaxis_mix_layer" declared_in="mo_cdi">
+      <name>zaxis_mix_layer</name>
+    </id>
+    <id type="I7fa1384ef1a0" sclass="flocal" original_name="zaxis_reference" declared_in="mo_cdi">
+      <name>zaxis_reference</name>
+    </id>
+    <id type="S7fa138602bf0" sclass="ftype_name" original_name="t_zaxistype" declared_in="mo_zaxis_type">
+      <name>t_zaxistype</name>
+    </id>
+    <id type="F7fa13860ab20" sclass="ffunc" original_name="t_zaxistypelist" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist</name>
+    </id>
+    <id type="S7fa138605ca0" sclass="ftype_name" original_name="t_zaxistypelist" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist</name>
+    </id>
+    <id type="S7fa13860b130" sclass="fsave" original_name="zaxistypelist" declared_in="mo_zaxis_type">
+      <name>zaxistypelist</name>
+    </id>
+    <id type="C7fa1384f1e10" sclass="flocal" original_name="modname" declared_in="mo_zaxis_type">
+      <name>modname</name>
+    </id>
+    <id type="I7fa1384f7bb0" sclass="fsave" original_name="za_surface" declared_in="mo_zaxis_type">
+      <name>za_surface</name>
+    </id>
+    <id type="I7fa1384f7db0" sclass="fsave" original_name="za_cloud_base" declared_in="mo_zaxis_type">
+      <name>za_cloud_base</name>
+    </id>
+    <id type="I7fa1384f7fb0" sclass="fsave" original_name="za_cloud_top" declared_in="mo_zaxis_type">
+      <name>za_cloud_top</name>
+    </id>
+    <id type="I7fa1384f81b0" sclass="fsave" original_name="za_isotherm_zero" declared_in="mo_zaxis_type">
+      <name>za_isotherm_zero</name>
+    </id>
+    <id type="I7fa1384f83b0" sclass="fsave" original_name="za_reference" declared_in="mo_zaxis_type">
+      <name>za_reference</name>
+    </id>
+    <id type="I7fa1384f85b0" sclass="fsave" original_name="za_reference_half" declared_in="mo_zaxis_type">
+      <name>za_reference_half</name>
+    </id>
+    <id type="I7fa1384f87b0" sclass="fsave" original_name="za_reference_half_hhl" declared_in="mo_zaxis_type">
+      <name>za_reference_half_hhl</name>
+    </id>
+    <id type="I7fa1384f89b0" sclass="fsave" original_name="za_hybrid" declared_in="mo_zaxis_type">
+      <name>za_hybrid</name>
+    </id>
+    <id type="I7fa1384f8bb0" sclass="fsave" original_name="za_hybrid_half" declared_in="mo_zaxis_type">
+      <name>za_hybrid_half</name>
+    </id>
+    <id type="I7fa1384f8db0" sclass="fsave" original_name="za_hybrid_half_hhl" declared_in="mo_zaxis_type">
+      <name>za_hybrid_half_hhl</name>
+    </id>
+    <id type="I7fa1384f8fb0" sclass="fsave" original_name="za_depth_below_land" declared_in="mo_zaxis_type">
+      <name>za_depth_below_land</name>
+    </id>
+    <id type="I7fa1384f91b0" sclass="fsave" original_name="za_depth_below_land_p1" declared_in="mo_zaxis_type">
+      <name>za_depth_below_land_p1</name>
+    </id>
+    <id type="I7fa1384f93b0" sclass="fsave" original_name="za_snow" declared_in="mo_zaxis_type">
+      <name>za_snow</name>
+    </id>
+    <id type="I7fa1384f95b0" sclass="fsave" original_name="za_snow_half" declared_in="mo_zaxis_type">
+      <name>za_snow_half</name>
+    </id>
+    <id type="I7fa1384f97b0" sclass="fsave" original_name="za_pressure" declared_in="mo_zaxis_type">
+      <name>za_pressure</name>
+    </id>
+    <id type="I7fa1384f99b0" sclass="fsave" original_name="za_height" declared_in="mo_zaxis_type">
+      <name>za_height</name>
+    </id>
+    <id type="I7fa1384f9bb0" sclass="fsave" original_name="za_height_2m" declared_in="mo_zaxis_type">
+      <name>za_height_2m</name>
+    </id>
+    <id type="I7fa1384f9db0" sclass="fsave" original_name="za_height_10m" declared_in="mo_zaxis_type">
+      <name>za_height_10m</name>
+    </id>
+    <id type="I7fa1384f9fb0" sclass="fsave" original_name="za_altitude" declared_in="mo_zaxis_type">
+      <name>za_altitude</name>
+    </id>
+    <id type="I7fa1384fa1b0" sclass="fsave" original_name="za_meansea" declared_in="mo_zaxis_type">
+      <name>za_meansea</name>
+    </id>
+    <id type="I7fa1384fa3b0" sclass="fsave" original_name="za_isentropic" declared_in="mo_zaxis_type">
+      <name>za_isentropic</name>
+    </id>
+    <id type="I7fa1384fa5b0" sclass="fsave" original_name="za_toa" declared_in="mo_zaxis_type">
+      <name>za_toa</name>
+    </id>
+    <id type="I7fa1384fa7b0" sclass="fsave" original_name="za_pressure_800" declared_in="mo_zaxis_type">
+      <name>za_pressure_800</name>
+    </id>
+    <id type="I7fa1384fa9b0" sclass="fsave" original_name="za_pressure_400" declared_in="mo_zaxis_type">
+      <name>za_pressure_400</name>
+    </id>
+    <id type="I7fa1384fabb0" sclass="fsave" original_name="za_pressure_0" declared_in="mo_zaxis_type">
+      <name>za_pressure_0</name>
+    </id>
+    <id type="I7fa1384fadb0" sclass="fsave" original_name="za_depth_runoff_s" declared_in="mo_zaxis_type">
+      <name>za_depth_runoff_s</name>
+    </id>
+    <id type="I7fa1384fafb0" sclass="fsave" original_name="za_depth_runoff_g" declared_in="mo_zaxis_type">
+      <name>za_depth_runoff_g</name>
+    </id>
+    <id type="I7fa1384fb1b0" sclass="fsave" original_name="za_lake_bottom" declared_in="mo_zaxis_type">
+      <name>za_lake_bottom</name>
+    </id>
+    <id type="I7fa1384fb3b0" sclass="fsave" original_name="za_lake_bottom_half" declared_in="mo_zaxis_type">
+      <name>za_lake_bottom_half</name>
+    </id>
+    <id type="I7fa1384fb5b0" sclass="fsave" original_name="za_mix_layer" declared_in="mo_zaxis_type">
+      <name>za_mix_layer</name>
+    </id>
+    <id type="I7fa1384fb7b0" sclass="fsave" original_name="za_sediment_bottom_tw_half" declared_in="mo_zaxis_type">
+      <name>za_sediment_bottom_tw_half</name>
+    </id>
+    <id type="I7fa1384fb9b0" sclass="fsave" original_name="za_depth_below_sea" declared_in="mo_zaxis_type">
+      <name>za_depth_below_sea</name>
+    </id>
+    <id type="I7fa1384fbbb0" sclass="fsave" original_name="za_depth_below_sea_half" declared_in="mo_zaxis_type">
+      <name>za_depth_below_sea_half</name>
+    </id>
+    <id type="I7fa1384fbdb0" sclass="fsave" original_name="za_generic_ice" declared_in="mo_zaxis_type">
+      <name>za_generic_ice</name>
+    </id>
+    <id type="I7fa138600000" sclass="fsave" original_name="za_ocean_sediment" declared_in="mo_zaxis_type">
+      <name>za_ocean_sediment</name>
+    </id>
+    <id type="I7fa138600200" sclass="fsave" original_name="za_pres_fl_sfc_200" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_sfc_200</name>
+    </id>
+    <id type="I7fa138600400" sclass="fsave" original_name="za_pres_fl_200_350" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_200_350</name>
+    </id>
+    <id type="I7fa138600600" sclass="fsave" original_name="za_pres_fl_350_550" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_350_550</name>
+    </id>
+    <id type="I7fa138600800" sclass="fsave" original_name="za_pres_fl_sfc_100" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_sfc_100</name>
+    </id>
+    <id type="I7fa138600a00" sclass="fsave" original_name="za_pres_fl_100_245" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_100_245</name>
+    </id>
+    <id type="I7fa138600c00" sclass="fsave" original_name="za_pres_fl_245_390" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_245_390</name>
+    </id>
+    <id type="I7fa138600e00" sclass="fsave" original_name="za_pres_fl_390_530" declared_in="mo_zaxis_type">
+      <name>za_pres_fl_390_530</name>
+    </id>
+    <id type="I7fa138601000" sclass="fsave" original_name="za_atmosphere" declared_in="mo_zaxis_type">
+      <name>za_atmosphere</name>
+    </id>
+    <id type="I7fa138601200" sclass="fsave" original_name="za_height_2m_layer" declared_in="mo_zaxis_type">
+      <name>za_height_2m_layer</name>
+    </id>
+    <id type="S7fa138601650" sclass="ftype_name" original_name="t_zaxiskey" declared_in="mo_zaxis_type">
+      <name>t_zaxiskey</name>
+    </id>
+    <id type="F7fa13860c210" sclass="ffunc" original_name="t_zaxistype_eqv" declared_in="mo_zaxis_type">
+      <name>t_zaxistype_eqv</name>
+    </id>
+    <id type="F7fa138611bb0" sclass="ffunc" original_name="new_zaxistypelist" declared_in="mo_zaxis_type">
+      <name>new_zaxistypelist</name>
+    </id>
+    <id type="F7fa1386366d0" sclass="ffunc" original_name="t_zaxistypelist_finalize" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist_finalize</name>
+    </id>
+    <id type="F7fa135fe4730" sclass="ffunc" original_name="list_hashkey" declared_in="mo_zaxis_type">
+      <name>list_hashkey</name>
+    </id>
+    <id type="F7fa13863c5f0" sclass="ffunc" original_name="list_equalkeys" declared_in="mo_zaxis_type">
+      <name>list_equalkeys</name>
+    </id>
+    <id type="F7fa135d7adf0" sclass="ffunc" original_name="t_zaxistypelist_register" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist_register</name>
+    </id>
+    <id type="F7fa135d87170" sclass="ffunc" original_name="t_zaxistypelist_getentry" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist_getentry</name>
+    </id>
+    <id type="F7fa138522bc0" sclass="ffunc" original_name="t_zaxistypelist_is_2d" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist_is_2d</name>
+    </id>
+    <id type="F7fa135d94060" sclass="ffunc" original_name="t_zaxistypelist_cdi_zaxis_type" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist_cdi_zaxis_type</name>
+    </id>
+    <id type="F7fa135d997f0" sclass="ffunc" original_name="t_zaxistypelist_za_count" declared_in="mo_zaxis_type">
+      <name>t_zaxistypelist_za_count</name>
+    </id>
+    <id type="F7fa135d9be90" sclass="ffunc" original_name="t_zaxiskey_destruct" declared_in="mo_zaxis_type">
+      <name>t_zaxiskey_destruct</name>
+    </id>
+    <id type="F7fa135d9d7c0" sclass="ffunc" original_name="t_zaxistype_destruct" declared_in="mo_zaxis_type">
+      <name>t_zaxistype_destruct</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7fa135f05080">c_int32_t</name>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ec240">cdi_undefid</name>
+      <value>
+        <FintConstant type="Fint">-1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ec440">zaxis_surface</name>
+      <value>
+        <FintConstant type="Fint">0</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ec640">zaxis_generic</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ec890">zaxis_hybrid</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ecae0">zaxis_hybrid_half</name>
+      <value>
+        <FintConstant type="Fint">3</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ecd30">zaxis_pressure</name>
+      <value>
+        <FintConstant type="Fint">4</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ecf80">zaxis_height</name>
+      <value>
+        <FintConstant type="Fint">5</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ed1f0">zaxis_depth_below_sea</name>
+      <value>
+        <FintConstant type="Fint">6</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ed460">zaxis_depth_below_land</name>
+      <value>
+        <FintConstant type="Fint">7</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ed6d0">zaxis_isentropic</name>
+      <value>
+        <FintConstant type="Fint">8</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ed940">zaxis_altitude</name>
+      <value>
+        <FintConstant type="Fint">10</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384edbb0">zaxis_meansea</name>
+      <value>
+        <FintConstant type="Fint">12</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ede20">zaxis_toa</name>
+      <value>
+        <FintConstant type="Fint">13</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ee090">zaxis_atmosphere</name>
+      <value>
+        <FintConstant type="Fint">15</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ee300">zaxis_cloud_base</name>
+      <value>
+        <FintConstant type="Fint">16</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ee570">zaxis_cloud_top</name>
+      <value>
+        <FintConstant type="Fint">17</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ee7e0">zaxis_isotherm_zero</name>
+      <value>
+        <FintConstant type="Fint">18</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384eea50">zaxis_lake_bottom</name>
+      <value>
+        <FintConstant type="Fint">20</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384eecc0">zaxis_sediment_bottom_tw</name>
+      <value>
+        <FintConstant type="Fint">23</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384eef30">zaxis_mix_layer</name>
+      <value>
+        <FintConstant type="Fint">24</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fa1384ef1a0">zaxis_reference</name>
+      <value>
+        <FintConstant type="Fint">25</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="32" file="../../../icon-eniac/src/shared/mo_zaxis_type.f90">
+      <name type="C7fa1384f1e10">modname</name>
+      <value>
+        <FcharacterConstant type="C7fa1384f21d0">mo_zaxis_type</FcharacterConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="t_zaxistypelist" lineno="113" file="../../../icon-eniac/src/shared/mo_zaxis_type.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="114" file="../../../icon-eniac/src/shared/mo_zaxis_type.f90">
+        <name type="F7fa138635d70">new_zaxistypelist</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

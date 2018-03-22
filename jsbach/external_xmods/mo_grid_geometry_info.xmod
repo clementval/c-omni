@@ -1,0 +1,726 @@
+<OmniFortranModule version="1.0">
+  <name>mo_grid_geometry_info</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mo_math_types</name>
+    <name>mo_physical_constants</name>
+    <name>mo_math_constants</name>
+    <name>mo_exception</name>
+    <name>mo_netcdf_parallel</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fa6a4e821c0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e82d30" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e838a0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e84410" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e84f90" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e85b00" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e86680" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e871f0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa6a4e87d60" is_public="true" is_parameter="true" ref="Fint"/>
+    <FstructType type="S7fa6a4e89230" is_public="true">
+      <symbols>
+        <id type="Fint">
+          <name>cell_type</name>
+        </id>
+        <id type="Fint">
+          <name>geometry_type</name>
+        </id>
+        <id type="Fint">
+          <name>grid_creation_process</name>
+        </id>
+        <id type="Fint">
+          <name>grid_optimization_process</name>
+        </id>
+        <id type="S7fa6a4e8b770">
+          <name>center</name>
+        </id>
+        <id type="R7fa6a4e8c010">
+          <name>mean_edge_length</name>
+        </id>
+        <id type="R7fa6a4e8c860">
+          <name>mean_dual_edge_length</name>
+        </id>
+        <id type="R7fa6a4e8d0a0">
+          <name>mean_cell_area</name>
+        </id>
+        <id type="R7fa6a4e8d8f0">
+          <name>mean_dual_cell_area</name>
+        </id>
+        <id type="R7fa6a4e8e130">
+          <name>domain_length</name>
+        </id>
+        <id type="R7fa6a4e8e970">
+          <name>domain_height</name>
+        </id>
+        <id type="R7fa6a4e8f1c0">
+          <name>sphere_radius</name>
+        </id>
+        <id type="R7fa6a4e8fa20">
+          <name>mean_characteristic_length</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7fa6a4c09820" is_private="true">
+      <symbols>
+        <id type="A7fa6a4c09a70">
+          <name>x</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa6a4d0fc90" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fa6a4c09cb0" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0fc90" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="A7fa6a4c09a70" ref="R7fa6a4c09cb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fa6a4e8b570" ref="S7fa6a4c09820"/>
+    <FbasicType type="S7fa6a4e8b770" ref="S7fa6a4e8b570"/>
+    <FbasicType type="I7fa6a4d0c7f0" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fa6a4e8be10" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8c010" ref="R7fa6a4e8be10"/>
+    <FbasicType type="R7fa6a4e8c660" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8c860" ref="R7fa6a4e8c660"/>
+    <FbasicType type="R7fa6a4e8cea0" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8d0a0" ref="R7fa6a4e8cea0"/>
+    <FbasicType type="R7fa6a4e8d6f0" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8d8f0" ref="R7fa6a4e8d6f0"/>
+    <FbasicType type="R7fa6a4e8df30" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8e130" ref="R7fa6a4e8df30"/>
+    <FbasicType type="R7fa6a4e8e770" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8e970" ref="R7fa6a4e8e770"/>
+    <FbasicType type="R7fa6a4e8efc0" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8f1c0" ref="R7fa6a4e8efc0"/>
+    <FbasicType type="R7fa6a4e8f820" ref="Freal">
+      <kind>
+        <Var type="I7fa6a4d0c7f0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4e8fa20" ref="R7fa6a4e8f820"/>
+    <FfunctionType type="F7fa6a4ee39d0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fa6a4ee4490">to_geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa6a4ee4370" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a4ee4490" ref="S7fa6a4ee4370"/>
+    <FfunctionType type="F7fa6a4ee98b0" return_type="Fint"/>
+    <FfunctionType type="F7fa6a4ef2190" return_type="Fint"/>
+    <FbasicType type="A7fa6a4ee8780" ref="R7fa6a4c09cb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fa6a4ee7240" ref="R7fa6a4c09cb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fa6a4ee6690" ref="S7fa6a4e8b770"/>
+    <FbasicType type="A7fa6a4ee7c70" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7fa6a4ee8f60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4eea080" ref="R7fa6a4e8c010"/>
+    <FbasicType type="R7fa6a4eea250" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4eeb240" ref="R7fa6a4e8c860"/>
+    <FbasicType type="R7fa6a4eeb410" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4eec400" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="R7fa6a4eec5d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4eed5c0" ref="R7fa6a4e8d8f0"/>
+    <FbasicType type="R7fa6a4eed790" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4eee980" ref="R7fa6a4e8e130"/>
+    <FbasicType type="R7fa6a4eeeb50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4c5f400" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4c0f510" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4eefec0" ref="R7fa6a4e8e970"/>
+    <FbasicType type="R7fa6a4ef0090" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa6a4ef1100" ref="R7fa6a4e8f1c0"/>
+    <FbasicType type="R7fa6a4ef17a0" ref="R7fa6a4e8fa20"/>
+    <FbasicType type="R7fa6a4ef1970" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fa6a4ef2f30" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fa6a4ef3ea0">from_geometry_info</name>
+        <name type="S7fa6a4ef3fc0">to_geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa6a4ef3d80" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a4ef3ea0" ref="S7fa6a4ef3d80"/>
+    <FbasicType type="S7fa6a4ef3fc0" ref="S7fa6a4ef3d80"/>
+    <FbasicType type="S7fa6a4ef6d90" ref="S7fa6a4e8b770"/>
+    <FbasicType type="S7fa6a4ef7000" ref="S7fa6a4e8b770"/>
+    <FbasicType type="R7fa6a4ef76b0" ref="R7fa6a4e8c010"/>
+    <FbasicType type="R7fa6a4ef7920" ref="R7fa6a4e8c010"/>
+    <FbasicType type="R7fa6a4ef7fd0" ref="R7fa6a4e8c860"/>
+    <FbasicType type="R7fa6a4ef8240" ref="R7fa6a4e8c860"/>
+    <FbasicType type="R7fa6a4ef88f0" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="R7fa6a4ef8b60" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="R7fa6a4ef9210" ref="R7fa6a4e8d8f0"/>
+    <FbasicType type="R7fa6a4ef9480" ref="R7fa6a4e8d8f0"/>
+    <FbasicType type="R7fa6a4ef9b30" ref="R7fa6a4e8e130"/>
+    <FbasicType type="R7fa6a4ef9da0" ref="R7fa6a4e8e130"/>
+    <FbasicType type="R7fa6a4efa450" ref="R7fa6a4e8e970"/>
+    <FbasicType type="R7fa6a4efa6c0" ref="R7fa6a4e8e970"/>
+    <FbasicType type="R7fa6a4efad70" ref="R7fa6a4e8f1c0"/>
+    <FbasicType type="R7fa6a4efafe0" ref="R7fa6a4e8f1c0"/>
+    <FbasicType type="R7fa6a4efb690" ref="R7fa6a4e8fa20"/>
+    <FbasicType type="R7fa6a4efb900" ref="R7fa6a4e8fa20"/>
+    <FfunctionType type="F7fa6a7100450" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fa6a7100f10">to_geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fa6a7100df0" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a7100f10" ref="S7fa6a7100df0"/>
+    <FfunctionType type="F7fa6a7101fc0" return_type="R7fa6a7101ea0"/>
+    <FbasicType type="R7fa6a7101ea0" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="R7fa6a71018b0" ref="R7fa6a4e8fa20"/>
+    <FbasicType type="R7fa6a7101c50" ref="R7fa6a4e8d0a0"/>
+    <FfunctionType type="F7fa6a7102d20" result_name="resolution_string" return_type="C7fa6a7104200" is_public="true">
+      <params>
+        <name type="S7fa6a71037e0">geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fa6a7104000" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a7104200" ref="C7fa6a7104000"/>
+    <FbasicType type="S7fa6a71036c0" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a71037e0" ref="S7fa6a71036c0"/>
+    <FfunctionType type="F7fa6a7105d30" return_type="Fint"/>
+    <FfunctionType type="F7fa6a7107ae0" return_type="Fint"/>
+    <FfunctionType type="F7fa6a7108150" return_type="Fint"/>
+    <FfunctionType type="F7fa6a71095d0" return_type="Fint"/>
+    <FbasicType type="R7fa6a7105210" ref="R7fa6a4e8fa20"/>
+    <FbasicType type="R7fa6a71053e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7fa6a7106d20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a71070f0" ref="R7fa6a4e8fa20"/>
+    <FbasicType type="R7fa6a71072c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7fa6a7108410" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">2</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a7108e50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">8</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7109140" ref="R7fa6a4e8fa20"/>
+    <FfunctionType type="F7fa6a710a8a0" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7fa6a710b800">ncid</name>
+        <name type="S7fa6a710bde0">geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa6a710b800" intent="in" ref="Fint"/>
+    <FbasicType type="S7fa6a710bcc0" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a710bde0" ref="S7fa6a710bcc0"/>
+    <FbasicType type="C7fa6a710cd90" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a710cf90" is_parameter="true" ref="C7fa6a710cd90"/>
+    <FbasicType type="C7fa6a710d370" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fa6a4e26510" return_type="FnumericAll" is_private="true"/>
+    <FbasicType type="C7fa6a710ebc0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a71101e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fa6a4e26ad0" return_type="FnumericAll" is_private="true"/>
+    <FbasicType type="C7fa6a7111810" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7111a70" ref="R7fa6a4e8c010"/>
+    <FbasicType type="C7fa6a7112e50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a71130b0" ref="R7fa6a4e8c860"/>
+    <FbasicType type="C7fa6a7114480" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a71146d0" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="C7fa6a7115ab0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">19</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7115d10" ref="R7fa6a4e8d8f0"/>
+    <FbasicType type="C7fa6a71170e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7117330" ref="R7fa6a4e8e130"/>
+    <FbasicType type="C7fa6a7118700" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7118950" ref="R7fa6a4e8e970"/>
+    <FbasicType type="C7fa6a7119d20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7119f70" ref="R7fa6a4e8f1c0"/>
+    <FbasicType type="C7fa6a711b450" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fa6a711c2b0" ref="R7fa6a4c09cb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fa6a711b700" ref="S7fa6a4e8b770"/>
+    <FfunctionType type="F7fa6a711f280" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7fa6a71201e0">ncid</name>
+        <name type="S7fa6a71207c0">geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa6a71201e0" intent="in" ref="Fint"/>
+    <FbasicType type="S7fa6a71206a0" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a71207c0" ref="S7fa6a71206a0"/>
+    <FbasicType type="C7fa6a71216d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a71218d0" is_parameter="true" ref="C7fa6a71216d0"/>
+    <FbasicType type="C7fa6a7121cb0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a7123500" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a7124b20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a71261a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7126400" ref="R7fa6a4e8c010"/>
+    <FbasicType type="C7fa6a71277e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7127a40" ref="R7fa6a4e8c860"/>
+    <FbasicType type="C7fa6a7128e10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7129060" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="C7fa6a712a440" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">19</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a712a6a0" ref="R7fa6a4e8d8f0"/>
+    <FbasicType type="C7fa6a712ba70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a712bcc0" ref="R7fa6a4e8e130"/>
+    <FbasicType type="C7fa6a712d090" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a712d2e0" ref="R7fa6a4e8e970"/>
+    <FbasicType type="C7fa6a712e6b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a712e900" ref="R7fa6a4e8f1c0"/>
+    <FbasicType type="C7fa6a712fde0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fa6a7130c40" ref="R7fa6a4c09cb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fa6a7130090" ref="S7fa6a4e8b770"/>
+    <FfunctionType type="F7fa6a7132f60" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7fa6a7133ec0">ncid</name>
+        <name type="S7fa6a71344a0">geometry_info</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa6a7133ec0" intent="in" ref="Fint"/>
+    <FbasicType type="S7fa6a7134380" ref="S7fa6a4e89230"/>
+    <FbasicType type="S7fa6a71344a0" ref="S7fa6a7134380"/>
+    <FfunctionType type="F7fa6a7135820" return_type="Fvoid"/>
+    <FfunctionType type="F7fa6a7143240" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="I7fa6a7143df0">return_status</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa6a7143df0" intent="in" ref="Fint"/>
+    <FbasicType type="C7fa6a7135c90" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a7136fd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a7138320" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7138750" ref="R7fa6a4e8c010"/>
+    <FbasicType type="C7fa6a7139630" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a7139a60" ref="R7fa6a4e8c860"/>
+    <FbasicType type="C7fa6a713a930" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a713ad50" ref="R7fa6a4e8d0a0"/>
+    <FbasicType type="C7fa6a713bc30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">19</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a713c060" ref="R7fa6a4e8d8f0"/>
+    <FbasicType type="C7fa6a713cf30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a713d350" ref="R7fa6a4e8e130"/>
+    <FbasicType type="C7fa6a713e220" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a713e640" ref="R7fa6a4e8e970"/>
+    <FbasicType type="C7fa6a713f510" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fa6a713f930" ref="R7fa6a4e8f1c0"/>
+    <FbasicType type="C7fa6a7140910" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fa6a7141940" ref="R7fa6a4c09cb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fa6a7140d90" ref="S7fa6a4e8b770"/>
+    <FfunctionType type="F7fa6a4c7fa50" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fa6a4c7fd70">name</name>
+        <name type="C7fa6a4c80090">text</name>
+        <name type="I7fa6a4c803b0">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fa6a4c7fe90" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a4c7fd70" intent="in" ref="C7fa6a4c7fe90"/>
+    <FbasicType type="C7fa6a4c801b0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a4c80090" intent="in" is_optional="true" ref="C7fa6a4c801b0"/>
+    <FbasicType type="I7fa6a4c803b0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fa6a7144de0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a4e90830" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">80</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fa6a4e90710" ref="C7fa6a4e90830"/>
+    <FfunctionType type="F7fa6a4ea0c10" return_type="Fint" is_external="true"/>
+    <FbasicType type="F7fa6a4ea0d30" is_private="true" ref="F7fa6a4ea0c10"/>
+    <FfunctionType type="F7fa6a4ea2290" return_type="Fint" is_external="true"/>
+    <FbasicType type="F7fa6a4ea23b0" is_private="true" ref="F7fa6a4ea2290"/>
+    <FfunctionType type="F7fa6a4ea0670" return_type="Fint" is_external="true"/>
+    <FbasicType type="F7fa6a4ea0790" is_private="true" ref="F7fa6a4ea0670"/>
+    <FfunctionType type="F7fa6a4ea1cf0" return_type="Fint" is_external="true"/>
+    <FbasicType type="F7fa6a4ea1e10" is_private="true" ref="F7fa6a4ea1cf0"/>
+    <FfunctionType type="F7fa6a4e90950" return_type="C7fa6a4e90710" is_external="true"/>
+    <FbasicType type="F7fa6a4e90a70" is_private="true" ref="F7fa6a4e90950"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7fa6a4e821c0" sclass="flocal" original_name="sphere_geometry" declared_in="mo_grid_geometry_info">
+      <name>sphere_geometry</name>
+    </id>
+    <id type="I7fa6a4e82d30" sclass="flocal" original_name="planar_torus_geometry" declared_in="mo_grid_geometry_info">
+      <name>planar_torus_geometry</name>
+    </id>
+    <id type="I7fa6a4e838a0" sclass="flocal" original_name="planar_channel_geometry" declared_in="mo_grid_geometry_info">
+      <name>planar_channel_geometry</name>
+    </id>
+    <id type="I7fa6a4e84410" sclass="flocal" original_name="planar_geometry" declared_in="mo_grid_geometry_info">
+      <name>planar_geometry</name>
+    </id>
+    <id type="I7fa6a4e84f90" sclass="flocal" original_name="triangular_cell" declared_in="mo_grid_geometry_info">
+      <name>triangular_cell</name>
+    </id>
+    <id type="I7fa6a4e85b00" sclass="flocal" original_name="hexagonal_cell" declared_in="mo_grid_geometry_info">
+      <name>hexagonal_cell</name>
+    </id>
+    <id type="I7fa6a4e86680" sclass="flocal" original_name="cut_off_grid" declared_in="mo_grid_geometry_info">
+      <name>cut_off_grid</name>
+    </id>
+    <id type="I7fa6a4e871f0" sclass="flocal" original_name="refined_bisection_grid" declared_in="mo_grid_geometry_info">
+      <name>refined_bisection_grid</name>
+    </id>
+    <id type="I7fa6a4e87d60" sclass="flocal" original_name="dualy_refined_grid" declared_in="mo_grid_geometry_info">
+      <name>dualy_refined_grid</name>
+    </id>
+    <id type="S7fa6a4e89230" sclass="ftype_name" original_name="t_grid_geometry_info" declared_in="mo_grid_geometry_info">
+      <name>t_grid_geometry_info</name>
+    </id>
+    <id type="F7fa6a4ee39d0" sclass="ffunc" original_name="set_default_geometry_info" declared_in="mo_grid_geometry_info">
+      <name>set_default_geometry_info</name>
+    </id>
+    <id type="F7fa6a4ef2f30" sclass="ffunc" original_name="copy_grid_geometry_info" declared_in="mo_grid_geometry_info">
+      <name>copy_grid_geometry_info</name>
+    </id>
+    <id type="F7fa6a7100450" sclass="ffunc" original_name="set_grid_geometry_derived_info" declared_in="mo_grid_geometry_info">
+      <name>set_grid_geometry_derived_info</name>
+    </id>
+    <id type="F7fa6a711f280" sclass="ffunc" original_name="read_geometry_info" declared_in="mo_grid_geometry_info">
+      <name>read_geometry_info</name>
+    </id>
+    <id type="F7fa6a710a8a0" sclass="ffunc" original_name="parallel_read_geometry_info" declared_in="mo_grid_geometry_info">
+      <name>parallel_read_geometry_info</name>
+    </id>
+    <id type="F7fa6a7132f60" sclass="ffunc" original_name="write_geometry_info" declared_in="mo_grid_geometry_info">
+      <name>write_geometry_info</name>
+    </id>
+    <id type="F7fa6a7102d20" sclass="ffunc" original_name="get_resolution_string" declared_in="mo_grid_geometry_info">
+      <name>get_resolution_string</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="66" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e821c0">sphere_geometry</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="67" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e82d30">planar_torus_geometry</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="68" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e838a0">planar_channel_geometry</name>
+      <value>
+        <FintConstant type="Fint">3</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="69" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e84410">planar_geometry</name>
+      <value>
+        <FintConstant type="Fint">4</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="73" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e84f90">triangular_cell</name>
+      <value>
+        <FintConstant type="Fint">3</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="74" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e85b00">hexagonal_cell</name>
+      <value>
+        <FintConstant type="Fint">6</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="78" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e86680">cut_off_grid</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="79" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e871f0">refined_bisection_grid</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="80" file="../../../icon-eniac/src/shr_horizontal/mo_grid_geometry_info.f90">
+      <name type="I7fa6a4e87d60">dualy_refined_grid</name>
+      <value>
+        <FintConstant type="Fint">3</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

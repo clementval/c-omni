@@ -1,0 +1,413 @@
+<OmniFortranModule version="1.0">
+  <name>mo_run_config</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mo_impl_constants</name>
+    <name>mtime</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fbee371af50" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fbee371b1c0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="L7fbee58a2d80" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fbee58a33c0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fbee58a3a00" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fbee58b9bf0" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fbee58a4050" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fbee58a4690" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b8920" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b8f60" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b95a0" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fbee58a4ce0" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fbee58a5330" is_public="true" ref="Flogical"/>
+    <FbasicType type="A7fbee58a5bb0" is_public="true" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fbee58a6430" is_public="true" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fbee58a6a80" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee350c400" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fbee58a70e0" ref="Freal">
+      <kind>
+        <Var type="I7fbee350c400" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fbee58a7200" is_public="true" ref="R7fbee58a70e0"/>
+    <FbasicType type="L7fbee58a7850" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fbee58a7e90" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fbee58a84d0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fbee58aa810" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58ae650" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58aec90" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58af2d0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b1210" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b0bd0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b1850" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b1e90" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b69c0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b7000" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b7640" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b7c80" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b82c0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58af910" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58aff50" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b0590" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b24d0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b2b20" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b3160" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b37a0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b3de0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b4420" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b4a60" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b50a0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b56e0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b5d20" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fbee58b6370" is_public="true" ref="Fint"/>
+    <FbasicType type="A7fbee58ac8a0" is_public="true" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">0</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fbee58ad390" is_public="true" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">0</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fbee58ade80" is_public="true" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">0</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fbee58a9850" is_public="true" ref="Fint"/>
+    <FfunctionType type="F7fbee58be370" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fbee58bed80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fbee58bef80" is_parameter="true" ref="C7fbee58bed80"/>
+    <FbasicType type="C7fbee58bf360" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">27</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fbee58c0bf0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fbee58c00e0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fbee58c2670" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fbee58c1b60" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fbee58abcd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fbee58abdf0" ref="C7fbee58abcd0"/>
+    <FbasicType type="A7fbee58abf10" is_public="true" ref="C7fbee58abdf0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">5</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FstructType type="S7fbee58b9e60" is_public="true">
+      <symbols>
+        <id type="Flogical">
+          <name>l_none</name>
+        </id>
+        <id type="Flogical">
+          <name>l_nml</name>
+        </id>
+        <id type="Flogical">
+          <name>l_totint</name>
+        </id>
+        <id type="Flogical">
+          <name>l_maxwinds</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="S7fbee58bb840" ref="S7fbee58b9e60"/>
+    <FbasicType type="S7fbee58bb960" is_public="true" ref="S7fbee58bb840"/>
+    <FbasicType type="I7fbee58aaf90" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fbee58aa050" is_public="true" ref="Fint"/>
+    <FbasicType type="C7fbee58bc010" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fbee58bc130" is_public="true" ref="C7fbee58bc010"/>
+    <FbasicType type="I7fbee58a8b60" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fbee58a91b0" is_public="true" ref="Flogical"/>
+    <FbasicType type="C7fbee58bc7e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fbee58bc900" is_public="true" ref="C7fbee58bc7e0"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7fbee371af50" sclass="flocal" original_name="timer_mode_aggregated" declared_in="mo_impl_constants">
+      <name>timer_mode_aggregated</name>
+    </id>
+    <id type="I7fbee371b1c0" sclass="flocal" original_name="timer_mode_detailed" declared_in="mo_impl_constants">
+      <name>timer_mode_detailed</name>
+    </id>
+    <id type="L7fbee58a2d80" sclass="fsave" original_name="ltestcase" declared_in="mo_run_config">
+      <name>ltestcase</name>
+    </id>
+    <id type="L7fbee58a33c0" sclass="fsave" original_name="ldynamics" declared_in="mo_run_config">
+      <name>ldynamics</name>
+    </id>
+    <id type="I7fbee58a3a00" sclass="flocal" original_name="iforcing" declared_in="mo_run_config">
+      <name>iforcing</name>
+    </id>
+    <id type="L7fbee58b9bf0" sclass="fsave" original_name="lforcing" declared_in="mo_run_config">
+      <name>lforcing</name>
+    </id>
+    <id type="L7fbee58a4050" sclass="fsave" original_name="ltransport" declared_in="mo_run_config">
+      <name>ltransport</name>
+    </id>
+    <id type="I7fbee58a4690" sclass="fsave" original_name="ntracer" declared_in="mo_run_config">
+      <name>ntracer</name>
+    </id>
+    <id type="I7fbee58b8920" sclass="flocal" original_name="nlev" declared_in="mo_run_config">
+      <name>nlev</name>
+    </id>
+    <id type="I7fbee58b8f60" sclass="fsave" original_name="nlevm1" declared_in="mo_run_config">
+      <name>nlevm1</name>
+    </id>
+    <id type="I7fbee58b95a0" sclass="fsave" original_name="nlevp1" declared_in="mo_run_config">
+      <name>nlevp1</name>
+    </id>
+    <id type="L7fbee58a4ce0" sclass="fsave" original_name="lart" declared_in="mo_run_config">
+      <name>lart</name>
+    </id>
+    <id type="L7fbee58a5330" sclass="flocal" original_name="lvert_nest" declared_in="mo_run_config">
+      <name>lvert_nest</name>
+    </id>
+    <id type="A7fbee58a5bb0" sclass="fsave" original_name="num_lev" declared_in="mo_run_config">
+      <name>num_lev</name>
+    </id>
+    <id type="A7fbee58a6430" sclass="fsave" original_name="nshift" declared_in="mo_run_config">
+      <name>nshift</name>
+    </id>
+    <id type="I7fbee58a6a80" sclass="fsave" original_name="nsteps" declared_in="mo_run_config">
+      <name>nsteps</name>
+    </id>
+    <id type="R7fbee58a7200" sclass="fsave" original_name="dtime" declared_in="mo_run_config">
+      <name>dtime</name>
+    </id>
+    <id type="L7fbee58a7850" sclass="fsave" original_name="ltimer" declared_in="mo_run_config">
+      <name>ltimer</name>
+    </id>
+    <id type="I7fbee58a7e90" sclass="fsave" original_name="timers_level" declared_in="mo_run_config">
+      <name>timers_level</name>
+    </id>
+    <id type="L7fbee58a84d0" sclass="fsave" original_name="activate_sync_timers" declared_in="mo_run_config">
+      <name>activate_sync_timers</name>
+    </id>
+    <id type="I7fbee58aa810" sclass="fsave" original_name="msg_level" declared_in="mo_run_config">
+      <name>msg_level</name>
+    </id>
+    <id type="I7fbee58ae650" sclass="fsave" original_name="iqv" declared_in="mo_run_config">
+      <name>iqv</name>
+    </id>
+    <id type="I7fbee58aec90" sclass="fsave" original_name="iqc" declared_in="mo_run_config">
+      <name>iqc</name>
+    </id>
+    <id type="I7fbee58af2d0" sclass="fsave" original_name="iqi" declared_in="mo_run_config">
+      <name>iqi</name>
+    </id>
+    <id type="I7fbee58b1210" sclass="fsave" original_name="iqs" declared_in="mo_run_config">
+      <name>iqs</name>
+    </id>
+    <id type="I7fbee58b0bd0" sclass="fsave" original_name="iqr" declared_in="mo_run_config">
+      <name>iqr</name>
+    </id>
+    <id type="I7fbee58b1850" sclass="fsave" original_name="iqtvar" declared_in="mo_run_config">
+      <name>iqtvar</name>
+    </id>
+    <id type="I7fbee58b1e90" sclass="fsave" original_name="nqtendphy" declared_in="mo_run_config">
+      <name>nqtendphy</name>
+    </id>
+    <id type="I7fbee58b69c0" sclass="fsave" original_name="iqt" declared_in="mo_run_config">
+      <name>iqt</name>
+    </id>
+    <id type="I7fbee58b7000" sclass="fsave" original_name="ico2" declared_in="mo_run_config">
+      <name>ico2</name>
+    </id>
+    <id type="I7fbee58b7640" sclass="fsave" original_name="ich4" declared_in="mo_run_config">
+      <name>ich4</name>
+    </id>
+    <id type="I7fbee58b7c80" sclass="fsave" original_name="in2o" declared_in="mo_run_config">
+      <name>in2o</name>
+    </id>
+    <id type="I7fbee58b82c0" sclass="fsave" original_name="io3" declared_in="mo_run_config">
+      <name>io3</name>
+    </id>
+    <id type="I7fbee58af910" sclass="fsave" original_name="iqni" declared_in="mo_run_config">
+      <name>iqni</name>
+    </id>
+    <id type="I7fbee58aff50" sclass="fsave" original_name="iqni_nuc" declared_in="mo_run_config">
+      <name>iqni_nuc</name>
+    </id>
+    <id type="I7fbee58b0590" sclass="fsave" original_name="iqg" declared_in="mo_run_config">
+      <name>iqg</name>
+    </id>
+    <id type="I7fbee58b24d0" sclass="fsave" original_name="iqm_max" declared_in="mo_run_config">
+      <name>iqm_max</name>
+    </id>
+    <id type="I7fbee58b2b20" sclass="fsave" original_name="iqh" declared_in="mo_run_config">
+      <name>iqh</name>
+    </id>
+    <id type="I7fbee58b3160" sclass="fsave" original_name="iqnh" declared_in="mo_run_config">
+      <name>iqnh</name>
+    </id>
+    <id type="I7fbee58b37a0" sclass="fsave" original_name="iqnr" declared_in="mo_run_config">
+      <name>iqnr</name>
+    </id>
+    <id type="I7fbee58b3de0" sclass="fsave" original_name="iqns" declared_in="mo_run_config">
+      <name>iqns</name>
+    </id>
+    <id type="I7fbee58b4420" sclass="fsave" original_name="iqng" declared_in="mo_run_config">
+      <name>iqng</name>
+    </id>
+    <id type="I7fbee58b4a60" sclass="fsave" original_name="iqnc" declared_in="mo_run_config">
+      <name>iqnc</name>
+    </id>
+    <id type="I7fbee58b50a0" sclass="fsave" original_name="inccn" declared_in="mo_run_config">
+      <name>inccn</name>
+    </id>
+    <id type="I7fbee58b56e0" sclass="fsave" original_name="ininpot" declared_in="mo_run_config">
+      <name>ininpot</name>
+    </id>
+    <id type="I7fbee58b5d20" sclass="fsave" original_name="ininact" declared_in="mo_run_config">
+      <name>ininact</name>
+    </id>
+    <id type="I7fbee58b6370" sclass="fsave" original_name="iqtke" declared_in="mo_run_config">
+      <name>iqtke</name>
+    </id>
+    <id type="A7fbee58ac8a0" sclass="fsave" original_name="grid_generatingcenter" declared_in="mo_run_config">
+      <name>grid_generatingcenter</name>
+    </id>
+    <id type="A7fbee58ad390" sclass="fsave" original_name="grid_generatingsubcenter" declared_in="mo_run_config">
+      <name>grid_generatingsubcenter</name>
+    </id>
+    <id type="A7fbee58ade80" sclass="fsave" original_name="number_of_grid_used" declared_in="mo_run_config">
+      <name>number_of_grid_used</name>
+    </id>
+    <id type="I7fbee58a9850" sclass="fsave" original_name="test_mode" declared_in="mo_run_config">
+      <name>test_mode</name>
+    </id>
+    <id type="F7fbee58be370" sclass="ffunc" original_name="configure_run" declared_in="mo_run_config">
+      <name>configure_run</name>
+    </id>
+    <id type="A7fbee58abf10" sclass="fsave" original_name="output" declared_in="mo_run_config">
+      <name>output</name>
+    </id>
+    <id type="S7fbee58b9e60" sclass="ftype_name" original_name="t_output_mode" declared_in="mo_run_config">
+      <name>t_output_mode</name>
+    </id>
+    <id type="S7fbee58bb960" sclass="fsave" original_name="output_mode" declared_in="mo_run_config">
+      <name>output_mode</name>
+    </id>
+    <id type="I7fbee58aaf90" sclass="flocal" original_name="max_output_modes" declared_in="mo_run_config">
+      <name>max_output_modes</name>
+    </id>
+    <id type="I7fbee58aa050" sclass="fsave" original_name="debug_check_level" declared_in="mo_run_config">
+      <name>debug_check_level</name>
+    </id>
+    <id type="C7fbee58bc130" sclass="fsave" original_name="restart_filename" declared_in="mo_run_config">
+      <name>restart_filename</name>
+    </id>
+    <id type="I7fbee58a8b60" sclass="fsave" original_name="profiling_output" declared_in="mo_run_config">
+      <name>profiling_output</name>
+    </id>
+    <id type="L7fbee58a91b0" sclass="fsave" original_name="check_uuid_gracefully" declared_in="mo_run_config">
+      <name>check_uuid_gracefully</name>
+    </id>
+    <id type="C7fbee58bc900" sclass="fsave" original_name="modeltimestep" declared_in="mo_run_config">
+      <name>modeltimestep</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7fbee371af50">timer_mode_aggregated</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fbee371b1c0">timer_mode_detailed</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="87" file="../../../icon-eniac/src/configure_model/mo_run_config.f90">
+      <name type="I7fbee58aaf90">max_output_modes</name>
+      <value>
+        <FintConstant type="Fint">5</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

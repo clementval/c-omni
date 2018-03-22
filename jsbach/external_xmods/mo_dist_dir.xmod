@@ -1,0 +1,1132 @@
+<OmniFortranModule version="1.0">
+  <name>mo_dist_dir</name>
+  <depends>
+    <name>mo_exception</name>
+    <name>mo_mpi</name>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7fac33c3c230" return_type="Fvoid">
+      <params>
+        <name type="C7fac33c3c550">name</name>
+        <name type="C7fac33c3c870">text</name>
+        <name type="I7fac33c3cb90">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fac33c3c670" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fac33c3c550" intent="in" ref="C7fac33c3c670"/>
+    <FbasicType type="C7fac33c3c990" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fac33c3c870" intent="in" is_optional="true" ref="C7fac33c3c990"/>
+    <FbasicType type="I7fac33c3cb90" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fac33c26fa0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fac33c265b0" intent="in" ref="C7fac33c26fa0"/>
+    <FbasicType type="C7fac33c274e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fac33c26910" intent="in" is_optional="true" ref="C7fac33c274e0"/>
+    <FbasicType type="I7fac33c26c70" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fac35247e50" return_type="Fvoid"/>
+    <FfunctionType type="F7fac33f696a0" return_type="Fvoid">
+      <params>
+        <name type="A7fac33d49b70">sendbuf</name>
+        <name type="A7fac33d49ed0">recvbuf</name>
+        <name type="I7fac33d4a230">comm</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac33d4a530" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fac33d4aa70" intent="inout" ref="I7fac33d4a530"/>
+    <FbasicType type="A7fac33d49b70" intent="inout" ref="I7fac33d4aa70">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d4ac50" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fac33d4b1a0" intent="inout" ref="I7fac33d4ac50"/>
+    <FbasicType type="A7fac33d49ed0" intent="inout" ref="I7fac33d4b1a0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d4a230" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fac35248d60" return_type="Fvoid"/>
+    <FfunctionType type="F7fac33fa24f0" return_type="Fvoid">
+      <params>
+        <name type="A7fac33d6dc20">sendbuf</name>
+        <name type="A7fac33d6df80">sendcounts</name>
+        <name type="A7fac33d6e2e0">sdispls</name>
+        <name type="A7fac33d6e640">recvbuf</name>
+        <name type="A7fac33d6e970">recvcounts</name>
+        <name type="A7fac33d6eca0">rdispls</name>
+        <name type="I7fac33d6f000">comm</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac33d6f300" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d6f8d0" intent="in" ref="I7fac33d6f300"/>
+    <FbasicType type="A7fac33d6dc20" intent="in" ref="I7fac33d6f8d0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d6fa30" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d6ff70" intent="in" ref="I7fac33d6fa30"/>
+    <FbasicType type="A7fac33d6df80" intent="in" ref="I7fac33d6ff70">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d700c0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d705d0" intent="in" ref="I7fac33d700c0"/>
+    <FbasicType type="A7fac33d6e2e0" intent="in" ref="I7fac33d705d0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d70790" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fac33d70ce0" intent="inout" ref="I7fac33d70790"/>
+    <FbasicType type="A7fac33d6e640" intent="inout" ref="I7fac33d70ce0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d70e00" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d71340" intent="in" ref="I7fac33d70e00"/>
+    <FbasicType type="A7fac33d6e970" intent="in" ref="I7fac33d71340">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d71520" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d71a70" intent="in" ref="I7fac33d71520"/>
+    <FbasicType type="A7fac33d6eca0" intent="in" ref="I7fac33d71a70">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d6f000" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fac33fa3500" return_type="Fvoid">
+      <params>
+        <name type="A7fac33d63010">sendbuf</name>
+        <name type="A7fac33d63370">sendcounts</name>
+        <name type="A7fac33d636d0">sdispls</name>
+        <name type="A7fac33d63a70">recvbuf</name>
+        <name type="A7fac33d63da0">recvcounts</name>
+        <name type="A7fac33d64100">rdispls</name>
+        <name type="I7fac33d64460">comm</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac33d64790" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d65100" intent="in" ref="I7fac33d64790"/>
+    <FbasicType type="A7fac33d65230" intent="in" ref="I7fac33d65100">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33d63010" intent="in" ref="I7fac33d65100">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d65350" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d65890" intent="in" ref="I7fac33d65350"/>
+    <FbasicType type="A7fac33d63370" intent="in" ref="I7fac33d65890">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d659b0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d65fc0" intent="in" ref="I7fac33d659b0"/>
+    <FbasicType type="A7fac33d636d0" intent="in" ref="I7fac33d65fc0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d66120" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fac33d66a20" intent="inout" ref="I7fac33d66120"/>
+    <FbasicType type="A7fac33d66b40" intent="inout" ref="I7fac33d66a20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33d63a70" intent="inout" ref="I7fac33d66a20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d66cc0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d67210" intent="in" ref="I7fac33d66cc0"/>
+    <FbasicType type="A7fac33d63da0" intent="in" ref="I7fac33d67210">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d67370" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d678b0" intent="in" ref="I7fac33d67370"/>
+    <FbasicType type="A7fac33d64100" intent="in" ref="I7fac33d678b0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d64460" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fac33fa44d0" return_type="Fvoid">
+      <params>
+        <name type="A7fac33d57d90">sendbuf</name>
+        <name type="A7fac33d580f0">sendcounts</name>
+        <name type="A7fac33d58450">sdispls</name>
+        <name type="A7fac33d58810">recvbuf</name>
+        <name type="A7fac33d58b40">recvcounts</name>
+        <name type="A7fac33d58ea0">rdispls</name>
+        <name type="I7fac33d591d0">comm</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac33c43270" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fac33d596b0" ref="Freal">
+      <kind>
+        <Var type="I7fac33c43270" scope="local">sp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fac33d59970" intent="in" ref="R7fac33d596b0"/>
+    <FbasicType type="R7fac33d5a1e0" intent="in" ref="R7fac33d59970"/>
+    <FbasicType type="A7fac33d5a300" intent="in" ref="R7fac33d5a1e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33d57d90" intent="in" ref="R7fac33d5a1e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d5a450" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d5a990" intent="in" ref="I7fac33d5a450"/>
+    <FbasicType type="A7fac33d580f0" intent="in" ref="I7fac33d5a990">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d5ab10" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d5b060" intent="in" ref="I7fac33d5ab10"/>
+    <FbasicType type="A7fac33d58450" intent="in" ref="I7fac33d5b060">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7fac33d5b340" ref="Freal">
+      <kind>
+        <Var type="I7fac33c43270" scope="local">sp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fac33d5b600" intent="inout" ref="R7fac33d5b340"/>
+    <FbasicType type="R7fac33d5be70" intent="inout" ref="R7fac33d5b600"/>
+    <FbasicType type="A7fac33d5bf90" intent="inout" ref="R7fac33d5be70">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33d58810" intent="inout" ref="R7fac33d5be70">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d5c0b0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d5c5f0" intent="in" ref="I7fac33d5c0b0"/>
+    <FbasicType type="A7fac33d58b40" intent="in" ref="I7fac33d5c5f0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d5c7a0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d5ccf0" intent="in" ref="I7fac33d5c7a0"/>
+    <FbasicType type="A7fac33d58ea0" intent="in" ref="I7fac33d5ccf0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d591d0" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fac33fa54a0" return_type="Fvoid">
+      <params>
+        <name type="A7fac33d4cac0">sendbuf</name>
+        <name type="A7fac33d4ce20">sendcounts</name>
+        <name type="A7fac33d4d180">sdispls</name>
+        <name type="A7fac33d4d590">recvbuf</name>
+        <name type="A7fac33d4d8f0">recvcounts</name>
+        <name type="A7fac33d4dc20">rdispls</name>
+        <name type="I7fac33d4dfa0">comm</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac33c44d30" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fac33d4e480" ref="Freal">
+      <kind>
+        <Var type="I7fac33c44d30" scope="local">dp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fac33d4e740" intent="in" ref="R7fac33d4e480"/>
+    <FbasicType type="R7fac33d4ef90" intent="in" ref="R7fac33d4e740"/>
+    <FbasicType type="A7fac33d4f0b0" intent="in" ref="R7fac33d4ef90">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33d4cac0" intent="in" ref="R7fac33d4ef90">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d4f200" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d4f710" intent="in" ref="I7fac33d4f200"/>
+    <FbasicType type="A7fac33d4ce20" intent="in" ref="I7fac33d4f710">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d4f8c0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d4fe10" intent="in" ref="I7fac33d4f8c0"/>
+    <FbasicType type="A7fac33d4d180" intent="in" ref="I7fac33d4fe10">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7fac33d500f0" ref="Freal">
+      <kind>
+        <Var type="I7fac33c44d30" scope="local">dp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fac33d503b0" intent="inout" ref="R7fac33d500f0"/>
+    <FbasicType type="R7fac33d50c20" intent="inout" ref="R7fac33d503b0"/>
+    <FbasicType type="A7fac33d50d40" intent="inout" ref="R7fac33d50c20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33d4d590" intent="inout" ref="R7fac33d50c20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d50e60" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d513a0" intent="in" ref="I7fac33d50e60"/>
+    <FbasicType type="A7fac33d4d8f0" intent="in" ref="I7fac33d513a0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d51550" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac33d51aa0" intent="in" ref="I7fac33d51550"/>
+    <FbasicType type="A7fac33d4dc20" intent="in" ref="I7fac33d51aa0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac33d4dfa0" intent="in" ref="Fint"/>
+    <FstructType type="S7fac352493d0" is_public="true">
+      <symbols>
+        <id type="A7fac35249f00">
+          <name>owner</name>
+        </id>
+        <id type="Fint">
+          <name>global_size</name>
+        </id>
+        <id type="Fint">
+          <name>local_start_index</name>
+        </id>
+        <id type="Fint">
+          <name>comm</name>
+        </id>
+        <id type="Fint">
+          <name>comm_size</name>
+        </id>
+        <id type="Fint">
+          <name>comm_rank</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fac35249de0" is_allocatable="true" ref="Fint"/>
+    <FbasicType type="A7fac35249f00" is_allocatable="true" ref="I7fac35249de0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac3524e720" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fac352501f0">dist_dir</name>
+        <name type="A7fac35250bd0">owned_indices</name>
+        <name type="I7fac35251360">global_size</name>
+        <name type="I7fac35251af0">comm</name>
+        <name type="I7fac35252280">comm_rank</name>
+        <name type="I7fac35252a10">comm_size</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fac352500d0" ref="S7fac352493d0"/>
+    <FbasicType type="S7fac352501f0" intent="out" ref="S7fac352500d0"/>
+    <FbasicType type="I7fac35250ab0" intent="in" ref="Fint"/>
+    <FbasicType type="A7fac35250bd0" intent="in" ref="I7fac35250ab0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac35251360" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac35251af0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac35252280" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac35252a10" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac352538d0" is_pointer="true" ref="Fint"/>
+    <FbasicType type="I7fac35253ad0" is_pointer="true" ref="I7fac352538d0"/>
+    <FbasicType type="A7fac35253bf0" is_pointer="true" ref="I7fac35253ad0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35254580" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7fac35252a10" scope="local">comm_size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35254fc0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7fac35252a10" scope="local">comm_size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac3510b890" return_type="Fvoid"/>
+    <FfunctionType type="F7fac33e1f0d0" return_type="Fvoid">
+      <params>
+        <name type="A7fac33e21060">indices</name>
+        <name type="A7fac3515cb00">recv_buffer</name>
+        <name type="A7fac3515df40">num_send_indices_per_process</name>
+        <name type="A7fac3515e9b0">num_recv_indices_per_process</name>
+        <name type="I7fac3515f190">num_indices_per_process</name>
+        <name type="I7fac3515d450">comm</name>
+        <name type="I7fac3515d570">comm_size</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac33e20f40" intent="in" ref="Fint"/>
+    <FbasicType type="A7fac33e21060" intent="in" ref="I7fac33e20f40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac3515c8c0" is_pointer="true" ref="Fint"/>
+    <FbasicType type="I7fac3515c9e0" intent="out" is_pointer="true" ref="I7fac3515c8c0"/>
+    <FbasicType type="A7fac3515cb00" intent="out" is_pointer="true" ref="I7fac3515c9e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac3515de20" intent="out" ref="Fint"/>
+    <FbasicType type="I7fac3515d570" intent="in" ref="Fint"/>
+    <FbasicType type="A7fac3515df40" intent="out" ref="I7fac3515de20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7fac3515d570" scope="local">comm_size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac3515e890" intent="out" ref="Fint"/>
+    <FbasicType type="A7fac3515e9b0" intent="out" ref="I7fac3515e890">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7fac3515d570" scope="local">comm_size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac3515f190" intent="in" ref="Fint"/>
+    <FbasicType type="I7fac3515d450" intent="in" ref="Fint"/>
+    <FbasicType type="A7fac3510ac50" is_allocatable="true" ref="I7fac35249de0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">num_indices_per_process</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac3510a390" is_allocatable="true" ref="I7fac35249de0"/>
+    <FbasicType type="A7fac3510a4b0" is_allocatable="true" ref="I7fac3510a390">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3510d600" is_allocatable="true" ref="I7fac35249de0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac3510cbc0" is_allocatable="true" ref="I7fac35249de0"/>
+    <FbasicType type="A7fac3510cce0" is_allocatable="true" ref="I7fac3510cbc0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3510d100" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac351109e0" is_allocatable="true" ref="I7fac35249de0"/>
+    <FbasicType type="A7fac35110b00" is_allocatable="true" ref="I7fac351109e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3515fee0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <plusExpr type="I7fac3515d570">
+            <Var type="I7fac3515d570" scope="local">comm_size</Var>
+            <FintConstant type="Fint">1</FintConstant>
+          </plusExpr>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35160700" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7fac3515d570" scope="local">comm_size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac35160e60" is_allocatable="true" ref="Fint"/>
+    <FbasicType type="I7fac35161060" is_allocatable="true" ref="I7fac35160e60"/>
+    <FbasicType type="A7fac35161180" is_allocatable="true" ref="I7fac35161060">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac351658a0" return_type="Fint"/>
+    <FfunctionType type="F7fac3517c500" return_type="Fint"/>
+    <FfunctionType type="F7fac3516e610" return_type="Fint"/>
+    <FfunctionType type="F7fac3516fe20" return_type="Fint"/>
+    <FfunctionType type="F7fac351827a0" return_type="Fint"/>
+    <FbasicType type="A7fac35163e90" intent="out" ref="I7fac3515de20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac351634a0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac351653c0" intent="in" ref="I7fac33e20f40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35164ec0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516a3a0" intent="out" ref="I7fac3515de20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac351699b0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516b1e0" intent="out" ref="I7fac3515e890">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516a7f0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516e250" intent="out" ref="I7fac3515de20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516d860" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35170590" is_allocatable="true" ref="I7fac35161060">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>sum</name>
+            <arguments>
+              <FarrayRef type="A7fac3516e250">
+                <varRef type="A7fac3515df40">
+                  <Var type="A7fac3515df40" scope="local">num_send_indices_per_process</Var>
+                </varRef>
+                <indexRange is_assumed_shape="true">
+                </indexRange>
+              </FarrayRef>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516fa60" intent="out" ref="I7fac3515e890">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3516f070" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac351708c0" intent="out" is_pointer="true" ref="I7fac3515c9e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>sum</name>
+            <arguments>
+              <FarrayRef type="A7fac3516fa60">
+                <varRef type="A7fac3515e9b0">
+                  <Var type="A7fac3515e9b0" scope="local">num_recv_indices_per_process</Var>
+                </varRef>
+                <indexRange is_assumed_shape="true">
+                </indexRange>
+              </FarrayRef>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35172930" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35171710" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3517c020" intent="in" ref="I7fac33e20f40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3517bb20" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac35112b90" result_name="owners" return_type="A7fac35114fb0">
+      <params>
+        <name type="S7fac35113aa0">dist_dir</name>
+        <name type="A7fac35114480">indices</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fac35114360" intent="in" ref="Fint"/>
+    <FbasicType type="A7fac35114480" intent="in" ref="I7fac35114360">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35114fb0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>size</name>
+            <arguments>
+              <Var type="A7fac35114480" scope="local">indices</Var>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fac35113980" ref="S7fac352493d0"/>
+    <FbasicType type="S7fac35113aa0" intent="in" ref="S7fac35113980"/>
+    <FfunctionType type="F7fac3511b530" return_type="Fint"/>
+    <FfunctionType type="F7fac3513f960" return_type="Fint"/>
+    <FbasicType type="A7fac35116260" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="comm_size">
+            <varRef type="S7fac35113aa0">
+              <Var type="S7fac35113aa0" scope="local">dist_dir</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35116cc0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="comm_size">
+            <varRef type="S7fac35113aa0">
+              <Var type="S7fac35113aa0" scope="local">dist_dir</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac351173e0" is_pointer="true" ref="Fint"/>
+    <FbasicType type="I7fac351175e0" is_pointer="true" ref="I7fac351173e0"/>
+    <FbasicType type="A7fac35117700" is_pointer="true" ref="I7fac351175e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac35117e50" is_allocatable="true" ref="Fint"/>
+    <FbasicType type="I7fac35118050" is_allocatable="true" ref="I7fac35117e50"/>
+    <FbasicType type="A7fac35118170" is_allocatable="true" ref="I7fac35118050">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35119110" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="comm_size">
+            <varRef type="S7fac35113aa0">
+              <Var type="S7fac35113aa0" scope="local">dist_dir</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35119430" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <plusExpr type="Fint">
+            <FmemberRef type="Fint" member="comm_size">
+              <varRef type="S7fac35113aa0">
+                <Var type="S7fac35113aa0" scope="local">dist_dir</Var>
+              </varRef>
+            </FmemberRef>
+            <FintConstant type="Fint">1</FintConstant>
+          </plusExpr>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac351206a0" return_type="Flogical"/>
+    <FfunctionType type="F7fac351217c0" return_type="V7fac351216a0"/>
+    <FbasicType type="V7fac351216a0" is_target="true" ref="FnumericAll"/>
+    <FfunctionType type="F7fac35123870" return_type="Fvoid"/>
+    <FbasicType type="A7fac35120210" ref="Flogical">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3511dff0" ref="Flogical">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3511d7f0" intent="in" ref="I7fac35114360">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3511d2f0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3511f1c0" ref="Flogical">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3511e8c0" intent="in" ref="I7fac35114360">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3511e3c0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fac35120b40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fac35120ce0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">20</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fac35125570" is_pointer="true" ref="I7fac351175e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35125070" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac351261c0" is_allocatable="true" ref="I7fac35118050">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>size</name>
+            <arguments>
+              <FarrayRef type="A7fac35125570">
+                <varRef type="A7fac35117700">
+                  <Var type="A7fac35117700" scope="local">recv_buffer</Var>
+                </varRef>
+                <indexRange is_assumed_shape="true">
+                </indexRange>
+              </FarrayRef>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35127620" is_allocatable="true" ref="I7fac35118050">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35127120" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35128f70" is_allocatable="true" ref="I7fac35249de0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac35127b90" is_allocatable="true" ref="I7fac35249de0"/>
+    <FbasicType type="A7fac35127cb0" is_allocatable="true" ref="I7fac35127b90">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35128670" is_pointer="true" ref="I7fac351175e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35128170" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3512ad80" intent="in" ref="I7fac35114360">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3512a880" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3512b9d0" is_pointer="true" ref="I7fac351175e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>size</name>
+            <arguments>
+              <FarrayRef type="A7fac3512ad80">
+                <varRef type="A7fac35114480">
+                  <Var type="A7fac35114480" scope="local">indices</Var>
+                </varRef>
+                <indexRange is_assumed_shape="true">
+                </indexRange>
+              </FarrayRef>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3513f480" intent="in" ref="I7fac35114360">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac3513ef80" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac35146750" result_name="owners" return_type="A7fac35148f50">
+      <params>
+        <name type="S7fac35147940">dist_dir</name>
+        <name type="A7fac35149b80">indices</name>
+        <name type="A7fac35148320">mask</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7fac35148200" intent="in" ref="Flogical"/>
+    <FbasicType type="A7fac35148320" intent="in" ref="L7fac35148200">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35148f50" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>size</name>
+            <arguments>
+              <Var type="A7fac35148320" scope="local">mask</Var>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fac35147820" ref="S7fac352493d0"/>
+    <FbasicType type="S7fac35147940" intent="in" ref="S7fac35147820"/>
+    <FbasicType type="I7fac35149a60" intent="in" ref="Fint"/>
+    <FbasicType type="A7fac35149b80" intent="in" ref="I7fac35149a60">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac3514c9b0" return_type="Fint"/>
+    <FfunctionType type="F7fac3514fb90" return_type="Fint"/>
+    <FbasicType type="I7fac3514a2e0" is_allocatable="true" ref="Fint"/>
+    <FbasicType type="I7fac3514a4e0" is_allocatable="true" ref="I7fac3514a2e0"/>
+    <FbasicType type="A7fac3514a600" is_allocatable="true" ref="I7fac3514a4e0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac3514d3b0" return_type="Fint"/>
+    <FfunctionType type="F7fac33e19e60" return_type="A7fac33e19d40"/>
+    <FbasicType type="A7fac33e19d40" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac35155a20" return_type="A7fac35155900"/>
+    <FbasicType type="A7fac35155900" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">n</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac35159f50" return_type="Fint"/>
+    <FfunctionType type="F7fac3515b530" return_type="Fint"/>
+    <FbasicType type="C7fac33e14a60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">30</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fac33e14c00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">17</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fac33e15da0" is_allocatable="true" ref="I7fac3514a4e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <plusExpr type="Fint">
+            <Var type="Fint" scope="local">m</Var>
+            <FintConstant type="Fint">1</FintConstant>
+          </plusExpr>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e18020" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e17140" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e18f60" intent="in" ref="I7fac35149a60">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e18a60" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e198b0" intent="in" ref="L7fac35148200">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e193b0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e1c570" is_allocatable="true" ref="I7fac3514a4e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e1bb80" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fac3524d720" return_type="V7fac3524d600" is_public="true"/>
+    <FbasicType type="V7fac3524d600" ref="FnumericAll"/>
+    <FbasicType type="A7fac33e1e0e0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac33e1d200" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35151f80" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">n</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac351510a0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">n</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35153570" is_allocatable="true" ref="I7fac3514a4e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35152b80" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">m</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35154a60" intent="in" ref="L7fac35148200">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">n</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fac35154070" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">n</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fac35159e30" is_allocatable="true" ref="I7fac3514a2e0"/>
+    <FfunctionType type="F7fac35145d00" result_name="owners" return_type="A7fac35114fb0">
+      <params>
+        <name type="S7fac35113aa0">dist_dir</name>
+        <name type="A7fac35114480">indices</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fac3515bc20" result_name="owners" return_type="A7fac35148f50">
+      <params>
+        <name type="S7fac35147940">dist_dir</name>
+        <name type="A7fac35149b80">indices</name>
+        <name type="A7fac35148320">mask</name>
+      </params>
+    </FfunctionType>
+  </typeTable>
+  <identifiers>
+    <id type="F7fac33c3c230" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="F7fac35247e50" sclass="ffunc" original_name="p_alltoall" declared_in="mo_mpi">
+      <name>p_alltoall</name>
+    </id>
+    <id type="F7fac35248d60" sclass="ffunc" original_name="p_alltoallv" declared_in="mo_mpi">
+      <name>p_alltoallv</name>
+    </id>
+    <id type="S7fac352493d0" sclass="ftype_name" original_name="t_dist_dir" declared_in="mo_dist_dir">
+      <name>t_dist_dir</name>
+    </id>
+    <id type="F7fac3524e720" sclass="ffunc" original_name="dist_dir_setup" declared_in="mo_dist_dir">
+      <name>dist_dir_setup</name>
+    </id>
+    <id type="F7fac3524d720" sclass="ffunc" original_name="dist_dir_get_owners" declared_in="mo_dist_dir">
+      <name>dist_dir_get_owners</name>
+    </id>
+    <id type="F7fac35112b90" sclass="ffunc" original_name="dist_dir_get_owners_all" declared_in="mo_dist_dir">
+      <name>dist_dir_get_owners_all</name>
+    </id>
+    <id type="F7fac35146750" sclass="ffunc" original_name="dist_dir_get_owners_subset" declared_in="mo_dist_dir">
+      <name>dist_dir_get_owners_subset</name>
+    </id>
+    <id type="F7fac33e1f0d0" sclass="ffunc" original_name="distribute_indices" declared_in="mo_dist_dir">
+      <name>distribute_indices</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="dist_dir_get_owners" lineno="31" file="../../../icon-eniac/src/parallel_infrastructure/mo_dist_dir.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="32" file="../../../icon-eniac/src/parallel_infrastructure/mo_dist_dir.f90">
+        <name type="F7fac35145d00">dist_dir_get_owners_all</name>
+        <name type="F7fac3515bc20">dist_dir_get_owners_subset</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="33" file="../../../icon-eniac/src/parallel_infrastructure/mo_dist_dir.f90">
+        <name type="F7fac35145d00">dist_dir_get_owners_all</name>
+        <name type="F7fac3515bc20">dist_dir_get_owners_subset</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

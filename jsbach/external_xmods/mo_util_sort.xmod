@@ -1,0 +1,239 @@
+<OmniFortranModule version="1.0">
+  <name>mo_util_sort</name>
+  <depends>
+    <name>mo_exception</name>
+    <name>mo_impl_constants</name>
+    <name>mo_kind</name>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7fae16ecdea0" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fae16eb2920" return_type="Fvoid" is_recursive="true" is_private="true">
+      <params>
+        <name type="A7fae16eb41f0">a</name>
+        <name type="A7fae16eb4c50">permutation</name>
+        <name type="I7fae16eb5620">l_in</name>
+        <name type="I7fae16eb5740">r_in</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fae16eaa6a0" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fae16eb3fb0" ref="Freal">
+      <kind>
+        <Var type="I7fae16eaa6a0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fae16eb40d0" intent="inout" ref="R7fae16eb3fb0"/>
+    <FbasicType type="A7fae16eb41f0" intent="inout" ref="R7fae16eb40d0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae16eb4b30" intent="inout" is_optional="true" ref="Fint"/>
+    <FbasicType type="A7fae16eb4c50" intent="inout" is_optional="true" ref="I7fae16eb4b30">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae16eb5620" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fae16eb5740" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="R7fae16eb7680" ref="Freal">
+      <kind>
+        <Var type="I7fae16eaa6a0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fae16eb7880" ref="R7fae16eb7680"/>
+    <FbasicType type="R7fae16eb7a80" ref="R7fae16eb7680"/>
+    <FfunctionType type="F7fae16eb8a10" return_type="Flogical"/>
+    <FfunctionType type="F7fae16eca760" return_type="Flogical"/>
+    <FfunctionType type="F7fae16ebafe0" return_type="Fint"/>
+    <FfunctionType type="F7fae16eda3b0" return_type="Fvoid" is_recursive="true" is_private="true">
+      <params>
+        <name type="A7fae16edbb40">a</name>
+        <name type="A7fae16edc5a0">permutation</name>
+        <name type="I7fae16edcf70">l_in</name>
+        <name type="I7fae16edd090">r_in</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fae16edba20" intent="inout" ref="Fint"/>
+    <FbasicType type="A7fae16edbb40" intent="inout" ref="I7fae16edba20">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae16edc480" intent="inout" is_optional="true" ref="Fint"/>
+    <FbasicType type="A7fae16edc5a0" intent="inout" is_optional="true" ref="I7fae16edc480">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae16edcf70" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fae16edd090" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fae16ee01b0" return_type="Flogical"/>
+    <FfunctionType type="F7fae16ef8dd0" return_type="Flogical"/>
+    <FfunctionType type="F7fae16ee2780" return_type="Fint"/>
+    <FfunctionType type="F7fae188021a0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="A7fae18803060">a</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fae18802f40" intent="inout" ref="Fint"/>
+    <FbasicType type="A7fae18803060" intent="inout" ref="I7fae18802f40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fae18805220" return_type="Fint"/>
+    <FfunctionType type="F7fae16ead860" return_type="Fvoid" is_public="true"/>
+    <FstructType type="S7fae16eadad0" is_public="true">
+      <symbols>
+        <id type="A7fae16eae960">
+          <name>indextranslation</name>
+        </id>
+        <id type="A7fae16eaec80">
+          <name>inversetranslation</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fae16eaf410" pass="pass">
+          <name>construct</name>
+          <binding>
+            <name>permutation_construct</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fae16eafb40" pass="pass">
+          <name>permute</name>
+          <binding>
+            <name>permutation_permute</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fae16eb0270" pass="pass">
+          <name>reverse</name>
+          <binding>
+            <name>permutation_reverse</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fae16eb09a0" pass="pass">
+          <name>destruct</name>
+          <binding>
+            <name>permutation_destruct</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="I7fae16eae840" is_allocatable="true" ref="Fint"/>
+    <FbasicType type="A7fae16eae960" is_allocatable="true" ref="I7fae16eae840">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae16eaeb60" is_allocatable="true" ref="Fint"/>
+    <FbasicType type="A7fae16eaec80" is_allocatable="true" ref="I7fae16eaeb60">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fae16ecf500" return_type="Fvoid">
+      <params>
+        <name type="A7fae16eb41f0">a</name>
+        <name type="A7fae16eb4c50">permutation</name>
+        <name type="I7fae16eb5620">l_in</name>
+        <name type="I7fae16eb5740">r_in</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fae18801870" return_type="Fvoid">
+      <params>
+        <name type="A7fae16edbb40">a</name>
+        <name type="A7fae16edc5a0">permutation</name>
+        <name type="I7fae16edcf70">l_in</name>
+        <name type="I7fae16edd090">r_in</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fae16d1ffa0" return_type="Fvoid">
+      <params>
+        <name type="A7fae18803060">a</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fae16d20970" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fae16d217d0">me</name>
+        <name type="A7fae16d221b0">order</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fae16d217d0" intent="inout" is_class="true" ref="S7fae16eadad0"/>
+    <FbasicType type="I7fae16d22090" intent="in" ref="Fint"/>
+    <FbasicType type="A7fae16d221b0" intent="in" ref="I7fae16d22090">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fae16eaf410" ref="F7fae16d20970"/>
+    <FfunctionType type="F7fae1881c6f0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fae1881d840">me</name>
+        <name type="A7fae1881e220">input</name>
+        <name type="A7fae1881ec00">output</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fae1881d840" intent="inout" is_class="true" ref="S7fae16eadad0"/>
+    <FbasicType type="I7fae1881e100" intent="in" ref="Fint"/>
+    <FbasicType type="A7fae1881e220" intent="in" ref="I7fae1881e100">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae1881eae0" intent="out" ref="Fint"/>
+    <FbasicType type="A7fae1881ec00" intent="out" ref="I7fae1881eae0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fae16eafb40" ref="F7fae1881c6f0"/>
+    <FfunctionType type="F7fae1882e8a0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fae1882f9f0">me</name>
+        <name type="A7fae188303d0">input</name>
+        <name type="A7fae18830db0">output</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fae1882f9f0" intent="inout" is_class="true" ref="S7fae16eadad0"/>
+    <FbasicType type="I7fae188302b0" intent="in" ref="Fint"/>
+    <FbasicType type="A7fae188303d0" intent="in" ref="I7fae188302b0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fae18830c90" intent="out" ref="Fint"/>
+    <FbasicType type="A7fae18830db0" intent="out" ref="I7fae18830c90">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fae16eb0270" ref="F7fae1882e8a0"/>
+    <FfunctionType type="F7fae18840900" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fae18841470">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fae18841470" intent="inout" is_class="true" ref="S7fae16eadad0"/>
+    <FbasicType type="F7fae16eb09a0" ref="F7fae18840900"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7fae16ecdea0" sclass="ffunc" original_name="quicksort" declared_in="mo_util_sort">
+      <name>quicksort</name>
+    </id>
+    <id type="F7fae16ead860" sclass="ffunc" original_name="insertion_sort" declared_in="mo_util_sort">
+      <name>insertion_sort</name>
+    </id>
+    <id type="S7fae16eadad0" sclass="ftype_name" original_name="t_permutation" declared_in="mo_util_sort">
+      <name>t_permutation</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="quicksort" lineno="32" file="../../../icon-eniac/src/shared/mo_util_sort.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="33" file="../../../icon-eniac/src/shared/mo_util_sort.f90">
+        <name type="F7fae16ecf500">quicksort_real</name>
+        <name type="F7fae18801870">quicksort_int</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="34" file="../../../icon-eniac/src/shared/mo_util_sort.f90">
+        <name type="F7fae16ecf500">quicksort_real</name>
+        <name type="F7fae18801870">quicksort_int</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="insertion_sort" lineno="37" file="../../../icon-eniac/src/shared/mo_util_sort.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="38" file="../../../icon-eniac/src/shared/mo_util_sort.f90">
+        <name type="F7fae16d1ffa0">insertion_sort_int</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

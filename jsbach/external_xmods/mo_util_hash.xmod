@@ -1,0 +1,66 @@
+<OmniFortranModule version="1.0">
+  <name>mo_util_hash</name>
+  <depends>
+    <name>iso_c_binding</name>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7fc097e0e300" result_name="hash" return_type="I7fc097e0ea40" is_public="true" bind="C" bind_name="util_hashword">
+      <params>
+        <name type="A7fc097e108c0">text</name>
+        <name type="I7fc097e111c0">text_len</name>
+        <name type="I7fc097e11ac0">inithash</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fc097e0cd30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fc097e0ca10" is_private="true" is_parameter="true" ref="I7fc097e0cd30"/>
+    <FbasicType type="I7fc097e0fa20" ref="Fint">
+      <kind>
+        <Var type="I7fc097e0ca10" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fc097e0ea40" ref="I7fc097e0fa20"/>
+    <FbasicType type="I7fc097e0ce50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fc097e0cc10" is_private="true" is_parameter="true" ref="I7fc097e0ce50"/>
+    <FbasicType type="C7fc097e10680" ref="Fcharacter">
+      <len>
+        <Var type="I7fc097e0cc10" scope="local">c_char</Var>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fc097e108c0" intent="in" ref="C7fc097e10680">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fc097e110a0" ref="Fint">
+      <kind>
+        <Var type="I7fc097e0ca10" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fc097e111c0" intent="in" is_value="true" ref="I7fc097e110a0"/>
+    <FbasicType type="I7fc097e119a0" ref="Fint">
+      <kind>
+        <Var type="I7fc097e0ca10" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fc097e11ac0" intent="in" is_value="true" ref="I7fc097e119a0"/>
+    <FbasicType type="I7fc097e0fc20" ref="I7fc097e0fa20"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7fc097e0e300" sclass="ffunc" original_name="util_hashword" declared_in="mo_util_hash">
+      <name>util_hashword</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

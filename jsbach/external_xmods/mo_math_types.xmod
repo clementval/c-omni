@@ -1,0 +1,267 @@
+<OmniFortranModule version="1.0">
+  <name>mo_math_types</name>
+  <depends>
+    <name>iso_c_binding</name>
+    <name>mo_fortran_tools</name>
+    <name>mo_kind</name>
+  </depends>
+  <typeTable>
+    <FstructType type="S7fe8f370d140" is_public="true">
+      <symbols>
+        <id type="A7fe8f370dcc0">
+          <name>x</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe8f370bce0" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fe8f370d9a0" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370bce0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f370dba0" ref="R7fe8f370d9a0"/>
+    <FbasicType type="A7fe8f370dcc0" ref="R7fe8f370dba0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">3</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FstructType type="S7fe8f370e1b0" is_public="true">
+      <symbols>
+        <id type="R7fe8f370ead0">
+          <name>lon</name>
+        </id>
+        <id type="R7fe8f370f310">
+          <name>lat</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="R7fe8f370e8d0" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370bce0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f370ead0" ref="R7fe8f370e8d0"/>
+    <FbasicType type="R7fe8f370f110" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370bce0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f370f310" ref="R7fe8f370f110"/>
+    <FstructType type="S7fe8f3710b70" is_public="true">
+      <symbols>
+        <id type="S7fe8f3711340">
+          <name>p1</name>
+        </id>
+        <id type="S7fe8f3711a30">
+          <name>p2</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="S7fe8f3711140" ref="S7fe8f370e1b0"/>
+    <FbasicType type="S7fe8f3711340" ref="S7fe8f3711140"/>
+    <FbasicType type="S7fe8f3711830" ref="S7fe8f370e1b0"/>
+    <FbasicType type="S7fe8f3711a30" ref="S7fe8f3711830"/>
+    <FstructType type="S7fe8f370f690" is_public="true">
+      <symbols>
+        <id type="R7fe8f370ffb0">
+          <name>v1</name>
+        </id>
+        <id type="R7fe8f37107f0">
+          <name>v2</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="R7fe8f370fdb0" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370bce0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f370ffb0" ref="R7fe8f370fdb0"/>
+    <FbasicType type="R7fe8f37105f0" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370bce0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f37107f0" ref="R7fe8f37105f0"/>
+    <FstructType type="S7fe8f3711f50" is_public="true" extends="S7fe8f403af70">
+      <symbols>
+        <id type="I7fe8f3712900">
+          <name>samplecount</name>
+        </id>
+        <id type="R7fe8f37134c0">
+          <name>min</name>
+        </id>
+        <id type="R7fe8f37136c0">
+          <name>mean</name>
+        </id>
+        <id type="R7fe8f37138c0">
+          <name>max</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fe8f3714050" pass="pass">
+          <name>construct</name>
+          <binding>
+            <name>statistics_construct</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>add</name>
+          <binding>
+            <name>adddata_s1d</name>
+            <name>adddata_d1d</name>
+            <name>addstatistics</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fe8f37150e0" pass="pass">
+          <name>destruct</name>
+          <binding>
+            <name>statistics_destruct</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fe8f37157f0" pass="pass">
+          <name>adddata_s1d</name>
+          <binding>
+            <name>stastistics_adddata_s1d</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fe8f3715ef0" pass="pass">
+          <name>adddata_d1d</name>
+          <binding>
+            <name>stastistics_adddata_d1d</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fe8f37165f0" pass="pass">
+          <name>addstatistics</name>
+          <binding>
+            <name>stastistics_addstatistics</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fe8f403af70" is_private="true" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fe8f403b090">
+          <name>destruct</name>
+          <binding>
+            <name>interface_destructor</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="I7fe8f3712700" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe8f3712900" ref="I7fe8f3712700"/>
+    <FbasicType type="R7fe8f37132c0" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370bce0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f37134c0" ref="R7fe8f37132c0"/>
+    <FbasicType type="R7fe8f37136c0" ref="R7fe8f37132c0"/>
+    <FbasicType type="R7fe8f37138c0" ref="R7fe8f37132c0"/>
+    <FfunctionType type="F7fe8f403b2d0" return_type="Fvoid">
+      <params>
+        <name type="S7fe8f403b5f0">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe8f403b710" ref="S7fe8f403af70"/>
+    <FbasicType type="S7fe8f403b5f0" intent="inout" is_class="true" ref="S7fe8f403b710"/>
+    <FbasicType type="F7fe8f403b1b0" ref="F7fe8f403b2d0"/>
+    <FbasicType type="F7fe8f403b090" ref="F7fe8f403b1b0"/>
+    <FfunctionType type="F7fe8f37175e0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe8f3718150">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe8f3718150" intent="inout" is_class="true" ref="S7fe8f3711f50"/>
+    <FbasicType type="F7fe8f3714050" ref="F7fe8f37175e0"/>
+    <FfunctionType type="F7fe8f3746060" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe8f3746bd0">me</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe8f3746bd0" intent="inout" is_class="true" ref="S7fe8f3711f50"/>
+    <FbasicType type="F7fe8f37150e0" ref="F7fe8f3746060"/>
+    <FfunctionType type="F7fe8f371cbc0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe8f371da20">me</name>
+        <name type="A7fe8f371e540">data</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe8f371da20" intent="inout" is_class="true" ref="S7fe8f3711f50"/>
+    <FbasicType type="I7fe8f370b840" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fe8f371e300" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370b840" scope="local">sp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f371e420" intent="in" ref="R7fe8f371e300"/>
+    <FbasicType type="A7fe8f371e540" intent="in" ref="R7fe8f371e420">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fe8f37157f0" ref="F7fe8f371cbc0"/>
+    <FfunctionType type="F7fe8f372c810" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe8f372d670">me</name>
+        <name type="A7fe8f372e190">data</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe8f372d670" intent="inout" is_class="true" ref="S7fe8f3711f50"/>
+    <FbasicType type="I7fe8f370ba90" is_private="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fe8f372df50" ref="Freal">
+      <kind>
+        <Var type="I7fe8f370ba90" scope="local">dp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe8f372e070" intent="in" ref="R7fe8f372df50"/>
+    <FbasicType type="A7fe8f372e190" intent="in" ref="R7fe8f372e070">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fe8f3715ef0" ref="F7fe8f372c810"/>
+    <FfunctionType type="F7fe8f373c530" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe8f373d390">me</name>
+        <name type="S7fe8f373da20">other</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe8f373d390" intent="inout" is_class="true" ref="S7fe8f3711f50"/>
+    <FbasicType type="S7fe8f373da20" intent="in" is_class="true" ref="S7fe8f3711f50"/>
+    <FbasicType type="F7fe8f37165f0" ref="F7fe8f373c530"/>
+  </typeTable>
+  <identifiers>
+    <id type="S7fe8f370d140" sclass="ftype_name" original_name="t_cartesian_coordinates" declared_in="mo_math_types">
+      <name>t_cartesian_coordinates</name>
+    </id>
+    <id type="S7fe8f370e1b0" sclass="ftype_name" original_name="t_geographical_coordinates" declared_in="mo_math_types">
+      <name>t_geographical_coordinates</name>
+    </id>
+    <id type="S7fe8f3710b70" sclass="ftype_name" original_name="t_line" declared_in="mo_math_types">
+      <name>t_line</name>
+    </id>
+    <id type="S7fe8f370f690" sclass="ftype_name" original_name="t_tangent_vectors" declared_in="mo_math_types">
+      <name>t_tangent_vectors</name>
+    </id>
+    <id type="S7fe8f3711f50" sclass="ftype_name" original_name="t_statistics" declared_in="mo_math_types">
+      <name>t_statistics</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
