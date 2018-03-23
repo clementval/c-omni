@@ -43,7 +43,7 @@ OMNI_LATEST=false
 # JSBACH related variables
 JSBACH_GIT_REPO="git@git.mpimet.mpg.de:jsbach.git"
 JSBACH_GIT_BRANCH="develop"
-JSBACH_GIT_HASH=5ab00c692a73030eb4fe000a535f905d112b704c
+JSBACH_GIT_HASH="5ab00c692a73030eb4fe000a535f905d112b704c"
 JSBACH_REP="jsbach"
 JSBACH_SRC="./${JSBACH_REP}/pp"
 JSBACH_START="jsb4_driver_dsl4jsb.f90"
@@ -65,18 +65,6 @@ while getopts "hfb:c:i:spo" opt; do
   s) SKIP_CLAW=true;;
   p) SKIP_PARSING=true;;
   o) OMNI_LATEST=true;;
-#  f)
-#    CLAW_REPO=$CLAW_FORK_REPO
-#    ;;
-#  b)
-#    CLAW_BRANCH=$OPTARG
-#    ;;
-#  c)
-#    CLAW_BASE_COMPILER=$OPTARG
-#    ;;
-#  i)
-#    CLAW_INSTALL_DIR=$OPTARG
-#    ;;
   esac
 done
 
@@ -86,11 +74,6 @@ if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
 fi
 
 COMPUTER=$(hostname)
-
-#if [[ $COMPUTER == *"daint"* ]]
-#then
-#  COMPUTER="daint"
-#  CMAKE_MOD="CMake"
 if [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
@@ -110,19 +93,20 @@ echo "======================================="
 echo "JSBACH -> CLAW/OMNI Compiler parse test"
 echo "======================================="
 echo "- JSBACH information"
-echo "  - Git repository: $JSBACH_GIT_REPO"
-echo "  - Git branch: $JSBACH_GIT_BRANCH"
+echo "  - Git repository: ${JSBACH_GIT_REPO}"
+echo "  - Git branch: ${JSBACH_GIT_BRANCH}"
+echo "  - Git hash: ${JSBACH_GIT_HASH}"
 
 if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
-  echo "  - Git repository: $CLAW_REPO"
-  echo "  - Git branch: $CLAW_BRANCH"
-  echo "  - Base compiler: $BASE_COMPILER"
-  echo "  - Target directory: $TEST_DIR"
+  echo "  - Git repository: ${CLAW_REPO}"
+  echo "  - Git branch: ${CLAW_BRANCH}"
+  echo "  - Base compiler: ${BASE_COMPILER}"
+  echo "  - Target directory: ${TEST_DIR}"
 
-  rm -rf "$TEST_DIR"
-  mkdir "$TEST_DIR"
+  rm -rf "${TEST_DIR}"
+  mkdir "${TEST_DIR}"
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
@@ -130,9 +114,9 @@ if [[ ${SKIP_CLAW} == false ]]; then
 
   echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
 else
   rm -rf "${TEST_DIR:?}"/${JSBACH_REP}
@@ -142,21 +126,22 @@ echo "============================================"
 echo ""
 
 
-cd "$TEST_DIR" || exit 1
-WORKING_DIR="$PWD"
+cd "${TEST_DIR}" || exit 1
+WORKING_DIR="${PWD}"
 
 # Get git hashes for the log
-echo "JSBACH PARSING TESTS" > "${PARSING_OUTPUT}"
-echo "-------------------" >> "${PARSING_OUTPUT}"
-echo "Git version information:" >> "${PARSING_OUTPUT}"
 cd claw-compiler || exit 1
-CLAW_HASH=$(git rev-parse HEAD)
-echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
+CLAW_GIT_HASH=$(git rev-parse HEAD)
 cd omni-compiler || exit 1
-OMNI_HASH=$(git rev-parse HEAD)
-echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
-
+OMNI_GIT_HASH=$(git rev-parse HEAD)
+cd "${WORKING_DIR}" || exit 1
+{
+  echo "JSBACH PARSING TESTS"
+  echo "--------------------"
+  echo "Git version information:"
+  echo "- CLAW git version: ${CLAW_GIT_HASH}"
+  echo "- OMNI git version: ${OMNI_GIT_HASH}"
+} > "${PARSING_OUTPUT}"
 
 if [[ ${SKIP_PARSING} == false ]]; then
 
@@ -169,8 +154,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
   cd ${JSBACH_REP} || exit 1
   git checkout ${JSBACH_GIT_HASH}
   JSBACH_HASH=$(git rev-parse HEAD)
-  echo "- JSBACH git version: $JSBACH_HASH" >> "${PARSING_OUTPUT}"
-  cd "$WORKING_DIR" || exit 1
+  echo "- JSBACH git version: ${JSBACH_HASH}" >> "${PARSING_OUTPUT}"
+  cd "${WORKING_DIR}" || exit 1
 
   ####################
   # 2. JSBACH dsl
@@ -241,7 +226,7 @@ echo ">>> Control .xmod files"
 echo "-----------------------"
 # Control if present .xmod file has been produced correctly
 xmod_errors=0
-for xmod_file in ${XMOD_DIR}/*.xmod; do
+for xmod_file in $XMOD_DIR/*.xmod; do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
   if [[ ${xmod_well_formatted} == false ]]; then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
@@ -262,8 +247,7 @@ echo ">>> Control .f90 files"
 echo "----------------------"
 # Control if target file has been produced
 f90_errors=0
-while IFS= read -r f90_file
-do
+while IFS= read -r f90_file; do
   if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
     echo "ERROR: ${f90_file} has not been parsed correctly"
     let f90_errors=f90_errors+1
