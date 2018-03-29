@@ -283,6 +283,7 @@ error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPU
 error_type15=$(grep -c "bad expression in constant kind parameter" "${PARSING_OUTPUT}")
 error_type16=$(grep -c "is not a subroutine" "${PARSING_OUTPUT}")
 error_type17=$(grep -c "Derived-type mismatch" "${PARSING_OUTPUT}")
+error_type18=$(grep -c "right hand side expression is not a pointee" "${PARSING_OUTPUT}")
 
 echo ""
 echo "================================"
@@ -297,7 +298,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
   || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]] \
   || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]] \
-  || [[ ${error_type17} -ne 0 ]]; then
+  || [[ ${error_type17} -ne 0 ]] || [[ ${error_type18} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .xmod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -318,6 +319,7 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   echo "         ${error_type15} errors/warnings [bad expression in constant kind parameter] found in log"
   echo "         ${error_type16} errors/warnings [is not a subroutine] found in log"
   echo "         ${error_type17} errors/warnings [Derived-type mismatch] found in log"
+  echo "         ${error_type18} errors/warnings [right hand side expression is not a pointee] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
