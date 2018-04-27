@@ -1,0 +1,884 @@
+<OmniFortranModule version="1.0">
+  <name>mo_time_base</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mo_exception</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fe250e01fe0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe250e021e0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7fe250d06a20" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7fe250d070a0">name</name>
+        <name type="C7fe250d07400">text</name>
+        <name type="I7fe250d07760">out</name>
+        <name type="I7fe250d07ac0">level</name>
+        <name type="L7fe250d07e20">all_print</name>
+        <name type="L7fe250d08180">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe250d071e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d070a0" intent="in" ref="C7fe250d071e0"/>
+    <FbasicType type="C7fe250d07540" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d07400" intent="in" ref="C7fe250d07540"/>
+    <FbasicType type="I7fe250d07760" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fe250d07ac0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fe250d07e20" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7fe250d08180" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7fe250c15d70" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250c144c0" intent="in" ref="C7fe250c15d70"/>
+    <FbasicType type="C7fe250c16300" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250c14840" intent="in" ref="C7fe250c16300"/>
+    <FbasicType type="I7fe250c14bc0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fe250c14f40" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fe250c152c0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7fe250c15640" intent="in" is_optional="true" ref="Flogical"/>
+    <FfunctionType type="F7fe250d06d30" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7fe250d084e0">name</name>
+        <name type="C7fe250d08840">text</name>
+        <name type="I7fe250d08ba0">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe250d08620" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d084e0" intent="in" ref="C7fe250d08620"/>
+    <FbasicType type="C7fe250d08980" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d08840" intent="in" is_optional="true" ref="C7fe250d08980"/>
+    <FbasicType type="I7fe250d08ba0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fe250c3b310" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250c3a920" intent="in" ref="C7fe250c3b310"/>
+    <FbasicType type="C7fe250c3b850" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250c3ac80" intent="in" is_optional="true" ref="C7fe250c3b850"/>
+    <FbasicType type="I7fe250c3afe0" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fe250d14ef0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7fe250d15b70">calendar</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe250d15b70" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d141a0" is_private="true" is_save="true" ref="Fint"/>
+    <FfunctionType type="F7fe250d16e10" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe250d181a0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7fe250d199f0">ky</name>
+        <name type="I7fe250d1a180">km</name>
+        <name type="I7fe250d1a910">kd</name>
+        <name type="I7fe250d1b0a0">ksec</name>
+        <name type="S7fe250d1b7d0">my_day</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe250d199f0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d1a180" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d1a910" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d1b0a0" intent="in" ref="Fint"/>
+    <FstructType type="S7fe250d0baf0" is_public="true">
+      <symbols>
+        <id type="R7fe250d0c480">
+          <name>day</name>
+        </id>
+        <id type="R7fe250d0cc90">
+          <name>fraction</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="R7fe250d0c280" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d0c480" ref="R7fe250d0c280"/>
+    <FbasicType type="R7fe250d0ca90" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d0cc90" ref="R7fe250d0ca90"/>
+    <FbasicType type="S7fe250d1b6b0" ref="S7fe250d0baf0"/>
+    <FbasicType type="S7fe250d1b7d0" intent="out" ref="S7fe250d1b6b0"/>
+    <FbasicType type="R7fe250d1d330" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d1d530" ref="R7fe250d1d330"/>
+    <FbasicType type="R7fe250d1d730" ref="R7fe250d1d330"/>
+    <FfunctionType type="F7fe250d23c30" return_type="Fint"/>
+    <FfunctionType type="F7fe250d2dfc0" return_type="Fint"/>
+    <FfunctionType type="F7fe250d2b960" return_type="R7fe250d2fec0"/>
+    <FbasicType type="R7fe250d2fec0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250d2ffe0" return_type="R7fe250d2fec0"/>
+    <FfunctionType type="F7fe250d2bf80" return_type="Fint"/>
+    <FfunctionType type="F7fe250d31160" return_type="R7fe250d31ff0"/>
+    <FbasicType type="R7fe250d31ff0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250d32110" return_type="R7fe250d31ff0"/>
+    <FbasicType type="C7fe250d1f420" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">27</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d1f5e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fe250d9e9a0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d1fe70" ref="R7fe250d9e9a0"/>
+    <FfunctionType type="F7fe250d9d700" result_name="zfrac" return_type="R7fe250d9eba0" is_public="true">
+      <params>
+        <name type="I7fe250d9e390">isec</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7fe250d9eba0" ref="R7fe250d9e9a0"/>
+    <FbasicType type="I7fe250d9e390" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe250d689d0" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7fe250d69c30">ky</name>
+        <name type="I7fe250d69b10">km</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe250d69c30" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d69b10" intent="in" ref="Fint"/>
+    <FbasicType type="C7fe250d283a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">27</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d28540" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7fe250d2c430" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2aa80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2b840" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2e470" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2c880" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2d880" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2ebb0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d2f030" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d30ad0" ref="R7fe250d0c480"/>
+    <FbasicType type="R7fe250d31040" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d31b10" ref="R7fe250d0cc90"/>
+    <FfunctionType type="F7fe250d32fb0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fe250d34770">my_day</name>
+        <name type="I7fe250d34f00">ky</name>
+        <name type="I7fe250d35690">km</name>
+        <name type="I7fe250d35e20">kd</name>
+        <name type="I7fe250d365b0">ksec</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe250d34650" ref="S7fe250d0baf0"/>
+    <FbasicType type="S7fe250d34770" intent="in" ref="S7fe250d34650"/>
+    <FbasicType type="I7fe250d34f00" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d35690" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d35e20" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d365b0" intent="out" ref="Fint"/>
+    <FbasicType type="R7fe250d37b20" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d37d20" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d37f20" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38120" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38320" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38520" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38720" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38920" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38b20" ref="R7fe250d37b20"/>
+    <FbasicType type="R7fe250d38d20" ref="R7fe250d37b20"/>
+    <FfunctionType type="F7fe250d3c2d0" return_type="R7fe250d513c0"/>
+    <FbasicType type="R7fe250d513c0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250d514e0" return_type="R7fe250d513c0"/>
+    <FfunctionType type="F7fe250d3bd00" return_type="Fint"/>
+    <FfunctionType type="F7fe250d4e400" return_type="Fint"/>
+    <FfunctionType type="F7fe250d4c320" return_type="Fint"/>
+    <FfunctionType type="F7fe250d51b00" return_type="Fint"/>
+    <FbasicType type="R7fe250d39900" ref="R7fe250d0c480"/>
+    <FbasicType type="R7fe250d39f00" ref="R7fe250d0cc90"/>
+    <FbasicType type="R7fe250d3c1b0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d3ae70" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d3f050" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d3d140" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d3dd10" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d41640" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d40300" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d41ac0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d45180" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d43270" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d43e40" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d47200" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d45e70" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d494f0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d481b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d4bbe0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d4a850" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d4ea50" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d4dcc0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d500b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d52350" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d53620" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d546e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d558e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d56a20" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250da4e90" result_name="isec" return_type="Fint" is_public="true">
+      <params>
+        <name type="R7fe250da5c10">zfrac</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7fe250da5af0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250da5c10" intent="in" ref="R7fe250da5af0"/>
+    <FfunctionType type="F7fe250d58aa0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fe250d59f70">my_day</name>
+        <name type="I7fe250d5a700">kjy</name>
+        <name type="I7fe250d5ae90">kd</name>
+        <name type="I7fe250d5b620">ksec</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe250d59e50" ref="S7fe250d0baf0"/>
+    <FbasicType type="S7fe250d59f70" intent="in" ref="S7fe250d59e50"/>
+    <FbasicType type="I7fe250d5a700" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d5ae90" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d5b620" intent="out" ref="Fint"/>
+    <FbasicType type="S7fe250d5bd10" ref="S7fe250d0baf0"/>
+    <FbasicType type="S7fe250d5bf10" ref="S7fe250d5bd10"/>
+    <FbasicType type="S7fe250d5c110" ref="S7fe250d5bd10"/>
+    <FfunctionType type="F7fe250d60e50" return_type="Fint"/>
+    <FbasicType type="R7fe250d60680" ref="R7fe250d0c480"/>
+    <FbasicType type="R7fe250d608f0" ref="R7fe250d0c480"/>
+    <FfunctionType type="F7fe250d625a0" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7fe250d63230">ky</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe250d63230" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe250d65080" return_type="Fint"/>
+    <FfunctionType type="F7fe250d66730" return_type="Fint"/>
+    <FfunctionType type="F7fe250d6ffd0" return_type="Fint"/>
+    <FfunctionType type="F7fe250d71680" return_type="Fint"/>
+    <FbasicType type="C7fe250d733a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">30</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d73560" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe250d74690" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fe250d752c0">my_day</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe250d751a0" ref="S7fe250d0baf0"/>
+    <FbasicType type="S7fe250d752c0" intent="in" ref="S7fe250d751a0"/>
+    <FbasicType type="C7fe250d11d00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d11f00" is_private="true" ref="C7fe250d11d00"/>
+    <FbasicType type="R7fe250d75e60" ref="R7fe250d0c480"/>
+    <FbasicType type="R7fe250d760d0" ref="R7fe250d0cc90"/>
+    <FbasicType type="C7fe250d767b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe250d77780" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7fe250d78fd0">ky</name>
+        <name type="I7fe250d79760">km</name>
+        <name type="I7fe250d79ef0">kd</name>
+        <name type="I7fe250d7a680">ksec</name>
+        <name type="S7fe250d7adb0">my_day</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe250d78fd0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d79760" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d79ef0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250d7a680" intent="in" ref="Fint"/>
+    <FstructType type="S7fe250d0d1f0" is_public="true">
+      <symbols>
+        <id type="I7fe250d0db50">
+          <name>day</name>
+        </id>
+        <id type="R7fe250d0e360">
+          <name>fraction</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe250d0d950" ref="Fint">
+      <kind>
+        <Var type="I7fe250e021e0" scope="local">i8</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d0db50" ref="I7fe250d0d950"/>
+    <FbasicType type="R7fe250d0e160" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d0e360" ref="R7fe250d0e160"/>
+    <FbasicType type="S7fe250d7ac90" ref="S7fe250d0d1f0"/>
+    <FbasicType type="S7fe250d7adb0" intent="out" ref="S7fe250d7ac90"/>
+    <FfunctionType type="F7fe250d7f080" return_type="I7fe250d7ef60"/>
+    <FbasicType type="I7fe250d7ef60" ref="Fint">
+      <kind>
+        <Var type="I7fe250e021e0" scope="local">i8</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7fe250d7caa0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">26</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250d7cc60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7fe250d7ddc0" ref="I7fe250d0db50"/>
+    <FbasicType type="R7fe250d7f8b0" ref="R7fe250d0e360"/>
+    <FfunctionType type="F7fe250d80820" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fe250d82010">my_day</name>
+        <name type="I7fe250d827a0">ky</name>
+        <name type="I7fe250d82f30">km</name>
+        <name type="I7fe250d836c0">kd</name>
+        <name type="I7fe250d83e50">ksec</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe250d81ef0" ref="S7fe250d0d1f0"/>
+    <FbasicType type="S7fe250d82010" intent="in" ref="S7fe250d81ef0"/>
+    <FbasicType type="I7fe250d827a0" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d82f30" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d836c0" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d83e50" intent="out" ref="Fint"/>
+    <FfunctionType type="F7fe250d86ff0" return_type="Fint"/>
+    <FfunctionType type="F7fe250d8d4b0" return_type="Fint"/>
+    <FfunctionType type="F7fe250d886a0" return_type="Fint"/>
+    <FfunctionType type="F7fe250d8e9a0" return_type="Fint"/>
+    <FbasicType type="I7fe250d85400" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d855d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d865f0" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d867c0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d88580" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d87fd0" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d881d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d8b220" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d8b3f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d8ce40" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d8c890" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d8ca90" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d8f530" ref="R7fe250d0e360"/>
+    <FfunctionType type="F7fe250d90390" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fe250d91880">my_day</name>
+        <name type="I7fe250d92010">ky</name>
+        <name type="I7fe250d927a0">kd</name>
+        <name type="I7fe250d92f30">ksec</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe250d91760" ref="S7fe250d0d1f0"/>
+    <FbasicType type="S7fe250d91880" intent="in" ref="S7fe250d91760"/>
+    <FbasicType type="I7fe250d92010" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d927a0" intent="out" ref="Fint"/>
+    <FbasicType type="I7fe250d92f30" intent="out" ref="Fint"/>
+    <FfunctionType type="F7fe250d948e0" return_type="Fint"/>
+    <FfunctionType type="F7fe250d96250" return_type="Fint"/>
+    <FfunctionType type="F7fe250d95d00" return_type="I7fe250d95be0"/>
+    <FbasicType type="I7fe250d95be0" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d93ee0" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d940b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d95630" ref="I7fe250d0db50"/>
+    <FbasicType type="I7fe250d95830" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d96b30" ref="R7fe250d0e360"/>
+    <FfunctionType type="F7fe250d97a40" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe250d98d40" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe250d99eb0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fe250d9aae0">my_day</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe250d9a9c0" ref="S7fe250d0d1f0"/>
+    <FbasicType type="S7fe250d9aae0" intent="in" ref="S7fe250d9a9c0"/>
+    <FfunctionType type="F7fe250d9bec0" return_type="R7fe250d9bda0"/>
+    <FbasicType type="R7fe250d9bda0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe250d9b9b0" ref="I7fe250d0db50"/>
+    <FbasicType type="R7fe250d9c1f0" ref="R7fe250d0e360"/>
+    <FbasicType type="C7fe250d9c8a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe250da0670" return_type="R7fe250da2430"/>
+    <FbasicType type="R7fe250da2430" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250da2550" return_type="R7fe250da2430"/>
+    <FbasicType type="R7fe250da0550" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250da0900" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d10b00" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250da2e80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7fe250da3e10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe250da3fd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">38</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe250da7a30" return_type="Fint"/>
+    <FfunctionType type="F7fe250da7410" return_type="R7fe250da72f0"/>
+    <FbasicType type="R7fe250da72f0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250da8800" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7fe250da9c10">days</name>
+        <name type="I7fe250da9d30">seconds</name>
+        <name type="S7fe250daa460">my_day</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe250da9c10" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe250da9d30" intent="in" ref="Fint"/>
+    <FbasicType type="S7fe250daa340" ref="S7fe250d0baf0"/>
+    <FbasicType type="S7fe250daa460" intent="inout" ref="S7fe250daa340"/>
+    <FbasicType type="R7fe250daaab0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250daacb0" ref="R7fe250daaab0"/>
+    <FfunctionType type="F7fe250daf5d0" return_type="Fint"/>
+    <FfunctionType type="F7fe250db2ec0" return_type="Fint"/>
+    <FfunctionType type="F7fe250dae390" return_type="R7fe250db51f0"/>
+    <FbasicType type="R7fe250db51f0" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe250db5310" return_type="R7fe250db51f0"/>
+    <FbasicType type="R7fe250dac730" ref="R7fe250d0cc90"/>
+    <FbasicType type="R7fe250dae270" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250dae620" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250db0510" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250db08c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250db2a30" ref="R7fe250d0c480"/>
+    <FbasicType type="R7fe250db4d60" ref="R7fe250d0c480"/>
+    <FbasicType type="R7fe250db5b40" ref="R7fe250d0cc90"/>
+    <FbasicType type="I7fe250d0ed80" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fe250d0fa80" ref="Freal">
+      <kind>
+        <Var type="I7fe250e01fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fe250d0fc80" is_public="true" is_parameter="true" ref="R7fe250d0fa80"/>
+    <FfunctionType type="F7fe250d106f0" return_type="Fint"/>
+    <FfunctionType type="F7fe250db10e0" return_type="Fint"/>
+    <FbasicType type="I7fe250d12800" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe250d13500" is_public="true" is_parameter="true" ref="Fint"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7fe250e01fe0" sclass="flocal" original_name="wp" declared_in="mo_kind">
+      <name>wp</name>
+    </id>
+    <id type="I7fe250e021e0" sclass="flocal" original_name="i8" declared_in="mo_kind">
+      <name>i8</name>
+    </id>
+    <id type="F7fe250d06a20" sclass="ffunc" original_name="message" declared_in="mo_exception">
+      <name>message</name>
+    </id>
+    <id type="F7fe250d06d30" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="F7fe250d14ef0" sclass="ffunc" original_name="set_calendar_type" declared_in="mo_time_base">
+      <name>set_calendar_type</name>
+    </id>
+    <id type="F7fe250d16e10" sclass="ffunc" original_name="get_calendar_type" declared_in="mo_time_base">
+      <name>get_calendar_type</name>
+    </id>
+    <id type="F7fe250d181a0" sclass="ffunc" original_name="set_julian_day" declared_in="mo_time_base">
+      <name>set_julian_day</name>
+    </id>
+    <id type="F7fe250d32fb0" sclass="ffunc" original_name="set_julian_calendar" declared_in="mo_time_base">
+      <name>set_julian_calendar</name>
+    </id>
+    <id type="F7fe250d58aa0" sclass="ffunc" original_name="get_julian_yearday" declared_in="mo_time_base">
+      <name>get_julian_yearday</name>
+    </id>
+    <id type="F7fe250d625a0" sclass="ffunc" original_name="get_julian_yearlen" declared_in="mo_time_base">
+      <name>get_julian_yearlen</name>
+    </id>
+    <id type="F7fe250d689d0" sclass="ffunc" original_name="get_julian_monlen" declared_in="mo_time_base">
+      <name>get_julian_monlen</name>
+    </id>
+    <id type="F7fe250d74690" sclass="ffunc" original_name="print_julian_day" declared_in="mo_time_base">
+      <name>print_julian_day</name>
+    </id>
+    <id type="F7fe250d77780" sclass="ffunc" original_name="set_ly360_day" declared_in="mo_time_base">
+      <name>set_ly360_day</name>
+    </id>
+    <id type="F7fe250d80820" sclass="ffunc" original_name="set_ly360_calendar" declared_in="mo_time_base">
+      <name>set_ly360_calendar</name>
+    </id>
+    <id type="F7fe250d90390" sclass="ffunc" original_name="get_ly360_yearday" declared_in="mo_time_base">
+      <name>get_ly360_yearday</name>
+    </id>
+    <id type="F7fe250d97a40" sclass="ffunc" original_name="get_ly360_yearlen" declared_in="mo_time_base">
+      <name>get_ly360_yearlen</name>
+    </id>
+    <id type="F7fe250d98d40" sclass="ffunc" original_name="get_ly360_monlen" declared_in="mo_time_base">
+      <name>get_ly360_monlen</name>
+    </id>
+    <id type="F7fe250d99eb0" sclass="ffunc" original_name="print_ly360_day" declared_in="mo_time_base">
+      <name>print_ly360_day</name>
+    </id>
+    <id type="F7fe250d9d700" sclass="ffunc" original_name="sec2frac" declared_in="mo_time_base">
+      <name>sec2frac</name>
+    </id>
+    <id type="F7fe250da4e90" sclass="ffunc" original_name="frac2sec" declared_in="mo_time_base">
+      <name>frac2sec</name>
+    </id>
+    <id type="F7fe250da8800" sclass="ffunc" original_name="add_time" declared_in="mo_time_base">
+      <name>add_time</name>
+    </id>
+    <id type="S7fe250d0baf0" sclass="ftype_name" original_name="t_julian_date" declared_in="mo_time_base">
+      <name>t_julian_date</name>
+    </id>
+    <id type="S7fe250d0d1f0" sclass="ftype_name" original_name="t_ly360_date" declared_in="mo_time_base">
+      <name>t_ly360_date</name>
+    </id>
+    <id type="I7fe250d0ed80" sclass="flocal" original_name="idaylen" declared_in="mo_time_base">
+      <name>idaylen</name>
+    </id>
+    <id type="R7fe250d0fc80" sclass="flocal" original_name="rdaylen" declared_in="mo_time_base">
+      <name>rdaylen</name>
+    </id>
+    <id type="F7fe250d106f0" sclass="ffunc" original_name="selected_real_kind" declared_in="mo_time_base">
+      <name>selected_real_kind</name>
+    </id>
+    <id type="I7fe250d12800" sclass="flocal" original_name="julian" declared_in="mo_time_base">
+      <name>julian</name>
+    </id>
+    <id type="I7fe250d13500" sclass="flocal" original_name="cyl360" declared_in="mo_time_base">
+      <name>cyl360</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7fe250e01fe0">wp</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <FintConstant type="Fint">12</FintConstant>
+            <FintConstant type="Fint">307</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fe250e021e0">i8</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_int_kind</name>
+          <arguments>
+            <FintConstant type="Fint">14</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="135" file="./src/shared/mo_time_base.f90">
+      <name type="I7fe250d0ed80">idaylen</name>
+      <value>
+        <FintConstant type="Fint">86400</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="137" file="./src/shared/mo_time_base.f90">
+      <name type="R7fe250d0fc80">rdaylen</name>
+      <value>
+        <FrealConstant type="R7fe250d10b00" kind="wp">86400.</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="141" file="./src/shared/mo_time_base.f90">
+      <name type="I7fe250d12800">julian</name>
+      <value>
+        <FintConstant type="Fint">0</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="142" file="./src/shared/mo_time_base.f90">
+      <name type="I7fe250d13500">cyl360</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
