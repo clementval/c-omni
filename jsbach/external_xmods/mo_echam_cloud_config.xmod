@@ -1,0 +1,773 @@
+<OmniFortranModule version="1.0">
+  <name>mo_echam_cloud_config</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mo_exception</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7f805c60b170" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7f805c419bd0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f805c41a910">name</name>
+        <name type="C7f805c41ac70">text</name>
+        <name type="I7f805c41afd0">out</name>
+        <name type="I7f805c41b330">level</name>
+        <name type="L7f805c41b690">all_print</name>
+        <name type="L7f805c41b9f0">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f805c41aa50" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c41a910" intent="in" ref="C7f805c41aa50"/>
+    <FbasicType type="C7f805c41adb0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c41ac70" intent="in" ref="C7f805c41adb0"/>
+    <FbasicType type="I7f805c41afd0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f805c41b330" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7f805c41b690" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7f805c41b9f0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7f805c611120" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c60f870" intent="in" ref="C7f805c611120"/>
+    <FbasicType type="C7f805c6116b0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c60fbf0" intent="in" ref="C7f805c6116b0"/>
+    <FbasicType type="I7f805c60ff70" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f805c6102f0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7f805c610670" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7f805c6109f0" intent="in" is_optional="true" ref="Flogical"/>
+    <FfunctionType type="F7f805c41a5a0" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7f805c415250" return_type="Fvoid">
+      <params>
+        <name type="C7f805c629da0">mstring</name>
+        <name type="L7f805c62a100">lvalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f805c62a450" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c629da0" intent="in" ref="C7f805c62a450"/>
+    <FbasicType type="L7f805c62a100" intent="in" ref="Flogical"/>
+    <FfunctionType type="F7f805c4158c0" return_type="Fvoid">
+      <params>
+        <name type="C7f805c62cc90">mstring</name>
+        <name type="I7f805c62cff0">ivalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f805c62d340" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c62cc90" intent="in" ref="C7f805c62d340"/>
+    <FbasicType type="I7f805c62cff0" intent="in" ref="Fint"/>
+    <FfunctionType type="F7f805c415ee0" return_type="Fvoid">
+      <params>
+        <name type="C7f805c62ea00">mstring</name>
+        <name type="R7f805c62eee0">rvalue</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f805c62f260" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c62ea00" intent="in" ref="C7f805c62f260"/>
+    <FbasicType type="I7f805c62f7a0" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7f805c62fd10" ref="Freal">
+      <kind>
+        <Var type="I7f805c62f7a0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c62eee0" intent="in" ref="R7f805c62fd10"/>
+    <FstructType type="S7f805c41c610" is_public="true">
+      <symbols>
+        <id type="R7f805c41cf40">
+          <name>cthomi</name>
+        </id>
+        <id type="R7f805c41d740">
+          <name>cn0s</name>
+        </id>
+        <id type="R7f805c41df80">
+          <name>crhoi</name>
+        </id>
+        <id type="R7f805c41e7c0">
+          <name>crhosno</name>
+        </id>
+        <id type="R7f805c41f000">
+          <name>ccsaut</name>
+        </id>
+        <id type="R7f805c41f840">
+          <name>clmax</name>
+        </id>
+        <id type="R7f805c420080">
+          <name>clmin</name>
+        </id>
+        <id type="R7f805c4208c0">
+          <name>ceffmax</name>
+        </id>
+        <id type="R7f805c421110">
+          <name>ccsacl</name>
+        </id>
+        <id type="R7f805c421950">
+          <name>ccracl</name>
+        </id>
+        <id type="R7f805c422190">
+          <name>ccraut</name>
+        </id>
+        <id type="R7f805c4229d0">
+          <name>ceffmin</name>
+        </id>
+        <id type="R7f805c423210">
+          <name>ccwmin</name>
+        </id>
+        <id type="R7f805c423a50">
+          <name>cinv</name>
+        </id>
+        <id type="R7f805c424290">
+          <name>cauloc</name>
+        </id>
+        <id type="R7f805c424ad0">
+          <name>cqtmin</name>
+        </id>
+        <id type="R7f805c425320">
+          <name>cn1lnd</name>
+        </id>
+        <id type="R7f805c425b60">
+          <name>cn2lnd</name>
+        </id>
+        <id type="R7f805c4263a0">
+          <name>cn1sea</name>
+        </id>
+        <id type="R7f805c426be0">
+          <name>cn2sea</name>
+        </id>
+        <id type="R7f805c427430">
+          <name>cinhomi</name>
+        </id>
+        <id type="R7f805c427c70">
+          <name>cinhoml1</name>
+        </id>
+        <id type="R7f805c4284b0">
+          <name>cinhoml2</name>
+        </id>
+        <id type="R7f805c428cf0">
+          <name>cinhoml3</name>
+        </id>
+        <id type="R7f805c429540">
+          <name>csecfrl</name>
+        </id>
+        <id type="R7f805c429d80">
+          <name>crs</name>
+        </id>
+        <id type="R7f805c42a5c0">
+          <name>crt</name>
+        </id>
+        <id type="R7f805c42ae00">
+          <name>cvtfall</name>
+        </id>
+        <id type="R7f805c42b640">
+          <name>clwprat</name>
+        </id>
+        <id type="R7f805c42be80">
+          <name>csatsc</name>
+        </id>
+        <id type="Fint">
+          <name>nex</name>
+        </id>
+        <id type="Fint">
+          <name>nadd</name>
+        </id>
+        <id type="R7f805c42d570">
+          <name>cptop</name>
+        </id>
+        <id type="R7f805c42ddb0">
+          <name>cpbot</name>
+        </id>
+        <id type="Fint">
+          <name>ncctop</name>
+        </id>
+        <id type="Fint">
+          <name>nccbot</name>
+        </id>
+        <id type="Fint">
+          <name>jbmin</name>
+        </id>
+        <id type="Fint">
+          <name>jbmax</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="R7f805c41cd40" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c41cf40" ref="R7f805c41cd40"/>
+    <FbasicType type="R7f805c41d540" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c41d740" ref="R7f805c41d540"/>
+    <FbasicType type="R7f805c41dd80" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c41df80" ref="R7f805c41dd80"/>
+    <FbasicType type="R7f805c41e5c0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c41e7c0" ref="R7f805c41e5c0"/>
+    <FbasicType type="R7f805c41ee00" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c41f000" ref="R7f805c41ee00"/>
+    <FbasicType type="R7f805c41f640" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c41f840" ref="R7f805c41f640"/>
+    <FbasicType type="R7f805c41fe80" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c420080" ref="R7f805c41fe80"/>
+    <FbasicType type="R7f805c4206c0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c4208c0" ref="R7f805c4206c0"/>
+    <FbasicType type="R7f805c420f10" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c421110" ref="R7f805c420f10"/>
+    <FbasicType type="R7f805c421750" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c421950" ref="R7f805c421750"/>
+    <FbasicType type="R7f805c421f90" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c422190" ref="R7f805c421f90"/>
+    <FbasicType type="R7f805c4227d0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c4229d0" ref="R7f805c4227d0"/>
+    <FbasicType type="R7f805c423010" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c423210" ref="R7f805c423010"/>
+    <FbasicType type="R7f805c423850" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c423a50" ref="R7f805c423850"/>
+    <FbasicType type="R7f805c424090" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c424290" ref="R7f805c424090"/>
+    <FbasicType type="R7f805c4248d0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c424ad0" ref="R7f805c4248d0"/>
+    <FbasicType type="R7f805c425120" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c425320" ref="R7f805c425120"/>
+    <FbasicType type="R7f805c425960" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c425b60" ref="R7f805c425960"/>
+    <FbasicType type="R7f805c4261a0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c4263a0" ref="R7f805c4261a0"/>
+    <FbasicType type="R7f805c4269e0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c426be0" ref="R7f805c4269e0"/>
+    <FbasicType type="R7f805c427230" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c427430" ref="R7f805c427230"/>
+    <FbasicType type="R7f805c427a70" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c427c70" ref="R7f805c427a70"/>
+    <FbasicType type="R7f805c4282b0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c4284b0" ref="R7f805c4282b0"/>
+    <FbasicType type="R7f805c428af0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c428cf0" ref="R7f805c428af0"/>
+    <FbasicType type="R7f805c429340" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c429540" ref="R7f805c429340"/>
+    <FbasicType type="R7f805c429b80" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c429d80" ref="R7f805c429b80"/>
+    <FbasicType type="R7f805c42a3c0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c42a5c0" ref="R7f805c42a3c0"/>
+    <FbasicType type="R7f805c42ac00" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c42ae00" ref="R7f805c42ac00"/>
+    <FbasicType type="R7f805c42b440" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c42b640" ref="R7f805c42b440"/>
+    <FbasicType type="R7f805c42bc80" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c42be80" ref="R7f805c42bc80"/>
+    <FbasicType type="R7f805c42d370" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c42d570" ref="R7f805c42d370"/>
+    <FbasicType type="R7f805c42dbb0" ref="Freal">
+      <kind>
+        <Var type="I7f805c60b170" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f805c42ddb0" ref="R7f805c42dbb0"/>
+    <FbasicType type="S7f805c4301c0" is_target="true" ref="S7f805c41c610"/>
+    <FbasicType type="S7f805c4302e0" is_public="true" is_target="true" ref="S7f805c4301c0"/>
+    <FfunctionType type="F7f805c430e80" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f805c431600" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c4317b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c431f40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c4320f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">56</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c432880" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c432a30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c433280" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c433520" is_target="true" ref="R7f805c41cf40"/>
+    <FbasicType type="C7f805c433dc0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c434010" is_target="true" ref="R7f805c41d740"/>
+    <FbasicType type="C7f805c4348b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c434b00" is_target="true" ref="R7f805c41df80"/>
+    <FbasicType type="C7f805c4353a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4355f0" is_target="true" ref="R7f805c41e7c0"/>
+    <FbasicType type="C7f805c435e90" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4360e0" is_target="true" ref="R7f805c41f000"/>
+    <FbasicType type="C7f805c436980" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c436bd0" is_target="true" ref="R7f805c41f840"/>
+    <FbasicType type="C7f805c437470" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4376c0" is_target="true" ref="R7f805c420080"/>
+    <FbasicType type="C7f805c437f60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4381b0" is_target="true" ref="R7f805c4208c0"/>
+    <FbasicType type="C7f805c438960" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c438b10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c439360" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4395b0" is_target="true" ref="R7f805c421110"/>
+    <FbasicType type="C7f805c439e50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43a0a0" is_target="true" ref="R7f805c421950"/>
+    <FbasicType type="C7f805c43a940" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43ab90" is_target="true" ref="R7f805c422190"/>
+    <FbasicType type="C7f805c43b430" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43b680" is_target="true" ref="R7f805c4229d0"/>
+    <FbasicType type="C7f805c43bf20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43c170" is_target="true" ref="R7f805c423210"/>
+    <FbasicType type="C7f805c43ca10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43cc60" is_target="true" ref="R7f805c423a50"/>
+    <FbasicType type="C7f805c43d500" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43d750" is_target="true" ref="R7f805c424290"/>
+    <FbasicType type="C7f805c43dff0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43e240" is_target="true" ref="R7f805c424ad0"/>
+    <FbasicType type="C7f805c43e9f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c43eba0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c43f3f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c43f640" is_target="true" ref="R7f805c425320"/>
+    <FbasicType type="C7f805c43fee0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c440130" is_target="true" ref="R7f805c425b60"/>
+    <FbasicType type="C7f805c4409d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c440c20" is_target="true" ref="R7f805c4263a0"/>
+    <FbasicType type="C7f805c4414c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c441710" is_target="true" ref="R7f805c426be0"/>
+    <FbasicType type="C7f805c441ec0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c442070" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c4428c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c442b10" is_target="true" ref="R7f805c427430"/>
+    <FbasicType type="C7f805c4433b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c443600" is_target="true" ref="R7f805c427c70"/>
+    <FbasicType type="C7f805c443ea0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4440f0" is_target="true" ref="R7f805c4284b0"/>
+    <FbasicType type="C7f805c444990" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c444be0" is_target="true" ref="R7f805c428cf0"/>
+    <FbasicType type="C7f805c445390" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c445540" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c445d90" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c445fe0" is_target="true" ref="R7f805c429540"/>
+    <FbasicType type="C7f805c446880" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c446ad0" is_target="true" ref="R7f805c429d80"/>
+    <FbasicType type="C7f805c447370" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4475c0" is_target="true" ref="R7f805c42a5c0"/>
+    <FbasicType type="C7f805c447e60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c4480b0" is_target="true" ref="R7f805c42ae00"/>
+    <FbasicType type="C7f805c448950" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c448ba0" is_target="true" ref="R7f805c42b640"/>
+    <FbasicType type="C7f805c449440" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c449690" is_target="true" ref="R7f805c42be80"/>
+    <FbasicType type="C7f805c449f30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7f805c44a180" is_target="true" ref="Fint"/>
+    <FbasicType type="C7f805c44aa20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7f805c44ac70" is_target="true" ref="Fint"/>
+    <FbasicType type="C7f805c44b420" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c44b5d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c44be20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c44c070" is_target="true" ref="R7f805c42d570"/>
+    <FbasicType type="C7f805c44c910" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f805c44cb60" is_target="true" ref="R7f805c42ddb0"/>
+    <FbasicType type="C7f805c44d310" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c44d4c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c44dd10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7f805c44df60" is_target="true" ref="Fint"/>
+    <FbasicType type="C7f805c44e800" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7f805c44ea50" is_target="true" ref="Fint"/>
+    <FbasicType type="C7f805c44f2f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7f805c44f540" is_target="true" ref="Fint"/>
+    <FbasicType type="C7f805c44fde0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7f805c450030" is_target="true" ref="Fint"/>
+    <FbasicType type="C7f805c4507e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f805c450990" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+  </typeTable>
+  <identifiers>
+    <id type="I7f805c60b170" sclass="flocal" original_name="wp" declared_in="mo_kind">
+      <name>wp</name>
+    </id>
+    <id type="F7f805c419bd0" sclass="ffunc" original_name="message" declared_in="mo_exception">
+      <name>message</name>
+    </id>
+    <id type="F7f805c41a5a0" sclass="ffunc" original_name="print_value" declared_in="mo_exception">
+      <name>print_value</name>
+    </id>
+    <id type="S7f805c41c610" sclass="ftype_name" original_name="t_echam_cloud_config" declared_in="mo_echam_cloud_config">
+      <name>t_echam_cloud_config</name>
+    </id>
+    <id type="S7f805c4302e0" sclass="flocal" original_name="echam_cloud_config" declared_in="mo_echam_cloud_config">
+      <name>echam_cloud_config</name>
+    </id>
+    <id type="F7f805c430e80" sclass="ffunc" original_name="configure_echam_cloud" declared_in="mo_echam_cloud_config">
+      <name>configure_echam_cloud</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7f805c60b170">wp</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <FintConstant type="Fint">12</FintConstant>
+            <FintConstant type="Fint">307</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
