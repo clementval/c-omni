@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This scripts helps to test the parsing of the full ICON
+# This scripts helps to test the parsing of the full JSBACH
 # code by the OMNI Compiler.
 #
 
@@ -25,9 +25,8 @@ CLAWFC=./claw/bin/clawfc
 
 # Working directories for the test
 TEST_DIR=${PWD}/build
-#INSTALL_DIR=$TEST_DIR/install
-CLAW_OUTPUT="./processed/icon"
-XMOD_DIR="./xmods/icon"
+CLAW_OUTPUT="./processed/jsbach"
+XMOD_DIR="./xmods/jsbach"
 
 # Default compiler used
 BASE_COMPILER="gnu"
@@ -37,20 +36,21 @@ SKIP_CLAW=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 
-# ICON related variables
-ICON_MAIN_REPO="git@github.com:C2SM-RCM/icon-eniac.git"
-ICON_REP="icon-eniac"
-ICON_SRC="./${ICON_REP}/src/"
-ICON_START="drivers/icon.f90"
-ICON_DEP="dependencies_icon"
-EXTERNAL_XMODS="../icon/external_xmods"
-ICON_INC="${ICON_REP}/src/include/"
+# JSBACH related variables
+JSBACH_GIT_REPO="git@git.mpimet.mpg.de:jsbach.git"
+JSBACH_GIT_BRANCH="develop"
+JSBACH_GIT_HASH="5ab00c692a73030eb4fe000a535f905d112b704c"
+JSBACH_REP="jsbach"
+JSBACH_SRC="./${JSBACH_REP}/pp"
+JSBACH_START="jsb4_driver_dsl4jsb.f90"
+JSBACH_DEP="dependencies_jsbach"
+EXTERNAL_XMODS="../jsbach/external_xmods"
 
 # Preprocessor macros definition
-ICON_DEFINITIONS="-D__ICON__ -DNOMPI"
+JSBACH_DEFINITIONS="-D__ICON__"
 
 # Parsing output
-PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
+PARSING_OUTPUT=${TEST_DIR}/jsbach_parse_test.log
 
 while getopts "hspo" opt; do
   case "$opt" in
@@ -64,18 +64,6 @@ while getopts "hspo" opt; do
   *) show_help
      exit 1
      ;;
-#  f)
-#    CLAW_REPO=$CLAW_FORK_REPO
-#    ;;
-#  b)
-#    CLAW_BRANCH=$OPTARG
-#    ;;
-#  c)
-#    CLAW_BASE_COMPILER=$OPTARG
-#    ;;
-#  i)
-#    CLAW_INSTALL_DIR=$OPTARG
-#    ;;
   esac
 done
 
@@ -85,11 +73,6 @@ if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
 fi
 
 COMPUTER=$(hostname)
-
-#if [[ $COMPUTER == *"daint"* ]]
-#then
-#  COMPUTER="daint"
-#  CMAKE_MOD="CMake"
 if [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
@@ -103,84 +86,26 @@ else
   echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
-#
-#
-#
-## Load recent version of cmake
-#module load $CMAKE_MOD
-#
-## Load correct PrgEnv
-#case  "$CLAW_BASE_COMPILER" in
-#  "gnu")
-#    module rm PrgEnv-pgi && module rm PrgEnv-cray
-#    module load PrgEnv-gnu
-#    if [[ $COMPUTER == "kesch" ]]
-#    then
-#      CLAW_FC=gfortran
-#      CLAW_CC=gcc
-#      CLAW_CXX=g++
-#    elif [[ $COMPUTER == "daint" ]]
-#    then
-#      CLAW_FC=ftn
-#      CLAW_CC=cc
-#      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc"
-#      OMNI_MPI_FC="MPI_FC=ftn"
-#      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
-#    fi
-#  ;;
-#  "pgi")
-#    module rm PrgEnv-gnu && module rm PrgEnv-cray
-#    module load PrgEnv-pgi
-#    if [[ $COMPUTER == "kesch" ]]
-#    then
-#      CLAW_FC=mpif90
-#      CLAW_CC=mpicc
-#      CLAW_CXX=pgc++
-#    elif [[ $COMPUTER == "daint" ]]
-#    then
-#      module load gcc
-#      CLAW_FC=ftn
-#      CLAW_CC=cc
-#      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc"
-#      OMNI_MPI_FC="MPI_FC=ftn"
-#      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
-#    fi
-#  ;;
-#  "cray")
-#    module rm PrgEnv-pgi && module rm PrgEnv-gnu
-#    module load PrgEnv-cray
-#    CLAW_FC=ftn
-#    CLAW_CC=cc
-#    CLAW_CXX=CC
-#  ;;
-#  *)
-#    echo "Error: Unknown compiler ..."
-#    exit 1
-#esac
 
 echo ""
-echo "====================================="
-echo "ICON -> CLAW/OMNI Compiler parse test"
-echo "====================================="
-echo "- ICON information"
-echo "  - Git repository: $ICON_MAIN_REPO"
-
-# Fetch the submodules
-git submodule init
-git submodule update
+echo "======================================="
+echo "JSBACH -> CLAW/OMNI Compiler parse test"
+echo "======================================="
+echo "- JSBACH information"
+echo "  - Git repository: ${JSBACH_GIT_REPO}"
+echo "  - Git branch: ${JSBACH_GIT_BRANCH}"
+echo "  - Git hash: ${JSBACH_GIT_HASH}"
 
 if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
-  echo "  - Git repository: $CLAW_REPO"
-  echo "  - Git branch: $CLAW_BRANCH"
-  echo "  - Base compiler: $BASE_COMPILER"
-  echo "  - Target directory: $TEST_DIR"
+  echo "  - Git repository: ${CLAW_REPO}"
+  echo "  - Git branch: ${CLAW_BRANCH}"
+  echo "  - Base compiler: ${BASE_COMPILER}"
+  echo "  - Target directory: ${TEST_DIR}"
 
-  rm -rf "$TEST_DIR"
-  mkdir "$TEST_DIR"
+  rm -rf "${TEST_DIR}"
+  mkdir "${TEST_DIR}"
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
@@ -188,48 +113,54 @@ if [[ ${SKIP_CLAW} == false ]]; then
 
   echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
 else
-  rm -rf "${TEST_DIR:?}"/${ICON_REP}
+  rm -rf "${TEST_DIR:?}"/${JSBACH_REP}
 fi
 
 echo "============================================"
 echo ""
 
 
-cd "$TEST_DIR" || exit 1
-WORKING_DIR="$PWD"
+cd "${TEST_DIR}" || exit 1
+WORKING_DIR="${PWD}"
 
 # Get git hashes for the log
-echo "ICON PARSING TESTS" > "${PARSING_OUTPUT}"
-echo "-------------------" >> "${PARSING_OUTPUT}"
-echo "Git version information:" >> "${PARSING_OUTPUT}"
 cd claw-compiler || exit 1
-CLAW_HASH=$(git rev-parse HEAD)
-echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
+CLAW_GIT_HASH=$(git rev-parse HEAD)
 cd omni-compiler || exit 1
-OMNI_HASH=$(git rev-parse HEAD)
-echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
-
+OMNI_GIT_HASH=$(git rev-parse HEAD)
+cd "${WORKING_DIR}" || exit 1
+{
+  echo "JSBACH PARSING TESTS"
+  echo "--------------------"
+  echo "Git version information:"
+  echo "- CLAW git version: ${CLAW_GIT_HASH}"
+  echo "- OMNI git version: ${OMNI_GIT_HASH}"
+} > "${PARSING_OUTPUT}"
 
 if [[ ${SKIP_PARSING} == false ]]; then
 
+  ######################
+  # 2. JSBACH clone step
+  ######################
+
+  git clone -b ${JSBACH_GIT_BRANCH} ${JSBACH_GIT_REPO}
+  mkdir -p ${JSBACH_SRC}
+  cd ${JSBACH_REP} || exit 1
+  git checkout ${JSBACH_GIT_HASH}
+  JSBACH_HASH=$(git rev-parse HEAD)
+  echo "- JSBACH git version: ${JSBACH_HASH}" >> "${PARSING_OUTPUT}"
+  cd "${WORKING_DIR}" || exit 1
+
   ####################
-  # 2. ICON-ENIAC step
+  # 2. JSBACH dsl
   ####################
 
-  git clone ${ICON_MAIN_REPO}
-  cd ${ICON_REP} || exit 1
-  git submodule init
-  git submodule update
-  ICON_HASH=$(git rev-parse HEAD)
-  echo "- ICON-POMPA git version: $ICON_HASH" >> "${PARSING_OUTPUT}"
-  cd "$WORKING_DIR" || exit 1
-
+  ${JSBACH_REP}/scripts/dsl4jsb/dsl4jsb.py -p _dsl4jsb -d ${JSBACH_REP}/src -t ${JSBACH_SRC}
 
   ####################
   # 3. Dependency step
@@ -237,18 +168,18 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --recursive ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --recursive ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  echo "../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${JSBACH_DEP} 2> ${JSBACH_DEP}.out" > "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${JSBACH_DEP} 2> ${JSBACH_DEP}.out
 
   # Check existence of the dependencies file
-  if [[ ! -f ${ICON_DEP} ]]; then
-    echo "ERROR: ${ICON_DEP} does not exists!"
+  if [[ ! -f ${JSBACH_DEP} ]]; then
+    echo "ERROR: ${JSBACH_DEP} does not exists!"
     exit 1
   fi
 
   # Check that dependencies file has information in it
-  if [[ $(wc -l < ${ICON_DEP}) -lt 2 ]]; then
-    echo "ERROR: ${ICON_DEP} is empty!"
+  if [[ $(wc -l < ${JSBACH_DEP}) -lt 2 ]]; then
+    echo "ERROR: ${JSBACH_DEP} is empty!"
     exit 1
   fi
 
@@ -271,16 +202,16 @@ if [[ ${SKIP_PARSING} == false ]]; then
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
-    echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
-    echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "    Processing file ${JSBACH_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    echo "    Processing file ${JSBACH_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+    echo "cmd: ${CLAWFC} ${JSBACH_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${JSBACH_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${ICON_INC}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} "${JSBACH_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${JSBACH_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
+      print_red "[FAILED] ""${JSBACH_SRC}""${f90_file}"
     fi
-  done < ./${ICON_DEP}
+  done < ./${JSBACH_DEP}
 fi
 
 
@@ -294,7 +225,7 @@ echo ">>> Control .xmod files"
 echo "-----------------------"
 # Control if present .xmod file has been produced correctly
 xmod_errors=0
-for xmod_file in ${XMOD_DIR}/*.xmod; do
+for xmod_file in $XMOD_DIR/*.xmod; do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
   if [[ ${xmod_well_formatted} == false ]]; then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
@@ -315,13 +246,12 @@ echo ">>> Control .f90 files"
 echo "----------------------"
 # Control if target file has been produced
 f90_errors=0
-while IFS= read -r f90_file
-do
+while IFS= read -r f90_file; do
   if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
     echo "ERROR: ${f90_file} has not been parsed correctly"
     (( f90_errors=f90_errors+1 ))
   fi
-done < ./${ICON_DEP}
+done < ./${JSBACH_DEP}
 
 # Report number of detected errors
 if [[ ${f90_errors} -ne 0 ]]; then
@@ -352,11 +282,13 @@ error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPU
 error_type15=$(grep -c "bad expression in constant kind parameter" "${PARSING_OUTPUT}")
 error_type16=$(grep -c "is not a subroutine" "${PARSING_OUTPUT}")
 error_type17=$(grep -c "Derived-type mismatch" "${PARSING_OUTPUT}")
+error_type18=$(grep -c "right hand side expression is not a pointee" "${PARSING_OUTPUT}")
+error_type19=$(grep -c "can't determine type of constant expression" "${PARSING_OUTPUT}")
 
 echo ""
-echo "===================================="
-echo "ICON-ENIAC full parsing test results"
-echo "===================================="
+echo "================================"
+echo "JSBACH full parsing test results"
+echo "================================"
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
   || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
@@ -366,7 +298,8 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
   || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]] \
   || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]] \
-  || [[ ${error_type17} -ne 0 ]]; then
+  || [[ ${error_type17} -ne 0 ]] || [[ ${error_type18} -ne 0 ]] \
+  || [[ ${error_type19} -ne 0 ]]; then
   echo "ERROR: Some errors have been detected"
   echo "       ${xmod_errors} files .xmod with errors"
   echo "       ${f90_errors} files .f90 with errors"
@@ -387,11 +320,13 @@ if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
   echo "         ${error_type15} errors/warnings [bad expression in constant kind parameter] found in log"
   echo "         ${error_type16} errors/warnings [is not a subroutine] found in log"
   echo "         ${error_type17} errors/warnings [Derived-type mismatch] found in log"
+  echo "         ${error_type18} errors/warnings [right hand side expression is not a pointee] found in log"
+  echo "         ${error_type19} errors/warnings [can't determine type of constant expression] found in log"
   echo "       More information in the file: ${PARSING_OUTPUT}"
   echo "====================================="
   exit 1
 else
-  echo "SUCCESS: Test has be executed correctly."
+  print_green "SUCCESS: Test has be executed correctly."
   echo "====================================="
   exit 0
 fi

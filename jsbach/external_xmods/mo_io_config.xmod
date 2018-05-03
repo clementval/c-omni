@@ -1,0 +1,592 @@
+<OmniFortranModule version="1.0">
+  <name>mo_io_config</name>
+  <depends>
+    <name>mo_cdi</name>
+    <name>mo_exception</name>
+    <name>mo_impl_constants</name>
+    <name>mo_io_units</name>
+    <name>mo_kind</name>
+    <name>mo_parallel_config</name>
+    <name>mo_run_config</name>
+    <name>mo_util_string</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fd1c6d0f450" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fd1c6d0fa00" is_parameter="true" ref="I7fd1c6d0f450"/>
+    <FbasicType type="I7fd1c94d2760" ref="Fint">
+      <kind>
+        <Var type="I7fd1c6d0fa00" scope="local">c_int</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fd1c94d25d0" is_public="true" is_parameter="true" ref="I7fd1c94d2760"/>
+    <FfunctionType type="F7fd1c9292870" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7fd1c9292ef0">name</name>
+        <name type="C7fd1c9293250">text</name>
+        <name type="I7fd1c92935b0">out</name>
+        <name type="I7fd1c9293910">level</name>
+        <name type="L7fd1c9293c70">all_print</name>
+        <name type="L7fd1c9293fd0">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fd1c9293030" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9292ef0" intent="in" ref="C7fd1c9293030"/>
+    <FbasicType type="C7fd1c9293390" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9293250" intent="in" ref="C7fd1c9293390"/>
+    <FbasicType type="I7fd1c92935b0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9293910" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fd1c9293c70" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7fd1c9293fd0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7fd1c94d85d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c94d6d50" intent="in" ref="C7fd1c94d85d0"/>
+    <FbasicType type="C7fd1c94d8b60" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c94d70b0" intent="in" ref="C7fd1c94d8b60"/>
+    <FbasicType type="I7fd1c94d7430" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fd1c94d77b0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fd1c94d7b30" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7fd1c94d7eb0" intent="in" is_optional="true" ref="Flogical"/>
+    <FfunctionType type="F7fd1c9292b80" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7fd1c9294330">name</name>
+        <name type="C7fd1c9294690">text</name>
+        <name type="I7fd1c92949f0">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fd1c9294470" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9294330" intent="in" ref="C7fd1c9294470"/>
+    <FbasicType type="C7fd1c92947d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9294690" intent="in" is_optional="true" ref="C7fd1c92947d0"/>
+    <FbasicType type="I7fd1c92949f0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fd1c927d4f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c927cb00" intent="in" ref="C7fd1c927d4f0"/>
+    <FbasicType type="C7fd1c927da30" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c927ce60" intent="in" is_optional="true" ref="C7fd1c927da30"/>
+    <FbasicType type="I7fd1c927d1c0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fd1c92d6f30" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9529dd0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9535b80" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c6e3fe30" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c955de90" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fd1c92e78b0" is_public="true" ref="Freal">
+      <kind>
+        <Var type="I7fd1c955de90" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fd1c6e7e990" return_type="C7fd1c6e7eab0" is_public="true">
+      <params>
+        <name type="I7fd1c6e7edf0">n</name>
+        <name type="C7fd1c6e7f150">opt_fmt</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fd1c6e7ebd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c6e7eab0" ref="C7fd1c6e7ebd0"/>
+    <FbasicType type="I7fd1c6e7edf0" intent="in" ref="Fint"/>
+    <FbasicType type="C7fd1c6e7f290" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c6e7f150" intent="in" is_optional="true" ref="C7fd1c6e7f290"/>
+    <FbasicType type="I7fd1c957ed50" intent="in" ref="Fint"/>
+    <FbasicType type="C7fd1c957fe80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c957f0d0" intent="in" is_optional="true" ref="C7fd1c957fe80"/>
+    <FbasicType type="L7fd1c6e7fc70" is_public="true" ref="Flogical"/>
+    <FbasicType type="R7fd1c6e802c0" ref="Freal">
+      <kind>
+        <Var type="I7fd1c9535b80" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fd1c6e804c0" is_public="true" ref="R7fd1c6e802c0"/>
+    <FbasicType type="R7fd1c6e80c20" ref="Freal">
+      <kind>
+        <Var type="I7fd1c9535b80" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fd1c6e80e20" ref="R7fd1c6e80c20"/>
+    <FbasicType type="A7fd1c6e80f40" is_public="true" ref="R7fd1c6e80e20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7fd1c6e81580" ref="Freal">
+      <kind>
+        <Var type="I7fd1c9535b80" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fd1c6e81780" is_public="true" ref="R7fd1c6e81580"/>
+    <FbasicType type="I7fd1c6e81ee0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c6e82630" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fd1c6e82d90" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fd1c6e834f0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c6e83c40" is_public="true" ref="Fint"/>
+    <FbasicType type="C7fd1c95d6810" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c95d6a10" is_public="true" ref="C7fd1c95d6810"/>
+    <FbasicType type="C7fd1c95d6c10" is_public="true" ref="C7fd1c95d6810"/>
+    <FbasicType type="L7fd1c95d7360" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fd1c95d7bd0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95d8850" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95d9400" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95d9d10" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fd1c95da4d0" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fd1c95dadf0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fd1c95db710" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95dbfe0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95dc730" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fd1c95dcea0" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fd1c95dd5f0" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fd1c95ddd50" is_public="true" ref="Flogical"/>
+    <FbasicType type="C7fd1c95de5b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c95de7b0" is_public="true" ref="C7fd1c95de5b0"/>
+    <FbasicType type="I7fd1c95def20" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95df9c0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95dfe10" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fd1c95e00f0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="C7fd1c95e0a70" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c95e0c70" is_public="true" is_parameter="true" ref="C7fd1c95e0a70"/>
+    <FbasicType type="C7fd1c95e1040" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7fd1c95e19b0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7fd1c95e2d10" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fd1c95e3650" return_type="FnumericAll"/>
+    <FfunctionType type="F7fd1c95e4cb0" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fd1c95e3fb0" return_type="FnumericAll"/>
+    <FfunctionType type="F7fd1c95e8180" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fd1c95e61c0" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95e7530" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95e9f90" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95e9b60" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95eaf00" result_name="l_checkpoint" return_type="Flogical" is_public="true">
+      <params>
+        <name type="I7fd1c95ec310">current_step</name>
+        <name type="I7fd1c95ec430">n_checkpoints</name>
+        <name type="I7fd1c95ecc40">n_steps</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fd1c95ec310" intent="in" ref="Fint"/>
+    <FbasicType type="I7fd1c95ec430" intent="in" ref="Fint"/>
+    <FbasicType type="I7fd1c95ecc40" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fd1c95eef90" return_type="Flogical"/>
+    <FfunctionType type="F7fd1c95eff40" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95f1e00" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95f3bd0" return_type="Flogical" is_public="true">
+      <params>
+        <name type="I7fd1c95f5120">current_step</name>
+        <name type="I7fd1c95f58b0">restart_step</name>
+        <name type="I7fd1c95f67d0">n_diag</name>
+        <name type="I7fd1c95f6040">n_steps</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fd1c95f5120" intent="in" ref="Fint"/>
+    <FbasicType type="I7fd1c95f58b0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fd1c95f67d0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fd1c95f6040" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fd1c95f9650" return_type="Fint"/>
+    <FfunctionType type="F7fd1c95fb980" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7fd1c96016f0">opt_dedicatedproccount</name>
+        <name type="I7fd1c9601810">opt_restartproccount</name>
+        <name type="I7fd1c9601930">opt_restartmodule</name>
+        <name type="L7fd1c9602260">opt_ldedicatedprocmode</name>
+        <name type="I7fd1c9601a50">opt_nrestart_streams</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fd1c96016f0" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9601810" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9601930" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fd1c9602260" intent="out" is_optional="true" ref="Flogical"/>
+    <FbasicType type="I7fd1c9601a50" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fd1c9602d30" is_save="true" ref="Flogical"/>
+    <FbasicType type="L7fd1c96030a0" is_save="true" ref="Flogical"/>
+    <FbasicType type="I7fd1c9604360" is_save="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9604750" is_save="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9604b40" is_save="true" ref="Fint"/>
+    <FbasicType type="I7fd1c9604f30" is_save="true" ref="Fint"/>
+    <FbasicType type="C7fd1c9605910" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9605b10" is_allocatable="true" ref="C7fd1c9605910"/>
+    <FbasicType type="C7fd1c9606420" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9606620" is_parameter="true" ref="C7fd1c9606420"/>
+    <FbasicType type="C7fd1c9606d60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">37</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9606bd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fd1c9609d40" return_type="Fint"/>
+    <FfunctionType type="F7fd1c9615ad0" return_type="Flogical"/>
+    <FfunctionType type="F7fd1c96173e0" return_type="C7fd1c9617e70"/>
+    <FbasicType type="C7fd1c9617e70" ref="C7fd1c6e7ebd0"/>
+    <FfunctionType type="F7fd1c9617f90" return_type="C7fd1c9617e70"/>
+    <FfunctionType type="F7fd1c9619910" return_type="Flogical"/>
+    <FfunctionType type="F7fd1c961d590" return_type="Flogical"/>
+    <FbasicType type="C7fd1c9608660" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">81</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9608c40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c960b9a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c960c910" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">106</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c960e080" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">5</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c960eff0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">101</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9610580" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">21</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9612a70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c96139f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">101</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9614e70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">144</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9618570" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9618220" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c96179d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9617670" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9616ef0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c9616d60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fd1c96172c0" ref="C7fd1c95de5b0"/>
+    <FbasicType type="C7fd1c9617840" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+  </typeTable>
+  <identifiers>
+    <id type="I7fd1c94d25d0" sclass="flocal" original_name="filetype_nc2" declared_in="mo_cdi">
+      <name>filetype_nc2</name>
+    </id>
+    <id type="F7fd1c9292870" sclass="ffunc" original_name="message" declared_in="mo_exception">
+      <name>message</name>
+    </id>
+    <id type="F7fd1c9292b80" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="I7fd1c92d6f30" sclass="flocal" original_name="max_dom" declared_in="mo_impl_constants">
+      <name>max_dom</name>
+    </id>
+    <id type="I7fd1c9529dd0" sclass="flocal" original_name="filename_max" declared_in="mo_io_units">
+      <name>filename_max</name>
+    </id>
+    <id type="I7fd1c9535b80" sclass="flocal" original_name="wp" declared_in="mo_kind">
+      <name>wp</name>
+    </id>
+    <id type="I7fd1c6e3fe30" sclass="flocal" original_name="num_restart_procs" declared_in="mo_parallel_config">
+      <name>num_restart_procs</name>
+    </id>
+    <id type="R7fd1c92e78b0" sclass="fsave" original_name="dtime" declared_in="mo_run_config">
+      <name>dtime</name>
+    </id>
+    <id type="F7fd1c6e7e990" sclass="ffunc" original_name="int2string" declared_in="mo_util_string">
+      <name>int2string</name>
+    </id>
+    <id type="L7fd1c6e7fc70" sclass="fsave" original_name="lkeep_in_sync" declared_in="mo_io_config">
+      <name>lkeep_in_sync</name>
+    </id>
+    <id type="R7fd1c6e804c0" sclass="flocal" original_name="dt_diag" declared_in="mo_io_config">
+      <name>dt_diag</name>
+    </id>
+    <id type="A7fd1c6e80f40" sclass="fsave" original_name="gust_interval" declared_in="mo_io_config">
+      <name>gust_interval</name>
+    </id>
+    <id type="R7fd1c6e81780" sclass="flocal" original_name="dt_checkpoint" declared_in="mo_io_config">
+      <name>dt_checkpoint</name>
+    </id>
+    <id type="I7fd1c6e81ee0" sclass="fsave" original_name="inextra_2d" declared_in="mo_io_config">
+      <name>inextra_2d</name>
+    </id>
+    <id type="I7fd1c6e82630" sclass="fsave" original_name="inextra_3d" declared_in="mo_io_config">
+      <name>inextra_3d</name>
+    </id>
+    <id type="L7fd1c6e82d90" sclass="fsave" original_name="lflux_avg" declared_in="mo_io_config">
+      <name>lflux_avg</name>
+    </id>
+    <id type="I7fd1c6e834f0" sclass="fsave" original_name="itype_pres_msl" declared_in="mo_io_config">
+      <name>itype_pres_msl</name>
+    </id>
+    <id type="I7fd1c6e83c40" sclass="fsave" original_name="itype_rh" declared_in="mo_io_config">
+      <name>itype_rh</name>
+    </id>
+    <id type="C7fd1c95d6a10" sclass="fsave" original_name="output_nml_dict" declared_in="mo_io_config">
+      <name>output_nml_dict</name>
+    </id>
+    <id type="C7fd1c95d6c10" sclass="fsave" original_name="netcdf_dict" declared_in="mo_io_config">
+      <name>netcdf_dict</name>
+    </id>
+    <id type="L7fd1c95d7360" sclass="fsave" original_name="lnetcdf_flt64_output" declared_in="mo_io_config">
+      <name>lnetcdf_flt64_output</name>
+    </id>
+    <id type="I7fd1c95d7bd0" sclass="flocal" original_name="read_netcdf_broadcast_method" declared_in="mo_io_config">
+      <name>read_netcdf_broadcast_method</name>
+    </id>
+    <id type="I7fd1c95d8850" sclass="flocal" original_name="read_netcdf_distribute_method" declared_in="mo_io_config">
+      <name>read_netcdf_distribute_method</name>
+    </id>
+    <id type="I7fd1c95d9400" sclass="fsave" original_name="default_read_method" declared_in="mo_io_config">
+      <name>default_read_method</name>
+    </id>
+    <id type="I7fd1c95d9d10" sclass="fsave" original_name="restart_file_type" declared_in="mo_io_config">
+      <name>restart_file_type</name>
+    </id>
+    <id type="L7fd1c95da4d0" sclass="fsave" original_name="write_initial_state" declared_in="mo_io_config">
+      <name>write_initial_state</name>
+    </id>
+    <id type="L7fd1c95dadf0" sclass="fsave" original_name="write_last_restart" declared_in="mo_io_config">
+      <name>write_last_restart</name>
+    </id>
+    <id type="I7fd1c95db710" sclass="fsave" original_name="timesteps_per_outputstep" declared_in="mo_io_config">
+      <name>timesteps_per_outputstep</name>
+    </id>
+    <id type="I7fd1c95dbfe0" sclass="fsave" original_name="n_chkpt" declared_in="mo_io_config">
+      <name>n_chkpt</name>
+    </id>
+    <id type="I7fd1c95dc730" sclass="fsave" original_name="n_diag" declared_in="mo_io_config">
+      <name>n_diag</name>
+    </id>
+    <id type="L7fd1c95dcea0" sclass="fsave" original_name="l_outputtime" declared_in="mo_io_config">
+      <name>l_outputtime</name>
+    </id>
+    <id type="L7fd1c95dd5f0" sclass="fsave" original_name="l_diagtime" declared_in="mo_io_config">
+      <name>l_diagtime</name>
+    </id>
+    <id type="L7fd1c95ddd50" sclass="fsave" original_name="lmask_boundary" declared_in="mo_io_config">
+      <name>lmask_boundary</name>
+    </id>
+    <id type="C7fd1c95de7b0" sclass="flocal" original_name="restart_write_mode" declared_in="mo_io_config">
+      <name>restart_write_mode</name>
+    </id>
+    <id type="I7fd1c95def20" sclass="flocal" original_name="nrestart_streams" declared_in="mo_io_config">
+      <name>nrestart_streams</name>
+    </id>
+    <id type="I7fd1c95df9c0" sclass="flocal" original_name="ksyncrestartmodule" declared_in="mo_io_config">
+      <name>ksyncrestartmodule</name>
+    </id>
+    <id type="I7fd1c95dfe10" sclass="flocal" original_name="kasyncrestartmodule" declared_in="mo_io_config">
+      <name>kasyncrestartmodule</name>
+    </id>
+    <id type="I7fd1c95e00f0" sclass="flocal" original_name="kmultifilerestartmodule" declared_in="mo_io_config">
+      <name>kmultifilerestartmodule</name>
+    </id>
+    <id type="C7fd1c95e0c70" sclass="flocal" original_name="modname" declared_in="mo_io_config">
+      <name>modname</name>
+    </id>
+    <id type="I7fd1c95e19b0" sclass="flocal" original_name="all_workers_involved" declared_in="mo_io_config">
+      <name>all_workers_involved</name>
+    </id>
+    <id type="F7fd1c95e2d10" sclass="ffunc" original_name="configure_io" declared_in="mo_io_config">
+      <name>configure_io</name>
+    </id>
+    <id type="F7fd1c95e4cb0" sclass="ffunc" original_name="n_checkpoints" declared_in="mo_io_config">
+      <name>n_checkpoints</name>
+    </id>
+    <id type="F7fd1c95e8180" sclass="ffunc" original_name="n_diags" declared_in="mo_io_config">
+      <name>n_diags</name>
+    </id>
+    <id type="F7fd1c95eaf00" sclass="ffunc" original_name="is_checkpoint_time" declared_in="mo_io_config">
+      <name>is_checkpoint_time</name>
+    </id>
+    <id type="F7fd1c95f3bd0" sclass="ffunc" original_name="is_totint_time" declared_in="mo_io_config">
+      <name>is_totint_time</name>
+    </id>
+    <id type="F7fd1c95fb980" sclass="ffunc" original_name="restartwritingparameters" declared_in="mo_io_config">
+      <name>restartwritingparameters</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7fd1c94d25d0">filetype_nc2</name>
+      <value>
+        <FintConstant type="Fint">4</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fd1c92d6f30">max_dom</name>
+      <value>
+        <FintConstant type="Fint">10</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fd1c9529dd0">filename_max</name>
+      <value>
+        <FintConstant type="Fint">1024</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fd1c9535b80">wp</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <FintConstant type="Fint">12</FintConstant>
+            <FintConstant type="Fint">307</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="70" file="../../../icon-eniac/src/configure_model/mo_io_config.f90">
+      <name type="I7fd1c95d7bd0">read_netcdf_broadcast_method</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="71" file="../../../icon-eniac/src/configure_model/mo_io_config.f90">
+      <name type="I7fd1c95d8850">read_netcdf_distribute_method</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fd1c95df9c0">ksyncrestartmodule</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7fd1c95dfe10">kasyncrestartmodule</name>
+    </varDecl>
+    <varDecl>
+      <name type="I7fd1c95e00f0">kmultifilerestartmodule</name>
+    </varDecl>
+    <varDecl lineno="104" file="../../../icon-eniac/src/configure_model/mo_io_config.f90">
+      <name type="C7fd1c95e0c70">modname</name>
+      <value>
+        <FcharacterConstant type="C7fd1c95e1040">mo_io_config</FcharacterConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="106" file="../../../icon-eniac/src/configure_model/mo_io_config.f90">
+      <name type="I7fd1c95e19b0">all_workers_involved</name>
+      <value>
+        <FintConstant type="Fint">-1</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

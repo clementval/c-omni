@@ -1,15 +1,34 @@
 language: bash
+
+sudo: false
+
 addons:
   apt:
-    sources:
-    - debian-sid
     packages:
-    - shellcheck
+    - realpath # required by script
+    - cabal-install
+    - ghc
+
 git:
   submodules: false
+
+before_install:
+- cabal update && cabal install ShellCheck
+- export PATH=$PATH:$HOME/.cabal/bin
+- shellcheck --version
+
+before_cache:
+- rm $HOME/.cabal/logs/build.log
+
+cache:
+  directories:
+  - "$HOME/.ghc"
+  - "$HOME/.cabal"
+  - "$HOME/.stack"
+
 script:
-- shellcheck -V
 - "./run.shellcheck"
+
 notifications:
   slack:
     secure: G/597cmLWUoEh2EAwwRfcgp0EUHp7EvcB2/cv+N9dAkGiOTpdt4sOsQel1nL/r95xjJybE1Orz9PiB1+QhHd9HMBvZ4QCPV8Rp6lEuY1M3/6TsAq4T4s3ndrs/yOPKs0MyIR4KLpn2mrbkwTRwCH+adZwk28HfVp5QFnobe7AescyVHT2qnmRFC+6Bk3SGcps7uXRKpJBShvnq2RTN9vX10XQL3exMGTV1DRFqzRQu6BqG1LMPNI9kk/M6muP2nkYXfe5dvvfQlCK+zBTAzXpcQjwDWWVowArcjX5g2uBuOD3Y04i5LhfzHxepD2RzFZpXviSRvVkt667Q6kPZufrAk0YujLERc4KtZqtnGdltBN5iqSZaAji8BJgjX4QULPP9KigLZ1+qsSqg3LfUNnYJkAiETR6wkhhpfd54fQmuDxL9mLX9gMSIdg9hyd2Zervtg8vvk9nH1O90UHCGG5Vz2mFg+DN4HG3eBqmFkE/4EutGk/vKYHRrQg+TAg4Dkm7DDL2GzeVfjsk7/fgDR1tFbX6if+CKYsRZpGAcCzNVx6lZMN/Tyvjohk1+J6PSi/BOw5kodkY60pFMoxkeFW4oChadZ+PfgNs6cdpKlq5UvOOb4M7ZPSs3L8eaqxHoNQVHtjpW7o9I8ZGISbReLxDw7qhuKYmq6ji6MCOpkM13k=

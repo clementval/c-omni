@@ -48,7 +48,7 @@ It is possible to skip the parsing step the test only from the step 5 with the f
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED [PR#231](https://github.com/omni-compiler/omni-compiler/pull/231)
   * Issue on OMNI Compiler repository: [omni-compiler:#230](https://github.com/omni-compiler/omni-compiler/issues/230)
-* `Declaration doesn't accept BIND name`
+* ~~`Declaration doesn't accept BIND name`~~
   * Type: Bug
   * Priority: medium
   * Status: PR MRGED, ISSUE CLOSED [PR#229](https://github.com/omni-compiler/omni-compiler/pull/229)
@@ -63,3 +63,8 @@ It is possible to skip the parsing step the test only from the step 5 with the f
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED [PR#226](https://github.com/omni-compiler/omni-compiler/pull/226)
   * Issue on OMNI Compiler repository: [omni-compiler:#225](https://github.com/omni-compiler/omni-compiler/issues/225)
+* `Cannot find procedure subroutine defined later in the translation unit`
+  * Type: Bug
+  * Priority: medium
+  * Status: OPEN
+  * Issue on OMNI Compiler repository: [omni-compiler:#225](https://github.com/omni-compiler/omni-compiler/issues/531)

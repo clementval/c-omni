@@ -1,0 +1,68 @@
+<OmniFortranModule version="1.0">
+  <name>mo_util_uuid_types</name>
+  <depends>
+    <name>iso_c_binding</name>
+  </depends>
+  <typeTable>
+    <FstructType type="S7fa47ed4a4a0" is_public="true" bind="C">
+      <symbols>
+        <id type="A7fa47ed4b050">
+          <name>data</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa47ed47220" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa47ed00870" is_private="true" is_parameter="true" ref="I7fa47ed47220"/>
+    <FbasicType type="I7fa47ed4ad30" ref="Fint">
+      <kind>
+        <Var type="I7fa47ed00870" scope="local">c_signed_char</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa47ed4af30" ref="I7fa47ed4ad30"/>
+    <FbasicType type="A7fa47ed4b050" ref="I7fa47ed4af30">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">16</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fa47ed482a0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fa47ed48e10" is_public="true" is_parameter="true" ref="Fint"/>
+  </typeTable>
+  <identifiers>
+    <id type="S7fa47ed4a4a0" sclass="ftype_name" original_name="t_uuid" declared_in="mo_util_uuid_types">
+      <name>t_uuid</name>
+    </id>
+    <id type="I7fa47ed482a0" sclass="flocal" original_name="uuid_string_length" declared_in="mo_util_uuid_types">
+      <name>uuid_string_length</name>
+    </id>
+    <id type="I7fa47ed48e10" sclass="flocal" original_name="uuid_data_length" declared_in="mo_util_uuid_types">
+      <name>uuid_data_length</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="21" file="../../../icon-eniac/src/shared/mo_util_uuid_types.f90">
+      <name type="I7fa47ed482a0">uuid_string_length</name>
+      <value>
+        <FintConstant type="Fint">36</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="22" file="../../../icon-eniac/src/shared/mo_util_uuid_types.f90">
+      <name type="I7fa47ed48e10">uuid_data_length</name>
+      <value>
+        <FintConstant type="Fint">16</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

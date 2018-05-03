@@ -1,0 +1,3786 @@
+<OmniFortranModule version="1.0">
+  <name>mo_echam_convect_tables</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mo_exception</name>
+    <name>mo_physical_constants</name>
+    <name>mo_echam_cloud_config</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7ff4d95009e0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="C7ff4d9549660" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1000</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d950ce80" is_public="true" is_save="true" ref="C7ff4d9549660"/>
+    <FfunctionType type="F7ff4d95491e0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4d9549980">name</name>
+        <name type="C7ff4d9549ca0">text</name>
+        <name type="I7ff4d954a000">out</name>
+        <name type="I7ff4d954a360">level</name>
+        <name type="L7ff4d954a6c0">all_print</name>
+        <name type="L7ff4d954aa20">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d9549aa0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d9549980" intent="in" ref="C7ff4d9549aa0"/>
+    <FbasicType type="C7ff4d9549de0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d9549ca0" intent="in" ref="C7ff4d9549de0"/>
+    <FbasicType type="I7ff4d954a000" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7ff4d954a360" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7ff4d954a6c0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7ff4d954aa20" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7ff4d95126f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d9510e40" intent="in" ref="C7ff4d95126f0"/>
+    <FbasicType type="C7ff4d9512c80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d95111c0" intent="in" ref="C7ff4d9512c80"/>
+    <FbasicType type="I7ff4d9511540" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7ff4d95118c0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7ff4d9511c40" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7ff4d9511fc0" intent="in" is_optional="true" ref="Flogical"/>
+    <FfunctionType type="F7ff4d95494f0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4d954ad80">name</name>
+        <name type="C7ff4d954b0e0">text</name>
+        <name type="I7ff4d954b440">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d954aec0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d954ad80" intent="in" ref="C7ff4d954aec0"/>
+    <FbasicType type="C7ff4d954b220" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d954b0e0" intent="in" is_optional="true" ref="C7ff4d954b220"/>
+    <FbasicType type="I7ff4d954b440" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7ff4d9533ea0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d95334b0" intent="in" ref="C7ff4d9533ea0"/>
+    <FbasicType type="C7ff4d95343e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d9533810" intent="in" is_optional="true" ref="C7ff4d95343e0"/>
+    <FbasicType type="I7ff4d9533b70" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7ff4d954eb00" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7ff4d944bac0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d954eb00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944ad20" is_public="true" is_parameter="true" ref="R7ff4d944bac0"/>
+    <FbasicType type="R7ff4d9561ee0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944bc00" ref="Freal">
+      <kind>
+        <Var type="I7ff4d954eb00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944af70" is_public="true" is_parameter="true" ref="R7ff4d944bc00"/>
+    <FbasicType type="R7ff4d9562b80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944bd40" ref="Freal">
+      <kind>
+        <Var type="I7ff4d954eb00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944b1e0" is_public="true" is_parameter="true" ref="R7ff4d944bd40"/>
+    <FbasicType type="R7ff4d940e5e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944be80" ref="Freal">
+      <kind>
+        <Var type="I7ff4d954eb00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944b450" is_public="true" is_parameter="true" ref="R7ff4d944be80"/>
+    <FbasicType type="R7ff4d9413080" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944bfc0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d954eb00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944b6c0" is_public="true" is_parameter="true" ref="R7ff4d944bfc0"/>
+    <FbasicType type="R7ff4d9413e20" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944c100" ref="Freal">
+      <kind>
+        <Var type="I7ff4d954eb00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d944b930" is_public="true" is_parameter="true" ref="R7ff4d944c100"/>
+    <FbasicType type="R7ff4d94152c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7ff4d9489980">
+      <symbols>
+        <id type="R7ff4d9489ca0">
+          <name>cthomi</name>
+        </id>
+        <id type="R7ff4d9489fc0">
+          <name>cn0s</name>
+        </id>
+        <id type="R7ff4d948a300">
+          <name>crhoi</name>
+        </id>
+        <id type="R7ff4d948a660">
+          <name>crhosno</name>
+        </id>
+        <id type="R7ff4d948a9c0">
+          <name>ccsaut</name>
+        </id>
+        <id type="R7ff4d948ad20">
+          <name>clmax</name>
+        </id>
+        <id type="R7ff4d948b080">
+          <name>clmin</name>
+        </id>
+        <id type="R7ff4d948b3e0">
+          <name>ceffmax</name>
+        </id>
+        <id type="R7ff4d948b740">
+          <name>ccsacl</name>
+        </id>
+        <id type="R7ff4d948baa0">
+          <name>ccracl</name>
+        </id>
+        <id type="R7ff4d948be00">
+          <name>ccraut</name>
+        </id>
+        <id type="R7ff4d948c160">
+          <name>ceffmin</name>
+        </id>
+        <id type="R7ff4d948c4c0">
+          <name>ccwmin</name>
+        </id>
+        <id type="R7ff4d948c820">
+          <name>cinv</name>
+        </id>
+        <id type="R7ff4d948cb80">
+          <name>cauloc</name>
+        </id>
+        <id type="R7ff4d948cee0">
+          <name>cqtmin</name>
+        </id>
+        <id type="R7ff4d948d240">
+          <name>cn1lnd</name>
+        </id>
+        <id type="R7ff4d948d5a0">
+          <name>cn2lnd</name>
+        </id>
+        <id type="R7ff4d948d900">
+          <name>cn1sea</name>
+        </id>
+        <id type="R7ff4d948dc60">
+          <name>cn2sea</name>
+        </id>
+        <id type="R7ff4d948dfc0">
+          <name>cinhomi</name>
+        </id>
+        <id type="R7ff4d948e320">
+          <name>cinhoml1</name>
+        </id>
+        <id type="R7ff4d948e680">
+          <name>cinhoml2</name>
+        </id>
+        <id type="R7ff4d948e9e0">
+          <name>cinhoml3</name>
+        </id>
+        <id type="R7ff4d948ed40">
+          <name>csecfrl</name>
+        </id>
+        <id type="R7ff4d948f0a0">
+          <name>crs</name>
+        </id>
+        <id type="R7ff4d948f400">
+          <name>crt</name>
+        </id>
+        <id type="R7ff4d948f760">
+          <name>cvtfall</name>
+        </id>
+        <id type="R7ff4d948fac0">
+          <name>clwprat</name>
+        </id>
+        <id type="R7ff4d948fe20">
+          <name>csatsc</name>
+        </id>
+        <id type="Fint">
+          <name>nex</name>
+        </id>
+        <id type="Fint">
+          <name>nadd</name>
+        </id>
+        <id type="R7ff4d94905c0">
+          <name>cptop</name>
+        </id>
+        <id type="R7ff4d9490920">
+          <name>cpbot</name>
+        </id>
+        <id type="Fint">
+          <name>ncctop</name>
+        </id>
+        <id type="Fint">
+          <name>nccbot</name>
+        </id>
+        <id type="Fint">
+          <name>jbmin</name>
+        </id>
+        <id type="Fint">
+          <name>jbmax</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff4d944f010" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7ff4d9489ca0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9489fc0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948a300" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948a660" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948a9c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948ad20" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948b080" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948b3e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948b740" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948baa0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948be00" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948c160" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948c4c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948c820" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948cb80" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948cee0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948d240" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948d5a0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948d900" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948dc60" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948dfc0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948e320" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948e680" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948e9e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948ed40" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948f0a0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948f400" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948f760" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948fac0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d948fe20" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94905c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9490920" ref="Freal">
+      <kind>
+        <Var type="I7ff4d944f010" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff4d9489860" is_target="true" ref="S7ff4d9489980"/>
+    <FbasicType type="S7ff4d944c620" is_public="true" is_target="true" is_save="true" ref="S7ff4d9489860"/>
+    <FfunctionType type="F7ff4d9494ab0" return_type="Fint"/>
+    <FfunctionType type="F7ff4d95d3a00" return_type="Fint"/>
+    <FbasicType type="I7ff4d94baf20" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7ff4d94bba90" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7ff4d94c0550" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94c0670" is_public="true" is_parameter="true" ref="R7ff4d94c0550"/>
+    <FbasicType type="R7ff4d94c13c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94c25e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94c2700" is_public="true" is_parameter="true" ref="R7ff4d94c25e0"/>
+    <FbasicType type="R7ff4d94c3450" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94ca7c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94ca8e0" ref="R7ff4d94ca7c0"/>
+    <FbasicType type="A7ff4d94caa00" is_public="true" is_save="true" ref="R7ff4d94ca8e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d0080" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d01a0" ref="R7ff4d94d0080"/>
+    <FbasicType type="A7ff4d94d02c0" is_public="true" is_save="true" ref="R7ff4d94d01a0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d2c00" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d2d20" ref="R7ff4d94d2c00"/>
+    <FbasicType type="A7ff4d94d2e40" is_public="true" is_save="true" ref="R7ff4d94d2d20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94cbd80" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94cbea0" ref="R7ff4d94cbd80"/>
+    <FbasicType type="A7ff4d94cbfc0" is_public="true" is_save="true" ref="R7ff4d94cbea0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d1640" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d1760" ref="R7ff4d94d1640"/>
+    <FbasicType type="A7ff4d94d1880" is_public="true" is_save="true" ref="R7ff4d94d1760">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d41c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d42e0" ref="R7ff4d94d41c0"/>
+    <FbasicType type="A7ff4d94d4400" is_public="true" is_save="true" ref="R7ff4d94d42e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d5900" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d5a20" ref="R7ff4d94d5900"/>
+    <FbasicType type="A7ff4d94d5b40" ref="R7ff4d94d5a20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d94d5f40" is_public="true" is_save="true" ref="R7ff4d94d5a20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1998</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">16001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d7440" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d7560" ref="R7ff4d94d7440"/>
+    <FbasicType type="A7ff4d94d7680" ref="R7ff4d94d7560">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d94d7a80" is_public="true" is_save="true" ref="R7ff4d94d7560">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1998</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">16001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="L7ff4d94c8880" is_public="true" is_save="true" ref="Flogical"/>
+    <FbasicType type="R7ff4d94c9160" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94c9280" is_public="true" is_save="true" ref="R7ff4d94c9160"/>
+    <FbasicType type="R7ff4d94c93a0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4da88cd90" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4da88f2f0">name</name>
+        <name type="I7ff4da88fa70">size</name>
+        <name type="A7ff4da890520">temp</name>
+        <name type="A7ff4da890f80">idx</name>
+        <name type="A7ff4da891a80">zalpha</name>
+        <name type="A7ff4da892600">xi</name>
+        <name type="I7ff4da892e50">nphase</name>
+        <name type="A7ff4da893980">zphase</name>
+        <name type="A7ff4da894410">iphase</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4da88f1d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4da88f2f0" intent="in" ref="C7ff4da88f1d0"/>
+    <FbasicType type="I7ff4da88fa70" intent="in" ref="Fint"/>
+    <FbasicType type="R7ff4da8902e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da890400" intent="in" ref="R7ff4da8902e0"/>
+    <FbasicType type="A7ff4da890520" intent="in" ref="R7ff4da890400">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da88fa70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da890e60" intent="out" ref="Fint"/>
+    <FbasicType type="A7ff4da890f80" intent="out" ref="I7ff4da890e60">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da88fa70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da891840" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da891960" intent="out" ref="R7ff4da891840"/>
+    <FbasicType type="A7ff4da891a80" intent="out" ref="R7ff4da891960">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da88fa70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8923c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8924e0" intent="in" is_optional="true" ref="R7ff4da8923c0"/>
+    <FbasicType type="A7ff4da892600" intent="in" is_optional="true" ref="R7ff4da8924e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da88fa70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da892e50" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="R7ff4da893740" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da893860" intent="out" is_optional="true" ref="R7ff4da893740"/>
+    <FbasicType type="A7ff4da893980" intent="out" is_optional="true" ref="R7ff4da893860">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da88fa70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da8942f0" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="A7ff4da894410" intent="out" is_optional="true" ref="I7ff4da8942f0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da88fa70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8954e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8956e0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da8958e0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da895ae0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da895ce0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da895ee0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da8960e0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da8962e0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4d94d8c70" is_pointer="true" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94d8e70" is_private="true" is_pointer="true" is_save="true" ref="R7ff4d94d8c70"/>
+    <FbasicType type="R7ff4d94d9070" is_private="true" is_pointer="true" is_save="true" ref="R7ff4d94d8c70"/>
+    <FfunctionType type="F7ff4da89ad20" return_type="Flogical"/>
+    <FfunctionType type="F7ff4da8a05e0" return_type="R7ff4da8c5b60"/>
+    <FbasicType type="R7ff4da8c5b60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4da8c5c80" return_type="R7ff4da8c5b60"/>
+    <FfunctionType type="F7ff4da8a2f60" return_type="Freal"/>
+    <FfunctionType type="F7ff4da8bf380" return_type="Freal"/>
+    <FfunctionType type="F7ff4da8a4980" return_type="Fint"/>
+    <FfunctionType type="F7ff4da8c0cc0" return_type="Fint"/>
+    <FbasicType type="R7ff4da8987b0" is_target="true" ref="R7ff4d948ed40"/>
+    <FbasicType type="R7ff4da898e80" is_target="true" ref="R7ff4d9489ca0"/>
+    <FbasicType type="R7ff4da8993d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94c55f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94c7790" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da89b410" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a04c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da89d470" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da89dfa0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da89f600" ref="R7ff4da890400"/>
+    <FbasicType type="R7ff4da89f750" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94b9150" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a7040" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a55b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a62d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a9820" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a7d90" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8a8ab0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ad7c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8aa890" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ab3c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8aca50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8b0bb0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ae6e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8afe40" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8b3fa0" ref="R7ff4da8954e0"/>
+    <FbasicType type="R7ff4da8b1b50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8b3230" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8b6a80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8bca10" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8b99c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ba4f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8bbb50" ref="R7ff4da890400"/>
+    <FbasicType type="R7ff4da8bbca0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8c3380" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8c18f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8c2610" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8c40d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8c4df0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8c6770" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d95d6d80" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4da8ef6d0">name</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4da8ef5b0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4da8ef6d0" intent="in" ref="C7ff4da8ef5b0"/>
+    <FfunctionType type="F7ff4da8c8a40" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4da8cacb0">name</name>
+        <name type="I7ff4da8cb430">size</name>
+        <name type="A7ff4da8cbee0">temp</name>
+        <name type="A7ff4da8cc940">idx</name>
+        <name type="A7ff4da8cd4c0">xi</name>
+        <name type="I7ff4da8cdd10">nphase</name>
+        <name type="A7ff4da8ce840">zphase</name>
+        <name type="A7ff4da8cf2d0">iphase</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4da8cab90" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4da8cacb0" intent="in" ref="C7ff4da8cab90"/>
+    <FbasicType type="I7ff4da8cb430" intent="in" ref="Fint"/>
+    <FbasicType type="R7ff4da8cbca0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8cbdc0" intent="in" ref="R7ff4da8cbca0"/>
+    <FbasicType type="A7ff4da8cbee0" intent="in" ref="R7ff4da8cbdc0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8cb430" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da8cc820" intent="out" ref="Fint"/>
+    <FbasicType type="A7ff4da8cc940" intent="out" ref="I7ff4da8cc820">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8cb430" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8cd280" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8cd3a0" intent="in" is_optional="true" ref="R7ff4da8cd280"/>
+    <FbasicType type="A7ff4da8cd4c0" intent="in" is_optional="true" ref="R7ff4da8cd3a0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8cb430" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da8cdd10" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="R7ff4da8ce600" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ce720" intent="out" is_optional="true" ref="R7ff4da8ce600"/>
+    <FbasicType type="A7ff4da8ce840" intent="out" is_optional="true" ref="R7ff4da8ce720">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8cb430" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da8cf1b0" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="A7ff4da8cf2d0" intent="out" is_optional="true" ref="I7ff4da8cf1b0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8cb430" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8d01e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8d03e0" ref="R7ff4da8d01e0"/>
+    <FbasicType type="R7ff4da8d05e0" ref="R7ff4da8d01e0"/>
+    <FbasicType type="R7ff4da8d07e0" ref="R7ff4da8d01e0"/>
+    <FbasicType type="R7ff4da8d09e0" ref="R7ff4da8d01e0"/>
+    <FbasicType type="R7ff4da8d0be0" ref="R7ff4da8d01e0"/>
+    <FbasicType type="R7ff4da8d0de0" ref="R7ff4da8d01e0"/>
+    <FfunctionType type="F7ff4da8d5490" return_type="Flogical"/>
+    <FfunctionType type="F7ff4da8d84f0" return_type="Freal"/>
+    <FfunctionType type="F7ff4d9565200" return_type="Freal"/>
+    <FfunctionType type="F7ff4da8d9c70" return_type="Fint"/>
+    <FfunctionType type="F7ff4d95666b0" return_type="Fint"/>
+    <FfunctionType type="F7ff4da8dc560" return_type="R7ff4d956b550"/>
+    <FbasicType type="R7ff4d956b550" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d956b670" return_type="R7ff4d956b550"/>
+    <FbasicType type="R7ff4da8d2f20" is_target="true" ref="R7ff4d948ed40"/>
+    <FbasicType type="R7ff4da8d35f0" is_target="true" ref="R7ff4d9489ca0"/>
+    <FbasicType type="R7ff4da8d3b40" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8d5ba0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94b4e10" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8dc440" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8da9b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8db6d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8dec20" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8dd190" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ddeb0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e2bd0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8dfca0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e07d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e1e60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e5fc0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e3af0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e5250" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e93b0" ref="R7ff4da8d01e0"/>
+    <FbasicType type="R7ff4da8e6f60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8e8640" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8ebe90" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9568d70" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95672e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9568000" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9569ac0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d956a7e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d956c160" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d956e0d0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4d9570050">name</name>
+        <name type="I7ff4d9570990">size</name>
+        <name type="I7ff4d9570ab0">kidx</name>
+        <name type="A7ff4d9571480">list</name>
+        <name type="A7ff4d9571fe0">temp</name>
+        <name type="A7ff4d9572ea0">ua</name>
+        <name type="A7ff4d9573130">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d956ff30" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d9570050" intent="in" ref="C7ff4d956ff30"/>
+    <FbasicType type="I7ff4d9570990" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d9570ab0" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d9571360" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d9571480" intent="in" ref="I7ff4d9571360">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9570ab0" scope="local">kidx</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9571da0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9571ec0" intent="in" ref="R7ff4d9571da0"/>
+    <FbasicType type="A7ff4d9571fe0" intent="in" ref="R7ff4d9571ec0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9570990" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9572c60" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9572d80" intent="out" is_optional="true" ref="R7ff4d9572c60"/>
+    <FbasicType type="A7ff4d9572ea0" intent="out" is_optional="true" ref="R7ff4d9572d80">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9570990" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9573010" intent="out" is_optional="true" ref="R7ff4d9572c60"/>
+    <FbasicType type="A7ff4d9573130" intent="out" is_optional="true" ref="R7ff4d9573010">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9570990" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d9573af0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9570990" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9574270" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9574470" ref="R7ff4d9574270"/>
+    <FbasicType type="A7ff4d9574590" ref="R7ff4d9574470">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9570990" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9575300" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9575500" ref="R7ff4d9575300"/>
+    <FbasicType type="R7ff4d9575700" ref="R7ff4d9575300"/>
+    <FbasicType type="R7ff4d9575900" ref="R7ff4d9575300"/>
+    <FbasicType type="R7ff4d9575b00" ref="R7ff4d9575300"/>
+    <FbasicType type="R7ff4d9575d00" ref="R7ff4d9575300"/>
+    <FfunctionType type="F7ff4d957e850" return_type="R7ff4d9587a40"/>
+    <FbasicType type="R7ff4d9587a40" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d9587b60" return_type="R7ff4d9587a40"/>
+    <FfunctionType type="F7ff4d9581180" return_type="Freal"/>
+    <FfunctionType type="F7ff4d9582ba0" return_type="Fint"/>
+    <FbasicType type="R7ff4d95781f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d957e730" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d957b6e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d957c210" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d957d870" ref="R7ff4d9571ec0"/>
+    <FbasicType type="R7ff4d957d9c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9585260" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95837d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95844f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9585fb0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9586cd0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9588580" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d97ac230" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="I7ff4d97add40">size</name>
+        <name type="A7ff4d97ae700">idx</name>
+        <name type="A7ff4d97af250">zalpha</name>
+        <name type="A7ff4d97b05d0">table</name>
+        <name type="A7ff4d97b1d40">ua</name>
+        <name type="A7ff4d97b1fd0">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4d97add40" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d97ae5e0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d97ae700" intent="in" ref="I7ff4d97ae5e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97add40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97af010" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97af130" intent="in" ref="R7ff4d97af010"/>
+    <FbasicType type="A7ff4d97af250" intent="in" ref="R7ff4d97af130">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97add40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97aff90" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97b00b0" intent="in" ref="R7ff4d97aff90"/>
+    <FbasicType type="A7ff4d97b01d0" intent="in" ref="R7ff4d97b00b0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d97b05d0" intent="in" ref="R7ff4d97b00b0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1998</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">16001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97b1b00" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97b1c20" intent="out" is_optional="true" ref="R7ff4d97b1b00"/>
+    <FbasicType type="A7ff4d97b1d40" intent="out" is_optional="true" ref="R7ff4d97b1c20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97add40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97b1eb0" intent="out" is_optional="true" ref="R7ff4d97b1b00"/>
+    <FbasicType type="A7ff4d97b1fd0" intent="out" is_optional="true" ref="R7ff4d97b1eb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97add40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4d958b1a0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4d958d130">name</name>
+        <name type="I7ff4d958da80">size</name>
+        <name type="I7ff4d958dba0">kidx</name>
+        <name type="A7ff4d958e570">list</name>
+        <name type="A7ff4d958f0d0">temp</name>
+        <name type="A7ff4d958ff90">ua</name>
+        <name type="A7ff4d9590220">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d958d010" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d958d130" intent="in" ref="C7ff4d958d010"/>
+    <FbasicType type="I7ff4d958da80" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d958dba0" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d958e450" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d958e570" intent="in" ref="I7ff4d958e450">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d958dba0" scope="local">kidx</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d958ee90" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d958efb0" intent="in" ref="R7ff4d958ee90"/>
+    <FbasicType type="A7ff4d958f0d0" intent="in" ref="R7ff4d958efb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d958da80" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d958fd50" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d958fe70" intent="out" is_optional="true" ref="R7ff4d958fd50"/>
+    <FbasicType type="A7ff4d958ff90" intent="out" is_optional="true" ref="R7ff4d958fe70">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d958da80" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9590100" intent="out" is_optional="true" ref="R7ff4d958fd50"/>
+    <FbasicType type="A7ff4d9590220" intent="out" is_optional="true" ref="R7ff4d9590100">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d958da80" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d9590be0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d958da80" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9591790" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9591990" ref="R7ff4d9591790"/>
+    <FbasicType type="R7ff4d9591b90" ref="R7ff4d9591790"/>
+    <FbasicType type="R7ff4d9591d90" ref="R7ff4d9591790"/>
+    <FbasicType type="R7ff4d9591f90" ref="R7ff4d9591790"/>
+    <FfunctionType type="F7ff4d9597fa0" return_type="Freal"/>
+    <FfunctionType type="F7ff4d95996d0" return_type="Fint"/>
+    <FfunctionType type="F7ff4d959bfc0" return_type="R7ff4d959e680"/>
+    <FbasicType type="R7ff4d959e680" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d959e7a0" return_type="R7ff4d959e680"/>
+    <FfunctionType type="F7ff4d95a1a70" return_type="Flogical"/>
+    <FbasicType type="R7ff4d9594220" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d959bea0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d959a410" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d959b130" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d959cbf0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d959d910" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d959f1c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d97ea980" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="I7ff4d97ebeb0">size</name>
+        <name type="A7ff4d97ec870">idx</name>
+        <name type="A7ff4d97ed6c0">table</name>
+        <name type="A7ff4d97eead0">u</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4d97ebeb0" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d97ec750" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d97ec870" intent="in" ref="I7ff4d97ec750">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97ebeb0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97ed480" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97ed5a0" intent="in" ref="R7ff4d97ed480"/>
+    <FbasicType type="A7ff4d97ed6c0" intent="in" ref="R7ff4d97ed5a0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97ee890" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97ee9b0" intent="out" ref="R7ff4d97ee890"/>
+    <FbasicType type="A7ff4d97eead0" intent="out" ref="R7ff4d97ee9b0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97ebeb0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d94cd340" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94cd540" ref="R7ff4d94cd340"/>
+    <FbasicType type="A7ff4d94cd660" is_private="true" is_save="true" ref="R7ff4d94cd540">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4d95a3040" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4d95a4ce0">name</name>
+        <name type="I7ff4d95a5470">size</name>
+        <name type="A7ff4d95a5e40">list</name>
+        <name type="A7ff4d95a69a0">temp</name>
+        <name type="A7ff4d95a7810">uaw</name>
+        <name type="A7ff4d95a7aa0">duaw</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d95a4bc0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d95a4ce0" intent="in" ref="C7ff4d95a4bc0"/>
+    <FbasicType type="I7ff4d95a5470" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d95a5d20" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d95a5e40" intent="in" ref="I7ff4d95a5d20">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95a5470" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a6760" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a6880" intent="in" ref="R7ff4d95a6760"/>
+    <FbasicType type="A7ff4d95a69a0" intent="in" ref="R7ff4d95a6880">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95a5470" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a75d0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a76f0" intent="out" is_optional="true" ref="R7ff4d95a75d0"/>
+    <FbasicType type="A7ff4d95a7810" intent="out" is_optional="true" ref="R7ff4d95a76f0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95a5470" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a7980" intent="out" is_optional="true" ref="R7ff4d95a75d0"/>
+    <FbasicType type="A7ff4d95a7aa0" intent="out" is_optional="true" ref="R7ff4d95a7980">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95a5470" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d95a8460" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95a5470" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a8be0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a8de0" ref="R7ff4d95a8be0"/>
+    <FbasicType type="A7ff4d95a8f00" ref="R7ff4d95a8de0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95a5470" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a9c70" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95a9e70" ref="R7ff4d95a9c70"/>
+    <FbasicType type="R7ff4d95aa070" ref="R7ff4d95a9c70"/>
+    <FbasicType type="R7ff4d95aa270" ref="R7ff4d95a9c70"/>
+    <FbasicType type="R7ff4d95aa470" ref="R7ff4d95a9c70"/>
+    <FbasicType type="R7ff4d95aa670" ref="R7ff4d95a9c70"/>
+    <FfunctionType type="F7ff4d95b3040" return_type="R7ff4d95bc230"/>
+    <FbasicType type="R7ff4d95bc230" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d95bc350" return_type="R7ff4d95bc230"/>
+    <FfunctionType type="F7ff4d95b5970" return_type="Freal"/>
+    <FfunctionType type="F7ff4d95b7390" return_type="Fint"/>
+    <FbasicType type="R7ff4d95ac9e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95b2f20" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95afed0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95b0a00" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95b2060" ref="R7ff4d95a6880"/>
+    <FbasicType type="R7ff4d95b21b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95b9a50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95b7fc0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95b8ce0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95ba7a0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95bb4c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95bcd70" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d95bf910" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ff4d95c15b0">name</name>
+        <name type="I7ff4d95c1d40">size</name>
+        <name type="A7ff4d95c2710">list</name>
+        <name type="A7ff4d95c3270">temp</name>
+        <name type="A7ff4d95c40e0">uaw</name>
+        <name type="A7ff4d95c4370">duaw</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d95c1490" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d95c15b0" intent="in" ref="C7ff4d95c1490"/>
+    <FbasicType type="I7ff4d95c1d40" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d95c25f0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d95c2710" intent="in" ref="I7ff4d95c25f0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95c1d40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c3030" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c3150" intent="in" ref="R7ff4d95c3030"/>
+    <FbasicType type="A7ff4d95c3270" intent="in" ref="R7ff4d95c3150">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95c1d40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c3ea0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c3fc0" intent="out" is_optional="true" ref="R7ff4d95c3ea0"/>
+    <FbasicType type="A7ff4d95c40e0" intent="out" is_optional="true" ref="R7ff4d95c3fc0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95c1d40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c4250" intent="out" is_optional="true" ref="R7ff4d95c3ea0"/>
+    <FbasicType type="A7ff4d95c4370" intent="out" is_optional="true" ref="R7ff4d95c4250">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95c1d40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d95c4d30" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d95c1d40" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c58e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95c5ae0" ref="R7ff4d95c58e0"/>
+    <FbasicType type="R7ff4d95c5ce0" ref="R7ff4d95c58e0"/>
+    <FbasicType type="R7ff4d95c5ee0" ref="R7ff4d95c58e0"/>
+    <FbasicType type="R7ff4d95c60e0" ref="R7ff4d95c58e0"/>
+    <FfunctionType type="F7ff4d95cbfc0" return_type="Freal"/>
+    <FfunctionType type="F7ff4d95cd6f0" return_type="Fint"/>
+    <FfunctionType type="F7ff4d95cffe0" return_type="R7ff4d95d26a0"/>
+    <FbasicType type="R7ff4d95d26a0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d95d27c0" return_type="R7ff4d95d26a0"/>
+    <FfunctionType type="F7ff4d95d5a90" return_type="Flogical"/>
+    <FbasicType type="R7ff4d95c8240" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95cfec0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95ce430" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95cf150" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95d0c10" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95d1930" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d95d31e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7ff4da8efe80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">22</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ff4da872c70" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4da874490">size</name>
+        <name type="A7ff4da874e50">idx</name>
+        <name type="A7ff4da8759a0">zalpha</name>
+        <name type="A7ff4da876800">ua</name>
+        <name type="A7ff4da876a90">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da874490" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da874d30" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da874e50" intent="in" ref="I7ff4da874d30">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da874490" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da875760" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da875880" intent="in" ref="R7ff4da875760"/>
+    <FbasicType type="A7ff4da8759a0" intent="in" ref="R7ff4da875880">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da874490" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8765c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8766e0" intent="out" is_optional="true" ref="R7ff4da8765c0"/>
+    <FbasicType type="A7ff4da876800" intent="out" is_optional="true" ref="R7ff4da8766e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da874490" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da876970" intent="out" is_optional="true" ref="R7ff4da8765c0"/>
+    <FbasicType type="A7ff4da876a90" intent="out" is_optional="true" ref="R7ff4da876970">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da874490" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da879220" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4da87a750">size</name>
+        <name type="A7ff4da87b110">idx</name>
+        <name type="A7ff4da87bc60">ua</name>
+        <name type="A7ff4da87c7e0">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da87a750" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da87aff0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da87b110" intent="in" ref="I7ff4da87aff0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da87a750" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da87ba20" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da87bb40" intent="inout" ref="R7ff4da87ba20"/>
+    <FbasicType type="A7ff4da87bc60" intent="inout" ref="R7ff4da87bb40">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da87a750" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da87c5a0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da87c6c0" intent="inout" is_optional="true" ref="R7ff4da87c5a0"/>
+    <FbasicType type="A7ff4da87c7e0" intent="inout" is_optional="true" ref="R7ff4da87c6c0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da87a750" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da87eaf0" return_type="Flogical"/>
+    <FfunctionType type="F7ff4da87fef0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4da881710">size</name>
+        <name type="A7ff4da8820d0">idx</name>
+        <name type="A7ff4da882c20">zalpha</name>
+        <name type="A7ff4da883a80">ua</name>
+        <name type="A7ff4da883d10">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da881710" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da881fb0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da8820d0" intent="in" ref="I7ff4da881fb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da881710" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8829e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da882b00" intent="in" ref="R7ff4da8829e0"/>
+    <FbasicType type="A7ff4da882c20" intent="in" ref="R7ff4da882b00">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da881710" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da883840" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da883960" intent="out" is_optional="true" ref="R7ff4da883840"/>
+    <FbasicType type="A7ff4da883a80" intent="out" is_optional="true" ref="R7ff4da883960">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da881710" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da883bf0" intent="out" is_optional="true" ref="R7ff4da883840"/>
+    <FbasicType type="A7ff4da883d10" intent="out" is_optional="true" ref="R7ff4da883bf0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da881710" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da8864a0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4da8879d0">size</name>
+        <name type="A7ff4da888390">idx</name>
+        <name type="A7ff4da889240">ua</name>
+        <name type="A7ff4da8894d0">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da8879d0" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da888270" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da888390" intent="in" ref="I7ff4da888270">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8879d0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da889000" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da889120" intent="out" is_optional="true" ref="R7ff4da889000"/>
+    <FbasicType type="A7ff4da889240" intent="out" is_optional="true" ref="R7ff4da889120">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8879d0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da8893b0" intent="out" is_optional="true" ref="R7ff4da889000"/>
+    <FbasicType type="A7ff4da8894d0" intent="out" is_optional="true" ref="R7ff4da8893b0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da8879d0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da88b7e0" return_type="Flogical"/>
+    <FbasicType type="R7ff4d94ce9e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94cebe0" ref="R7ff4d94ce9e0"/>
+    <FbasicType type="A7ff4d94ced00" is_private="true" is_save="true" ref="R7ff4d94cebe0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da8455a0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4da847560">size</name>
+        <name type="A7ff4da848320">idx</name>
+        <name type="A7ff4da849100">zalpha</name>
+        <name type="I7ff4da847680">nphase</name>
+        <name type="A7ff4da848600">iphase</name>
+        <name type="A7ff4da849f60">ua</name>
+        <name type="A7ff4da84a1f0">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da847560" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da848200" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da848320" intent="in" ref="I7ff4da848200">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da847560" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da848ec0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da848fe0" intent="in" ref="R7ff4da848ec0"/>
+    <FbasicType type="A7ff4da849100" intent="in" ref="R7ff4da848fe0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da847560" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da847680" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da8484e0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da848600" intent="in" ref="I7ff4da8484e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da847560" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da849d20" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da849e40" intent="out" is_optional="true" ref="R7ff4da849d20"/>
+    <FbasicType type="A7ff4da849f60" intent="out" is_optional="true" ref="R7ff4da849e40">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da847560" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da84a0d0" intent="out" is_optional="true" ref="R7ff4da849d20"/>
+    <FbasicType type="A7ff4da84a1f0" intent="out" is_optional="true" ref="R7ff4da84a0d0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da847560" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4da84ab90" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da847560" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4d97f3ec0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="I7ff4d97f6170">size</name>
+        <name type="I7ff4d97f6290">kidx</name>
+        <name type="A7ff4d97f6f30">store_idx</name>
+        <name type="A7ff4d97f7210">lookup_idx</name>
+        <name type="A7ff4d97f7d60">zalpha</name>
+        <name type="A7ff4d97f90e0">table</name>
+        <name type="A7ff4d97fa850">ua</name>
+        <name type="A7ff4d97faae0">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4d97f6170" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d97f6290" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d97f6e10" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d97f6f30" intent="in" ref="I7ff4d97f6e10">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97f6290" scope="local">kidx</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4d97f70f0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d97f7210" intent="in" ref="I7ff4d97f70f0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97f6170" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97f7b20" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97f7c40" intent="in" ref="R7ff4d97f7b20"/>
+    <FbasicType type="A7ff4d97f7d60" intent="in" ref="R7ff4d97f7c40">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97f6170" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97f8aa0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97f8bc0" intent="in" ref="R7ff4d97f8aa0"/>
+    <FbasicType type="A7ff4d97f8ce0" intent="in" ref="R7ff4d97f8bc0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4d97f90e0" intent="in" ref="R7ff4d97f8bc0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1998</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">16001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97fa610" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97fa730" intent="inout" is_optional="true" ref="R7ff4d97fa610"/>
+    <FbasicType type="A7ff4d97fa850" intent="inout" is_optional="true" ref="R7ff4d97fa730">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97f6170" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97fa9c0" intent="inout" is_optional="true" ref="R7ff4d97fa610"/>
+    <FbasicType type="A7ff4d97faae0" intent="inout" is_optional="true" ref="R7ff4d97fa9c0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d97f6170" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da859640" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4da85b310">size</name>
+        <name type="A7ff4da85c0d0">idx</name>
+        <name type="I7ff4da85b430">nphase</name>
+        <name type="A7ff4da85c3b0">iphase</name>
+        <name type="A7ff4da85ceb0">ua</name>
+        <name type="A7ff4da85da30">dua</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da85b310" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da85bfb0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da85c0d0" intent="in" ref="I7ff4da85bfb0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da85b310" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da85b430" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da85c290" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da85c3b0" intent="in" ref="I7ff4da85c290">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da85b310" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da85cc70" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da85cd90" intent="inout" ref="R7ff4da85cc70"/>
+    <FbasicType type="A7ff4da85ceb0" intent="inout" ref="R7ff4da85cd90">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da85b310" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da85d7f0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da85d910" intent="inout" is_optional="true" ref="R7ff4da85d7f0"/>
+    <FbasicType type="A7ff4da85da30" intent="inout" is_optional="true" ref="R7ff4da85d910">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da85b310" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7ff4da85e3d0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da85b310" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4da862600" return_type="Flogical"/>
+    <FfunctionType type="F7ff4da86e850" return_type="Flogical"/>
+    <FfunctionType type="F7ff4da839b00" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="I7ff4da83b7d0">size</name>
+        <name type="I7ff4da83b8f0">kidx</name>
+        <name type="A7ff4da83c590">store_idx</name>
+        <name type="A7ff4da83c870">lookup_idx</name>
+        <name type="A7ff4da83d6c0">table</name>
+        <name type="A7ff4da83ead0">u</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4da83b7d0" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da83b8f0" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4da83c470" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da83c590" intent="in" ref="I7ff4da83c470">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da83b8f0" scope="local">kidx</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff4da83c750" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4da83c870" intent="in" ref="I7ff4da83c750">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da83b7d0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da83d480" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da83d5a0" intent="in" ref="R7ff4da83d480"/>
+    <FbasicType type="A7ff4da83d6c0" intent="in" ref="R7ff4da83d5a0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">49999</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">400001</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4da83e890" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da83e9b0" intent="inout" ref="R7ff4da83e890"/>
+    <FbasicType type="A7ff4da83ead0" intent="inout" ref="R7ff4da83e9b0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4da83b7d0" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7ff4d9744940" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4d9745e70">size</name>
+        <name type="A7ff4d9746920">temp</name>
+        <name type="A7ff4d9747470">ub</name>
+        <name type="A7ff4d9747ff0">uc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4d9745e70" intent="in" ref="Fint"/>
+    <FbasicType type="R7ff4d97466e0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9746800" intent="in" ref="R7ff4d97466e0"/>
+    <FbasicType type="A7ff4d9746920" intent="in" ref="R7ff4d9746800">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9745e70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9747230" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9747350" intent="out" ref="R7ff4d9747230"/>
+    <FbasicType type="A7ff4d9747470" intent="out" ref="R7ff4d9747350">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9745e70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d9747db0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9747ed0" intent="out" is_optional="true" ref="R7ff4d9747db0"/>
+    <FbasicType type="A7ff4d9747ff0" intent="out" is_optional="true" ref="R7ff4d9747ed0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9745e70" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97490c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97492c0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d97494c0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d97496c0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d97498c0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d9749ac0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d9749cc0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d9749ec0" ref="R7ff4d97490c0"/>
+    <FfunctionType type="F7ff4d974c410" return_type="Flogical"/>
+    <FfunctionType type="F7ff4d974f600" return_type="R7ff4d976e970"/>
+    <FbasicType type="R7ff4d976e970" ref="R7ff4d97490c0"/>
+    <FfunctionType type="F7ff4d976ea90" return_type="R7ff4d976e970"/>
+    <FbasicType type="R7ff4d974f4e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d949f8d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9494f40" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d974e620" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d974e770" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9751df0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94a3bf0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9499360" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9750f30" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9751080" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97546b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94a5e40" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d949b530" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97537f0" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9753940" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9756f70" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94a8110" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d949d680" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97560b0" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9756200" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97598d0" ref="R7ff4d97490c0"/>
+    <FbasicType type="R7ff4d9758a10" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9758b60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d975d580" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d975d870" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d975f0c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97646c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9763800" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9763950" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9766f80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97660c0" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9766210" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97697f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9768930" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9768a80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d976c060" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d976b1a0" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d976b2f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d976dab0" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d976dc00" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9772620" ref="R7ff4d9746800"/>
+    <FbasicType type="R7ff4d9772910" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9774160" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d9776930" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7ff4d9778600">size</name>
+        <name type="I7ff4d9778720">kidx</name>
+        <name type="A7ff4d97790e0">list</name>
+        <name type="A7ff4d9779c30">temp</name>
+        <name type="A7ff4d977a780">ub</name>
+        <name type="A7ff4d977b300">uc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff4d9778600" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d9778720" intent="in" ref="Fint"/>
+    <FbasicType type="I7ff4d9778fc0" intent="in" ref="Fint"/>
+    <FbasicType type="A7ff4d97790e0" intent="in" ref="I7ff4d9778fc0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9778720" scope="local">kidx</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d97799f0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9779b10" intent="in" ref="R7ff4d97799f0"/>
+    <FbasicType type="A7ff4d9779c30" intent="in" ref="R7ff4d9779b10">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9778600" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d977a540" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d977a660" intent="out" ref="R7ff4d977a540"/>
+    <FbasicType type="A7ff4d977a780" intent="out" ref="R7ff4d977a660">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9778600" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d977b0c0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d977b1e0" intent="out" is_optional="true" ref="R7ff4d977b0c0"/>
+    <FbasicType type="A7ff4d977b300" intent="out" is_optional="true" ref="R7ff4d977b1e0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="I7ff4d9778600" scope="local">size</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff4d977c3d0" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d977c5d0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d977c7d0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d977c9d0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d977cbd0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d977cdd0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d977cfd0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d977d1d0" ref="R7ff4d977c3d0"/>
+    <FfunctionType type="F7ff4d977ff50" return_type="Flogical"/>
+    <FfunctionType type="F7ff4d9784070" return_type="R7ff4d97a4220"/>
+    <FbasicType type="R7ff4d97a4220" ref="R7ff4d977c3d0"/>
+    <FfunctionType type="F7ff4d97a4340" return_type="R7ff4d97a4220"/>
+    <FbasicType type="R7ff4d9783f50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9783090" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d97831e0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9786810" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9785950" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d9785aa0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97890d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9788210" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d9788360" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d978b990" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d978aad0" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d978ac20" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d978e2f0" ref="R7ff4d977c3d0"/>
+    <FbasicType type="R7ff4d978d430" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d978d580" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9791fa0" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d9792290" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9793ae0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9799fc0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9799100" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d9799250" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d979c830" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d979b970" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d979bac0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d979f0a0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d979e1e0" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d979e330" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97a1910" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97a0a50" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d97a0ba0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97a3360" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d97a34b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97a7ed0" ref="R7ff4d9779b10"/>
+    <FbasicType type="R7ff4d97a81c0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97a9a10" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97b3260" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97b3460" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b3660" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b3860" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b3a60" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b3c60" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b3e60" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b4060" ref="R7ff4d97b3260"/>
+    <FbasicType type="R7ff4d97b4260" ref="R7ff4d97b3260"/>
+    <FfunctionType type="F7ff4d97b6d30" return_type="Flogical"/>
+    <FfunctionType type="F7ff4d97cfed0" return_type="Flogical"/>
+    <FbasicType type="R7ff4d97be1b0" ref="R7ff4d97b00b0"/>
+    <FbasicType type="R7ff4d97c33a0" ref="R7ff4d97b00b0"/>
+    <FbasicType type="R7ff4d97c3ac0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97c5250" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97d6ba0" ref="R7ff4d97b00b0"/>
+    <FbasicType type="R7ff4d97dbd40" ref="R7ff4d97b00b0"/>
+    <FbasicType type="R7ff4d97dc410" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97ddb50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97e8bc0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97fbd70" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da800000" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800120" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800320" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800520" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800720" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800920" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800b20" ref="R7ff4d97fbd70"/>
+    <FbasicType type="R7ff4da800d20" ref="R7ff4d97fbd70"/>
+    <FfunctionType type="F7ff4da803ff0" return_type="Flogical"/>
+    <FfunctionType type="F7ff4da81e070" return_type="Flogical"/>
+    <FbasicType type="R7ff4da80c350" ref="R7ff4d97f8bc0"/>
+    <FbasicType type="R7ff4da811540" ref="R7ff4d97f8bc0"/>
+    <FbasicType type="R7ff4da811c60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da8133f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da825bd0" ref="R7ff4d97f8bc0"/>
+    <FbasicType type="R7ff4da82ad70" ref="R7ff4d97f8bc0"/>
+    <FbasicType type="R7ff4da82b440" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da82cb80" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4da837bf0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d94dc1a0" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7ff4d94dcb50" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94dcd50" ref="R7ff4d94dcb50"/>
+    <FbasicType type="R7ff4d94dcf50" ref="R7ff4d94dcb50"/>
+    <FbasicType type="R7ff4d94dd740" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94dd940" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d94ddb40" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d94de940" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94deb40" ref="R7ff4d94de940"/>
+    <FbasicType type="R7ff4d94ded40" ref="R7ff4d94de940"/>
+    <FbasicType type="R7ff4d94def40" ref="R7ff4d94de940"/>
+    <FbasicType type="R7ff4d94df140" ref="R7ff4d94de940"/>
+    <FbasicType type="R7ff4d94df340" ref="R7ff4d94de940"/>
+    <FbasicType type="R7ff4d94dff50" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94e0150" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d94e0350" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d94e0550" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d94e0750" ref="R7ff4d94dff50"/>
+    <FfunctionType type="F7ff4d94e2840" return_type="R7ff4d94e2720"/>
+    <FbasicType type="R7ff4d94e2720" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d94e2270" return_type="R7ff4d94e2150"/>
+    <FbasicType type="R7ff4d94e2150" ref="Freal">
+      <kind>
+        <Var type="I7ff4d95009e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d94e38a0" return_type="R7ff4d94e3780"/>
+    <FbasicType type="R7ff4d94e3780" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d94fa9c0" return_type="R7ff4d9736e70"/>
+    <FbasicType type="R7ff4d9736e70" ref="R7ff4d94dd740"/>
+    <FfunctionType type="F7ff4d9736f90" return_type="R7ff4d9736e70"/>
+    <FfunctionType type="F7ff4d9709900" return_type="R7ff4d97437b0"/>
+    <FbasicType type="R7ff4d97437b0" ref="R7ff4d94dff50"/>
+    <FfunctionType type="F7ff4d97438d0" return_type="R7ff4d97437b0"/>
+    <FbasicType type="R7ff4d94e2c00" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e4200" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">19</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e43c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">35</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e4e30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e5030" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e5220" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e57d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e6170" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e6370" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7ff4d94ae930" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e6560" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e6b10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e74b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e76b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7ff4d94b0ad0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e78a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e7e50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e86e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e88e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e8ea0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e9840" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e9a40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7ff4d94b2c70" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7ff4d94e9c30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ea1e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94eab80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ead80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94eaf70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94eb520" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ebf30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ec130" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ec780" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ed010" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ed210" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ed7d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ee170" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ee370" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7ff4d94b6fb0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ee560" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94eeb10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ef4b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ef6b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94ef8a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94efe50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94f0860" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94f0a60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94f10b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94f1a40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94f1c40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d94f2260" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7ff4d94f4820" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9497110" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94a1aa0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94f8960" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94f99b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d94fa8a0" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d94fbdd0" ref="R7ff4d94dd940"/>
+    <FbasicType type="R7ff4d9700050" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9700e60" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97030d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97040d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9704e90" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d9706370" ref="R7ff4d94dd940"/>
+    <FbasicType type="R7ff4d9706610" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97073d0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97097e0" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d970b1d0" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d970cd10" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d970e920" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d97166f0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9717740" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9718550" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d9719a30" ref="R7ff4d94dd940"/>
+    <FbasicType type="R7ff4d9719d20" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d971ab30" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d971cd50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d971dd50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d971eb10" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d971ffa0" ref="R7ff4d94dd940"/>
+    <FbasicType type="R7ff4d9720240" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9721000" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9723e40" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d9726660" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d9728c30" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d972b450" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d972ea50" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d972faa0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97308b0" ref="R7ff4d94dd740"/>
+    <FbasicType type="R7ff4d9731d90" ref="R7ff4d94dd940"/>
+    <FbasicType type="R7ff4d9732080" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9732e90" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97350b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d97360b0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9738300" ref="R7ff4d94dd940"/>
+    <FbasicType type="R7ff4d97385a0" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d9739360" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff4d973c1a0" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d973e9c0" ref="R7ff4d94dff50"/>
+    <FbasicType type="R7ff4d9740f90" ref="R7ff4d94dff50"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7ff4d95009e0" sclass="flocal" original_name="wp" declared_in="mo_kind">
+      <name>wp</name>
+    </id>
+    <id type="C7ff4d950ce80" sclass="flocal" original_name="message_text" declared_in="mo_exception">
+      <name>message_text</name>
+    </id>
+    <id type="F7ff4d95491e0" sclass="ffunc" original_name="message" declared_in="mo_exception">
+      <name>message</name>
+    </id>
+    <id type="F7ff4d95494f0" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="R7ff4d944ad20" sclass="flocal" original_name="rd" declared_in="mo_physical_constants">
+      <name>rd</name>
+    </id>
+    <id type="R7ff4d944af70" sclass="flocal" original_name="cpd" declared_in="mo_physical_constants">
+      <name>cpd</name>
+    </id>
+    <id type="R7ff4d944b1e0" sclass="flocal" original_name="rv" declared_in="mo_physical_constants">
+      <name>rv</name>
+    </id>
+    <id type="R7ff4d944b450" sclass="flocal" original_name="alv" declared_in="mo_physical_constants">
+      <name>alv</name>
+    </id>
+    <id type="R7ff4d944b6c0" sclass="flocal" original_name="als" declared_in="mo_physical_constants">
+      <name>als</name>
+    </id>
+    <id type="R7ff4d944b930" sclass="flocal" original_name="tmelt" declared_in="mo_physical_constants">
+      <name>tmelt</name>
+    </id>
+    <id type="S7ff4d944c620" sclass="flocal" original_name="echam_cloud_config" declared_in="mo_echam_cloud_config">
+      <name>echam_cloud_config</name>
+    </id>
+    <id type="F7ff4d9494ab0" sclass="ffunc" original_name="selected_real_kind" declared_in="mo_echam_convect_tables">
+      <name>selected_real_kind</name>
+    </id>
+    <id type="I7ff4d94baf20" sclass="flocal" original_name="jptlucu1" declared_in="mo_echam_convect_tables">
+      <name>jptlucu1</name>
+    </id>
+    <id type="I7ff4d94bba90" sclass="flocal" original_name="jptlucu2" declared_in="mo_echam_convect_tables">
+      <name>jptlucu2</name>
+    </id>
+    <id type="R7ff4d94c0670" sclass="flocal" original_name="fjptlucu1" declared_in="mo_echam_convect_tables">
+      <name>fjptlucu1</name>
+    </id>
+    <id type="R7ff4d94c2700" sclass="flocal" original_name="fjptlucu2" declared_in="mo_echam_convect_tables">
+      <name>fjptlucu2</name>
+    </id>
+    <id type="A7ff4d94caa00" sclass="fsave" original_name="tlucua" declared_in="mo_echam_convect_tables">
+      <name>tlucua</name>
+    </id>
+    <id type="A7ff4d94d02c0" sclass="fsave" original_name="tlucub" declared_in="mo_echam_convect_tables">
+      <name>tlucub</name>
+    </id>
+    <id type="A7ff4d94d2e40" sclass="fsave" original_name="tlucuc" declared_in="mo_echam_convect_tables">
+      <name>tlucuc</name>
+    </id>
+    <id type="A7ff4d94cbfc0" sclass="fsave" original_name="tlucuaw" declared_in="mo_echam_convect_tables">
+      <name>tlucuaw</name>
+    </id>
+    <id type="A7ff4d94d1880" sclass="fsave" original_name="tlucubw" declared_in="mo_echam_convect_tables">
+      <name>tlucubw</name>
+    </id>
+    <id type="A7ff4d94d4400" sclass="fsave" original_name="tlucucw" declared_in="mo_echam_convect_tables">
+      <name>tlucucw</name>
+    </id>
+    <id type="A7ff4d94d5f40" sclass="fsave" original_name="tlucu" declared_in="mo_echam_convect_tables">
+      <name>tlucu</name>
+    </id>
+    <id type="A7ff4d94d7a80" sclass="fsave" original_name="tlucuw" declared_in="mo_echam_convect_tables">
+      <name>tlucuw</name>
+    </id>
+    <id type="L7ff4d94c8880" sclass="fsave" original_name="lookupoverflow" declared_in="mo_echam_convect_tables">
+      <name>lookupoverflow</name>
+    </id>
+    <id type="R7ff4d94c9280" sclass="fsave" original_name="flookupoverflow" declared_in="mo_echam_convect_tables">
+      <name>flookupoverflow</name>
+    </id>
+    <id type="F7ff4da88cd90" sclass="ffunc" original_name="prepare_ua_index_spline" declared_in="mo_echam_convect_tables">
+      <name>prepare_ua_index_spline</name>
+    </id>
+    <id type="F7ff4da872c70" sclass="ffunc" original_name="lookup_ua_spline" declared_in="mo_echam_convect_tables">
+      <name>lookup_ua_spline</name>
+    </id>
+    <id type="F7ff4da87fef0" sclass="ffunc" original_name="lookup_uaw_spline" declared_in="mo_echam_convect_tables">
+      <name>lookup_uaw_spline</name>
+    </id>
+    <id type="F7ff4da8455a0" sclass="ffunc" original_name="lookup_ua_eor_uaw_spline" declared_in="mo_echam_convect_tables">
+      <name>lookup_ua_eor_uaw_spline</name>
+    </id>
+    <id type="F7ff4d956e0d0" sclass="ffunc" original_name="lookup_ua_list_spline" declared_in="mo_echam_convect_tables">
+      <name>lookup_ua_list_spline</name>
+    </id>
+    <id type="F7ff4d95a3040" sclass="ffunc" original_name="lookup_uaw_list_spline" declared_in="mo_echam_convect_tables">
+      <name>lookup_uaw_list_spline</name>
+    </id>
+    <id type="F7ff4da8c8a40" sclass="ffunc" original_name="prepare_ua_index" declared_in="mo_echam_convect_tables">
+      <name>prepare_ua_index</name>
+    </id>
+    <id type="F7ff4da879220" sclass="ffunc" original_name="lookup_ua" declared_in="mo_echam_convect_tables">
+      <name>lookup_ua</name>
+    </id>
+    <id type="F7ff4da8864a0" sclass="ffunc" original_name="lookup_uaw" declared_in="mo_echam_convect_tables">
+      <name>lookup_uaw</name>
+    </id>
+    <id type="F7ff4da859640" sclass="ffunc" original_name="lookup_ua_eor_uaw" declared_in="mo_echam_convect_tables">
+      <name>lookup_ua_eor_uaw</name>
+    </id>
+    <id type="F7ff4d958b1a0" sclass="ffunc" original_name="lookup_ua_list" declared_in="mo_echam_convect_tables">
+      <name>lookup_ua_list</name>
+    </id>
+    <id type="F7ff4d95bf910" sclass="ffunc" original_name="lookup_uaw_list" declared_in="mo_echam_convect_tables">
+      <name>lookup_uaw_list</name>
+    </id>
+    <id type="F7ff4d9744940" sclass="ffunc" original_name="lookup_ubc" declared_in="mo_echam_convect_tables">
+      <name>lookup_ubc</name>
+    </id>
+    <id type="F7ff4d9776930" sclass="ffunc" original_name="lookup_ubc_list" declared_in="mo_echam_convect_tables">
+      <name>lookup_ubc_list</name>
+    </id>
+    <id type="F7ff4d94dc1a0" sclass="ffunc" original_name="init_convect_tables" declared_in="mo_echam_convect_tables">
+      <name>init_convect_tables</name>
+    </id>
+    <id type="F7ff4d95d6d80" sclass="ffunc" original_name="lookuperror" declared_in="mo_echam_convect_tables">
+      <name>lookuperror</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7ff4d95009e0">wp</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <FintConstant type="Fint">12</FintConstant>
+            <FintConstant type="Fint">307</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="R7ff4d944ad20">rd</name>
+      <value>
+        <FrealConstant type="R7ff4d9561ee0" kind="wp">287.04</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="R7ff4d944af70">cpd</name>
+      <value>
+        <FrealConstant type="R7ff4d9562b80" kind="wp">1004.64</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="R7ff4d944b1e0">rv</name>
+      <value>
+        <FrealConstant type="R7ff4d940e5e0" kind="wp">461.51</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="R7ff4d944b450">alv</name>
+      <value>
+        <FrealConstant type="R7ff4d9413080" kind="wp">2.5008e6</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="R7ff4d944b6c0">als</name>
+      <value>
+        <FrealConstant type="R7ff4d9413e20" kind="wp">2.8345e6</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="R7ff4d944b930">tmelt</name>
+      <value>
+        <FrealConstant type="R7ff4d94152c0" kind="wp">273.15</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="130" file="src/atm_phy_echam/mo_echam_convect_tables.f90">
+      <name type="I7ff4d94baf20">jptlucu1</name>
+      <value>
+        <FintConstant type="Fint">50000</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="131" file="src/atm_phy_echam/mo_echam_convect_tables.f90">
+      <name type="I7ff4d94bba90">jptlucu2</name>
+      <value>
+        <FintConstant type="Fint">400000</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="165" file="src/atm_phy_echam/mo_echam_convect_tables.f90">
+      <name type="R7ff4d94c0670">fjptlucu1</name>
+      <value>
+        <FrealConstant type="R7ff4d94c13c0" kind="wp">50000.0</FrealConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="166" file="src/atm_phy_echam/mo_echam_convect_tables.f90">
+      <name type="R7ff4d94c2700">fjptlucu2</name>
+      <value>
+        <FrealConstant type="R7ff4d94c3450" kind="wp">400000.0</FrealConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

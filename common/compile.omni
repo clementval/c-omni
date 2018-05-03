@@ -37,17 +37,13 @@ while getopts "hb:c:r:d:" opt; do
     show_help
     exit 0
     ;;
-  b)
-    OMNI_BRANCH=$OPTARG
-    ;;
-  c)
-    BASE_COMPILER=$OPTARG
-    ;;
-  r)
-    OMNI_REPO=$OPTARG
-    ;;
-  d)
-    TARGET_DIRECTORY=$OPTARG
+  b) OMNI_BRANCH=$OPTARG ;;
+  c) BASE_COMPILER=$OPTARG ;;
+  r) OMNI_REPO=$OPTARG ;;
+  d) TARGET_DIRECTORY=$OPTARG ;;
+  *)
+    show_help
+    exit 1
     ;;
   esac
 done

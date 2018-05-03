@@ -1,0 +1,68 @@
+<OmniFortranModule version="1.0">
+  <name>mo_psrad_orbit_config</name>
+  <depends>
+    <name>mo_kind</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7ffcc6405fe0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FstructType type="S7ffcc6502c20" is_public="true">
+      <symbols>
+        <id type="R7ffcc6600200">
+          <name>cecc</name>
+        </id>
+        <id type="R7ffcc6600a40">
+          <name>cobld</name>
+        </id>
+        <id type="Flogical">
+          <name>l_orbvsop87</name>
+        </id>
+        <id type="Flogical">
+          <name>l_sph_symm_irr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="R7ffcc6600000" ref="Freal">
+      <kind>
+        <Var type="I7ffcc6405fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ffcc6600200" ref="R7ffcc6600000"/>
+    <FbasicType type="R7ffcc6600840" ref="Freal">
+      <kind>
+        <Var type="I7ffcc6405fe0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ffcc6600a40" ref="R7ffcc6600840"/>
+    <FbasicType type="S7ffcc6601ed0" ref="S7ffcc6502c20"/>
+    <FbasicType type="S7ffcc6601ff0" is_public="true" ref="S7ffcc6601ed0"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7ffcc6405fe0" sclass="flocal" original_name="wp" declared_in="mo_kind">
+      <name>wp</name>
+    </id>
+    <id type="S7ffcc6502c20" sclass="ftype_name" original_name="t_psrad_orbit_config" declared_in="mo_psrad_orbit_config">
+      <name>t_psrad_orbit_config</name>
+    </id>
+    <id type="S7ffcc6601ff0" sclass="fsave" original_name="psrad_orbit_config" declared_in="mo_psrad_orbit_config">
+      <name>psrad_orbit_config</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7ffcc6405fe0">wp</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <FintConstant type="Fint">12</FintConstant>
+            <FintConstant type="Fint">307</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

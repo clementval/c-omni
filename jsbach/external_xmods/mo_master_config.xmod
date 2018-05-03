@@ -1,0 +1,279 @@
+<OmniFortranModule version="1.0">
+  <name>mo_master_config</name>
+  <depends>
+    <name>mtime</name>
+    <name>mo_io_units</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="C7ffb74834c30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74834d50" is_public="true" ref="C7ffb74834c30"/>
+    <FbasicType type="C7ffb74834e70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffb74842cb0" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ffb74831000" is_private="true" ref="Fint"/>
+    <FfunctionType type="F7ffb74844260" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ffb74830450" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7ffb74838e10" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffb74839ab0">update_institute</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffb74839990" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74839ab0" ref="C7ffb74839990"/>
+    <FbasicType type="C7ffb74832310" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74832510" is_protected="true" ref="C7ffb74832310"/>
+    <FbasicType type="C7ffb7483a0c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7ffb7483af70" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7ffb7483bbe0">lr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7ffb7483bbe0" intent="in" ref="Flogical"/>
+    <FbasicType type="L7ffb74832f30" is_protected="true" ref="Flogical"/>
+    <FfunctionType type="F7ffb7483cc70" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7ffb7483d8e0">lr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7ffb7483d8e0" intent="in" ref="Flogical"/>
+    <FbasicType type="L7ffb74833810" is_public="true" is_protected="true" ref="Flogical"/>
+    <FfunctionType type="F7ffb7483eb30" return_type="Flogical" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7ffb7483fbd0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7ffb748409c0">mbd</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffb748408a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb748409c0" intent="in" ref="C7ffb748408a0"/>
+    <FbasicType type="C7ffb74834190" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74834390" is_protected="true" ref="C7ffb74834190"/>
+    <FfunctionType type="F7ffb74841d60" return_type="C7ffb74841c40" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ffb74841c40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FstructType type="S7ffb7482ca90" is_private="true">
+      <symbols>
+        <id type="C7ffb7482d5b0">
+          <name>model_name</name>
+        </id>
+        <id type="C7ffb7482de90">
+          <name>model_namelist_filename</name>
+        </id>
+        <id type="Fint">
+          <name>model_type</name>
+        </id>
+        <id type="Fint">
+          <name>model_min_rank</name>
+        </id>
+        <id type="Fint">
+          <name>model_max_rank</name>
+        </id>
+        <id type="Fint">
+          <name>model_inc_rank</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="C7ffb7482d3b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">132</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb7482d5b0" ref="C7ffb7482d3b0"/>
+    <FbasicType type="C7ffb7482dc90" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb7482de90" ref="C7ffb7482dc90"/>
+    <FbasicType type="S7ffb74831750" ref="S7ffb7482ca90"/>
+    <FbasicType type="S7ffb74831870" ref="S7ffb74831750"/>
+    <FbasicType type="A7ffb74831990" is_public="true" ref="S7ffb74831870">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">16</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7ffb748355d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb748356f0" is_public="true" ref="C7ffb748355d0"/>
+    <FbasicType type="C7ffb74835810" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74835f70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74836090" is_public="true" ref="C7ffb74835f70"/>
+    <FbasicType type="C7ffb748361b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74836910" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74836a30" is_public="true" ref="C7ffb74836910"/>
+    <FbasicType type="C7ffb74836b50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb748372b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb748373d0" is_public="true" ref="C7ffb748372b0"/>
+    <FbasicType type="C7ffb748374f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74837c50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74837d70" is_public="true" ref="C7ffb74837c50"/>
+    <FbasicType type="C7ffb74837e90" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb74832630" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ffb748344b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+  </typeTable>
+  <identifiers>
+    <id type="C7ffb74834d50" sclass="fsave" original_name="calendar_str" declared_in="mo_master_config">
+      <name>calendar_str</name>
+    </id>
+    <id type="F7ffb74842cb0" sclass="ffunc" original_name="addmodel" declared_in="mo_master_config">
+      <name>addmodel</name>
+    </id>
+    <id type="F7ffb74844260" sclass="ffunc" original_name="noofmodels" declared_in="mo_master_config">
+      <name>noofmodels</name>
+    </id>
+    <id type="I7ffb74830450" sclass="flocal" original_name="maxnoofmodels" declared_in="mo_master_config">
+      <name>maxnoofmodels</name>
+    </id>
+    <id type="F7ffb74838e10" sclass="ffunc" original_name="setinstitution" declared_in="mo_master_config">
+      <name>setinstitution</name>
+    </id>
+    <id type="F7ffb7483fbd0" sclass="ffunc" original_name="setmodelbasedir" declared_in="mo_master_config">
+      <name>setmodelbasedir</name>
+    </id>
+    <id type="F7ffb74841d60" sclass="ffunc" original_name="getmodelbasedir" declared_in="mo_master_config">
+      <name>getmodelbasedir</name>
+    </id>
+    <id type="A7ffb74831990" sclass="fsave" original_name="master_component_models" declared_in="mo_master_config">
+      <name>master_component_models</name>
+    </id>
+    <id type="L7ffb74833810" sclass="fsave" original_name="lrestart_write_last" declared_in="mo_master_config">
+      <name>lrestart_write_last</name>
+    </id>
+    <id type="C7ffb748356f0" sclass="fsave" original_name="experimentreferencedate" declared_in="mo_master_config">
+      <name>experimentreferencedate</name>
+    </id>
+    <id type="C7ffb74836090" sclass="fsave" original_name="experimentstartdate" declared_in="mo_master_config">
+      <name>experimentstartdate</name>
+    </id>
+    <id type="C7ffb74836a30" sclass="fsave" original_name="experimentstopdate" declared_in="mo_master_config">
+      <name>experimentstopdate</name>
+    </id>
+    <id type="C7ffb748373d0" sclass="fsave" original_name="checkpointtimeintval" declared_in="mo_master_config">
+      <name>checkpointtimeintval</name>
+    </id>
+    <id type="C7ffb74837d70" sclass="fsave" original_name="restarttimeintval" declared_in="mo_master_config">
+      <name>restarttimeintval</name>
+    </id>
+    <id type="F7ffb7483af70" sclass="ffunc" original_name="setrestart" declared_in="mo_master_config">
+      <name>setrestart</name>
+    </id>
+    <id type="F7ffb7483cc70" sclass="ffunc" original_name="setrestartwritelast" declared_in="mo_master_config">
+      <name>setrestartwritelast</name>
+    </id>
+    <id type="F7ffb7483eb30" sclass="ffunc" original_name="isrestart" declared_in="mo_master_config">
+      <name>isrestart</name>
+    </id>
+    <id type="C7ffb74832510" sclass="fsave" original_name="institution" declared_in="mo_master_config">
+      <name>institution</name>
+    </id>
+    <id type="L7ffb74832f30" sclass="flocal" original_name="lrestart" declared_in="mo_master_config">
+      <name>lrestart</name>
+    </id>
+    <id type="C7ffb74834390" sclass="flocal" original_name="model_base_dir" declared_in="mo_master_config">
+      <name>model_base_dir</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="51" file="../../../icon-eniac/src/configure_model/mo_master_config.f90">
+      <name type="I7ffb74830450">maxnoofmodels</name>
+      <value>
+        <FintConstant type="Fint">16</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

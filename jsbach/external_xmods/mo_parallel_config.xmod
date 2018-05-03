@@ -1,0 +1,410 @@
+<OmniFortranModule version="1.0">
+  <name>mo_parallel_config</name>
+  <depends>
+    <name>mo_exception</name>
+    <name>mo_io_units</name>
+    <name>mo_impl_constants</name>
+    <name>mo_util_string</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fe2d9698c50" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96998f0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d969a0e0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="A7fe2d969ba40" is_public="true" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">0</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fe2d969c5e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d969c700" ref="C7fe2d969c5e0"/>
+    <FbasicType type="A7fe2d969c820" is_public="true" ref="C7fe2d969c700">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">0</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="L7fe2d969e840" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d969f050" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d969e030" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d969f870" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d96a18a0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96a78e0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a9920" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96aa130" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a80f0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a8900" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a9110" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fe2d96a20b0" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d96a28b0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96a30b0" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fe2d96a0080" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96a1090" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fe2d96aa8f0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96a58b0" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fe2d96a68c0" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96a40b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a48b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a50b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a60b0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96a38b0" is_public="true" ref="Fint"/>
+    <FbasicType type="L7fe2d96a0880" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96aaf40" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d969ac50" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="L7fe2d969d820" is_public="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d969d020" is_public="true" ref="Flogical"/>
+    <FbasicType type="I7fe2d96ab590" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96abbe0" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96ac230" is_public="true" ref="Fint"/>
+    <FbasicType type="I7fe2d96ac880" is_public="true" ref="Fint"/>
+    <FfunctionType type="F7fe2d96bb910" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7fe2d96bc580">new_nproma</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe2d96bc580" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe2d96bda90" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe2d96bee00" return_type="Fint" is_elemental="true" is_public="true">
+      <params>
+        <name type="I7fe2d96bfa70">j</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe2d96bfa70" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe2d96c1710" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96c0ba0" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96c2660" return_type="Fint" is_elemental="true" is_public="true">
+      <params>
+        <name type="I7fe2d96c32d0">j</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe2d96c32d0" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe2d96c60e0" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96c59f0" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96c5300" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96c7210" return_type="Fint" is_elemental="true" is_public="true">
+      <params>
+        <name type="I7fe2d96c8330">jl</name>
+        <name type="I7fe2d96c8450">jb</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe2d96c8330" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe2d96c8450" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe2d96cad00" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96ca780" return_type="Fint"/>
+    <FfunctionType type="F7fe2d96ada90" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe2d96ae4a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96ae6a0" is_parameter="true" ref="C7fe2d96ae4a0"/>
+    <FbasicType type="C7fe2d96aea80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe2d96afda0" return_type="C7fe2d96b1340"/>
+    <FbasicType type="C7fe2d96b1340" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe2d96b1460" return_type="C7fe2d96b1340"/>
+    <FfunctionType type="F7fe2d9448970" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe2d944a6f0">name</name>
+        <name type="C7fe2d944aa50">text</name>
+        <name type="I7fe2d944adb0">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe2d944a830" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d944a6f0" intent="in" ref="C7fe2d944a830"/>
+    <FbasicType type="C7fe2d944ab90" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d944aa50" intent="in" is_optional="true" ref="C7fe2d944ab90"/>
+    <FbasicType type="I7fe2d944adb0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fe2d96afc80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b0060" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe2d94486b0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe2d944a030">name</name>
+        <name type="C7fe2d944a390">text</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe2d944a170" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d944a030" intent="in" ref="C7fe2d944a170"/>
+    <FbasicType type="C7fe2d944a4d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d944a390" intent="in" ref="C7fe2d944a4d0"/>
+    <FbasicType type="C7fe2d96b1720" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">59</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe2d94483f0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe2d9448c90">name</name>
+        <name type="C7fe2d9448fb0">text</name>
+        <name type="I7fe2d94492d0">out</name>
+        <name type="I7fe2d9449610">level</name>
+        <name type="L7fe2d9449970">all_print</name>
+        <name type="L7fe2d9449cd0">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe2d9448db0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d9448c90" intent="in" ref="C7fe2d9448db0"/>
+    <FbasicType type="C7fe2d94490d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d9448fb0" intent="in" ref="C7fe2d94490d0"/>
+    <FbasicType type="I7fe2d94492d0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fe2d9449610" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7fe2d9449970" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7fe2d9449cd0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7fe2d96b28f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">75</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b3110" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b4340" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">83</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b4b60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">29</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b6170" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">85</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b6980" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b7f90" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">90</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b87a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">30</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96b9db0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">90</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe2d96ba5c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">30</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="L7fe2d96a70d0" is_public="true" ref="Flogical"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7fe2d9698c50" sclass="flocal" original_name="nproma" declared_in="mo_parallel_config">
+      <name>nproma</name>
+    </id>
+    <id type="I7fe2d96998f0" sclass="fsave" original_name="n_ghost_rows" declared_in="mo_parallel_config">
+      <name>n_ghost_rows</name>
+    </id>
+    <id type="I7fe2d969a0e0" sclass="flocal" original_name="div_geometric" declared_in="mo_parallel_config">
+      <name>div_geometric</name>
+    </id>
+    <id type="A7fe2d969ba40" sclass="fsave" original_name="division_method" declared_in="mo_parallel_config">
+      <name>division_method</name>
+    </id>
+    <id type="A7fe2d969c820" sclass="fsave" original_name="division_file_name" declared_in="mo_parallel_config">
+      <name>division_file_name</name>
+    </id>
+    <id type="L7fe2d969e840" sclass="fsave" original_name="l_log_checks" declared_in="mo_parallel_config">
+      <name>l_log_checks</name>
+    </id>
+    <id type="L7fe2d969f050" sclass="fsave" original_name="l_fast_sum" declared_in="mo_parallel_config">
+      <name>l_fast_sum</name>
+    </id>
+    <id type="L7fe2d969e030" sclass="fsave" original_name="ldiv_phys_dom" declared_in="mo_parallel_config">
+      <name>ldiv_phys_dom</name>
+    </id>
+    <id type="L7fe2d969f870" sclass="flocal" original_name="p_test_run" declared_in="mo_parallel_config">
+      <name>p_test_run</name>
+    </id>
+    <id type="L7fe2d96a18a0" sclass="flocal" original_name="l_test_openmp" declared_in="mo_parallel_config">
+      <name>l_test_openmp</name>
+    </id>
+    <id type="I7fe2d96a78e0" sclass="fsave" original_name="pio_type" declared_in="mo_parallel_config">
+      <name>pio_type</name>
+    </id>
+    <id type="I7fe2d96a9920" sclass="fsave" original_name="itype_comm" declared_in="mo_parallel_config">
+      <name>itype_comm</name>
+    </id>
+    <id type="I7fe2d96aa130" sclass="fsave" original_name="iorder_sendrecv" declared_in="mo_parallel_config">
+      <name>iorder_sendrecv</name>
+    </id>
+    <id type="I7fe2d96a80f0" sclass="flocal" original_name="num_io_procs" declared_in="mo_parallel_config">
+      <name>num_io_procs</name>
+    </id>
+    <id type="I7fe2d96a8900" sclass="flocal" original_name="num_restart_procs" declared_in="mo_parallel_config">
+      <name>num_restart_procs</name>
+    </id>
+    <id type="I7fe2d96a9110" sclass="flocal" original_name="num_prefetch_proc" declared_in="mo_parallel_config">
+      <name>num_prefetch_proc</name>
+    </id>
+    <id type="L7fe2d96a20b0" sclass="fsave" original_name="use_icon_comm" declared_in="mo_parallel_config">
+      <name>use_icon_comm</name>
+    </id>
+    <id type="L7fe2d96a28b0" sclass="fsave" original_name="icon_comm_debug" declared_in="mo_parallel_config">
+      <name>icon_comm_debug</name>
+    </id>
+    <id type="I7fe2d96a30b0" sclass="fsave" original_name="max_send_recv_buffer_size" declared_in="mo_parallel_config">
+      <name>max_send_recv_buffer_size</name>
+    </id>
+    <id type="L7fe2d96a0080" sclass="fsave" original_name="use_dycore_barrier" declared_in="mo_parallel_config">
+      <name>use_dycore_barrier</name>
+    </id>
+    <id type="I7fe2d96a1090" sclass="fsave" original_name="itype_exch_barrier" declared_in="mo_parallel_config">
+      <name>itype_exch_barrier</name>
+    </id>
+    <id type="L7fe2d96aa8f0" sclass="fsave" original_name="use_dp_mpi2io" declared_in="mo_parallel_config">
+      <name>use_dp_mpi2io</name>
+    </id>
+    <id type="I7fe2d96a58b0" sclass="fsave" original_name="icon_comm_method" declared_in="mo_parallel_config">
+      <name>icon_comm_method</name>
+    </id>
+    <id type="L7fe2d96a68c0" sclass="fsave" original_name="icon_comm_openmp" declared_in="mo_parallel_config">
+      <name>icon_comm_openmp</name>
+    </id>
+    <id type="I7fe2d96a40b0" sclass="fsave" original_name="max_no_of_comm_variables" declared_in="mo_parallel_config">
+      <name>max_no_of_comm_variables</name>
+    </id>
+    <id type="I7fe2d96a48b0" sclass="fsave" original_name="max_no_of_comm_processes" declared_in="mo_parallel_config">
+      <name>max_no_of_comm_processes</name>
+    </id>
+    <id type="I7fe2d96a50b0" sclass="fsave" original_name="max_no_of_comm_patterns" declared_in="mo_parallel_config">
+      <name>max_no_of_comm_patterns</name>
+    </id>
+    <id type="I7fe2d96a60b0" sclass="fsave" original_name="sync_barrier_mode" declared_in="mo_parallel_config">
+      <name>sync_barrier_mode</name>
+    </id>
+    <id type="I7fe2d96a38b0" sclass="fsave" original_name="max_mpi_message_size" declared_in="mo_parallel_config">
+      <name>max_mpi_message_size</name>
+    </id>
+    <id type="L7fe2d96a0880" sclass="fsave" original_name="use_physics_barrier" declared_in="mo_parallel_config">
+      <name>use_physics_barrier</name>
+    </id>
+    <id type="I7fe2d96aaf40" sclass="fsave" original_name="restart_chunk_size" declared_in="mo_parallel_config">
+      <name>restart_chunk_size</name>
+    </id>
+    <id type="I7fe2d969ac50" sclass="flocal" original_name="ext_div_from_file" declared_in="mo_parallel_config">
+      <name>ext_div_from_file</name>
+    </id>
+    <id type="L7fe2d969d820" sclass="fsave" original_name="write_div_to_file" declared_in="mo_parallel_config">
+      <name>write_div_to_file</name>
+    </id>
+    <id type="L7fe2d969d020" sclass="fsave" original_name="use_div_from_file" declared_in="mo_parallel_config">
+      <name>use_div_from_file</name>
+    </id>
+    <id type="I7fe2d96ab590" sclass="fsave" original_name="io_proc_chunk_size" declared_in="mo_parallel_config">
+      <name>io_proc_chunk_size</name>
+    </id>
+    <id type="I7fe2d96abbe0" sclass="fsave" original_name="num_dist_array_replicas" declared_in="mo_parallel_config">
+      <name>num_dist_array_replicas</name>
+    </id>
+    <id type="I7fe2d96ac230" sclass="fsave" original_name="io_process_stride" declared_in="mo_parallel_config">
+      <name>io_process_stride</name>
+    </id>
+    <id type="I7fe2d96ac880" sclass="fsave" original_name="io_process_rotate" declared_in="mo_parallel_config">
+      <name>io_process_rotate</name>
+    </id>
+    <id type="F7fe2d96bb910" sclass="ffunc" original_name="set_nproma" declared_in="mo_parallel_config">
+      <name>set_nproma</name>
+    </id>
+    <id type="F7fe2d96bda90" sclass="ffunc" original_name="get_nproma" declared_in="mo_parallel_config">
+      <name>get_nproma</name>
+    </id>
+    <id type="F7fe2d96ada90" sclass="ffunc" original_name="check_parallel_configuration" declared_in="mo_parallel_config">
+      <name>check_parallel_configuration</name>
+    </id>
+    <id type="L7fe2d96a70d0" sclass="fsave" original_name="use_async_restart_output" declared_in="mo_parallel_config">
+      <name>use_async_restart_output</name>
+    </id>
+    <id type="F7fe2d96bee00" sclass="ffunc" original_name="blk_no" declared_in="mo_parallel_config">
+      <name>blk_no</name>
+    </id>
+    <id type="F7fe2d96c2660" sclass="ffunc" original_name="idx_no" declared_in="mo_parallel_config">
+      <name>idx_no</name>
+    </id>
+    <id type="F7fe2d96c7210" sclass="ffunc" original_name="idx_1d" declared_in="mo_parallel_config">
+      <name>idx_1d</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="54" file="__omni_tmp__/mo_parallel_config.f90">
+      <name type="I7fe2d969a0e0">div_geometric</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="55" file="__omni_tmp__/mo_parallel_config.f90">
+      <name type="I7fe2d969ac50">ext_div_from_file</name>
+      <value>
+        <FintConstant type="Fint">201</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
