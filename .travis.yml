@@ -12,19 +12,21 @@ addons:
 git:
   submodules: false
 
-install:
-- ./"Build and Setup ShellCheck's Latest Release.bash" --without-root
-- PATH="${HOME}/.cabal/bin:${PATH}"
+before_install:
+- cabal update && cabal install ShellCheck
+- export PATH=$PATH:$HOME/.cabal/bin
+- shellcheck --version
 
 before_cache:
 - rm $HOME/.cabal/logs/build.log
 
 cache:
   directories:
-  - $HOME/.cabal
+  - "$HOME/.ghc"
+  - "$HOME/.cabal"
+  - "$HOME/.stack"
 
 script:
-- shellcheck -V
 - "./run.shellcheck"
 
 notifications:
