@@ -68,7 +68,7 @@ COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hfb:ci:spon" opt; do
+while getopts "hb:cspon" opt; do
   case "$opt" in
   h)
     show_help
@@ -80,9 +80,10 @@ while getopts "hfb:ci:spon" opt; do
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=$OPTARG ;;
   n) NETCDF_ENABLE=true ;;
-  # f) CLAW_REPO=$CLAW_FORK_REPO ;;
-  # c) CLAW_BASE_COMPILER=$OPTARG ;;
-  # i) CLAW_INSTALL_DIR=$OPTARG ;;
+  *)
+     show_help
+     exit 1
+     ;;
   esac
 done
 
@@ -298,7 +299,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${COSMO_NETCDF_INC}" -I "${COSMO_SRC}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    let parsed_files=parsed_files+1
+    (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
     fi
@@ -320,7 +321,7 @@ for xmod_file in ${XMOD_DIR}/*.xmod; do
   xmod_well_formatted=$(check_xmod_file "${xmod_file}")
   if [[ $xmod_well_formatted == false ]]; then
     echo "ERROR: ${xmod_file} file is not formatted correctly"
-    let xmod_errors=xmod_errors+1
+    (( xmod_errors=xmod_errors+1 ))
   fi
 done
 
@@ -340,7 +341,7 @@ f90_errors=0
 while IFS= read -r f90_file; do
   if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
     echo "ERROR: ${f90_file} has not been parsed correctly"
-    let f90_errors=f90_errors+1
+    (( f90_errors=f90_errors+1 ))
   fi
 done < ./${COSMO_DEP}
 

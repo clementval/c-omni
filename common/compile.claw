@@ -49,6 +49,10 @@ while getopts "hb:c:r:d:o" opt; do
   r) CLAW_REPO=$OPTARG;;
   d) TARGET_DIRECTORY=$OPTARG;;
   o) OMNI_LATEST=true;;
+  *)
+     show_help
+     exit 1
+     ;;
   esac
 done
 
