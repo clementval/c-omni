@@ -1,0 +1,346 @@
+#!/bin/bash
+
+#
+# This scripts helps to test the parsing of the full update_surface standalone
+# code by the OMNI Compiler.
+#
+
+function show_help(){
+  echo "$0 [-s] [-p] [--with-omni]"
+  echo ""
+  echo "Options:"
+  echo " -s    Skip CLAW/OMNI compilation/install"
+  echo " -p    Skip parsing step"
+  echo " -o    Use the latest OMNI Compiler version for the test"
+}
+
+source ./common/check.omni.lib.sh
+source ./common/utility.sh
+
+# CLAW repository variables
+CLAW_BRANCH="master"
+CLAW_MAIN_REPO="https://github.com/claw-project/claw-compiler.git"
+CLAW_REPO=${CLAW_MAIN_REPO}
+CLAWFC=./claw/bin/clawfc
+
+# Working directories for the test
+TEST_DIR=${PWD}/build
+TEST_NAME="icon_update_surface"
+CLAW_OUTPUT="./processed/${TEST_NAME}"
+XMOD_DIR="./xmods/${TEST_NAME}"
+
+# Default compiler used
+BASE_COMPILER="gnu"
+
+# Option switches
+SKIP_CLAW=false
+SKIP_PARSING=false
+OMNI_LATEST=false
+
+# standalone related variables
+STANDALONE_GIT_REPO="git@github.com:C2SM-RCM/icon-standalone.git"
+STANDALONE_GIT_BRANCH=""
+STANDALONE_GIT_HASH=""
+STANDALONE_REP="icon-standalone"
+STANDALONE_SRC="./${STANDALONE_REP}/update_surface/"
+STANDALONE_START="src/tests/ftg_update_surface_test.f90"
+STANDALONE_DEP="dependencies_${TEST_NAME}"
+INCLUDE_DIR="${STANDALONE_SRC}/src/include"
+EXTERNAL_XMODS="../${TEST_NAME}/external_xmods"
+GLOBAL_XMODS="../global_modules"
+
+# Preprocessor macros definition
+STANDALONE_DEFINITIONS="-D__ICON__"
+
+# Parsing output
+PARSING_OUTPUT=${TEST_DIR}/${TEST_NAME}.log
+
+while getopts "hspo" opt; do
+  case "$opt" in
+  h)
+    show_help
+    exit 0
+    ;;
+  s) SKIP_CLAW=true;;
+  p) SKIP_PARSING=true;;
+  o) OMNI_LATEST=true;;
+  *) show_help
+     exit 1
+     ;;
+  esac
+done
+
+if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
+  echo "Incompatible options -o and -s ..."
+  exit 1
+fi
+
+COMPUTER=$(hostname)
+if [[ ${COMPUTER} == *"kesch"* ]]; then
+  COMPUTER="kesch"
+fi
+
+# Try to load machine specific compiler information
+COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
+if [ -f ${COMPILER_FILE} ]; then
+  # shellcheck source=./compiler/clementon2.gnu.sh
+  source ${COMPILER_FILE}
+else
+  echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
+fi
+
+
+echo ""
+echo "======================================="
+echo "${TEST_NAME} -> CLAW/OMNI Compiler parse test"
+echo "======================================="
+echo "- ${TEST_NAME} information"
+echo "  - Git repository: ${STANDALONE_GIT_REPO}"
+echo "  - Git branch: ${STANDALONE_GIT_BRANCH}"
+echo "  - Git hash: ${STANDALONE_GIT_HASH}"
+
+if [[ ${SKIP_CLAW} == false ]]; then
+  # Specific CLAW/OMNI information
+  echo "- CLAW Compiler information:"
+  echo "  - Git repository: ${CLAW_REPO}"
+  echo "  - Git branch: ${CLAW_BRANCH}"
+  echo "  - Base compiler: ${BASE_COMPILER}"
+  echo "  - Target directory: ${TEST_DIR}"
+
+  rm -rf "${TEST_DIR}"
+  mkdir "${TEST_DIR}"
+
+  ###############################
+  # 1. CLAW FORTRAN Compiler step
+  ###############################
+
+  echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
+  if [[ ${OMNI_LATEST} == true ]]; then
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
+  else
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
+  fi
+else
+  rm -rf "${TEST_DIR:?}"/${STANDALONE_REP}
+fi
+
+echo "============================================"
+echo ""
+
+
+cd "${TEST_DIR}" || exit 1
+WORKING_DIR="${PWD}"
+
+# Get git hashes for the log
+cd claw-compiler || exit 1
+CLAW_GIT_HASH=$(git rev-parse HEAD)
+cd omni-compiler || exit 1
+OMNI_GIT_HASH=$(git rev-parse HEAD)
+cd "${WORKING_DIR}" || exit 1
+{
+  echo "${TEST_NAME} PARSING TESTS"
+  echo "--------------------"
+  echo "Git version information:"
+  echo "- CLAW git version: ${CLAW_GIT_HASH}"
+  echo "- OMNI git version: ${OMNI_GIT_HASH}"
+} > "${PARSING_OUTPUT}"
+
+if [[ ${SKIP_PARSING} == false ]]; then
+
+  ##########################
+  # 2. Repository clone step
+  ##########################
+
+  if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
+    git clone -b ${STANDALONE_GIT_BRANCH} ${STANDALONE_GIT_REPO}
+  else
+    git clone ${STANDALONE_GIT_REPO}
+  fi
+  mkdir -p ${STANDALONE_SRC}
+  cd ${STANDALONE_REP} || exit 1
+  if [[ "${STANDALONE_GIT_HASH}" != "" ]]; then
+    git checkout ${STANDALONE_GIT_HASH}
+  fi
+  STANDALONE_HASH=$(git rev-parse HEAD)
+  echo "- ${TEST_NAME} git version: ${STANDALONE_HASH}" >> "${PARSING_OUTPUT}"
+  cd "${WORKING_DIR}" || exit 1
+
+  #####################
+  # 2.1 JSBACH DSL step
+  #####################
+
+  mkdir -p ${STANDALONE_SRC}/jsbachpp/
+  ${STANDALONE_SRC}/externals/jsbach/scripts/dsl4jsb/dsl4jsb.py -p _dsl4jsb -d ${STANDALONE_SRC}/externals/jsbach/src -t ${STANDALONE_SRC}/jsbachpp/
+
+  ####################
+  # 3. Dependency step
+  ####################
+
+  # Generate the dependency list for the parsing order
+  print_green "[INFO] Generate dependencies list"
+  echo "../fdependencies/generate_dep.py --recursive ${STANDALONE_SRC} ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --stop-after-start --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
+
+  # Check existence of the dependencies file
+  if [[ ! -f ${STANDALONE_DEP} ]]; then
+    echo "ERROR: ${STANDALONE_DEP} does not exists!"
+    exit 1
+  fi
+
+  # Check that dependencies file has information in it
+  if [[ $(wc -l < ${STANDALONE_DEP}) -lt 2 ]]; then
+    echo "ERROR: ${STANDALONE_DEP} is empty!"
+    exit 1
+  fi
+
+
+  #################
+  # 4. Parsing step
+  #################
+
+  # Check existence of the CLAW FORTRAN Compiler
+  if [[ ! -f ${CLAWFC} ]]; then
+    echo "ERROR: ${CLAWFC} does not exists!"
+    exit 1
+  fi
+
+  mkdir -p ${XMOD_DIR}
+  mkdir -p ${CLAW_OUTPUT}
+
+  parsed_files=0
+  echo ">>> Parsing files"
+  echo "" >> "${PARSING_OUTPUT}"
+  echo "Parsing files:" >> "${PARSING_OUTPUT}"
+  while IFS= read -r f90_file; do
+    echo "    Processing file ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    echo "    Processing file ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+    echo "cmd: ${CLAWFC} ${STANDALONE_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_DIR} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${STANDALONE_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
+    if [[ "${f90_file}" == "parallel_infrastructure/mo_mpi.f90" ]]; then
+      ${CLAWFC} "${STANDALONE_DEFINITIONS}" -DNOMPI --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    else
+      ${CLAWFC} "${STANDALONE_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    fi
+    (( parsed_files=parsed_files+1 ))
+    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+      print_red "[FAILED] ""${STANDALONE_SRC}""${f90_file}"
+    fi
+  done < ./${STANDALONE_DEP}
+fi
+
+
+#################
+# 5. Control step
+#################
+
+echo ""
+echo "-----------------------"
+echo ">>> Control .xmod files"
+echo "-----------------------"
+# Control if present .xmod file has been produced correctly
+xmod_errors=0
+for xmod_file in $XMOD_DIR/*.xmod; do
+  xmod_well_formatted=$(check_xmod_file "${xmod_file}")
+  if [[ ${xmod_well_formatted} == false ]]; then
+    echo "ERROR: ${xmod_file} file is not formatted correctly"
+    (( xmod_errors=xmod_errors+1 ))
+  fi
+done
+
+# Report number of detected errors
+if [[ ${xmod_errors} -ne 0 ]]; then
+  echo "------"
+  echo "ERROR: ${xmod_errors} .xmod files didn't pass the check"
+fi
+
+
+echo ""
+echo "----------------------"
+echo ">>> Control .f90 files"
+echo "----------------------"
+# Control if target file has been produced
+f90_errors=0
+while IFS= read -r f90_file; do
+  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+    echo "ERROR: ${f90_file} has not been parsed correctly"
+    (( f90_errors=f90_errors+1 ))
+  fi
+done < ./${STANDALONE_DEP}
+
+# Report number of detected errors
+if [[ ${f90_errors} -ne 0 ]]; then
+  echo "------"
+  echo "ERROR: ${f90_errors}/${parsed_files} .f90 files have not been parsed correctly"
+fi
+
+
+##############
+# Report error
+##############
+
+# Check potential known errors in log file
+error_type1=$(grep -c "only function/subroutine statement are allowed in contains top level" "${PARSING_OUTPUT}")
+error_type2=$(grep -c "declaration among executables" "${PARSING_OUTPUT}")
+error_type3=$(grep -c "syntax error" "${PARSING_OUTPUT}")
+error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodbye!" "${PARSING_OUTPUT}")
+error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
+error_type6=$(grep -c "incompatible dimension for the operation" "${PARSING_OUTPUT}")
+error_type7=$(grep -c "argument(s) mismatch for an intrinsic" "${PARSING_OUTPUT}")
+error_type8=$(grep -c "java.lang.OutOfMemoryError" "${PARSING_OUTPUT}")
+error_type9=$(grep -c "compiler error: type attr error" "${PARSING_OUTPUT}")
+error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
+error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
+error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
+error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
+error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPUT}")
+error_type15=$(grep -c "bad expression in constant kind parameter" "${PARSING_OUTPUT}")
+error_type16=$(grep -c "is not a subroutine" "${PARSING_OUTPUT}")
+error_type17=$(grep -c "Derived-type mismatch" "${PARSING_OUTPUT}")
+error_type18=$(grep -c "right hand side expression is not a pointee" "${PARSING_OUTPUT}")
+error_type19=$(grep -c "can't determine type of constant expression" "${PARSING_OUTPUT}")
+
+echo ""
+echo "================================"
+echo "${TEST_NAME} full parsing test results"
+echo "================================"
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
+  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
+  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
+  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]   \
+  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]   \
+  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
+  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
+  || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]] \
+  || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]] \
+  || [[ ${error_type17} -ne 0 ]] || [[ ${error_type18} -ne 0 ]] \
+  || [[ ${error_type19} -ne 0 ]]; then
+  echo "ERROR: Some errors have been detected"
+  echo "       ${xmod_errors} files .xmod with errors"
+  echo "       ${f90_errors} files .f90 with errors"
+  echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
+  echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
+  echo "         ${error_type3} errors/warnings [syntax error] found in log"
+  echo "         ${error_type4} errors/warnings [too many error, cannot recover from earlier errors: goodbye!] found in log"
+  echo "         ${error_type5} errors/warnings [failed to import module] found in log"
+  echo "         ${error_type6} errors/warnings [incompatible dimension for the operation] found in log"
+  echo "         ${error_type7} errors/warnings [argument(s) mismatch for an intrinsic] found in log"
+  echo "         ${error_type8} errors/warnings [java.lang.OutOfMemoryError] found in log"
+  echo "         ${error_type9} errors/warnings [compiler error: type attr error] found in log"
+  echo "         ${error_type10} errors/warnings [X if not found for end X] found in log"
+  echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
+  echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
+  echo "         ${error_type13} errors/warnings [bad char] found in log"
+  echo "         ${error_type14} errors/warnings [Unable to decompile XcodeML to Fortran] found in log"
+  echo "         ${error_type15} errors/warnings [bad expression in constant kind parameter] found in log"
+  echo "         ${error_type16} errors/warnings [is not a subroutine] found in log"
+  echo "         ${error_type17} errors/warnings [Derived-type mismatch] found in log"
+  echo "         ${error_type18} errors/warnings [right hand side expression is not a pointee] found in log"
+  echo "         ${error_type19} errors/warnings [can't determine type of constant expression] found in log"
+  echo "       More information in the file: ${PARSING_OUTPUT}"
+  echo "====================================="
+  exit 1
+else
+  print_green "SUCCESS: Test has be executed correctly."
+  echo "====================================="
+  exit 0
+fi
