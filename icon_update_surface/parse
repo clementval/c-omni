@@ -50,7 +50,7 @@ EXTERNAL_XMODS="../${TEST_NAME}/external_xmods"
 GLOBAL_XMODS="../global_modules"
 
 # Preprocessor macros definition
-STANDALONE_DEFINITIONS="-D__ICON__"
+STANDALONE_DEFINITIONS="-D__ICON__ -D__SX__"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/${TEST_NAME}.log
@@ -208,11 +208,13 @@ if [[ ${SKIP_PARSING} == false ]]; then
   mkdir -p ${CLAW_OUTPUT}
 
   parsed_files=0
-  echo ">>> Parsing files"
+  total_files=$(wc -l < ${STANDALONE_DEP})
+  echo ">>> Parsing files ${total_files}"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
-    echo "    Processing file ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    (( current_file_nb=parsed_files+1 ))
+    echo "    Processing file [$current_file_nb] ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     echo "cmd: ${CLAWFC} ${STANDALONE_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_DIR} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${STANDALONE_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
