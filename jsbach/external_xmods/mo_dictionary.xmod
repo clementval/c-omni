@@ -1,0 +1,1348 @@
+<OmniFortranModule version="1.0">
+  <name>mo_dictionary</name>
+  <depends>
+    <name>mo_exception</name>
+    <name>mo_util_string</name>
+    <name>mo_impl_constants</name>
+    <name>mo_io_units</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="C7fada171a1a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1000</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1700a70" is_public="true" ref="C7fada171a1a0"/>
+    <FfunctionType type="F7fada171a070" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7fada171a4e0">name</name>
+        <name type="C7fada171a820">text</name>
+        <name type="I7fada171ab80">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fada171a610" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada171a4e0" intent="in" ref="C7fada171a610"/>
+    <FbasicType type="C7fada171a950" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada171a820" intent="in" is_optional="true" ref="C7fada171a950"/>
+    <FbasicType type="I7fada171ab80" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fada1703b10" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17030b0" intent="in" ref="C7fada1703b10"/>
+    <FbasicType type="C7fada17040c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1703430" intent="in" is_optional="true" ref="C7fada17040c0"/>
+    <FbasicType type="I7fada17037a0" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fada1455e80" return_type="C7fada1455fb0" is_public="true">
+      <params>
+        <name type="C7fada14561c0">uppercase</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fada171e290" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada171def0" intent="in" ref="C7fada171e290"/>
+    <FbasicType type="C7fada1455fb0" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len_trim</name>
+          <arguments>
+            <Var type="C7fada171def0" scope="local">uppercase</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14562f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14561c0" intent="in" ref="C7fada14562f0"/>
+    <FbasicType type="I7fada163e750" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7fada1647820" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7fada1647b60">istart</name>
+        <name type="I7fada1647ea0">istop</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fada1647b60" intent="in" ref="Fint"/>
+    <FbasicType type="I7fada1647ea0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fada1644ac0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fada1645330" intent="in" ref="Fint"/>
+    <FbasicType type="I7fada16498b0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FstructType type="S7fada164bbe0" is_public="true">
+      <symbols>
+        <id type="Fint">
+          <name>nentries</name>
+        </id>
+        <id type="Fint">
+          <name>nmax_entries</name>
+        </id>
+        <id type="Flogical">
+          <name>lcase_sensitive</name>
+        </id>
+        <id type="A7fada164e150">
+          <name>array</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="C7fada164dce0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada164def0" is_allocatable="true" ref="C7fada164dce0"/>
+    <FbasicType type="A7fada164e020" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada164e150" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fada1650a10" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fada1651c20">dict</name>
+        <name type="L7fada16523d0">lcase_sensitive</name>
+        <name type="I7fada1652c00">new_size</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada1651af0" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada1651c20" intent="inout" ref="S7fada1651af0"/>
+    <FbasicType type="L7fada16523d0" intent="in" ref="Flogical"/>
+    <FbasicType type="I7fada1652c00" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fada16536e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada16538f0" is_parameter="true" ref="C7fada16536e0"/>
+    <FbasicType type="C7fada1787720" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">24</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17871d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1648fb0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17875a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada1653d00" return_type="C7fada17879d0"/>
+    <FbasicType type="C7fada17879d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada1787b00" return_type="C7fada17879d0"/>
+    <FfunctionType type="F7fada1789e10" return_type="Flogical"/>
+    <FfunctionType type="F7fada17a3b70" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fada17a4a90">dict</name>
+        <name type="I7fada17a52c0">new_size</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada17a4960" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada17a4a90" intent="inout" ref="S7fada17a4960"/>
+    <FbasicType type="I7fada17a52c0" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fada178c460" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fada178d090">dict</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada178cf60" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada178d090" intent="inout" ref="S7fada178cf60"/>
+    <FbasicType type="C7fada178db40" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada178dd50" is_parameter="true" ref="C7fada178db40"/>
+    <FbasicType type="C7fada178eed0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada178e970" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada178ed40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada178e160" return_type="C7fada178f180"/>
+    <FbasicType type="C7fada178f180" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada178f2b0" return_type="C7fada178f180"/>
+    <FfunctionType type="F7fada17912a0" return_type="Flogical"/>
+    <FbasicType type="C7fada1790b80" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada1790cb0" is_allocatable="true" ref="C7fada1790b80">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada1790de0" is_allocatable="true" ref="C7fada1790b80">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada1792190" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17922c0" is_allocatable="true" ref="C7fada1792190">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17923f0" is_allocatable="true" ref="C7fada1792190">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada1793320" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada1795100" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fada1796020">src_dict</name>
+        <name type="S7fada1796770">dst_dict</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada1795ef0" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada1796020" intent="in" ref="S7fada1795ef0"/>
+    <FbasicType type="S7fada1796640" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada1796770" intent="inout" ref="S7fada1796640"/>
+    <FbasicType type="C7fada1797220" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1797430" is_parameter="true" ref="C7fada1797220"/>
+    <FbasicType type="C7fada17985b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">24</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1798050" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1798420" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada1797840" return_type="C7fada1798860"/>
+    <FbasicType type="C7fada1798860" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada1798990" return_type="C7fada1798860"/>
+    <FbasicType type="A7fada179dcc0" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179ddf0" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada1796770">
+              <Var type="S7fada1796770" scope="local">dst_dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada179bff0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada179c120" is_allocatable="true" ref="C7fada179bff0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179c250" is_allocatable="true" ref="C7fada179bff0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179c680" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179cd70" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada1796770">
+              <Var type="S7fada1796770" scope="local">dst_dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17a0a00" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17a0b30" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada1796770">
+              <Var type="S7fada1796770" scope="local">dst_dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada179ed30" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada179ee60" is_allocatable="true" ref="C7fada179ed30">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179ef90" is_allocatable="true" ref="C7fada179ed30">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179f3c0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada179fab0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada1796770">
+              <Var type="S7fada1796770" scope="local">dst_dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17a5d70" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17a5f80" is_parameter="true" ref="C7fada17a5d70"/>
+    <FbasicType type="C7fada17a7100" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">26</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17a6ba0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17a6f70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada17a6390" return_type="C7fada17a73b0"/>
+    <FbasicType type="C7fada17a73b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada17a74e0" return_type="C7fada17a73b0"/>
+    <FbasicType type="C7fada17a8010" is_allocatable="true" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17a8220" is_allocatable="true" ref="C7fada17a8010"/>
+    <FbasicType type="A7fada17a8350" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17a8480" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fada17aa800" return_type="Flogical"/>
+    <FfunctionType type="F7fada17ad3f0" return_type="Flogical"/>
+    <FfunctionType type="F7fada17c6af0" return_type="Flogical"/>
+    <FbasicType type="C7fada17abbc0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">29</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17accd0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17ace00" is_allocatable="true" ref="C7fada17accd0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17acf30" is_allocatable="true" ref="C7fada17accd0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17aeca0" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17aef50" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17b0310" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada17b2bf0" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b2d20" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b15b0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b1ca0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b5980" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b5ab0" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17b3cb0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17b3de0" is_allocatable="true" ref="C7fada17b3cb0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b3f10" is_allocatable="true" ref="C7fada17b3cb0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b4340" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b4a30" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17b8be0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17b8d10" is_allocatable="true" ref="C7fada17b8be0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17b8e40" is_allocatable="true" ref="C7fada17b8be0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17b9cd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada17bbe50" is_allocatable="true" ref="C7fada164def0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17bc100" is_allocatable="true" ref="C7fada164def0">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">2</FintConstant>
+        </upperBound>
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">new_nmax_entries</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17baf40" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17bb070" is_allocatable="true" ref="C7fada17baf40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17bb1a0" is_allocatable="true" ref="C7fada17baf40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17bd240" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada17c11f0" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17c1320" is_allocatable="true" ref="C7fada164def0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17bf520" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17bf650" is_allocatable="true" ref="C7fada17bf520">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17bf780" is_allocatable="true" ref="C7fada17bf520">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17bfbb0" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17c02a0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17c3480" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17c35b0" is_allocatable="true" ref="C7fada17a8220">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17c1e40" ref="Fint">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17c2530" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FmemberRef type="Fint" member="nentries">
+            <varRef type="S7fada17a4a90">
+              <Var type="S7fada17a4a90" scope="local">dict</Var>
+            </varRef>
+          </FmemberRef>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17c7fd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">18</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada17c8fb0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fada17ca1c0">dict</name>
+        <name type="C7fada17caaf0">key</name>
+        <name type="C7fada17cb420">val</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada17ca090" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada17ca1c0" intent="inout" ref="S7fada17ca090"/>
+    <FbasicType type="C7fada17ca9c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17caaf0" intent="in" ref="C7fada17ca9c0"/>
+    <FbasicType type="C7fada17cb2f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17cb420" intent="in" ref="C7fada17cb2f0"/>
+    <FbasicType type="C7fada17cbed0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17cc0e0" is_parameter="true" ref="C7fada17cbed0"/>
+    <FbasicType type="C7fada17cd260" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17ccd00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17cd0d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada17cc4f0" return_type="C7fada17d9080"/>
+    <FbasicType type="C7fada17d9080" ref="C7fada17cb2f0"/>
+    <FfunctionType type="F7fada17d91b0" return_type="C7fada17d9080"/>
+    <FfunctionType type="F7fada17cfa70" return_type="Fint"/>
+    <FfunctionType type="F7fada17d0780" return_type="Fint"/>
+    <FfunctionType type="F7fada17d1fa0" return_type="FnumericAll"/>
+    <FfunctionType type="F7fada14f15f0" return_type="Fint" is_private="true">
+      <params>
+        <name type="S7fada14f2e60">dict</name>
+        <name type="C7fada14f3790">key</name>
+        <name type="I7fada14f3fc0">opt_key_column</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada14f2d30" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada14f2e60" intent="in" ref="S7fada14f2d30"/>
+    <FbasicType type="C7fada14f3660" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14f3790" intent="in" ref="C7fada14f3660"/>
+    <FbasicType type="I7fada14f3fc0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fada17cf3c0" ref="C7fada17ca9c0"/>
+    <FbasicType type="C7fada17d00d0" ref="C7fada17cb2f0"/>
+    <FbasicType type="C7fada17d1460" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">44</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17d5fe0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17d6110" is_allocatable="true" ref="C7fada17d5fe0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17d6240" is_allocatable="true" ref="C7fada17d5fe0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada17d6f90" ref="C7fada17ca9c0"/>
+    <FbasicType type="C7fada17d80d0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada17d8200" is_allocatable="true" ref="C7fada17d80d0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada17d8330" is_allocatable="true" ref="C7fada17d80d0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fada17d9fd0" return_type="C7fada17db560" is_public="true">
+      <params>
+        <name type="S7fada17dbcb0">dict</name>
+        <name type="C7fada17dc5e0">key</name>
+        <name type="C7fada17dcf90">default</name>
+        <name type="L7fada17dd7c0">linverse</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fada17db430" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17db560" ref="C7fada17db430"/>
+    <FbasicType type="S7fada17dbb80" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada17dbcb0" intent="in" ref="S7fada17dbb80"/>
+    <FbasicType type="C7fada17dc4b0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17dc5e0" intent="in" ref="C7fada17dc4b0"/>
+    <FbasicType type="C7fada17dce60" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada17dcf90" intent="in" is_optional="true" ref="C7fada17dce60"/>
+    <FbasicType type="L7fada17dd7c0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7fada16549f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1654c00" is_parameter="true" ref="C7fada16549f0"/>
+    <FbasicType type="C7fada1655d80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1655820" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1655bf0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada1655010" return_type="C7fada1660100"/>
+    <FbasicType type="C7fada1660100" is_allocatable="true" ref="C7fada164dce0"/>
+    <FfunctionType type="F7fada1660230" return_type="C7fada1660100"/>
+    <FfunctionType type="F7fada1658e10" return_type="Flogical"/>
+    <FfunctionType type="F7fada165bdb0" return_type="Flogical"/>
+    <FfunctionType type="F7fada165a830" return_type="FnumericAll"/>
+    <FbasicType type="C7fada165c650" ref="C7fada17dce60"/>
+    <FbasicType type="C7fada165d2c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada165d4d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada165d7c0" ref="C7fada17dc4b0"/>
+    <FbasicType type="C7fada165dbc0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada165f320" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada165f450" is_allocatable="true" ref="C7fada165f320">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada165f580" is_allocatable="true" ref="C7fada165f320">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fada1661360" result_name="resultvar" return_type="Fint" is_public="true">
+      <params>
+        <name type="S7fada1661f90">dict</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada1661e60" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada1661f90" intent="in" ref="S7fada1661e60"/>
+    <FfunctionType type="F7fada14d1f20" result_name="resultvar" return_type="C7fada14d30c0" is_public="true">
+      <params>
+        <name type="S7fada14d3800">dict</name>
+        <name type="I7fada14d3f20">keyindex</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fada14d2eb0" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14d30c0" is_allocatable="true" ref="C7fada14d2eb0"/>
+    <FbasicType type="S7fada14d36d0" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada14d3800" intent="in" ref="S7fada14d36d0"/>
+    <FbasicType type="I7fada14d3f20" is_value="true" ref="Fint"/>
+    <FbasicType type="C7fada14d47f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14d4a00" is_parameter="true" ref="C7fada14d47f0"/>
+    <FbasicType type="C7fada14d5160" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14d4fd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada14d91f0" return_type="C7fada14d90c0"/>
+    <FbasicType type="C7fada14d90c0" is_allocatable="true" ref="C7fada164dce0"/>
+    <FbasicType type="C7fada14d6eb0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">40</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14d81b0" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada14d82e0" is_allocatable="true" ref="C7fada14d81b0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada14d8410" is_allocatable="true" ref="C7fada14d81b0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fada14d9f60" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7fada14db170">dict</name>
+        <name type="C7fada14dbaa0">filename</name>
+        <name type="L7fada14dc2d0">linverse</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fada14db040" ref="S7fada164bbe0"/>
+    <FbasicType type="S7fada14db170" intent="inout" ref="S7fada14db040"/>
+    <FbasicType type="C7fada14db970" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14dbaa0" intent="in" ref="C7fada14db970"/>
+    <FbasicType type="L7fada14dc2d0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7fada14dcd80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14dcf90" is_parameter="true" ref="C7fada14dcd80"/>
+    <FbasicType type="C7fada14de110" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14ddbb0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14ddf80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada14dd3a0" return_type="C7fada14efe70"/>
+    <FbasicType type="C7fada14e04b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14efe70" ref="C7fada14e04b0"/>
+    <FfunctionType type="F7fada14effa0" return_type="C7fada14efe70"/>
+    <FbasicType type="C7fada14dfa30" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14dfc40" ref="C7fada14dfa30"/>
+    <FbasicType type="C7fada14e06c0" ref="C7fada14e04b0"/>
+    <FbasicType type="C7fada14e08d0" ref="C7fada14e04b0"/>
+    <FfunctionType type="F7fada14e26e0" return_type="Flogical"/>
+    <FfunctionType type="F7fada14eadd0" return_type="Fvoid"/>
+    <FfunctionType type="F7fada3007420" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fada3008a40">line</name>
+        <name type="C7fada3009530">key</name>
+        <name type="C7fada3009660">val</name>
+        <name type="L7fada3009e10">valid</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fada3008910" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada3008a40" intent="in" ref="C7fada3008910"/>
+    <FbasicType type="C7fada3009400" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada3009530" intent="out" ref="C7fada3009400"/>
+    <FbasicType type="C7fada3009660" intent="out" ref="C7fada3009400"/>
+    <FbasicType type="L7fada3009e10" intent="out" ref="Flogical"/>
+    <FfunctionType type="F7fada14ecf90" return_type="C7fada14efa20"/>
+    <FbasicType type="C7fada14efa20" ref="C7fada14e04b0"/>
+    <FfunctionType type="F7fada14efb50" return_type="C7fada14efa20"/>
+    <FbasicType type="C7fada14e47a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">10</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e4a10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e4c80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e4ef0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e6d10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e69a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e62e0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">24</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e65d0" ref="C7fada14db970"/>
+    <FbasicType type="C7fada14e6b80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e7f60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14ea2d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e9c60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">30</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14e9f00" ref="C7fada14db970"/>
+    <FbasicType type="C7fada14ed2b0" ref="C7fada14e04b0"/>
+    <FbasicType type="C7fada14ece60" ref="C7fada14e04b0"/>
+    <FbasicType type="C7fada14edc70" ref="C7fada14e04b0"/>
+    <FbasicType type="C7fada14ed820" ref="C7fada14e04b0"/>
+    <FbasicType type="C7fada14ef4b0" ref="C7fada14e04b0"/>
+    <FbasicType type="C7fada14ef060" ref="C7fada14e04b0"/>
+    <FfunctionType type="F7fada1503170" return_type="Flogical">
+      <params>
+        <name type="Fcharacter">c</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fada1505690" return_type="Fint"/>
+    <FfunctionType type="F7fada1506360" return_type="Fint"/>
+    <FbasicType type="C7fada300a8c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada300aad0" is_parameter="true" ref="C7fada300a8c0"/>
+    <FbasicType type="C7fada300bc50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada300b6f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada300bac0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada300aee0" return_type="C7fada300bf00"/>
+    <FbasicType type="C7fada300bf00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada300c030" return_type="C7fada300bf00"/>
+    <FfunctionType type="F7fada300ebe0" return_type="Fint"/>
+    <FfunctionType type="F7fada301b850" return_type="Fint"/>
+    <FbasicType type="C7fada3010300" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada300ff10" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada3012770" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada3012380" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada3014af0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada3014700" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos2</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">ipos2</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada3015ec0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">33</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada30171e0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada3016df0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </lowerBound>
+        <upperBound>
+          <minusExpr type="Fint">
+            <Var type="Fint" scope="local">ipos2</Var>
+            <FintConstant type="Fint">1</FintConstant>
+          </minusExpr>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada3018fd0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada3018be0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada301a980" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada301cb40" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada301c750" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos2</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">ipos2</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada1500a60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">35</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada1501da0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fada15019b0" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">ipos1</Var>
+        </lowerBound>
+        <upperBound>
+          <minusExpr type="Fint">
+            <Var type="Fint" scope="local">ipos2</Var>
+            <FintConstant type="Fint">1</FintConstant>
+          </minusExpr>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada14f4a70" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14f4c80" is_parameter="true" ref="C7fada14f4a70"/>
+    <FbasicType type="C7fada14f5e00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">24</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14f58a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14f5c70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fada14f5090" return_type="C7fada30059e0"/>
+    <FbasicType type="C7fada30059e0" is_allocatable="true" ref="C7fada164dce0"/>
+    <FfunctionType type="F7fada3005b10" return_type="C7fada30059e0"/>
+    <FbasicType type="C7fada14f7730" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fada14f7940" ref="C7fada14f7730"/>
+    <FbasicType type="C7fada14f7b50" ref="C7fada14f7730"/>
+    <FfunctionType type="F7fada14f89e0" return_type="Flogical"/>
+    <FbasicType type="C7fada14fb3c0" ref="C7fada14f3660"/>
+    <FbasicType type="C7fada30016f0" is_allocatable="true" ref="C7fada164dce0"/>
+    <FbasicType type="C7fada3000910" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada3000a40" is_allocatable="true" ref="C7fada3000910">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada3000b70" is_allocatable="true" ref="C7fada3000910">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fada30024d0" ref="C7fada14f7730"/>
+    <FbasicType type="C7fada30029c0" ref="C7fada14f7730"/>
+    <FbasicType type="C7fada30041c0" ref="C7fada14f3660"/>
+    <FbasicType type="C7fada3004c00" is_allocatable="true" ref="C7fada164def0"/>
+    <FbasicType type="A7fada3004d30" is_allocatable="true" ref="C7fada3004c00">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fada3004e60" is_allocatable="true" ref="C7fada3004c00">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+  </typeTable>
+  <identifiers>
+    <id type="C7fada1700a70" sclass="flocal" original_name="message_text" declared_in="mo_exception">
+      <name>message_text</name>
+    </id>
+    <id type="F7fada171a070" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="F7fada1455e80" sclass="ffunc" original_name="tolower" declared_in="mo_util_string">
+      <name>tolower</name>
+    </id>
+    <id type="I7fada163e750" sclass="flocal" original_name="success" declared_in="mo_impl_constants">
+      <name>success</name>
+    </id>
+    <id type="F7fada1647820" sclass="ffunc" original_name="find_next_free_unit" declared_in="mo_io_units">
+      <name>find_next_free_unit</name>
+    </id>
+    <id type="I7fada16498b0" sclass="flocal" original_name="dict_max_strlen" declared_in="mo_dictionary">
+      <name>dict_max_strlen</name>
+    </id>
+    <id type="S7fada164bbe0" sclass="ftype_name" original_name="t_dictionary" declared_in="mo_dictionary">
+      <name>t_dictionary</name>
+    </id>
+    <id type="F7fada1650a10" sclass="ffunc" original_name="dict_init" declared_in="mo_dictionary">
+      <name>dict_init</name>
+    </id>
+    <id type="F7fada178c460" sclass="ffunc" original_name="dict_finalize" declared_in="mo_dictionary">
+      <name>dict_finalize</name>
+    </id>
+    <id type="F7fada17c8fb0" sclass="ffunc" original_name="dict_set" declared_in="mo_dictionary">
+      <name>dict_set</name>
+    </id>
+    <id type="F7fada17d9fd0" sclass="ffunc" original_name="dict_get" declared_in="mo_dictionary">
+      <name>dict_get</name>
+    </id>
+    <id type="F7fada1661360" sclass="ffunc" original_name="dict_size" declared_in="mo_dictionary">
+      <name>dict_size</name>
+    </id>
+    <id type="F7fada14d1f20" sclass="ffunc" original_name="dict_getkey" declared_in="mo_dictionary">
+      <name>dict_getkey</name>
+    </id>
+    <id type="F7fada14d9f60" sclass="ffunc" original_name="dict_loadfile" declared_in="mo_dictionary">
+      <name>dict_loadfile</name>
+    </id>
+    <id type="F7fada17a3b70" sclass="ffunc" original_name="dict_resize" declared_in="mo_dictionary">
+      <name>dict_resize</name>
+    </id>
+    <id type="F7fada1795100" sclass="ffunc" original_name="dict_copy" declared_in="mo_dictionary">
+      <name>dict_copy</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7fada163e750">success</name>
+      <value>
+        <FintConstant type="Fint">0</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="48" file="./src/shared/mo_dictionary.f90">
+      <name type="I7fada16498b0">dict_max_strlen</name>
+      <value>
+        <FintConstant type="Fint">32</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
