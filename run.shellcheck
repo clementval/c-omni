@@ -1,23 +1,26 @@
 #!/bin/bash
 
-if ! shellcheck common/check.omni.lib.sh; then
-  exit 1;
-fi
 if ! shellcheck common/compile.claw compiler/clementon2.gnu.sh; then
   exit 1;
 fi
 if ! shellcheck common/compile.omni compiler/clementon2.gnu.sh; then
   exit 1;
 fi
-if ! shellcheck cosmo/parse compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh; then
+if ! shellcheck common/omni.lib.sh; then
   exit 1;
 fi
-if ! shellcheck icon/parse compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh; then
+if ! shellcheck cosmo/parse compiler/clementon2.gnu.sh common/omni.lib.sh common/utility.sh; then
   exit 1;
 fi
-if ! shellcheck ifs/parse compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh; then
+if ! shellcheck icon/parse compiler/clementon2.gnu.sh common/omni.lib.sh common/utility.sh; then
   exit 1;
 fi
-if ! shellcheck jsbach/parse compiler/clementon2.gnu.sh common/check.omni.lib.sh common/utility.sh; then
+if ! shellcheck ifs/parse compiler/clementon2.gnu.sh common/omni.lib.sh common/utility.sh; then
+  exit 1;
+fi
+if ! shellcheck jsbach/parse compiler/clementon2.gnu.sh common/omni.lib.sh common/utility.sh; then
+  exit 1;
+fi
+if ! shellcheck icon_update_surface/parse compiler/clementon2.gnu.sh common/omni.lib.sh common/utility.sh; then
   exit 1;
 fi
