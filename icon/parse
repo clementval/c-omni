@@ -288,110 +288,25 @@ fi
 # 5. Control step
 #################
 
-echo ""
-echo "-----------------------"
-echo ">>> Control .xmod files"
-echo "-----------------------"
 # Control if present .xmod file has been produced correctly
-xmod_errors=0
-for xmod_file in ${XMOD_DIR}/*.xmod; do
-  xmod_well_formatted=$(check_xmod_file "${xmod_file}")
-  if [[ ${xmod_well_formatted} == false ]]; then
-    echo "ERROR: ${xmod_file} file is not formatted correctly"
-    (( xmod_errors=xmod_errors+1 ))
-  fi
-done
+omni::check_xmod ${XMOD_DIR} xmod_errors
 
-# Report number of detected errors
-if [[ ${xmod_errors} -ne 0 ]]; then
-  echo "------"
-  echo "ERROR: ${xmod_errors} .xmod files didn't pass the check"
-fi
-
-
-echo ""
-echo "----------------------"
-echo ">>> Control .f90 files"
-echo "----------------------"
-# Control if target file has been produced
-f90_errors=0
-while IFS= read -r f90_file
-do
-  if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-    echo "ERROR: ${f90_file} has not been parsed correctly"
-    (( f90_errors=f90_errors+1 ))
-  fi
-done < ./${ICON_DEP}
-
-# Report number of detected errors
-if [[ ${f90_errors} -ne 0 ]]; then
-  echo "------"
-  echo "ERROR: ${f90_errors}/${parsed_files} .f90 files have not been parsed correctly"
-fi
-
-
-##############
-# Report error
-##############
-
-# Check potential known errors in log file
-error_type1=$(grep -c "only function/subroutine statement are allowed in contains top level" "${PARSING_OUTPUT}")
-error_type2=$(grep -c "declaration among executables" "${PARSING_OUTPUT}")
-error_type3=$(grep -c "syntax error" "${PARSING_OUTPUT}")
-error_type4=$(grep -c "too many error, cannot recover from earlier errors: goodbye!" "${PARSING_OUTPUT}")
-error_type5=$(grep -c "failed to import module" "${PARSING_OUTPUT}")
-error_type6=$(grep -c "incompatible dimension for the operation" "${PARSING_OUTPUT}")
-error_type7=$(grep -c "argument(s) mismatch for an intrinsic" "${PARSING_OUTPUT}")
-error_type8=$(grep -c "java.lang.OutOfMemoryError" "${PARSING_OUTPUT}")
-error_type9=$(grep -c "compiler error: type attr error" "${PARSING_OUTPUT}")
-error_type10=$(grep -c "is not found for" "${PARSING_OUTPUT}")
-error_type11=$(grep -c "invalid left operand of" "${PARSING_OUTPUT}")
-error_type12=$(grep -c "attempt to use undefined type variable" "${PARSING_OUTPUT}")
-error_type13=$(grep -c "bad char" "${PARSING_OUTPUT}")
-error_type14=$(grep -c "Unable to decompile XcodeML to Fortran" "${PARSING_OUTPUT}")
-error_type15=$(grep -c "bad expression in constant kind parameter" "${PARSING_OUTPUT}")
-error_type16=$(grep -c "is not a subroutine" "${PARSING_OUTPUT}")
-error_type17=$(grep -c "Derived-type mismatch" "${PARSING_OUTPUT}")
+# Control output fortran file any corruption
+omni::check_fortran ${ICON_DEP} ${CLAW_OUTPUT} f90_errors
 
 echo ""
 echo "===================================="
 echo "ICON-ENIAC full parsing test results"
 echo "===================================="
-if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]      \
-  || [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
-  || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
-  || [[ ${error_type5} -ne 0 ]] || [[ ${error_type6} -ne 0 ]]   \
-  || [[ ${error_type7} -ne 0 ]] || [[ ${error_type8} -ne 0 ]]   \
-  || [[ ${error_type9} -ne 0 ]] || [[ ${error_type10} -ne 0 ]]  \
-  || [[ ${error_type11} -ne 0 ]] || [[ ${error_type12} -ne 0 ]] \
-  || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]] \
-  || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]] \
-  || [[ ${error_type17} -ne 0 ]]; then
-  echo "ERROR: Some errors have been detected"
-  echo "       ${xmod_errors} files .xmod with errors"
-  echo "       ${f90_errors} files .f90 with errors"
-  echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
-  echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
-  echo "         ${error_type3} errors/warnings [syntax error] found in log"
-  echo "         ${error_type4} errors/warnings [too many error, cannot recover from earlier errors: goodbye!] found in log"
-  echo "         ${error_type5} errors/warnings [failed to import module] found in log"
-  echo "         ${error_type6} errors/warnings [incompatible dimension for the operation] found in log"
-  echo "         ${error_type7} errors/warnings [argument(s) mismatch for an intrinsic] found in log"
-  echo "         ${error_type8} errors/warnings [java.lang.OutOfMemoryError] found in log"
-  echo "         ${error_type9} errors/warnings [compiler error: type attr error] found in log"
-  echo "         ${error_type10} errors/warnings [X if not found for end X] found in log"
-  echo "         ${error_type11} errors/warnings [invalid left operand of] found in log"
-  echo "         ${error_type12} errors/warnings [attempt to use undefined type variable] found in log"
-  echo "         ${error_type13} errors/warnings [bad char] found in log"
-  echo "         ${error_type14} errors/warnings [Unable to decompile XcodeML to Fortran] found in log"
-  echo "         ${error_type15} errors/warnings [bad expression in constant kind parameter] found in log"
-  echo "         ${error_type16} errors/warnings [is not a subroutine] found in log"
-  echo "         ${error_type17} errors/warnings [Derived-type mismatch] found in log"
-  echo "       More information in the file: ${PARSING_OUTPUT}"
-  echo "====================================="
+
+# shellcheck disable=SC2154
+if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
+  # Check potential known errors in log file
+  omni::check_error_log "${PARSING_OUTPUT}"
+  print_red "FAILED: Parsing test has detected some errors."
   exit 1
 else
-  echo "SUCCESS: Test has be executed correctly."
-  echo "====================================="
+  print_green "SUCCESS: Test has be executed correctly."
+  echo "================================"
   exit 0
 fi
