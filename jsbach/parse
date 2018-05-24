@@ -16,6 +16,7 @@ function show_help(){
 
 source ./common/check.omni.lib.sh
 source ./common/utility.sh
+source ./common/omni.lib.sh
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -134,16 +135,17 @@ CLAW_GIT_HASH=$(git rev-parse HEAD)
 cd omni-compiler || exit 1
 OMNI_GIT_HASH=$(git rev-parse HEAD)
 cd "${WORKING_DIR}" || exit 1
-{
-  echo "JSBACH PARSING TESTS"
-  echo "--------------------"
-  echo "Git version information:"
-  echo "- CLAW git version: ${CLAW_GIT_HASH}"
-  echo "- OMNI git version: ${OMNI_GIT_HASH}"
-} > "${PARSING_OUTPUT}"
+
 
 if [[ ${SKIP_PARSING} == false ]]; then
-
+  {
+    echo "JSBACH PARSING TESTS"
+    echo "--------------------"
+    echo "Git version information:"
+    echo "- CLAW git version: ${CLAW_GIT_HASH}"
+    echo "- OMNI git version: ${OMNI_GIT_HASH}"
+  } > "${PARSING_OUTPUT}"
+  
   ######################
   # 2. JSBACH clone step
   ######################
