@@ -113,6 +113,7 @@ function omni::check_error_log {
   local error_type17
   local error_type18
   local error_type19
+  local error_type20
 
   error_type1=$(grep -c "only function/subroutine statement are allowed in contains top level" "${__parse_log}")
   error_type2=$(grep -c "declaration among executables" "${__parse_log}")
@@ -133,6 +134,7 @@ function omni::check_error_log {
   error_type17=$(grep -c "Derived-type mismatch" "${__parse_log}")
   error_type18=$(grep -c "right hand side expression is not a pointee" "${__parse_log}")
   error_type19=$(grep -c "can't determine type of constant expression" "${__parse_log}")
+  error_type20=$(grep -c "compiler error" "${PARSING_OUTPUT}")
 
   if [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
     || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
@@ -143,7 +145,7 @@ function omni::check_error_log {
     || [[ ${error_type13} -ne 0 ]] || [[ ${error_type14} -ne 0 ]] \
     || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]] \
     || [[ ${error_type17} -ne 0 ]] || [[ ${error_type18} -ne 0 ]] \
-    || [[ ${error_type19} -ne 0 ]]; then
+    || [[ ${error_type19} -ne 0 ]] || [[ ${error_type20} -ne 0 ]]; then
     echo "ERROR: Some errors have been detected"
     echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
     echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
@@ -164,6 +166,7 @@ function omni::check_error_log {
     echo "         ${error_type17} errors/warnings [Derived-type mismatch] found in log"
     echo "         ${error_type18} errors/warnings [right hand side expression is not a pointee] found in log"
     echo "         ${error_type19} errors/warnings [can't determine type of constant expression] found in log"
+    echo "         ${error_type20} errors/warnings [compiler error] found in log"
     echo "       More information in the file: ${__parse_log}"
     echo "====================================="
   fi
