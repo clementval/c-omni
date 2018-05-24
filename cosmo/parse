@@ -193,13 +193,13 @@ fi
 if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
   echo "- CLAW Compiler information:"
-  echo "  - Git repository: $CLAW_REPO"
-  echo "  - Git branch: $CLAW_BRANCH"
-  echo "  - Base compiler: $BASE_COMPILER"
-  echo "  - Target directory: $TEST_DIR"
+  echo "  - Git repository: ${CLAW_REPO}"
+  echo "  - Git branch: ${CLAW_BRANCH}"
+  echo "  - Base compiler: ${BASE_COMPILER}"
+  echo "  - Target directory: ${TEST_DIR}"
 
-  rm -rf "$TEST_DIR"
-  mkdir "$TEST_DIR"
+  rm -rf "${TEST_DIR}"
+  mkdir "${TEST_DIR}"
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
@@ -207,9 +207,9 @@ if [[ ${SKIP_CLAW} == false ]]; then
 
   print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
 elif [[ ${SKIP_FETCH} == false ]]; then
   rm -rf "${TEST_DIR:?}"/${COSMO_REP}
@@ -219,22 +219,15 @@ echo "============================================"
 echo ""
 
 
-cd "$TEST_DIR" || exit 1
+cd "${TEST_DIR}" || exit 1
 WORKING_DIR="$PWD"
 
 # Get git hashes for the log
-echo "COSMO PARSING TESTS" > "${PARSING_OUTPUT}"
-echo "-------------------" >> "${PARSING_OUTPUT}"
-echo "Git version information:" >> "${PARSING_OUTPUT}"
 cd claw-compiler || exit 1
 CLAW_HASH=$(git rev-parse HEAD)
-echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
 cd omni-compiler || exit 1
 OMNI_HASH=$(git rev-parse HEAD)
-echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
-
-
+cd "${WORKING_DIR}" || exit 1
 
 
 if [[ ${SKIP_FETCH} == false ]]; then
@@ -247,10 +240,18 @@ fi
 
 cd ${COSMO_REP} || exit 1
 COSMO_HASH=$(git rev-parse HEAD)
-echo "- COSMO-POMPA git version: $COSMO_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
+cd "${WORKING_DIR}" || exit 1
 
 if [[ ${SKIP_PARSING} == false ]]; then
+{
+  echo "COSMO PARSING TESTS"
+  echo "-------------------"
+  echo "Git version information:"
+  echo "- CLAW git version: ${CLAW_HASH}"
+  echo "- OMNI git version: ${OMNI_HASH}"
+  echo "- COSMO-POMPA git version: ${COSMO_HASH}"
+} > "${PARSING_OUTPUT}"
+
   ####################
   # 3. Dependency step
   ####################
