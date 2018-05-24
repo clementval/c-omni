@@ -14,7 +14,6 @@ function show_help(){
   echo " -o                Use the latest OMNI Compiler version for the test"
 }
 
-source ./common/check.omni.lib.sh
 source ./common/utility.sh
 source ./common/omni.lib.sh
 
@@ -145,7 +144,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "- CLAW git version: ${CLAW_GIT_HASH}"
     echo "- OMNI git version: ${OMNI_GIT_HASH}"
   } > "${PARSING_OUTPUT}"
-  
+
   ######################
   # 2. JSBACH clone step
   ######################
