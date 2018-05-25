@@ -64,18 +64,6 @@ while getopts "hspo" opt; do
   *) show_help
      exit 1
      ;;
-#  f)
-#    CLAW_REPO=$CLAW_FORK_REPO
-#    ;;
-#  b)
-#    CLAW_BRANCH=$OPTARG
-#    ;;
-#  c)
-#    CLAW_BASE_COMPILER=$OPTARG
-#    ;;
-#  i)
-#    CLAW_INSTALL_DIR=$OPTARG
-#    ;;
   esac
 done
 
@@ -102,63 +90,6 @@ if [ -f ${COMPILER_FILE} ]; then
 else
   echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
-
-#
-#
-#
-## Load recent version of cmake
-#module load $CMAKE_MOD
-#
-## Load correct PrgEnv
-#case  "$CLAW_BASE_COMPILER" in
-#  "gnu")
-#    module rm PrgEnv-pgi && module rm PrgEnv-cray
-#    module load PrgEnv-gnu
-#    if [[ $COMPUTER == "kesch" ]]
-#    then
-#      CLAW_FC=gfortran
-#      CLAW_CC=gcc
-#      CLAW_CXX=g++
-#    elif [[ $COMPUTER == "daint" ]]
-#    then
-#      CLAW_FC=ftn
-#      CLAW_CC=cc
-#      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc"
-#      OMNI_MPI_FC="MPI_FC=ftn"
-#      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
-#    fi
-#  ;;
-#  "pgi")
-#    module rm PrgEnv-gnu && module rm PrgEnv-cray
-#    module load PrgEnv-pgi
-#    if [[ $COMPUTER == "kesch" ]]
-#    then
-#      CLAW_FC=mpif90
-#      CLAW_CC=mpicc
-#      CLAW_CXX=pgc++
-#    elif [[ $COMPUTER == "daint" ]]
-#    then
-#      module load gcc
-#      CLAW_FC=ftn
-#      CLAW_CC=cc
-#      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc"
-#      OMNI_MPI_FC="MPI_FC=ftn"
-#      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
-#    fi
-#  ;;
-#  "cray")
-#    module rm PrgEnv-pgi && module rm PrgEnv-gnu
-#    module load PrgEnv-cray
-#    CLAW_FC=ftn
-#    CLAW_CC=cc
-#    CLAW_CXX=CC
-#  ;;
-#  *)
-#    echo "Error: Unknown compiler ..."
-#    exit 1
-#esac
 
 echo ""
 echo "====================================="
@@ -188,9 +119,9 @@ if [[ ${SKIP_CLAW} == false ]]; then
 
   echo ">>> CLAW FORTRAN COMPILER STEP: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH" -o
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
-    ./common/compile.claw -d "$TEST_DIR" -c "$BASE_COMPILER" -r "$CLAW_REPO" -b "$CLAW_BRANCH"
+    ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
 else
   rm -rf "${TEST_DIR:?}"/${ICON_REP}
@@ -200,20 +131,15 @@ echo "============================================"
 echo ""
 
 
-cd "$TEST_DIR" || exit 1
+cd "${TEST_DIR}" || exit 1
 WORKING_DIR="$PWD"
 
 # Get git hashes for the log
-echo "ICON PARSING TESTS" > "${PARSING_OUTPUT}"
-echo "-------------------" >> "${PARSING_OUTPUT}"
-echo "Git version information:" >> "${PARSING_OUTPUT}"
 cd claw-compiler || exit 1
 CLAW_HASH=$(git rev-parse HEAD)
-echo "- CLAW git version: $CLAW_HASH" >> "${PARSING_OUTPUT}"
 cd omni-compiler || exit 1
 OMNI_HASH=$(git rev-parse HEAD)
-echo "- OMNI git version: $OMNI_HASH" >> "${PARSING_OUTPUT}"
-cd "$WORKING_DIR" || exit 1
+cd "${WORKING_DIR}" || exit 1
 
 
 if [[ ${SKIP_PARSING} == false ]]; then
@@ -227,8 +153,16 @@ if [[ ${SKIP_PARSING} == false ]]; then
   git submodule init
   git submodule update
   ICON_HASH=$(git rev-parse HEAD)
-  echo "- ICON-POMPA git version: $ICON_HASH" >> "${PARSING_OUTPUT}"
-  cd "$WORKING_DIR" || exit 1
+  cd "${WORKING_DIR}" || exit 1
+
+  {
+    echo "ICON PARSING TESTS"
+    echo "-------------------"
+    echo "Git version information:"
+    echo "- CLAW git version: ${CLAW_HASH}"
+    echo "- OMNI git version: ${OMNI_HASH}"
+    echo "- ICON-POMPA git version: ${ICON_HASH}"
+  } > "${PARSING_OUTPUT}"
 
 
   ####################
