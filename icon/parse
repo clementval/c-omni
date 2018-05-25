@@ -28,6 +28,7 @@ TEST_DIR=${PWD}/build
 #INSTALL_DIR=$TEST_DIR/install
 CLAW_OUTPUT="./processed/icon"
 XMOD_DIR="./xmods/icon"
+GLOBAL_XMODS="../global_modules"
 
 # Default compiler used
 BASE_COMPILER="gnu"
@@ -44,10 +45,10 @@ ICON_SRC="./${ICON_REP}/src/"
 ICON_START="drivers/icon.f90"
 ICON_DEP="dependencies_icon"
 EXTERNAL_XMODS="../icon/external_xmods"
-ICON_INC="${ICON_REP}/src/include/"
+ICON_INC="-I ${ICON_REP}/src/include/ -I ${ICON_REP}/src/shr_horizontal/ -I ${ICON_REP}/src/atm_phy_psrad/"
 
 # Preprocessor macros definition
-ICON_DEFINITIONS="-D__ICON__ -DNOMPI"
+ICON_DEFINITIONS="-D__ICON__ -DHAVE_SLOW_PASSIVE_TARGET_ONESIDED -D__LOOP_EXCHANGE -DgFortran -D__NO_ICON_TESTBED__ -DUSE_XML2 -DHAVE_LIBGRIB -DHAVE_LIBGRIB_API"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
@@ -201,15 +202,17 @@ if [[ ${SKIP_PARSING} == false ]]; then
   mkdir -p ${CLAW_OUTPUT}
 
   parsed_files=0
-  echo ">>> Parsing files"
+  total_files=$(wc -l < ${ICON_DEP})
+  echo ">>> Parsing files ${total_files}"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
-    echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    (( current_file_nb=parsed_files+1 ))
+    echo "    Processing file [$current_file_nb] ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${ICON_INC}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force "${ICON_INC}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
