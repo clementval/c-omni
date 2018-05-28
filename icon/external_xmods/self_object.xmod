@@ -1,0 +1,196 @@
+<OmniFortranModule version="1.0">
+  <name>self_object</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FstructType type="S7fc519e06840" is_public="true" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fc519e07140" pass="pass" is_deferred="true">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fc519e07900" pass="pass" is_deferred="true">
+          <name>to_string</name>
+          <binding>
+            <name>to_string_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure is_operator="true">
+          <name>.eq.</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundGenericProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FfunctionType type="F7fc519e09410" return_type="Flogical" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fc519e0a6f0">this</name>
+        <name type="S7fc519e0acf0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fc519e09f50" ref="S7fc519e06840"/>
+    <FbasicType type="S7fc519e0a6f0" intent="in" is_class="true" ref="S7fc519e09f50"/>
+    <FbasicType type="S7fc519e0acf0" intent="in" is_class="true"/>
+    <FfunctionType type="F7fc519e0bca0" return_type="C7fc519e0c070" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fc519e0cdc0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fc519e0d590" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519e0c070" is_allocatable="true" ref="C7fc519e0d590"/>
+    <FbasicType type="S7fc519e0c620" ref="S7fc519e06840"/>
+    <FbasicType type="S7fc519e0cdc0" intent="in" is_class="true" ref="S7fc519e0c620"/>
+    <FfunctionType type="F7fc519f00e00" result_name="equal" return_type="Flogical" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fc519f01bd0">this</name>
+        <name type="S7fc519f021d0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fc519f01bd0" intent="in" is_class="true"/>
+    <FbasicType type="S7fc519f021d0" intent="in" is_class="true"/>
+    <FbasicType type="C7fc519f033e0" is_allocatable="true" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519f035f0" is_allocatable="true" ref="C7fc519f033e0"/>
+    <FbasicType type="A7fc519f03720" is_allocatable="true" ref="C7fc519f035f0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fc519f0e920" return_type="Flogical"/>
+    <FfunctionType type="F7fc519f0cd80" return_type="A7fc519f0d1c0"/>
+    <FbasicType type="A7fc519f0d1c0" is_allocatable="true" ref="C7fc519f035f0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fc519f0d2f0" return_type="A7fc519f0d1c0"/>
+    <FbasicType type="S7fc519f04600" ref="S7fc519e06840"/>
+    <FbasicType type="C7fc519f05520" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519f06000" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7fc519f0e460" ref="Flogical">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7fc519f0cc50" is_allocatable="true" ref="C7fc519f035f0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7fc519f0f950" result_name="string" return_type="C7fc519f10e90" is_public="true">
+      <params>
+        <name type="S7fc519f104b0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fc519f10c80" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519f10e90" is_allocatable="true" ref="C7fc519f10c80"/>
+    <FbasicType type="S7fc519f104b0" intent="in" is_pointer="true" is_class="true"/>
+    <FfunctionType type="F7fc519d00b40" return_type="Flogical"/>
+    <FfunctionType type="F7fc519d01560" return_type="FnumericAll"/>
+    <FfunctionType type="F7fc519d02a90" result_name="string" return_type="C7fc519d03f50" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fc519d03570">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fc519d03d40" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d03f50" is_allocatable="true" ref="C7fc519d03d40"/>
+    <FbasicType type="S7fc519d03570" intent="in" is_class="true"/>
+    <FbasicType type="C7fc519d01c20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">6</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fc519d06660" return_type="Fcharacter"/>
+    <FfunctionType type="F7fc519d0cd60" return_type="Fcharacter"/>
+    <FfunctionType type="F7fc519d07810" return_type="C7fc519d0b240"/>
+    <FbasicType type="C7fc519d0b240" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fc519d0b370" return_type="C7fc519d0b240"/>
+    <FbasicType type="S7fc519d048c0" ref="S7fc519e06840"/>
+    <FbasicType type="C7fc519d06df0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d076e0" is_allocatable="true" ref="C7fc519d03d40"/>
+    <FbasicType type="C7fc519d093f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d09c00" is_allocatable="true" ref="C7fc519d03d40"/>
+    <FbasicType type="C7fc519d0a580" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d0b980" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d0b610" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d0d4f0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">4</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fc519d0de00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">14</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="F7fc519e07140" ref="F7fc519e09410"/>
+    <FbasicType type="F7fc519e07900" ref="F7fc519e0bca0"/>
+  </typeTable>
+  <identifiers>
+    <id type="S7fc519e06840" sclass="ftype_name" original_name="object" declared_in="self_object">
+      <name>object</name>
+    </id>
+    <id type="F7fc519e09410" sclass="ffunc" original_name="is_equal_function" declared_in="self_object">
+      <name>is_equal_function</name>
+    </id>
+    <id type="F7fc519e0bca0" sclass="ffunc" original_name="to_string_function" declared_in="self_object">
+      <name>to_string_function</name>
+    </id>
+    <id type="F7fc519f00e00" sclass="ffunc" original_name="object_equal" declared_in="self_object">
+      <name>object_equal</name>
+    </id>
+    <id type="F7fc519f0f950" sclass="ffunc" original_name="object_pointer_string" declared_in="self_object">
+      <name>object_pointer_string</name>
+    </id>
+    <id type="F7fc519d02a90" sclass="ffunc" original_name="object_string" declared_in="self_object">
+      <name>object_string</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
