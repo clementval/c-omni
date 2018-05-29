@@ -1,0 +1,1336 @@
+<OmniFortranModule version="1.0">
+  <name>self_map_ref</name>
+  <depends>
+    <name>self_object</name>
+    <name>self_vector</name>
+  </depends>
+  <typeTable>
+    <FstructType type="S7fee7ef0e040" imported_id="S7fc519e06840" is_public="true" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ef0f2a0">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ef0f770">
+          <name>to_string</name>
+          <binding>
+            <name>to_string_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>.eq.</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundGenericProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FfunctionType type="F7fee7ef0e360" return_type="Flogical" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fee7ef10110" imported_id="S7fc519e0a6f0">this</name>
+        <name type="S7fee7ef10730" imported_id="S7fc519e0acf0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ef10260" imported_id="S7fc519e09f50" ref="S7fee7ef0e040"/>
+    <FbasicType type="S7fee7ef10110" imported_id="S7fc519e0a6f0" intent="in" is_class="true" ref="S7fee7ef10260"/>
+    <FbasicType type="S7fee7ef10730" imported_id="S7fc519e0acf0" intent="in" is_class="true"/>
+    <FstructType type="S7fee7ed040d0" imported_id="S7fc519e06840" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ed04610">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ed04e90">
+          <name>to_string</name>
+          <binding>
+            <name>to_string_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>.eq.</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundGenericProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7fee7ef012b0" imported_id="S7fc519e09f50" ref="S7fee7ed040d0"/>
+    <FbasicType type="S7fee7ef00b50" imported_id="S7fc519e0a6f0" intent="in" is_class="true" ref="S7fee7ef012b0"/>
+    <FbasicType type="S7fee7ef00f00" imported_id="S7fc519e0acf0" intent="in" is_class="true"/>
+    <FfunctionType type="F7fee7ef0e680" return_type="C7fee7ef10880" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fee7ef10c00" imported_id="S7fc519e0cdc0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ef109d0" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ef10880" is_allocatable="true" ref="C7fee7ef109d0"/>
+    <FbasicType type="S7fee7ef10d50" imported_id="S7fc519e0c620" ref="S7fee7ef0e040"/>
+    <FbasicType type="S7fee7ef10c00" imported_id="S7fc519e0cdc0" intent="in" is_class="true" ref="S7fee7ef10d50"/>
+    <FbasicType type="S7fee7ef022c0" imported_id="S7fc519e0c620" ref="S7fee7ed040d0"/>
+    <FbasicType type="S7fee7ef019c0" imported_id="S7fc519e0cdc0" intent="in" is_class="true" ref="S7fee7ef022c0"/>
+    <FfunctionType type="F7fee7ef0e9a0" return_type="Flogical" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fee7ef11370" imported_id="S7fc519f01bd0">this</name>
+        <name type="S7fee7ef115a0" imported_id="S7fc519f021d0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ef11370" imported_id="S7fc519f01bd0" intent="in" is_class="true"/>
+    <FbasicType type="S7fee7ef115a0" imported_id="S7fc519f021d0" intent="in" is_class="true"/>
+    <FbasicType type="S7fee7ef02a40" imported_id="S7fc519f01bd0" intent="in" is_class="true"/>
+    <FbasicType type="S7fee7ef02dc0" imported_id="S7fc519f021d0" intent="in" is_class="true"/>
+    <FfunctionType type="F7fee7ef0ece0" return_type="C7fee7ef116f0" is_public="true">
+      <params>
+        <name type="S7fee7ef11a70" imported_id="S7fc519f104b0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ef11840" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ef116f0" is_allocatable="true" ref="C7fee7ef11840"/>
+    <FbasicType type="S7fee7ef11a70" imported_id="S7fc519f104b0" intent="in" is_pointer="true" is_class="true"/>
+    <FbasicType type="S7fee7ef065a0" imported_id="S7fc519f104b0" intent="in" is_pointer="true" is_class="true"/>
+    <FfunctionType type="F7fee7ef0f020" return_type="C7fee7ef11bc0" is_recursive="true" is_public="true">
+      <params>
+        <name type="S7fee7ef11f40" imported_id="S7fc519d03570">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ef11d10" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ef11bc0" is_allocatable="true" ref="C7fee7ef11d10"/>
+    <FbasicType type="S7fee7ef11f40" imported_id="S7fc519d03570" intent="in" is_class="true"/>
+    <FbasicType type="S7fee7ef07be0" imported_id="S7fc519d03570" intent="in" is_class="true"/>
+    <FfunctionType type="F7fee7ee15960" return_type="FnumericAll"/>
+    <FstructType type="S7fee7ee0adb0" imported_id="S7fc92460b5c0" extends="S7fee7ee05030">
+      <symbols>
+        <id type="Fint">
+          <name>current_size</name>
+          <value>
+            <FintConstant type="Fint">0</FintConstant>
+          </value>
+        </id>
+        <id type="Fint">
+          <name>maximum_size</name>
+          <value>
+            <FintConstant type="Fint">0</FintConstant>
+          </value>
+        </id>
+        <id type="Flogical">
+          <name>verbose</name>
+          <value>
+            <FlogicalConstant type="Flogical">.FALSE.</FlogicalConstant>
+          </value>
+        </id>
+        <id type="A7fee7ee0c070">
+          <name>items</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ee0c700">
+          <name>clone</name>
+          <binding>
+            <name>clone</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0ccf0">
+          <name>clear</name>
+          <binding>
+            <name>clear</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0d2e0">
+          <name>extend</name>
+          <binding>
+            <name>extend</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0d960">
+          <name>at</name>
+          <binding>
+            <name>at</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0df70">
+          <name>set</name>
+          <binding>
+            <name>set</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0e570">
+          <name>find</name>
+          <binding>
+            <name>find</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0ebd0">
+          <name>add_item</name>
+          <binding>
+            <name>add_item</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>add</name>
+          <binding>
+            <name>add_item</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fee7ee0f690">
+          <name>add_array</name>
+          <binding>
+            <name>add_array</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee0fc80">
+          <name>add_vector</name>
+          <binding>
+            <name>add_vector</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee10270">
+          <name>add_iter</name>
+          <binding>
+            <name>add_iter</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>add_list</name>
+          <binding>
+            <name>add_array</name>
+            <name>add_vector</name>
+            <name>add_iter</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fee7ee110e0">
+          <name>set_verbose</name>
+          <binding>
+            <name>set_verbose</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee11680">
+          <name>get_verbose</name>
+          <binding>
+            <name>get_verbose</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee11ce0">
+          <name>length</name>
+          <binding>
+            <name>length</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee122d0">
+          <name>capacity</name>
+          <binding>
+            <name>capacity</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee12940">
+          <name>includes</name>
+          <binding>
+            <name>includes</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee12f30">
+          <name>iter</name>
+          <binding>
+            <name>iter</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee13500">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee13b60">
+          <name>is_empty</name>
+          <binding>
+            <name>is_empty</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee14130">
+          <name>to_string</name>
+          <binding>
+            <name>to_string</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fee7ee05030" imported_id="S7fc519e06840" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ee05570">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee05b40">
+          <name>to_string</name>
+          <binding>
+            <name>to_string_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>.eq.</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundGenericProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fee7ee14370" imported_id="S7fc924609430">
+      <symbols>
+        <id type="S7fee7ee14570">
+          <name>stuff</name>
+          <value>
+            <functionCall type="V7fee7ee14cb0" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="S7fee7ee14570" imported_id="S7fc924609b80" is_pointer="true" is_class="true"/>
+    <FbasicType type="V7fee7ee14cb0" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7fee7ee15340" imported_id="S7fc92460d9c0" ref="S7fee7ee14370"/>
+    <FbasicType type="S7fee7ee15500" imported_id="S7fc92460dbd0" is_allocatable="true" ref="S7fee7ee15340"/>
+    <FbasicType type="S7fee7ee156a0" imported_id="A7fc92460dd00" is_allocatable="true" ref="S7fee7ee15500"/>
+    <FbasicType type="S7fee7ee15800" imported_id="A7f96ee60dbc0" is_allocatable="true" ref="S7fee7ee156a0"/>
+    <FbasicType type="A7fee7ee0c070" is_allocatable="true" ref="S7fee7ee15800">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FstructType type="S7fee7ee52d00" imported_id="S7fc9246183e0" is_public="true">
+      <symbols>
+        <id type="S7fee7ee8c580">
+          <name>my_vector</name>
+          <value>
+            <functionCall type="V7fee7ee16700" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="Fint">
+          <name>current</name>
+          <value>
+            <FintConstant type="Fint">0</FintConstant>
+          </value>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7eea4fd0">
+          <name>set_vector</name>
+          <binding>
+            <name>set_vector</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eea5ac0">
+          <name>more</name>
+          <binding>
+            <name>more</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eea67e0">
+          <name>next</name>
+          <binding>
+            <name>next</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eea75e0">
+          <name>pos</name>
+          <binding>
+            <name>pos</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fee7ee8c6d0" imported_id="S7fc92460b5c0" extends="S7fee7ee8c900">
+      <symbols>
+        <id type="Fint">
+          <name>current_size</name>
+          <value>
+            <FintConstant type="Fint">0</FintConstant>
+          </value>
+        </id>
+        <id type="Fint">
+          <name>maximum_size</name>
+          <value>
+            <FintConstant type="Fint">0</FintConstant>
+          </value>
+        </id>
+        <id type="Flogical">
+          <name>verbose</name>
+          <value>
+            <FlogicalConstant type="Flogical">.FALSE.</FlogicalConstant>
+          </value>
+        </id>
+        <id type="A7fee7ee8f920">
+          <name>items</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ee904f0">
+          <name>clone</name>
+          <binding>
+            <name>clone</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee91280">
+          <name>clear</name>
+          <binding>
+            <name>clear</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee920f0">
+          <name>extend</name>
+          <binding>
+            <name>extend</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee93040">
+          <name>at</name>
+          <binding>
+            <name>at</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee941c0">
+          <name>set</name>
+          <binding>
+            <name>set</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee952d0">
+          <name>find</name>
+          <binding>
+            <name>find</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee96610">
+          <name>add_item</name>
+          <binding>
+            <name>add_item</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>add</name>
+          <binding>
+            <name>add_item</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fee7ee97c60">
+          <name>add_array</name>
+          <binding>
+            <name>add_array</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee990f0">
+          <name>add_vector</name>
+          <binding>
+            <name>add_vector</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee9a660">
+          <name>add_iter</name>
+          <binding>
+            <name>add_iter</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>add_list</name>
+          <binding>
+            <name>add_array</name>
+            <name>add_vector</name>
+            <name>add_iter</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fee7ee9c030">
+          <name>set_verbose</name>
+          <binding>
+            <name>set_verbose</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee9d840">
+          <name>get_verbose</name>
+          <binding>
+            <name>get_verbose</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee9f280">
+          <name>length</name>
+          <binding>
+            <name>length</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eea0c70">
+          <name>capacity</name>
+          <binding>
+            <name>capacity</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eea2870">
+          <name>includes</name>
+          <binding>
+            <name>includes</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eea4550">
+          <name>iter</name>
+          <binding>
+            <name>iter</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eeaa520">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eeac3c0">
+          <name>is_empty</name>
+          <binding>
+            <name>is_empty</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7eeae340">
+          <name>to_string</name>
+          <binding>
+            <name>to_string</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fee7ee8c900" imported_id="S7fc519e06840" is_abstract="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ee8cb30">
+          <name>is_equal</name>
+          <binding>
+            <name>is_equal_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee8d850">
+          <name>to_string</name>
+          <binding>
+            <name>to_string_function</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>.eq.</name>
+          <binding>
+            <name>is_equal</name>
+          </binding>
+        </typeBoundGenericProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FstructType type="S7fee7ee8ffb0" imported_id="S7fc924609430">
+      <symbols>
+        <id type="S7fee7ee901e0">
+          <name>stuff</name>
+          <value>
+            <functionCall type="V7fee7ee21bc0" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="S7fee7ee901e0" imported_id="S7fc924609b80" is_pointer="true" is_class="true"/>
+    <FbasicType type="V7fee7ee21bc0" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7fee7ee8fe60" imported_id="S7fc92460d9c0" ref="S7fee7ee8ffb0"/>
+    <FbasicType type="S7fee7ee8fd10" imported_id="S7fc92460dbd0" is_allocatable="true" ref="S7fee7ee8fe60"/>
+    <FbasicType type="S7fee7ee8fbc0" imported_id="A7fc92460dd00" is_allocatable="true" ref="S7fee7ee8fd10"/>
+    <FbasicType type="S7fee7ee8fa70" imported_id="A7f96ee716bc0" is_allocatable="true" ref="S7fee7ee8fbc0"/>
+    <FbasicType type="A7fee7ee8f920" is_allocatable="true" ref="S7fee7ee8fa70">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fee7ee8c580" imported_id="S7fc924618d20" is_pointer="true" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="V7fee7ee16700" is_target="true" ref="FnumericAll"/>
+    <FstructType type="S7fee7ee23c30" imported_id="S7f96ee74ad10" extends="S7fee7ee0adb0">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ee242d0">
+          <name>add_item</name>
+          <binding>
+            <name>add_item</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FfunctionType type="F7fee7ee229d0" return_type="FnumericAll"/>
+    <FfunctionType type="F7fee7eeca3d0" return_type="V7fee7eeca2a0"/>
+    <FbasicType type="V7fee7eeca2a0" ref="FnumericAll"/>
+    <FfunctionType type="F7fee7eecb0d0" result_name="this" return_type="S7fee7eeccfb0" is_private="true">
+      <params>
+        <name type="L7fee7eecc0c0">verbose</name>
+        <name type="I7fee7eecc8e0">initial_size</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fee7eec7d10" is_public="true" extends="S7fee7ee23c30">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7eec84f0" pass="pass">
+          <name>add_keyed_item</name>
+          <binding>
+            <name>add_keyed_item</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundGenericProcedure>
+          <name>add</name>
+          <binding>
+            <name>add_keyed_item</name>
+          </binding>
+        </typeBoundGenericProcedure>
+        <typeBoundProcedure type="F7fee7eec90e0" pass="pass">
+          <name>get</name>
+          <binding>
+            <name>get</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7fee7eeccda0" ref="S7fee7eec7d10"/>
+    <FbasicType type="S7fee7eeccfb0" ref="S7fee7eeccda0"/>
+    <FbasicType type="L7fee7eecc0c0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="I7fee7eecc8e0" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fee7eecdf90" return_type="Flogical"/>
+    <FfunctionType type="F7fee7ef13f10" result_name="this" return_type="S7fee7eeccfb0">
+      <params>
+        <name type="L7fee7eecc0c0">verbose</name>
+        <name type="I7fee7eecc8e0">initial_size</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fee7ef0f3f0" ref="F7fee7ef0e360"/>
+    <FbasicType type="F7fee7ef0f2a0" ref="F7fee7ef0f3f0"/>
+    <FbasicType type="F7fee7ef0f8c0" ref="F7fee7ef0e680"/>
+    <FbasicType type="F7fee7ef0f770" ref="F7fee7ef0f8c0"/>
+    <FfunctionType type="F7fee7ef00720" return_type="Flogical" is_recursive="true">
+      <params>
+        <name type="S7fee7ef00b50" imported_id="S7fc519e0a6f0">this</name>
+        <name type="S7fee7ef00f00" imported_id="S7fc519e0acf0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fee7ed04270" ref="F7fee7ef00720"/>
+    <FbasicType type="F7fee7ed04610" ref="F7fee7ed04270"/>
+    <FfunctionType type="F7fee7ef01480" return_type="C7fee7ef01720" is_recursive="true">
+      <params>
+        <name type="S7fee7ef019c0" imported_id="S7fc519e0cdc0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ef01d40" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ef01720" is_allocatable="true" ref="C7fee7ef01d40"/>
+    <FbasicType type="F7fee7ed04ae0" ref="F7fee7ef01480"/>
+    <FbasicType type="F7fee7ed04e90" ref="F7fee7ed04ae0"/>
+    <FfunctionType type="F7fee7ee27c50" return_type="Flogical" is_recursive="true">
+      <params>
+        <name type="S7fee7ee063c0" imported_id="S7fc519e0a6f0">this</name>
+        <name type="S7fee7ee066b0" imported_id="S7fc519e0acf0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee06230" imported_id="S7fc519e09f50" ref="S7fee7ee05030"/>
+    <FbasicType type="S7fee7ee063c0" imported_id="S7fc519e0a6f0" intent="in" is_class="true" ref="S7fee7ee06230"/>
+    <FbasicType type="S7fee7ee066b0" imported_id="S7fc519e0acf0" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7ee284d0" ref="F7fee7ee27c50"/>
+    <FbasicType type="F7fee7ee28660" ref="F7fee7ee284d0"/>
+    <FbasicType type="F7fee7ee051f0" ref="F7fee7ee28660"/>
+    <FbasicType type="F7fee7ee05570" ref="F7fee7ee051f0"/>
+    <FfunctionType type="F7fee7ee28800" return_type="C7fee7ee28ab0" is_recursive="true">
+      <params>
+        <name type="S7fee7ee079d0" imported_id="S7fc519e0cdc0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ee28e30" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ee28ab0" is_allocatable="true" ref="C7fee7ee28e30"/>
+    <FbasicType type="S7fee7ee07840" imported_id="S7fc519e0c620" ref="S7fee7ee05030"/>
+    <FbasicType type="S7fee7ee079d0" imported_id="S7fc519e0cdc0" intent="in" is_class="true" ref="S7fee7ee07840"/>
+    <FbasicType type="F7fee7ee294c0" ref="F7fee7ee28800"/>
+    <FbasicType type="F7fee7ee29650" ref="F7fee7ee294c0"/>
+    <FbasicType type="F7fee7ee057d0" ref="F7fee7ee29650"/>
+    <FbasicType type="F7fee7ee05b40" ref="F7fee7ee057d0"/>
+    <FfunctionType type="F7fee7ee297e0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee29aa0" imported_id="S7fc9244128c0">this</name>
+        <name type="S7fee7ee29e40" imported_id="S7fc924412f60">copy</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee29aa0" imported_id="S7fc9244128c0" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee29e40" imported_id="S7fc924412f60" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee2a280" ref="F7fee7ee297e0"/>
+    <FbasicType type="F7fee7ee0c350" ref="F7fee7ee2a280"/>
+    <FbasicType type="F7fee7ee0c700" ref="F7fee7ee0c350"/>
+    <FfunctionType type="F7fee7ee2a410" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee2a6d0" imported_id="S7fc92441f060">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2a6d0" imported_id="S7fc92441f060" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee2ab30" ref="F7fee7ee2a410"/>
+    <FbasicType type="F7fee7ee0c950" ref="F7fee7ee2ab30"/>
+    <FbasicType type="F7fee7ee0ccf0" ref="F7fee7ee0c950"/>
+    <FfunctionType type="F7fee7ee2acc0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee2af60" imported_id="S7fc924423e80">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2af60" imported_id="S7fc924423e80" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee2b390" ref="F7fee7ee2acc0"/>
+    <FbasicType type="F7fee7ee0cf40" ref="F7fee7ee2b390"/>
+    <FbasicType type="F7fee7ee0d2e0" ref="F7fee7ee0cf40"/>
+    <FfunctionType type="F7fee7ee2b520" return_type="S7fee7ee2b7c0">
+      <params>
+        <name type="S7fee7ee2b960" imported_id="S7fc92442e210">this</name>
+        <name type="I7fee7ee2bd00">idx</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2b7c0" imported_id="S7fc92442ef40" is_pointer="true" is_class="true"/>
+    <FbasicType type="S7fee7ee2b960" imported_id="S7fc92442e210" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="I7fee7ee2bd00" intent="in" ref="Fint"/>
+    <FbasicType type="F7fee7ee2c460" ref="F7fee7ee2b520"/>
+    <FbasicType type="F7fee7ee0d5b0" ref="F7fee7ee2c460"/>
+    <FbasicType type="F7fee7ee0d960" ref="F7fee7ee0d5b0"/>
+    <FfunctionType type="F7fee7ee2c5f0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee2c890" imported_id="S7fc924453660">this</name>
+        <name type="I7fee7ee2cc20">idx</name>
+        <name type="S7fee7ee2d050" imported_id="S7fc9247004c0">my_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2c890" imported_id="S7fc924453660" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="I7fee7ee2cc20" intent="in" ref="Fint"/>
+    <FbasicType type="S7fee7ee2d050" imported_id="S7fc9247004c0" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="F7fee7ee2d670" ref="F7fee7ee2c5f0"/>
+    <FbasicType type="F7fee7ee0dbb0" ref="F7fee7ee2d670"/>
+    <FbasicType type="F7fee7ee0df70" ref="F7fee7ee0dbb0"/>
+    <FfunctionType type="F7fee7ee2d8f0" return_type="Fint">
+      <params>
+        <name type="S7fee7ee2dd10" imported_id="S7fc924434270">this</name>
+        <name type="S7fee7ee2e0b0" imported_id="S7fc924434870">my_stuff</name>
+        <name type="I7fee7ee2e3f0">offset</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2dd10" imported_id="S7fc924434270" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee2e0b0" imported_id="S7fc924434870" intent="in" is_class="true"/>
+    <FbasicType type="I7fee7ee2e3f0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="F7fee7ee2eb40" ref="F7fee7ee2d8f0"/>
+    <FbasicType type="F7fee7ee0e1c0" ref="F7fee7ee2eb40"/>
+    <FbasicType type="F7fee7ee0e570" ref="F7fee7ee0e1c0"/>
+    <FfunctionType type="F7fee7ee2ecd0" return_type="Fvoid" is_recursive="true">
+      <params>
+        <name type="S7fee7ee2ef70" imported_id="S7fc92443c040">this</name>
+        <name type="S7fee7ee2f310" imported_id="S7fc92443c6c0">new_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2ef70" imported_id="S7fc92443c040" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee2f310" imported_id="S7fc92443c6c0" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="F7fee7ee2f740" ref="F7fee7ee2ecd0"/>
+    <FbasicType type="F7fee7ee0e830" ref="F7fee7ee2f740"/>
+    <FbasicType type="F7fee7ee0ebd0" ref="F7fee7ee0e830"/>
+    <FfunctionType type="F7fee7ee2f8d0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee2fb80" imported_id="S7fc924445190">this</name>
+        <name type="A7fee7ee2ffe0">items</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee2fb80" imported_id="S7fc924445190" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee30330" imported_id="S7fc924445940" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="S7fee7ee30490" imported_id="A7fc924445a70" intent="in" is_target="true" is_class="true" ref="S7fee7ee30330"/>
+    <FbasicType type="S7fee7ee306f0" imported_id="A7f96ee705c60" intent="in" is_target="true" is_class="true" ref="S7fee7ee30490"/>
+    <FbasicType type="A7fee7ee2ffe0" intent="in" is_target="true" is_class="true" ref="S7fee7ee306f0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fee7ee30830" ref="F7fee7ee2f8d0"/>
+    <FbasicType type="F7fee7ee0f270" ref="F7fee7ee30830"/>
+    <FbasicType type="F7fee7ee0f690" ref="F7fee7ee0f270"/>
+    <FfunctionType type="F7fee7ee309c0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee30c70" imported_id="S7fc92444a980">this</name>
+        <name type="S7fee7ee31010" imported_id="S7fc92444b020">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee30c70" imported_id="S7fc92444a980" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee31010" imported_id="S7fc92444b020" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee31420" ref="F7fee7ee309c0"/>
+    <FbasicType type="F7fee7ee0f8e0" ref="F7fee7ee31420"/>
+    <FbasicType type="F7fee7ee0fc80" ref="F7fee7ee0f8e0"/>
+    <FfunctionType type="F7fee7ee315b0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee31870" imported_id="S7fc92444f8d0">this</name>
+        <name type="S7fee7ee31cc0" imported_id="S7fc92444fe20">iter</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee31870" imported_id="S7fc92444f8d0" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FstructType type="S7fee7ee32030" imported_id="S7fc9246183e0">
+      <symbols>
+        <id type="S7fee7ee321c0">
+          <name>my_vector</name>
+          <value>
+            <functionCall type="V7fee7ee32770" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="Fint">
+          <name>current</name>
+          <value>
+            <FintConstant type="Fint">0</FintConstant>
+          </value>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fee7ee33300">
+          <name>set_vector</name>
+          <binding>
+            <name>set_vector</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee338c0">
+          <name>more</name>
+          <binding>
+            <name>more</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee33ed0">
+          <name>next</name>
+          <binding>
+            <name>next</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fee7ee34490">
+          <name>pos</name>
+          <binding>
+            <name>pos</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7fee7ee321c0" imported_id="S7fc924618d20" is_pointer="true" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="V7fee7ee32770" is_target="true" ref="FnumericAll"/>
+    <FfunctionType type="F7fee7ee34800" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee34aa0" imported_id="S7fc92463ca50">this</name>
+        <name type="S7fee7ee34e30" imported_id="S7fc92463d220">my_vector</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee34aa0" imported_id="S7fc92463ca50" intent="inout" is_class="true" ref="S7fee7ee32030"/>
+    <FbasicType type="S7fee7ee35220" imported_id="S7fc92463d0f0" is_target="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee34e30" imported_id="S7fc92463d220" intent="in" is_target="true" ref="S7fee7ee35220"/>
+    <FbasicType type="F7fee7ee353b0" ref="F7fee7ee34800"/>
+    <FbasicType type="F7fee7ee32f90" ref="F7fee7ee353b0"/>
+    <FbasicType type="F7fee7ee33300" ref="F7fee7ee32f90"/>
+    <FfunctionType type="F7fee7ee35550" return_type="Flogical">
+      <params>
+        <name type="S7fee7ee35970" imported_id="S7fc92463fcf0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee35970" imported_id="S7fc92463fcf0" intent="in" is_class="true" ref="S7fee7ee32030"/>
+    <FbasicType type="F7fee7ee35dd0" ref="F7fee7ee35550"/>
+    <FbasicType type="F7fee7ee33540" ref="F7fee7ee35dd0"/>
+    <FbasicType type="F7fee7ee338c0" ref="F7fee7ee33540"/>
+    <FfunctionType type="F7fee7ee35f60" return_type="Flogical">
+      <params>
+        <name type="S7fee7ee36370" imported_id="S7fc924642c30">this</name>
+        <name type="S7fee7ee36710" imported_id="S7fc9246432b0">item</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee36370" imported_id="S7fc924642c30" intent="inout" is_class="true" ref="S7fee7ee32030"/>
+    <FbasicType type="S7fee7ee36710" imported_id="S7fc9246432b0" intent="out" is_pointer="true" is_class="true"/>
+    <FbasicType type="F7fee7ee36b80" ref="F7fee7ee35f60"/>
+    <FbasicType type="F7fee7ee33b50" ref="F7fee7ee36b80"/>
+    <FbasicType type="F7fee7ee33ed0" ref="F7fee7ee33b50"/>
+    <FfunctionType type="F7fee7ee36d10" return_type="Fint">
+      <params>
+        <name type="S7fee7ee37110" imported_id="S7fc924648c90">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee37110" imported_id="S7fc924648c90" intent="in" is_class="true" ref="S7fee7ee32030"/>
+    <FbasicType type="F7fee7ee37570" ref="F7fee7ee36d10"/>
+    <FbasicType type="F7fee7ee34110" ref="F7fee7ee37570"/>
+    <FbasicType type="F7fee7ee34490" ref="F7fee7ee34110"/>
+    <FbasicType type="S7fee7ee31cc0" imported_id="S7fc92444fe20" is_class="true" ref="S7fee7ee32030"/>
+    <FbasicType type="F7fee7ee376d0" ref="F7fee7ee315b0"/>
+    <FbasicType type="F7fee7ee0fed0" ref="F7fee7ee376d0"/>
+    <FbasicType type="F7fee7ee10270" ref="F7fee7ee0fed0"/>
+    <FfunctionType type="F7fee7ee37880" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee37c50" imported_id="S7fc924706850">this</name>
+        <name type="L7fee7ee37e90">value</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee37c50" imported_id="S7fc924706850" intent="inout" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="L7fee7ee37e90" is_optional="true" ref="Flogical"/>
+    <FbasicType type="F7fee7ee383e0" ref="F7fee7ee37880"/>
+    <FbasicType type="F7fee7ee10b50" ref="F7fee7ee383e0"/>
+    <FbasicType type="F7fee7ee110e0" ref="F7fee7ee10b50"/>
+    <FfunctionType type="F7fee7ee38640" return_type="Flogical">
+      <params>
+        <name type="S7fee7ee38a70" imported_id="S7fc92470a870">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee38a70" imported_id="S7fc92470a870" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee38de0" ref="F7fee7ee38640"/>
+    <FbasicType type="F7fee7ee112f0" ref="F7fee7ee38de0"/>
+    <FbasicType type="F7fee7ee11680" ref="F7fee7ee112f0"/>
+    <FfunctionType type="F7fee7ee38f70" return_type="Fint">
+      <params>
+        <name type="S7fee7ee39470" imported_id="S7fc92470caa0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee39470" imported_id="S7fc92470caa0" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee397e0" ref="F7fee7ee38f70"/>
+    <FbasicType type="F7fee7ee11940" ref="F7fee7ee397e0"/>
+    <FbasicType type="F7fee7ee11ce0" ref="F7fee7ee11940"/>
+    <FfunctionType type="F7fee7ee39970" return_type="Fint">
+      <params>
+        <name type="S7fee7ee39d70" imported_id="S7fc9244557a0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee39d70" imported_id="S7fc9244557a0" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee3a1d0" ref="F7fee7ee39970"/>
+    <FbasicType type="F7fee7ee11f30" ref="F7fee7ee3a1d0"/>
+    <FbasicType type="F7fee7ee122d0" ref="F7fee7ee11f30"/>
+    <FfunctionType type="F7fee7ee3a360" return_type="Flogical">
+      <params>
+        <name type="S7fee7ee3a770" imported_id="S7fc924457d70">this</name>
+        <name type="S7fee7ee3ab10" imported_id="S7fc924458370">my_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee3a770" imported_id="S7fc924457d70" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee3ab10" imported_id="S7fc924458370" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7ee3af30" ref="F7fee7ee3a360"/>
+    <FbasicType type="F7fee7ee12520" ref="F7fee7ee3af30"/>
+    <FbasicType type="F7fee7ee12940" ref="F7fee7ee12520"/>
+    <FfunctionType type="F7fee7ee3b0c0" return_type="S7fee7ee3b360">
+      <params>
+        <name type="S7fee7ee3b500" imported_id="S7fc92445d560">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee3b360" imported_id="S7fc92445c8b0" ref="S7fee7ee32030"/>
+    <FbasicType type="S7fee7ee3b500" imported_id="S7fc92445d560" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee3b970" ref="F7fee7ee3b0c0"/>
+    <FbasicType type="F7fee7ee12b90" ref="F7fee7ee3b970"/>
+    <FbasicType type="F7fee7ee12f30" ref="F7fee7ee12b90"/>
+    <FfunctionType type="F7fee7ee3bb00" return_type="Flogical" is_recursive="true">
+      <params>
+        <name type="S7fee7ee3bf10" imported_id="S7fc92445fc60">this</name>
+        <name type="S7fee7ee3c370" imported_id="S7fc924460260">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee3bf10" imported_id="S7fc92445fc60" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="S7fee7ee3c370" imported_id="S7fc924460260" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7ee3c6e0" ref="F7fee7ee3bb00"/>
+    <FbasicType type="F7fee7ee13180" ref="F7fee7ee3c6e0"/>
+    <FbasicType type="F7fee7ee13500" ref="F7fee7ee13180"/>
+    <FfunctionType type="F7fee7ee3c870" return_type="Flogical">
+      <params>
+        <name type="S7fee7ee3cd60" imported_id="S7fc92445ae20">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee3cd60" imported_id="S7fc92445ae20" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee3d0d0" ref="F7fee7ee3c870"/>
+    <FbasicType type="F7fee7ee137b0" ref="F7fee7ee3d0d0"/>
+    <FbasicType type="F7fee7ee13b60" ref="F7fee7ee137b0"/>
+    <FfunctionType type="F7fee7ee3d260" return_type="C7fee7ee3d500" is_recursive="true">
+      <params>
+        <name type="S7fee7ee3d6a0" imported_id="S7fc924633d60">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ee3daf0" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ee3d500" is_allocatable="true" ref="C7fee7ee3daf0"/>
+    <FbasicType type="S7fee7ee3d6a0" imported_id="S7fc924633d60" intent="in" is_class="true" ref="S7fee7ee0adb0"/>
+    <FbasicType type="F7fee7ee3e050" ref="F7fee7ee3d260"/>
+    <FbasicType type="F7fee7ee13db0" ref="F7fee7ee3e050"/>
+    <FbasicType type="F7fee7ee14130" ref="F7fee7ee13db0"/>
+    <FfunctionType type="F7fee7ee8d070" return_type="Flogical" is_recursive="true">
+      <params>
+        <name type="S7fee7ee8d3f0" imported_id="S7fc519e0a6f0">this</name>
+        <name type="S7fee7ee8ed50" imported_id="S7fc519e0acf0">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee8d540" imported_id="S7fc519e09f50" ref="S7fee7ee8c900"/>
+    <FbasicType type="S7fee7ee8d3f0" imported_id="S7fc519e0a6f0" intent="in" is_class="true" ref="S7fee7ee8d540"/>
+    <FbasicType type="S7fee7ee8ed50" imported_id="S7fc519e0acf0" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7ee8cf20" ref="F7fee7ee8d070"/>
+    <FbasicType type="F7fee7ee8cdd0" ref="F7fee7ee8cf20"/>
+    <FbasicType type="F7fee7ee8cc80" ref="F7fee7ee8cdd0"/>
+    <FbasicType type="F7fee7ee8cb30" ref="F7fee7ee8cc80"/>
+    <FfunctionType type="F7fee7ee8dd90" return_type="C7fee7ee8dee0" is_recursive="true">
+      <params>
+        <name type="S7fee7ee8e260" imported_id="S7fc519e0cdc0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7ee8e030" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7ee8dee0" is_allocatable="true" ref="C7fee7ee8e030"/>
+    <FbasicType type="S7fee7ee8e3b0" imported_id="S7fc519e0c620" ref="S7fee7ee8c900"/>
+    <FbasicType type="S7fee7ee8e260" imported_id="S7fc519e0cdc0" intent="in" is_class="true" ref="S7fee7ee8e3b0"/>
+    <FbasicType type="F7fee7ee8dc40" ref="F7fee7ee8dd90"/>
+    <FbasicType type="F7fee7ee8daf0" ref="F7fee7ee8dc40"/>
+    <FbasicType type="F7fee7ee8d9a0" ref="F7fee7ee8daf0"/>
+    <FbasicType type="F7fee7ee8d850" ref="F7fee7ee8d9a0"/>
+    <FfunctionType type="F7fee7ee908e0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee90b10" imported_id="S7fc9244128c0">this</name>
+        <name type="S7fee7eec0be0" imported_id="S7fc924412f60">copy</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee90b10" imported_id="S7fc9244128c0" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eec0be0" imported_id="S7fc924412f60" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7ee90790" ref="F7fee7ee908e0"/>
+    <FbasicType type="F7fee7ee90640" ref="F7fee7ee90790"/>
+    <FbasicType type="F7fee7ee904f0" ref="F7fee7ee90640"/>
+    <FfunctionType type="F7fee7ee91670" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee918a0" imported_id="S7fc92441f060">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee918a0" imported_id="S7fc92441f060" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7ee91520" ref="F7fee7ee91670"/>
+    <FbasicType type="F7fee7ee913d0" ref="F7fee7ee91520"/>
+    <FbasicType type="F7fee7ee91280" ref="F7fee7ee913d0"/>
+    <FfunctionType type="F7fee7ee924e0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee92710" imported_id="S7fc924423e80">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee92710" imported_id="S7fc924423e80" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7ee92390" ref="F7fee7ee924e0"/>
+    <FbasicType type="F7fee7ee92240" ref="F7fee7ee92390"/>
+    <FbasicType type="F7fee7ee920f0" ref="F7fee7ee92240"/>
+    <FfunctionType type="F7fee7ee93430" return_type="S7fee7ee93580">
+      <params>
+        <name type="S7fee7ee937b0" imported_id="S7fc92442e210">this</name>
+        <name type="I7fee7eebd530">idx</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee93580" imported_id="S7fc92442ef40" is_pointer="true" is_class="true"/>
+    <FbasicType type="S7fee7ee937b0" imported_id="S7fc92442e210" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="I7fee7eebd530" intent="in" ref="Fint"/>
+    <FbasicType type="F7fee7ee932e0" ref="F7fee7ee93430"/>
+    <FbasicType type="F7fee7ee93190" ref="F7fee7ee932e0"/>
+    <FbasicType type="F7fee7ee93040" ref="F7fee7ee93190"/>
+    <FfunctionType type="F7fee7ee945b0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee947e0" imported_id="S7fc924453660">this</name>
+        <name type="I7fee7eebc030">idx</name>
+        <name type="S7fee7eebc3b0" imported_id="S7fc9247004c0">my_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee947e0" imported_id="S7fc924453660" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="I7fee7eebc030" intent="in" ref="Fint"/>
+    <FbasicType type="S7fee7eebc3b0" imported_id="S7fc9247004c0" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="F7fee7ee94460" ref="F7fee7ee945b0"/>
+    <FbasicType type="F7fee7ee94310" ref="F7fee7ee94460"/>
+    <FbasicType type="F7fee7ee941c0" ref="F7fee7ee94310"/>
+    <FfunctionType type="F7fee7ee956c0" return_type="Fint">
+      <params>
+        <name type="S7fee7ee95a40" imported_id="S7fc924434270">this</name>
+        <name type="S7fee7eebac10" imported_id="S7fc924434870">my_stuff</name>
+        <name type="I7fee7eebae40">offset</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee95a40" imported_id="S7fc924434270" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eebac10" imported_id="S7fc924434870" intent="in" is_class="true"/>
+    <FbasicType type="I7fee7eebae40" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="F7fee7ee95570" ref="F7fee7ee956c0"/>
+    <FbasicType type="F7fee7ee95420" ref="F7fee7ee95570"/>
+    <FbasicType type="F7fee7ee952d0" ref="F7fee7ee95420"/>
+    <FfunctionType type="F7fee7ee96a00" return_type="Fvoid" is_recursive="true">
+      <params>
+        <name type="S7fee7ee96c30" imported_id="S7fc92443c040">this</name>
+        <name type="S7fee7eeb9c50" imported_id="S7fc92443c6c0">new_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee96c30" imported_id="S7fc92443c040" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eeb9c50" imported_id="S7fc92443c6c0" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="F7fee7ee968b0" ref="F7fee7ee96a00"/>
+    <FbasicType type="F7fee7ee96760" ref="F7fee7ee968b0"/>
+    <FbasicType type="F7fee7ee96610" ref="F7fee7ee96760"/>
+    <FfunctionType type="F7fee7ee98050" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee98280" imported_id="S7fc924445190">this</name>
+        <name type="A7fee7eeb8a60">items</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee98280" imported_id="S7fc924445190" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eeb8e50" imported_id="S7fc924445940" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="S7fee7eeb8d00" imported_id="A7fc924445a70" intent="in" is_target="true" is_class="true" ref="S7fee7eeb8e50"/>
+    <FbasicType type="S7fee7eeb8bb0" imported_id="A7f96ee73e000" intent="in" is_target="true" is_class="true" ref="S7fee7eeb8d00"/>
+    <FbasicType type="A7fee7eeb8a60" intent="in" is_target="true" is_class="true" ref="S7fee7eeb8bb0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fee7ee97f00" ref="F7fee7ee98050"/>
+    <FbasicType type="F7fee7ee97db0" ref="F7fee7ee97f00"/>
+    <FbasicType type="F7fee7ee97c60" ref="F7fee7ee97db0"/>
+    <FfunctionType type="F7fee7ee994e0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee99710" imported_id="S7fc92444a980">this</name>
+        <name type="S7fee7eeb6680" imported_id="S7fc92444b020">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee99710" imported_id="S7fc92444a980" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eeb6680" imported_id="S7fc92444b020" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7ee99390" ref="F7fee7ee994e0"/>
+    <FbasicType type="F7fee7ee99240" ref="F7fee7ee99390"/>
+    <FbasicType type="F7fee7ee990f0" ref="F7fee7ee99240"/>
+    <FfunctionType type="F7fee7ee9aa50" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee9ac80" imported_id="S7fc92444f8d0">this</name>
+        <name type="S7fee7eeb5500" imported_id="S7fc92444fe20">iter</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee9ac80" imported_id="S7fc92444f8d0" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eeb5500" imported_id="S7fc92444fe20" is_class="true" ref="S7fee7ee52d00"/>
+    <FbasicType type="F7fee7ee9a900" ref="F7fee7ee9aa50"/>
+    <FbasicType type="F7fee7ee9a7b0" ref="F7fee7ee9a900"/>
+    <FbasicType type="F7fee7ee9a660" ref="F7fee7ee9a7b0"/>
+    <FfunctionType type="F7fee7ee9c420" return_type="Fvoid">
+      <params>
+        <name type="S7fee7ee9c650" imported_id="S7fc924706850">this</name>
+        <name type="L7fee7eeb4930">value</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee9c650" imported_id="S7fc924706850" intent="inout" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="L7fee7eeb4930" is_optional="true" ref="Flogical"/>
+    <FbasicType type="F7fee7ee9c2d0" ref="F7fee7ee9c420"/>
+    <FbasicType type="F7fee7ee9c180" ref="F7fee7ee9c2d0"/>
+    <FbasicType type="F7fee7ee9c030" ref="F7fee7ee9c180"/>
+    <FfunctionType type="F7fee7ee9dc30" return_type="Flogical">
+      <params>
+        <name type="S7fee7ee9dfb0" imported_id="S7fc92470a870">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee9dfb0" imported_id="S7fc92470a870" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7ee9dae0" ref="F7fee7ee9dc30"/>
+    <FbasicType type="F7fee7ee9d990" ref="F7fee7ee9dae0"/>
+    <FbasicType type="F7fee7ee9d840" ref="F7fee7ee9d990"/>
+    <FfunctionType type="F7fee7ee9f540" return_type="Fint">
+      <params>
+        <name type="S7fee7ee9f8c0" imported_id="S7fc92470caa0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee9f8c0" imported_id="S7fc92470caa0" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7ee9f3f0" ref="F7fee7ee9f540"/>
+    <FbasicType type="F7fee7ef122c0" ref="F7fee7ee9f3f0"/>
+    <FbasicType type="F7fee7ee9f280" ref="F7fee7ef122c0"/>
+    <FfunctionType type="F7fee7eea1060" return_type="Fint">
+      <params>
+        <name type="S7fee7eea13e0" imported_id="S7fc9244557a0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea13e0" imported_id="S7fc9244557a0" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7eea0f10" ref="F7fee7eea1060"/>
+    <FbasicType type="F7fee7eea0dc0" ref="F7fee7eea0f10"/>
+    <FbasicType type="F7fee7eea0c70" ref="F7fee7eea0dc0"/>
+    <FfunctionType type="F7fee7eea2c60" return_type="Flogical">
+      <params>
+        <name type="S7fee7eea2fe0" imported_id="S7fc924457d70">this</name>
+        <name type="S7fee7eeb2e80" imported_id="S7fc924458370">my_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea2fe0" imported_id="S7fc924457d70" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eeb2e80" imported_id="S7fc924458370" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7eea2b10" ref="F7fee7eea2c60"/>
+    <FbasicType type="F7fee7eea29c0" ref="F7fee7eea2b10"/>
+    <FbasicType type="F7fee7eea2870" ref="F7fee7eea29c0"/>
+    <FfunctionType type="F7fee7eea4940" return_type="S7fee7eea4a90">
+      <params>
+        <name type="S7fee7eeb11a0" imported_id="S7fc92445d560">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea4a90" imported_id="S7fc92445c8b0" ref="S7fee7ee52d00"/>
+    <FbasicType type="S7fee7eeb11a0" imported_id="S7fc92445d560" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7eea47f0" ref="F7fee7eea4940"/>
+    <FbasicType type="F7fee7eea46a0" ref="F7fee7eea47f0"/>
+    <FbasicType type="F7fee7eea4550" ref="F7fee7eea46a0"/>
+    <FfunctionType type="F7fee7eeaa910" return_type="Flogical" is_recursive="true">
+      <params>
+        <name type="S7fee7eeaac90" imported_id="S7fc92445fc60">this</name>
+        <name type="S7fee7eeb0870" imported_id="S7fc924460260">that</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eeaac90" imported_id="S7fc92445fc60" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eeb0870" imported_id="S7fc924460260" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7eeaa7c0" ref="F7fee7eeaa910"/>
+    <FbasicType type="F7fee7eeaa670" ref="F7fee7eeaa7c0"/>
+    <FbasicType type="F7fee7eeaa520" ref="F7fee7eeaa670"/>
+    <FfunctionType type="F7fee7eeac7b0" return_type="Flogical">
+      <params>
+        <name type="S7fee7eeacb30" imported_id="S7fc92445ae20">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eeacb30" imported_id="S7fc92445ae20" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7eeac660" ref="F7fee7eeac7b0"/>
+    <FbasicType type="F7fee7eeac510" ref="F7fee7eeac660"/>
+    <FbasicType type="F7fee7eeac3c0" ref="F7fee7eeac510"/>
+    <FfunctionType type="F7fee7eeae730" return_type="C7fee7eeae880" is_recursive="true">
+      <params>
+        <name type="S7fee7eeaec00" imported_id="S7fc924633d60">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fee7eeae9d0" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fee7eeae880" is_allocatable="true" ref="C7fee7eeae9d0"/>
+    <FbasicType type="S7fee7eeaec00" imported_id="S7fc924633d60" intent="in" is_class="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="F7fee7eeae5e0" ref="F7fee7eeae730"/>
+    <FbasicType type="F7fee7eeae490" ref="F7fee7eeae5e0"/>
+    <FbasicType type="F7fee7eeae340" ref="F7fee7eeae490"/>
+    <FfunctionType type="F7fee7eea53c0" return_type="Fvoid">
+      <params>
+        <name type="S7fee7eea55f0" imported_id="S7fc92463ca50">this</name>
+        <name type="S7fee7eea8d80" imported_id="S7fc92463d220">my_vector</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea55f0" imported_id="S7fc92463ca50" intent="inout" is_class="true" ref="S7fee7ee52d00"/>
+    <FbasicType type="S7fee7eea8ed0" imported_id="S7fc92463d0f0" is_target="true" ref="S7fee7ee8c6d0"/>
+    <FbasicType type="S7fee7eea8d80" imported_id="S7fc92463d220" intent="in" is_target="true" ref="S7fee7eea8ed0"/>
+    <FbasicType type="F7fee7eea5270" ref="F7fee7eea53c0"/>
+    <FbasicType type="F7fee7eea5120" ref="F7fee7eea5270"/>
+    <FbasicType type="F7fee7eea4fd0" ref="F7fee7eea5120"/>
+    <FfunctionType type="F7fee7eea5eb0" return_type="Flogical">
+      <params>
+        <name type="S7fee7eea6230" imported_id="S7fc92463fcf0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea6230" imported_id="S7fc92463fcf0" intent="in" is_class="true" ref="S7fee7ee52d00"/>
+    <FbasicType type="F7fee7eea5d60" ref="F7fee7eea5eb0"/>
+    <FbasicType type="F7fee7eea5c10" ref="F7fee7eea5d60"/>
+    <FbasicType type="F7fee7eea5ac0" ref="F7fee7eea5c10"/>
+    <FfunctionType type="F7fee7eea6bd0" return_type="Flogical">
+      <params>
+        <name type="S7fee7eea6f50" imported_id="S7fc924642c30">this</name>
+        <name type="S7fee7eea8610" imported_id="S7fc9246432b0">item</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea6f50" imported_id="S7fc924642c30" intent="inout" is_class="true" ref="S7fee7ee52d00"/>
+    <FbasicType type="S7fee7eea8610" imported_id="S7fc9246432b0" intent="out" is_pointer="true" is_class="true"/>
+    <FbasicType type="F7fee7eea6a80" ref="F7fee7eea6bd0"/>
+    <FbasicType type="F7fee7eea6930" ref="F7fee7eea6a80"/>
+    <FbasicType type="F7fee7eea67e0" ref="F7fee7eea6930"/>
+    <FfunctionType type="F7fee7eea79d0" return_type="Fint">
+      <params>
+        <name type="S7fee7eea7d50" imported_id="S7fc924648c90">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7eea7d50" imported_id="S7fc924648c90" intent="in" is_class="true" ref="S7fee7ee52d00"/>
+    <FbasicType type="F7fee7eea7880" ref="F7fee7eea79d0"/>
+    <FbasicType type="F7fee7eea7730" ref="F7fee7eea7880"/>
+    <FbasicType type="F7fee7eea75e0" ref="F7fee7eea7730"/>
+    <FfunctionType type="F7fee7ee50610" return_type="Fvoid" is_recursive="true">
+      <params>
+        <name type="S7fee7ee508d0" imported_id="S7f96ee75b740">this</name>
+        <name type="S7fee7ee50c50" imported_id="S7f96ee75bdb0">new_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ee508d0" imported_id="S7f96ee75b740" intent="inout" is_class="true" ref="S7fee7ee23c30"/>
+    <FbasicType type="S7fee7ee50c50" imported_id="S7f96ee75bdb0" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="F7fee7ee23f40" ref="F7fee7ee50610"/>
+    <FbasicType type="F7fee7ee242d0" ref="F7fee7ee23f40"/>
+    <FfunctionType type="F7fee7ef148e0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fee7ef15a30">this</name>
+        <name type="S7fee7ef16020">key</name>
+        <name type="S7fee7ef16690">new_stuff</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ef15a30" intent="inout" is_class="true" ref="S7fee7eec7d10"/>
+    <FbasicType type="S7fee7ef16020" intent="in" is_class="true"/>
+    <FbasicType type="S7fee7ef16690" intent="in" is_target="true" is_class="true"/>
+    <FbasicType type="F7fee7eec84f0" ref="F7fee7ef148e0"/>
+    <FfunctionType type="F7fee7ec0ae20" return_type="S7fee7ec0c810" is_private="true">
+      <params>
+        <name type="S7fee7ec0bc90">this</name>
+        <name type="S7fee7ec0c290">key</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fee7ec0c810" is_pointer="true" is_class="true"/>
+    <FbasicType type="S7fee7ec0bc90" intent="inout" is_class="true" ref="S7fee7eec7d10"/>
+    <FbasicType type="S7fee7ec0c290" intent="in" is_class="true"/>
+    <FbasicType type="F7fee7eec90e0" ref="F7fee7ec0ae20"/>
+    <FbasicType type="S7fee7eec8fb0" ref="S7fee7ec0c810"/>
+  </typeTable>
+  <identifiers>
+    <id type="S7fee7ef0e040" imported_id="S7fc519e06840" sclass="ftype_name" original_name="object" declared_in="self_object">
+      <name>object</name>
+    </id>
+    <id type="F7fee7ef0e360" sclass="ffunc" original_name="is_equal_function" declared_in="self_object">
+      <name>is_equal_function</name>
+    </id>
+    <id type="F7fee7ef0e680" sclass="ffunc" original_name="to_string_function" declared_in="self_object">
+      <name>to_string_function</name>
+    </id>
+    <id type="F7fee7ef0e9a0" sclass="ffunc" original_name="object_equal" declared_in="self_object">
+      <name>object_equal</name>
+    </id>
+    <id type="F7fee7ef0ece0" sclass="ffunc" original_name="object_pointer_string" declared_in="self_object">
+      <name>object_pointer_string</name>
+    </id>
+    <id type="F7fee7ef0f020" sclass="ffunc" original_name="object_string" declared_in="self_object">
+      <name>object_string</name>
+    </id>
+    <id type="F7fee7ee15960" sclass="ffunc" original_name="vector_ref" declared_in="self_vector_ref">
+      <name>vector_ref</name>
+    </id>
+    <id type="S7fee7ee0adb0" imported_id="S7fc92460b5c0" sclass="ftype_name" original_name="vector_ref" declared_in="self_vector_ref">
+      <name>vector_ref</name>
+    </id>
+    <id type="S7fee7ee52d00" imported_id="S7fc9246183e0" sclass="ftype_name" original_name="vector_iterator" declared_in="self_vector_ref">
+      <name>vector_iterator</name>
+    </id>
+    <id type="S7fee7ee23c30" imported_id="S7f96ee74ad10" sclass="ftype_name" original_name="vector" declared_in="self_vector">
+      <name>vector</name>
+    </id>
+    <id type="F7fee7ee229d0" sclass="ffunc" original_name="vector" declared_in="self_vector">
+      <name>vector</name>
+    </id>
+    <id type="F7fee7eeca3d0" sclass="ffunc" original_name="map_ref" declared_in="self_map_ref">
+      <name>map_ref</name>
+    </id>
+    <id type="S7fee7eec7d10" sclass="ftype_name" original_name="map_ref" declared_in="self_map_ref">
+      <name>map_ref</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="map_ref" lineno="27" file="self_map_ref.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="28" file="self_map_ref.F90">
+        <name type="F7fee7ef13f10">new_empty</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
