@@ -136,6 +136,7 @@ function omni::check_error_log {
   error_type19=$(grep -c "can't determine type of constant expression" "${__parse_log}")
   error_type20=$(grep -c "compiler error" "${PARSING_OUTPUT}")
   error_type21=$(grep -c "is not found in module" "${PARSING_OUTPUT}")
+  error_type22=$(grep -c "Segmentation fault" "${PARSING_OUTPUT}")
 
   if [[ ${error_type1} -ne 0 ]] || [[ ${error_type2} -ne 0 ]]   \
     || [[ ${error_type3} -ne 0 ]] || [[ ${error_type4} -ne 0 ]]   \
@@ -147,7 +148,7 @@ function omni::check_error_log {
     || [[ ${error_type15} -ne 0 ]] || [[ ${error_type16} -ne 0 ]] \
     || [[ ${error_type17} -ne 0 ]] || [[ ${error_type18} -ne 0 ]] \
     || [[ ${error_type19} -ne 0 ]] || [[ ${error_type20} -ne 0 ]] \
-    || [[ ${error_type21} -ne 0 ]]; then
+    || [[ ${error_type21} -ne 0 ]] || [[ ${error_type22} -ne 0 ]]; then
     echo "ERROR: Some errors have been detected"
     echo "         ${error_type1} errors/warnings [only function/subroutine statement are allowed in contains top level] found in log"
     echo "         ${error_type2} errors/warnings [declaration among executables] found in log"
@@ -170,6 +171,7 @@ function omni::check_error_log {
     echo "         ${error_type19} errors/warnings [can't determine type of constant expression] found in log"
     echo "         ${error_type20} errors/warnings [compiler error] found in log"
     echo "         ${error_type21} errors/warnings [is not found in module] found in log"
+    echo "         ${error_type22} errors/warnings [Segmentation fault] found in log"
     echo "       More information in the file: ${__parse_log}"
     echo "====================================="
   fi
