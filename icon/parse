@@ -46,6 +46,7 @@ ICON_START="drivers/icon.f90"
 ICON_DEP="dependencies_icon"
 EXTERNAL_XMODS="../icon/external_xmods"
 ICON_INC="-I ${ICON_REP}/src/include/ -I ${ICON_REP}/src/shr_horizontal/ -I ${ICON_REP}/src/atm_phy_psrad/"
+FDEP_EXCLUDED="testbed/mo_test_communication.f90:testbed/mo_icon_testbed.f90"
 
 # Preprocessor macros definition
 ICON_DEFINITIONS="-D__ICON__ -DHAVE_SLOW_PASSIVE_TARGET_ONESIDED -D__LOOP_EXCHANGE -DgFortran -D__NO_ICON_TESTBED__ -DUSE_XML2 -DHAVE_LIBGRIB -DHAVE_LIBGRIB_API"
@@ -172,8 +173,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --recursive ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --recursive ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  echo "../fdependencies/generate_dep.py --recursive --exclude ${FDEP_EXCLUDED} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --recursive --exclude ${FDEP_EXCLUDED} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${ICON_DEP} ]]; then
