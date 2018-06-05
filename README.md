@@ -6,6 +6,14 @@ Test repository to parse complex code with the OMNI Compiler FORTRAN front-end
 and report bugs or missing features. The scripts use the CLAW Compiler without
 transformation.
 
+### Clone repository and submodules
+```bash
+git clone git@github.com:claw-project/omni-parse-tests.git
+cd omni-parse-tests
+git submodule init
+git submodule update
+```
+
 ## How to parse large code base with the FORTRAN front-end of OMNI Compiler
 
 ### About OMNI Compiler
