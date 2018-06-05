@@ -39,15 +39,17 @@ OMNI_LATEST=false
 
 # standalone related variables
 STANDALONE_GIT_REPO="git@github.com:C2SM-RCM/icon-standalone.git"
-STANDALONE_GIT_BRANCH=""
+STANDALONE_GIT_BRANCH="abracadabra"
 STANDALONE_GIT_HASH=""
 STANDALONE_REP="icon-standalone"
-STANDALONE_SRC="./${STANDALONE_REP}/vdiff_up_standalone/"
+STANDALONE_SRC="./${STANDALONE_REP}/vdiff_up/"
 STANDALONE_START="src/tests/ftg_vdiff_up_test.f90"
 STANDALONE_DEP="dependencies_${TEST_NAME}"
-INCLUDE_DIR="${STANDALONE_SRC}/src/include"
+INCLUDE_DIR="-I${STANDALONE_SRC}/src/include"
 EXTERNAL_XMODS="../${TEST_NAME}/external_xmods"
 GLOBAL_XMODS="../global_modules"
+GLOBAL_INC="-I ../global_include/"
+EXCLUDE_FILES="externals/mtime/examples/callback_test.f90:externals/mtime/examples/mo_kind.f90:externals/mtime/doc/examples/example.f90"
 
 # Preprocessor macros definition
 STANDALONE_DEFINITIONS="-D__ICON__ -D__SX__"
@@ -122,6 +124,7 @@ if [[ ${SKIP_CLAW} == false ]]; then
   fi
 else
   rm -rf "${TEST_DIR:?}"/${STANDALONE_REP}
+  mkdir -p ${TEST_DIR}
 fi
 
 echo "============================================"
@@ -171,8 +174,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --recursive ${STANDALONE_SRC} ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --stop-after-start --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
+  echo "../fdependencies/generate_dep.py --stop-after-start --exclude ${EXCLUDE_FILES} --recursive ${STANDALONE_SRC} ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --stop-after-start --exclude ${EXCLUDE_FILES} --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${STANDALONE_DEP} ]]; then
@@ -209,12 +212,12 @@ if [[ ${SKIP_PARSING} == false ]]; then
     (( current_file_nb=parsed_files+1 ))
     echo "    Processing file [$current_file_nb] ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${STANDALONE_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_DIR} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${STANDALONE_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${STANDALONE_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${GLOBAL_INC} ${INCLUDE_DIR} -o ${CLAW_OUTPUT}/${f90_file} ${STANDALONE_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     if [[ "${f90_file}" == "parallel_infrastructure/mo_mpi.f90" ]]; then
-      ${CLAWFC} "${STANDALONE_DEFINITIONS}" -DNOMPI --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      ${CLAWFC} "${STANDALONE_DEFINITIONS}" -DNOMPI --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force "${GLOBAL_INC}" "${INCLUDE_DIR}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     else
-      ${CLAWFC} "${STANDALONE_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      ${CLAWFC} "${STANDALONE_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force "${GLOBAL_INC}" "${INCLUDE_DIR}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     fi
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
