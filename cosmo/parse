@@ -84,7 +84,7 @@ if [[ ${PRERELEASE} == true ]]; then
   COSMO_START="lmorg.f90"
   COSMO_DEP="dependencies_cosmo"
   COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
-  COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
+  COSMO_NETCDF_INC="${COSMO_SRC}/../ACC/include/netcdf/"
 
   COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
   COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
