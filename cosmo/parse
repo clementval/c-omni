@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This scripts helps to test the parsing of the full COSMO-POMPA
+# This scripts helps to test the parsing of the full COSMO
 # code by the OMNI Compiler.
 #
 
@@ -15,7 +15,8 @@ function show_help(){
 #  echo " -i <install-path> Set an install path"
 
   echo " -s                Skip CLAW/OMNI compilation/install"
-  echo " -c                Skip fetching step for COSMO-POMPA"
+  echo " -r                Test cosmo-prerelease instead of cosmo-pompa"
+  echo " -c                Skip fetching step for COSMO"
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
   echo " -n                Test with NETCDF enabled"
@@ -46,21 +47,8 @@ SKIP_FETCH=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 NETCDF_ENABLE=false
+PRERELEASE=false
 
-# COSMO related variables
-COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
-COSMO_REP="cosmo-pompa"
-COSMO_SRC="./${COSMO_REP}/cosmo/src/"
-COSMO_START="lmorg.f90"
-COSMO_DEP="dependencies_cosmo"
-COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
-COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
-
-COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
-COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
-COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
-COSMO_DEFINITIONS+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
-COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC"
 
 # This to avoid the outside OpenACC problem
 # COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT"
@@ -68,7 +56,7 @@ COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hb:cspon" opt; do
+while getopts "hb:csponr" opt; do
   case "$opt" in
   h)
     show_help
@@ -80,12 +68,45 @@ while getopts "hb:cspon" opt; do
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=$OPTARG ;;
   n) NETCDF_ENABLE=true ;;
+  r) PRERELEASE=true ;;
   *)
      show_help
      exit 1
      ;;
   esac
 done
+
+if [[ ${PRERELEASE} == true ]]; then
+  COSMO_VERSION="COSMO-PRERELEASE"
+  COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-prerelease.git"
+  COSMO_REP="cosmo-prerelease"
+  COSMO_SRC="./${COSMO_REP}/cosmo/src/"
+  COSMO_START="lmorg.f90"
+  COSMO_DEP="dependencies_cosmo"
+  COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
+  COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
+
+  COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
+  COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
+  COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DCPP_DYCORE"
+  COSMO_DEFINITIONS+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
+  COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC -DALLOC_WKARR"
+else
+  COSMO_VERSION="COSMO-POMPA"
+  COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
+  COSMO_REP="cosmo-pompa"
+  COSMO_SRC="./${COSMO_REP}/cosmo/src/"
+  COSMO_START="lmorg.f90"
+  COSMO_DEP="dependencies_cosmo"
+  COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
+  COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
+
+  COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
+  COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
+  COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
+  COSMO_DEFINITIONS+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
+  COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC"
+fi
 
 if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
   echo "Incompatible options -o and -s ..."
@@ -175,7 +196,7 @@ fi
 
 echo ""
 echo "============================================"
-echo "COSMO-POMPA -> CLAW/OMNI Compiler parse test"
+echo "${COSMO_VERSION} -> CLAW/OMNI Compiler parse test"
 echo "============================================"
 echo "- COMSO information"
 echo "  - Git repository: $COSMO_MAIN_REPO"
@@ -231,9 +252,9 @@ cd "${WORKING_DIR}" || exit 1
 
 if [[ ${SKIP_FETCH} == false ]]; then
   #####################
-  # 2. COSMO-POMPA step
+  # 2. COSMO step
   #####################
-  print_green "[INFO] Fetching COSMO-POMPA"
+  print_green "[INFO] Fetching ${COSMO_VERSION}"
   git clone ${COSMO_MAIN_REPO}
 fi
 
@@ -248,7 +269,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   echo "Git version information:"
   echo "- CLAW git version: ${CLAW_HASH}"
   echo "- OMNI git version: ${OMNI_HASH}"
-  echo "- COSMO-POMPA git version: ${COSMO_HASH}"
+  echo "- ${COSMO_VERSION} git version: ${COSMO_HASH}"
 } > "${PARSING_OUTPUT}"
 
   ####################
@@ -320,7 +341,7 @@ omni::check_fortran ${COSMO_DEP} ${CLAW_OUTPUT} f90_errors
 
 echo ""
 echo "====================================="
-echo "COSMO-POMPA full parsing test results"
+echo "${COSMO_VERSION} full parsing test results"
 echo "====================================="
 
 # shellcheck disable=SC2154
