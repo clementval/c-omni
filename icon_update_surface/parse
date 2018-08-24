@@ -10,6 +10,7 @@ function show_help(){
   echo ""
   echo "Options:"
   echo " -s    Skip CLAW/OMNI compilation/install"
+  echo " -b    Specify a branch to test"
   echo " -p    Skip parsing step"
   echo " -o    Use the latest OMNI Compiler version for the test"
 }
@@ -55,12 +56,13 @@ STANDALONE_DEFINITIONS="-D__ICON__ -D__SX__"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/${TEST_NAME}.log
 
-while getopts "hspo" opt; do
+while getopts "hspob:" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
     ;;
+  b) STANDALONE_GIT_BRANCH=$OPTARG ;;
   s) SKIP_CLAW=true;;
   p) SKIP_PARSING=true;;
   o) OMNI_LATEST=true;;
@@ -152,9 +154,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ##########################
 
   if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
-    git clone -b ${STANDALONE_GIT_BRANCH} ${STANDALONE_GIT_REPO}
+    git clone -b "${STANDALONE_GIT_BRANCH}" "${STANDALONE_GIT_REPO}"
   else
-    git clone ${STANDALONE_GIT_REPO}
+    git clone "${STANDALONE_GIT_REPO}"
   fi
   mkdir -p ${STANDALONE_SRC}
   cd ${STANDALONE_REP} || exit 1

@@ -39,7 +39,7 @@ OMNI_LATEST=false
 
 # standalone related variables
 STANDALONE_GIT_REPO="git@github.com:C2SM-RCM/icon-standalone.git"
-STANDALONE_GIT_BRANCH="abracadabra"
+STANDALONE_GIT_BRANCH=""
 STANDALONE_GIT_HASH=""
 STANDALONE_REP="icon-standalone"
 STANDALONE_SRC="./${STANDALONE_REP}/vdiff_up/"
@@ -48,7 +48,7 @@ STANDALONE_DEP="dependencies_${TEST_NAME}"
 INCLUDE_DIR="-I${STANDALONE_SRC}/src/include"
 EXTERNAL_XMODS="../${TEST_NAME}/external_xmods"
 GLOBAL_XMODS="../global_modules"
-GLOBAL_INC="-I ../global_include/"
+GLOBAL_INC="-I../global_include/"
 EXCLUDE_FILES="externals/mtime/examples/callback_test.f90:externals/mtime/examples/mo_kind.f90:externals/mtime/doc/examples/example.f90"
 
 # Preprocessor macros definition
@@ -57,12 +57,13 @@ STANDALONE_DEFINITIONS="-D__ICON__ -D__SX__"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/${TEST_NAME}.log
 
-while getopts "hspo" opt; do
+while getopts "hspob:" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
     ;;
+  b) STANDALONE_GIT_BRANCH=$OPTARG ;;
   s) SKIP_CLAW=true;;
   p) SKIP_PARSING=true;;
   o) OMNI_LATEST=true;;
