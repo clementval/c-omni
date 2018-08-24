@@ -154,9 +154,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ##########################
 
   if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
-    git clone -b ${STANDALONE_GIT_BRANCH} ${STANDALONE_GIT_REPO}
+    git clone -b "${STANDALONE_GIT_BRANCH}" "${STANDALONE_GIT_REPO}"
   else
-    git clone ${STANDALONE_GIT_REPO}
+    git clone "${STANDALONE_GIT_REPO}"
   fi
   mkdir -p ${STANDALONE_SRC}
   cd ${STANDALONE_REP} || exit 1
