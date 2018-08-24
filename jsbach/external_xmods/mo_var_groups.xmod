@@ -1,0 +1,528 @@
+<OmniFortranModule version="1.0">
+  <name>mo_var_groups</name>
+  <depends>
+    <name>mo_impl_constants</name>
+    <name>mo_exception</name>
+    <name>mo_util_string</name>
+    <name>mo_fortran_tools</name>
+    <name>mo_util_sort</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7fcda0f483e0" is_parameter="true" ref="Fint"/>
+    <FbasicType type="C7fcda0f48930" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0f48640" is_parameter="true" ref="C7fcda0f48930"/>
+    <FbasicType type="C7fcda0f14c10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">3</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fcda0f8eb40" return_type="Fvoid">
+      <params>
+        <name type="C7fcda0f8ee80">name</name>
+        <name type="C7fcda0f8f1c0">text</name>
+        <name type="I7fcda0f8f500">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fcda0f8efb0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0f8ee80" intent="in" ref="C7fcda0f8efb0"/>
+    <FbasicType type="C7fcda0f8f2f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0f8f1c0" intent="in" is_optional="true" ref="C7fcda0f8f2f0"/>
+    <FbasicType type="I7fcda0f8f500" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7fcda0f762a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0f75820" intent="in" ref="C7fcda0f762a0"/>
+    <FbasicType type="C7fcda0f76900" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0f75ba0" intent="in" is_optional="true" ref="C7fcda0f76900"/>
+    <FbasicType type="I7fcda0f75f10" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fcda0cbe630" return_type="C7fcda0cbead0">
+      <params>
+        <name type="C7fcda0cbece0">lowercase</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fcda0fa7590" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0fa71f0" intent="in" ref="C7fcda0fa7590"/>
+    <FbasicType type="C7fcda0cbead0" ref="Fcharacter">
+      <len>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>len_trim</name>
+          <arguments>
+            <Var type="C7fcda0fa71f0" scope="local">lowercase</Var>
+          </arguments>
+        </functionCall>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0cbee10" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0cbece0" intent="in" ref="C7fcda0cbee10"/>
+    <FfunctionType type="F7fcda0cbe950" return_type="C7fcda0cbef40">
+      <params>
+        <name type="I7fcda0cbf280">n</name>
+        <name type="C7fcda0cbf600">opt_fmt</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fcda0cbf070" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">11</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0cbef40" ref="C7fcda0cbf070"/>
+    <FbasicType type="I7fcda0cbf280" intent="in" ref="Fint"/>
+    <FbasicType type="C7fcda0cbf750" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0cbf600" intent="in" is_optional="true" ref="C7fcda0cbf750"/>
+    <FbasicType type="I7fcda0fb5060" intent="in" ref="Fint"/>
+    <FbasicType type="C7fcda0fb6270" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0fb5400" intent="in" is_optional="true" ref="C7fcda0fb6270"/>
+    <FfunctionType type="F7fcda3080ce0" return_type="Fvoid">
+      <params>
+        <name type="A7fcda3081020">arr</name>
+        <name type="I7fcda30815c0">nelem</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fcda30813b0" is_allocatable="true" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda3081280" intent="inout" is_allocatable="true" ref="C7fcda30813b0"/>
+    <FbasicType type="C7fcda3081150" intent="inout" is_allocatable="true" ref="C7fcda3081280"/>
+    <FbasicType type="A7fcda3081020" intent="inout" is_allocatable="true" ref="C7fcda3081150">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda30815c0" intent="in" ref="Fint"/>
+    <FbasicType type="C7fcda0e83530" is_allocatable="true" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0e83b30" intent="inout" is_allocatable="true" ref="C7fcda0e83530"/>
+    <FbasicType type="C7fcda0e83f60" intent="inout" is_allocatable="true" ref="C7fcda0e83b30"/>
+    <FbasicType type="A7fcda0e82d40" intent="inout" is_allocatable="true" ref="C7fcda0e83f60">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda0e830e0" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fcda30aa920" return_type="Fvoid"/>
+    <FfunctionType type="F7fcda309e640" return_type="Fvoid">
+      <params>
+        <name type="A7fcda30888c0">a</name>
+        <name type="A7fcda3088c40">permutation</name>
+        <name type="I7fcda3088fb0">l_in</name>
+        <name type="I7fcda3089320">r_in</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fcda3087f00" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7fcda30897f0" ref="Freal">
+      <kind>
+        <Var type="I7fcda3087f00" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fcda3089c00" intent="inout" ref="R7fcda30897f0"/>
+    <FbasicType type="R7fcda308a030" intent="inout" ref="R7fcda3089c00"/>
+    <FbasicType type="A7fcda30888c0" intent="inout" ref="R7fcda308a030">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda308a160" intent="inout" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fcda308a890" intent="inout" is_optional="true" ref="I7fcda308a160"/>
+    <FbasicType type="A7fcda3088c40" intent="inout" is_optional="true" ref="I7fcda308a890">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda3088fb0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fcda3089320" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fcda309f270" return_type="Fvoid">
+      <params>
+        <name type="A7fcda308f0c0">a</name>
+        <name type="A7fcda308f440">permutation</name>
+        <name type="I7fcda308f7b0">l_in</name>
+        <name type="I7fcda308fb20">r_in</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fcda308fe60" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fcda30904a0" intent="inout" ref="I7fcda308fe60"/>
+    <FbasicType type="A7fcda308f0c0" intent="inout" ref="I7fcda30904a0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda30905e0" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fcda3090b60" intent="inout" ref="I7fcda30905e0"/>
+    <FbasicType type="A7fcda308f440" intent="inout" ref="I7fcda3090b60">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda308f7b0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fcda308fb20" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fcda309fc30" return_type="Fvoid">
+      <params>
+        <name type="A7fcda30921d0">a</name>
+        <name type="I7fcda30926d0">l_in</name>
+        <name type="I7fcda3092a40">r_in</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fcda3092d80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda30932b0" intent="inout" ref="C7fcda3092d80"/>
+    <FbasicType type="C7fcda30936d0" intent="inout" ref="C7fcda30932b0"/>
+    <FbasicType type="A7fcda30921d0" intent="inout" ref="C7fcda30936d0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda30926d0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fcda3092a40" intent="in" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7fcda30a0510" return_type="Fvoid">
+      <params>
+        <name type="A7fcda308c980">a</name>
+        <name type="I7fcda308cd00">l_in</name>
+        <name type="I7fcda308d070">r_in</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fcda308d4a0" intent="inout" ref="Fint"/>
+    <FbasicType type="I7fcda308da40" intent="inout" ref="I7fcda308d4a0"/>
+    <FbasicType type="A7fcda308c980" intent="inout" ref="I7fcda308da40">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fcda308cd00" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fcda308d070" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7fcda30ac270" is_public="true" is_parameter="true" ref="Fint"/>
+    <FstructType type="S7fcda0e8e850" is_public="true">
+      <symbols>
+        <id type="A7fcda0e8f3b0">
+          <name>name</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fcda0e8fb20" pass="pass">
+          <name>init</name>
+          <binding>
+            <name>t_var_groups_init</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fcda0e90270" pass="pass">
+          <name>finalize</name>
+          <binding>
+            <name>t_var_groups_finalize</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fcda0e909c0" pass="pass">
+          <name>group_id</name>
+          <binding>
+            <name>t_var_groups_group_id</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fcda0e91110" pass="pass">
+          <name>add</name>
+          <binding>
+            <name>t_var_groups_add</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fcda0e91870" pass="pass">
+          <name>alphabetical_list</name>
+          <binding>
+            <name>t_var_groups_alphabetical_list</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="C7fcda0e8f070" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda0e8f280" is_allocatable="true" ref="C7fcda0e8f070"/>
+    <FbasicType type="A7fcda0e8f3b0" is_allocatable="true" ref="C7fcda0e8f280">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fcda30b7240" ref="S7fcda0e8e850"/>
+    <FbasicType type="S7fcda30b7450" is_public="true" ref="S7fcda30b7240"/>
+    <FfunctionType type="F7fcda30b8b20" return_type="V7fcda30b89f0" is_public="true"/>
+    <FbasicType type="V7fcda30b89f0" ref="FnumericAll"/>
+    <FfunctionType type="F7fcda3114940" return_type="A7fcda3117430" is_private="true">
+      <params>
+        <name type="C7fcda3118f60">g01</name>
+        <name type="C7fcda3119090">g02</name>
+        <name type="C7fcda31191c0">g03</name>
+        <name type="C7fcda31192f0">g04</name>
+        <name type="C7fcda3119420">g05</name>
+        <name type="C7fcda3119550">g06</name>
+        <name type="C7fcda3119680">g07</name>
+        <name type="C7fcda31197b0">g08</name>
+        <name type="C7fcda31198e0">g09</name>
+        <name type="C7fcda3119a10">g10</name>
+        <name type="C7fcda3119b40">g11</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="A7fcda3117430" ref="Flogical">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">120</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fcda3118e30" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda3118f60" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda3119090" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda31191c0" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda31192f0" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda3119420" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda3119550" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda3119680" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda31197b0" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda31198e0" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda3119a10" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FbasicType type="C7fcda3119b40" intent="in" is_optional="true" ref="C7fcda3118e30"/>
+    <FfunctionType type="F7fcda311efd0" return_type="Flogical"/>
+    <FfunctionType type="F7fcda3135690" return_type="Flogical"/>
+    <FfunctionType type="F7fcda3137790" return_type="A7fcda3138520" is_private="true">
+      <params>
+        <name type="A7fcda31390b0">group_list</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="A7fcda3138520" ref="Flogical">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">120</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fcda3138e50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda3138f80" intent="in" ref="C7fcda3138e50"/>
+    <FbasicType type="A7fcda31390b0" intent="in" ref="C7fcda3138f80">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7fcda31399a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda3139bb0" is_parameter="true" ref="C7fcda31399a0"/>
+    <FbasicType type="C7fcda313a310" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">25</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda30ab960" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">13</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda313a180" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fcda313f3c0" return_type="Fint"/>
+    <FfunctionType type="F7fcda3140890" return_type="C7fcda3143c40"/>
+    <FbasicType type="C7fcda3143c40" ref="C7fcda3138e50"/>
+    <FfunctionType type="F7fcda3143d70" return_type="C7fcda3143c40"/>
+    <FfunctionType type="F7fcda3145740" return_type="A7fcda3138520">
+      <params>
+        <name type="A7fcda31390b0">group_list</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fcda3136e60" return_type="A7fcda3117430">
+      <params>
+        <name type="C7fcda3118f60">g01</name>
+        <name type="C7fcda3119090">g02</name>
+        <name type="C7fcda31191c0">g03</name>
+        <name type="C7fcda31192f0">g04</name>
+        <name type="C7fcda3119420">g05</name>
+        <name type="C7fcda3119550">g06</name>
+        <name type="C7fcda3119680">g07</name>
+        <name type="C7fcda31197b0">g08</name>
+        <name type="C7fcda31198e0">g09</name>
+        <name type="C7fcda3119a10">g10</name>
+        <name type="C7fcda3119b40">g11</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fcda30b9fc0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fcda30bab40">var_groups</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fcda30bab40" intent="inout" is_class="true" ref="S7fcda0e8e850"/>
+    <FbasicType type="F7fcda0e8fb20" ref="F7fcda30b9fc0"/>
+    <FfunctionType type="F7fcda30c83d0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fcda30c8f50">var_groups</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fcda30c8f50" intent="inout" is_class="true" ref="S7fcda0e8e850"/>
+    <FbasicType type="F7fcda0e90270" ref="F7fcda30c83d0"/>
+    <FfunctionType type="F7fcda30cec20" result_name="group_id" return_type="Fint" is_private="true">
+      <params>
+        <name type="S7fcda30d04c0">var_groups</name>
+        <name type="C7fcda30d0df0">in_str</name>
+        <name type="L7fcda30d1620">opt_lcheck</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fcda30d04c0" intent="inout" is_class="true" ref="S7fcda0e8e850"/>
+    <FbasicType type="C7fcda30d0cc0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda30d0df0" intent="in" ref="C7fcda30d0cc0"/>
+    <FbasicType type="L7fcda30d1620" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="F7fcda0e909c0" ref="F7fcda30cec20"/>
+    <FfunctionType type="F7fcda30e69b0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fcda30e7e00">var_groups</name>
+        <name type="C7fcda30e8730">group_name</name>
+        <name type="A7fcda30e9140">in_group_new</name>
+        <name type="A7fcda30e9bd0">opt_in_group</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fcda30e7e00" intent="inout" is_class="true" ref="S7fcda0e8e850"/>
+    <FbasicType type="C7fcda30e8600" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda30e8730" intent="in" ref="C7fcda30e8600"/>
+    <FbasicType type="L7fcda30e9010" intent="out" ref="Flogical"/>
+    <FbasicType type="A7fcda30e9140" intent="out" ref="L7fcda30e9010">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="L7fcda30e9aa0" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="A7fcda30e9bd0" intent="in" is_optional="true" ref="L7fcda30e9aa0">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="F7fcda0e91110" ref="F7fcda30e69b0"/>
+    <FfunctionType type="F7fcda3103590" result_name="sorted_list" return_type="A7fcda3104660" is_private="true">
+      <params>
+        <name type="S7fcda3104d00">var_groups</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fcda3104320" is_allocatable="true" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">256</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fcda3104530" is_allocatable="true" ref="C7fcda3104320"/>
+    <FbasicType type="A7fcda3104660" is_allocatable="true" ref="C7fcda3104530">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7fcda3104d00" intent="in" is_class="true" ref="S7fcda0e8e850"/>
+    <FbasicType type="F7fcda0e91870" ref="F7fcda3103590"/>
+    <FbasicType type="A7fcda0e91740" ref="C7fcda3104530">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+  </typeTable>
+  <identifiers>
+    <id type="I7fcda0f483e0" sclass="flocal" original_name="varname_len" declared_in="mo_impl_constants">
+      <name>varname_len</name>
+    </id>
+    <id type="C7fcda0f48640" sclass="flocal" original_name="timelevel_suffix" declared_in="mo_impl_constants">
+      <name>timelevel_suffix</name>
+    </id>
+    <id type="F7fcda0f8eb40" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="F7fcda0cbe630" sclass="ffunc" original_name="toupper" declared_in="mo_util_string">
+      <name>toupper</name>
+    </id>
+    <id type="F7fcda0cbe950" sclass="ffunc" original_name="int2string" declared_in="mo_util_string">
+      <name>int2string</name>
+    </id>
+    <id type="F7fcda3080ce0" sclass="ffunc" original_name="resize_arr_c1d" declared_in="mo_fortran_tools">
+      <name>resize_arr_c1d</name>
+    </id>
+    <id type="F7fcda30aa920" sclass="ffunc" original_name="quicksort" declared_in="mo_util_sort">
+      <name>quicksort</name>
+    </id>
+    <id type="I7fcda30ac270" sclass="flocal" original_name="max_groups" declared_in="mo_var_groups">
+      <name>max_groups</name>
+    </id>
+    <id type="S7fcda0e8e850" sclass="ftype_name" original_name="t_var_groups" declared_in="mo_var_groups">
+      <name>t_var_groups</name>
+    </id>
+    <id type="S7fcda30b7450" sclass="flocal" original_name="var_groups_dyn" declared_in="mo_var_groups">
+      <name>var_groups_dyn</name>
+    </id>
+    <id type="F7fcda30b8b20" sclass="ffunc" original_name="groups" declared_in="mo_var_groups">
+      <name>groups</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7fcda0f483e0">varname_len</name>
+      <value>
+        <FintConstant type="Fint">256</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="C7fcda0f48640">timelevel_suffix</name>
+      <value>
+        <FcharacterConstant type="C7fcda0f14c10">.TL</FcharacterConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="__omni_tmp__/mo_var_groups.f90">
+      <name type="I7fcda30ac270">max_groups</name>
+      <value>
+        <FintConstant type="Fint">120</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="groups" lineno="147" file="__omni_tmp__/mo_var_groups.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="148" file="__omni_tmp__/mo_var_groups.f90">
+        <name type="F7fcda3145740">groups_vec</name>
+        <name type="F7fcda3136e60">groups_arg</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="149" file="__omni_tmp__/mo_var_groups.f90">
+        <name type="F7fcda3145740">groups_vec</name>
+        <name type="F7fcda3136e60">groups_arg</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
