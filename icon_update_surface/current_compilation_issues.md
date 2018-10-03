@@ -9,7 +9,7 @@ This issues is reported at omni-compiler/xcodeml-tools#52
   * `src/shared/mo_zaxis_type.f90`
   * `src/shared/mo_storage.f90`
 
-Fix available with omni-compiler/xcodeml-tools#93
+Fix available: [PR#93](https://github.com/omni-compiler/xcodeml-tools/pull/93)
 
 #### #66 Duplicated PUBLIC :: <id> statement
 This issues is reported at omni-compiler/xcodeml-tools#66
