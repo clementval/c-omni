@@ -17,3 +17,7 @@ This issues is reported at omni-compiler/xcodeml-tools#66
   * `src/io/shared/mo_read_netcdf_broadcast_2.f90`
   * `jsbach/mo_sse_interface_dsl4jsb.f90` (seems to be the same problem
     duplicated `PRIVATE :: create_task_soil_temperature`)
+
+_Pretty hard problem to fix directly in OMNI Compiler. Standard is not very
+clear about it but `gfortran` would raise a warning about this. Try to get
+the code change before spending time in a fix._
