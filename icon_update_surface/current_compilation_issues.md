@@ -9,9 +9,11 @@ This issues is reported at omni-compiler/xcodeml-tools#52
   * `src/shared/mo_zaxis_type.f90`
   * `src/shared/mo_storage.f90`
 
+Fix available with omni-compiler/xcodeml-tools#93
+
 #### #66 Duplicated PUBLIC :: <id> statement
 This issues is reported at omni-compiler/xcodeml-tools#66
 * Files impacted:
   * `src/io/shared/mo_read_netcdf_broadcast_2.f90`
-  * `jsbach/mo_sse_interface_dsl4jsb.f90` (seems to be the same problem duplicated
-    `PRIVATE :: create_task_soil_temperature`)
+  * `jsbach/mo_sse_interface_dsl4jsb.f90` (seems to be the same problem
+    duplicated `PRIVATE :: create_task_soil_temperature`)
