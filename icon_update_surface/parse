@@ -49,9 +49,12 @@ STANDALONE_DEP="dependencies_${TEST_NAME}"
 INCLUDE_DIR="${STANDALONE_SRC}/src/include"
 EXTERNAL_XMODS="../${TEST_NAME}/external_xmods"
 GLOBAL_XMODS="../global_modules"
+GLOBAL_INCLUDE="../global_include"
 
 # Preprocessor macros definition
-STANDALONE_DEFINITIONS="-D__ICON__ -D__SX__"
+STANDALONE_DEFINITIONS="-DHAVE_SLOW_PASSIVE_TARGET_ONESIDED -D__LOOP_EXCHANGE"
+STANDALONE_DEFINITIONS+=" -DgFortran -D__ICON__ -D__NO_ICON_TESTBED__"
+STANDALONE_DEFINITIONS+=" -DUSE_XML2 -DHAVE_LIBGRIB -DHAVE_LIBGRIB_API"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/${TEST_NAME}.log
@@ -218,12 +221,12 @@ if [[ ${SKIP_PARSING} == false ]]; then
     (( current_file_nb=parsed_files+1 ))
     echo "    Processing file [$current_file_nb] ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${STANDALONE_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${STANDALONE_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_DIR} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${STANDALONE_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${STANDALONE_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_DIR} -I ${INCLUDE_MPI} -I ${GLOBAL_INCLUDE} -o ${CLAW_OUTPUT}/${f90_file} ${STANDALONE_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     if [[ "${f90_file}" == "parallel_infrastructure/mo_mpi.f90" ]]; then
-      ${CLAWFC} "${STANDALONE_DEFINITIONS}" -DNOMPI --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      ${CLAWFC} "${STANDALONE_DEFINITIONS}" -DNOMPI --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -I ${GLOBAL_INCLUDE} -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     else
-      ${CLAWFC} "${STANDALONE_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      ${CLAWFC} "${STANDALONE_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_DIR}" -I "${INCLUDE_MPI}" -I ${GLOBAL_INCLUDE} -o "${CLAW_OUTPUT}"/"${f90_file}" "${STANDALONE_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     fi
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
