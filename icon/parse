@@ -175,7 +175,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
   echo "../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  ../fdependencies/generate_dep.py --recursive "${FDEP_EXCLUDED}" "${FDEP_EXCLUDED_DIR}" ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${ICON_DEP} ]]; then
