@@ -183,8 +183,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --recursive ${STANDALONE_SRC} ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --stop-after-start --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
+  echo "../fdependencies/generate_dep.py --stop-after-start --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src:externals/mtime/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --stop-after-start --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src:externals/mtime/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${STANDALONE_DEP} ]]; then
