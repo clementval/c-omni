@@ -58,38 +58,38 @@ done
 
 # Try to load machine specific compiler information
 COMPILER_FILE="./compiler/${COMPUTER}.${BASE_COMPILER}.sh"
-if [ -f "$COMPILER_FILE" ]; then
+if [ -f "${COMPILER_FILE}" ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
-  source $COMPILER_FILE
+  source "${COMPILER_FILE}"
 else
-  echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
+  echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
 echo ""
 echo "================================="
 echo "CLAW FORTRAN Compiler information"
 echo "================================="
-echo " - Computer: $COMPUTER"
-echo " - Repo: $CLAW_REPO"
-echo " - Branch: $CLAW_BRANCH"
-echo " - OMNI MPI CC: $OMNI_MPI_CC"
-echo " - OMNI MPI FC: $OMNI_MPI_FC"
-echo " - OMNI ADDITIONAL CONFIG: $OMNI_CONF"
-echo " - Base compiler: $BASE_COMPILER"
-echo "  - FC : $OMNI_FC"
-echo "  - CC : $OMNI_CC"
-echo "  - CXX: $OMNI_CXX"
-echo " - Target directory: $TARGET_DIRECTORY"
+echo " - Computer: ${COMPUTER}"
+echo " - Repo: ${CLAW_REPO}"
+echo " - Branch: ${CLAW_BRANCH}"
+echo " - OMNI MPI CC: ${OMNI_MPI_CC}"
+echo " - OMNI MPI FC: ${OMNI_MPI_FC}"
+echo " - OMNI ADDITIONAL CONFIG: ${OMNI_CONF}"
+echo " - Base compiler: ${BASE_COMPILER}"
+echo "  - FC : ${OMNI_FC}"
+echo "  - CC : ${OMNI_CC}"
+echo "  - CXX: ${OMNI_CXX}"
+echo " - Target directory: ${TARGET_DIRECTORY}"
 echo "================================="
 echo ""
 
 # Create target directory
-mkdir -p "$TARGET_DIRECTORY"
-rm -rf "$TARGET_DIRECTORY"/claw-compiler
+mkdir -p "${TARGET_DIRECTORY}"
+rm -rf "${TARGET_DIRECTORY}"/claw-compiler
 
 # Retrieve repository and branch
-cd "$TARGET_DIRECTORY" || exit 1
-git clone -b "$CLAW_BRANCH" "$CLAW_REPO" claw-compiler
+cd "${TARGET_DIRECTORY}" || exit 1
+git clone -b "${CLAW_BRANCH}" "${CLAW_REPO}" claw-compiler
 cd claw-compiler || exit 1
 
 # Get submodules
@@ -109,8 +109,8 @@ if [[ ${COMPUTER} == kesch* ]]; then
 fi
 
 # Configure CLAW repo
-echo "FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIRECTORY/claw -DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC ${OMNI_CONF} ."
-FC=$OMNI_FC CC=$OMNI_CC CXX=$OMNI_CXX cmake -DCMAKE_INSTALL_PREFIX="$TARGET_DIRECTORY"/claw -DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC ${OMNI_CONF} .
+echo "FC=${OMNI_FC} CC=${OMNI_CC} CXX=${OMNI_CXX} cmake -DCMAKE_INSTALL_PREFIX=${TARGET_DIRECTORY}/claw -DOMNI_MPI_CC=${OMNI_MPI_CC} -DOMNI_MPI_FC=${OMNI_MPI_FC} ${OMNI_CONF} ."
+FC=${OMNI_FC} CC=${OMNI_CC} CXX=${OMNI_CXX} cmake -DCMAKE_INSTALL_PREFIX="${TARGET_DIRECTORY}"/claw -DOMNI_MPI_CC=${OMNI_MPI_CC} -DOMNI_MPI_FC=${OMNI_MPI_FC} "${OMNI_CONF}" .
 
 # Compile CLAW and OMNI
 make

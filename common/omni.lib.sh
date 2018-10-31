@@ -37,7 +37,7 @@ function omni::check_xmod {
   local __xmods_dir=$1
   local __resultvar=$2
   local __errors=0
-  for xmod_file in ${__xmods_dir}/*.xmod; do
+  for xmod_file in "${__xmods_dir}"/*.xmod; do
     xmod_well_formatted=$(omni::check_xmod_file "${xmod_file}")
     if [[ ${xmod_well_formatted} == false ]]; then
       echo "ERROR: ${xmod_file} file is not formatted correctly"
