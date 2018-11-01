@@ -50,7 +50,11 @@ FDEP_EXCLUDED="--exclude testbed/mo_test_communication.f90:testbed/mo_icon_testb
 FDEP_EXCLUDED_DIR="--exclude-dir externals/jsbach"
 
 # Preprocessor macros definition
-ICON_DEFINITIONS="-D__ICON__ -DHAVE_SLOW_PASSIVE_TARGET_ONESIDED -D__LOOP_EXCHANGE -DgFortran -D__NO_ICON_TESTBED__ -DUSE_XML2 -DHAVE_LIBGRIB -DHAVE_LIBGRIB_API"
+ICON_DEFINITIONS="-DHAVE_SLOW_PASSIVE_TARGET_ONESIDED -D__LOOP_EXCHANGE "
+ICON_DEFINITIONS+="-DgFortran -D__ICON__ -D__NO_ICON_TESTBED__ -DUSE_XML2 "
+ICON_DEFINITIONS+="-DYAC_coupling -DUSE_MPI -D__LOOP_EXCHANGE "
+ICON_DEFINITIONS+="-DHAVE_FC_ATTRIBUTE_CONTIGUOUS"
+
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
@@ -175,7 +179,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
   echo "../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --recursive "${FDEP_EXCLUDED}" "${FDEP_EXCLUDED_DIR}" ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  # shellcheck disable=SC2086
+  ../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${ICON_DEP} ]]; then
