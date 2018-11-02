@@ -1,0 +1,579 @@
+<OmniFortranModule version="1.0">
+  <name>mtime_time</name>
+  <depends>
+    <name>iso_c_binding</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7f94d3c412a0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3f34780" is_parameter="true" ref="I7f94d3c412a0"/>
+    <FbasicType type="I7f94d3c413f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3f34a00" is_parameter="true" ref="I7f94d3c413f0"/>
+    <FbasicType type="C7f94d3f34c80" is_parameter="true" ref="Fcharacter"/>
+    <FstructType type="S7f94d3c40080" imported_id="S7fe884d2d7d0" is_internal_private="true">
+      <symbols>
+        <id type="I7f94d3c41770">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f94d3e026c0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3e02c30" is_parameter="true" ref="I7f94d3e026c0"/>
+    <FbasicType type="I7f94d3c41770" ref="Fint">
+      <kind>
+        <Var type="I7f94d3e02c30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f94d3c406c0" return_type="FnumericAll"/>
+    <FfunctionType type="F7f94d3e1aa50" return_type="L7f94d3e0d960">
+      <params>
+        <name type="S7f94d3e0d010" imported_id="S7fe884d55d20">c_ptr_1</name>
+        <name type="S7f94d3e0d460" imported_id="S7fe884d563f0">c_ptr_2</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7f94d3e0d960" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7f94d3d071d0" imported_id="S7fe884d2e850" is_internal_private="true">
+      <symbols>
+        <id type="I7f94d3d07890">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f94d3d07890" ref="Fint">
+      <kind>
+        <Var type="I7f94d3e02c30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f94d3e0df00" imported_id="S7fe884d55bf0" ref="S7f94d3d071d0"/>
+    <FbasicType type="S7f94d3e0d010" imported_id="S7fe884d55d20" ref="S7f94d3e0df00"/>
+    <FbasicType type="S7f94d3e0e0a0" imported_id="S7fe884d562c0" ref="S7f94d3d071d0"/>
+    <FbasicType type="S7f94d3e0d460" imported_id="S7fe884d563f0" is_optional="true" ref="S7f94d3e0e0a0"/>
+    <FfunctionType type="F7f94d3e1b150" return_type="L7f94d3e0c1d0">
+      <params>
+        <name type="S7f94d3e0b8e0" imported_id="S7fe884d52f50">c_ptr_1</name>
+        <name type="S7f94d3e0bc90" imported_id="S7fe884d53620">c_ptr_2</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7f94d3e0c1d0" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7f94d3e0a0a0" imported_id="S7fe884d2d7d0" is_internal_private="true">
+      <symbols>
+        <id type="I7f94d3e0a740">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f94d3e0a740" ref="Fint">
+      <kind>
+        <Var type="I7f94d3e02c30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f94d3e0c8a0" imported_id="S7fe884d52e20" ref="S7f94d3e0a0a0"/>
+    <FbasicType type="S7f94d3e0b8e0" imported_id="S7fe884d52f50" ref="S7f94d3e0c8a0"/>
+    <FbasicType type="S7f94d3e0ca30" imported_id="S7fe884d534f0" ref="S7f94d3e0a0a0"/>
+    <FbasicType type="S7f94d3e0bc90" imported_id="S7fe884d53620" is_optional="true" ref="S7f94d3e0ca30"/>
+    <FfunctionType type="F7f94d3c40dc0" return_type="Fvoid"/>
+    <FfunctionType type="F7f94d3e1a410" return_type="Fvoid">
+      <params>
+        <name type="I7f94d3e0e630">cptr</name>
+        <name type="I7f94d3e0e9d0">fptr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f94d3e0ed60" is_pointer="true" ref="Fint"/>
+    <FbasicType type="I7f94d3e0e630" intent="in" is_pointer="true" ref="I7f94d3e0ed60"/>
+    <FbasicType type="I7f94d3e0f310" is_pointer="true" ref="Fint"/>
+    <FbasicType type="I7f94d3e0e9d0" intent="out" is_pointer="true" ref="I7f94d3e0f310"/>
+    <FfunctionType type="F7f94d3c41100" return_type="S7f94d3c41cb0">
+      <params>
+        <name type="Fint">x</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c41e00" imported_id="S7fe884d6ce20" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c41cb0" imported_id="S7fe884d6cf50" ref="S7f94d3c41e00"/>
+    <FbasicType type="I7f94d3c43b30" is_public="true" is_parameter="true" ref="Fint"/>
+    <FstructType type="S7f94d3c44340" is_public="true" bind="C">
+      <symbols>
+        <id type="I7f94d3c44c30">
+          <name>hour</name>
+        </id>
+        <id type="I7f94d3c45440">
+          <name>minute</name>
+        </id>
+        <id type="I7f94d3c45c50">
+          <name>second</name>
+        </id>
+        <id type="I7f94d3c46430">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f94d3c44a20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3c44c30" ref="I7f94d3c44a20"/>
+    <FbasicType type="I7f94d3c45230" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3c45440" ref="I7f94d3c45230"/>
+    <FbasicType type="I7f94d3c45a40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3c45c50" ref="I7f94d3c45a40"/>
+    <FbasicType type="I7f94d3c46220" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3c46430" ref="I7f94d3c46220"/>
+    <FfunctionType type="F7f94d3c47fa0" return_type="V7f94d3c47e70" is_public="true"/>
+    <FbasicType type="V7f94d3c47e70" ref="FnumericAll"/>
+    <FfunctionType type="F7f94d3c60550" result_name="ret_time" return_type="S7f94d3c614d0" is_private="true">
+      <params>
+        <name type="C7f94d3c61e00">string</name>
+        <name type="I7f94d3c62c10">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c612c0" is_pointer="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c614d0" is_pointer="true" ref="S7f94d3c612c0"/>
+    <FbasicType type="C7f94d3c61cd0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f94d3c61e00" intent="in" ref="C7f94d3c61cd0"/>
+    <FbasicType type="I7f94d3c62c10" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f94d3c622d0" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c624e0" ref="S7f94d3c622d0"/>
+    <FfunctionType type="F7f94d3c63b20" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c66be0" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c65420" return_type="C7f94d3c652f0"/>
+    <FbasicType type="C7f94d3c652f0" ref="C7f94d3c61cd0"/>
+    <FfunctionType type="F7f94d3c64fd0" return_type="C7f94d3c64ea0"/>
+    <FbasicType type="C7f94d3c64ea0" ref="C7f94d3c61cd0"/>
+    <FfunctionType type="F7f94d3c68f30" result_name="ret_time" return_type="S7f94d3c6a780" is_private="true">
+      <params>
+        <name type="I7f94d3c6b510">hour</name>
+        <name type="I7f94d3c6b640">minute</name>
+        <name type="I7f94d3c6b770">second</name>
+        <name type="I7f94d3c6b8a0">ms</name>
+        <name type="I7f94d3c6c6b0">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c6a570" is_pointer="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c6a780" is_pointer="true" ref="S7f94d3c6a570"/>
+    <FbasicType type="I7f94d3c6b3e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3c6b510" intent="in" ref="I7f94d3c6b3e0"/>
+    <FbasicType type="I7f94d3c6b640" intent="in" ref="I7f94d3c6b3e0"/>
+    <FbasicType type="I7f94d3c6b770" intent="in" ref="I7f94d3c6b3e0"/>
+    <FbasicType type="I7f94d3c6b8a0" intent="in" ref="I7f94d3c6b3e0"/>
+    <FbasicType type="I7f94d3c6c6b0" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f94d3c6bd70" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c6bf80" ref="S7f94d3c6bd70"/>
+    <FfunctionType type="F7f94d3c6d950" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c6fd20" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c71ef0" result_name="dest" return_type="S7f94d3c72e70" is_private="true">
+      <params>
+        <name type="S7f94d3c73540">src</name>
+        <name type="I7f94d3c74350">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c72c60" is_pointer="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c72e70" is_pointer="true" ref="S7f94d3c72c60"/>
+    <FbasicType type="S7f94d3c73410" is_target="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c73540" is_target="true" ref="S7f94d3c73410"/>
+    <FbasicType type="I7f94d3c74350" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f94d3c73a10" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c73c20" ref="S7f94d3c73a10"/>
+    <FfunctionType type="F7f94d3c75260" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c774d0" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c49110" result_name="c_pointer" return_type="S7f94d3c494e0" is_private="true" bind="C" bind_name="newTime">
+      <params>
+        <name type="A7f94d3c4af00">string</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c49bf0" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c4a1c0" ref="S7f94d3c49bf0"/>
+    <FbasicType type="S7f94d3c494e0" ref="S7f94d3c4a1c0"/>
+    <FbasicType type="A7f94d3c4af00" ref="Fcharacter">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7f94d3c4a3d0" ref="S7f94d3c4a1c0"/>
+    <FfunctionType type="F7f94d3c4c090" result_name="c_pointer" return_type="S7f94d3c4c9a0" is_private="true" bind="C" bind_name="newRawTime">
+      <params>
+        <name type="I7f94d3c4e930">hour</name>
+        <name type="I7f94d3c4ea60">minute</name>
+        <name type="I7f94d3c4eb90">second</name>
+        <name type="I7f94d3c4ecc0">ms</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c4d440" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c4da10" ref="S7f94d3c4d440"/>
+    <FbasicType type="S7f94d3c4c9a0" ref="S7f94d3c4da10"/>
+    <FbasicType type="I7f94d3c4e800" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f94d3c4e930" is_value="true" ref="I7f94d3c4e800"/>
+    <FbasicType type="I7f94d3c4ea60" is_value="true" ref="I7f94d3c4e800"/>
+    <FbasicType type="I7f94d3c4eb90" is_value="true" ref="I7f94d3c4e800"/>
+    <FbasicType type="I7f94d3c4ecc0" is_value="true" ref="I7f94d3c4e800"/>
+    <FbasicType type="S7f94d3c4dc20" ref="S7f94d3c4da10"/>
+    <FfunctionType type="F7f94d3c501a0" result_name="c_pointer" return_type="S7f94d3c50570" is_private="true" bind="C" bind_name="constructAndCopyTime">
+      <params>
+        <name type="S7f94d3c519d0">t</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c50b20" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c510f0" ref="S7f94d3c50b20"/>
+    <FbasicType type="S7f94d3c50570" ref="S7f94d3c510f0"/>
+    <FbasicType type="S7f94d3c518a0" ref="S7f94d3c50b20"/>
+    <FbasicType type="S7f94d3c519d0" is_value="true" ref="S7f94d3c518a0"/>
+    <FbasicType type="S7f94d3c51300" ref="S7f94d3c510f0"/>
+    <FfunctionType type="F7f94d3c529a0" return_type="Fvoid" is_private="true" bind="C" bind_name="deallocateTime">
+      <params>
+        <name type="S7f94d3c539c0">t</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c531f0" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c53890" ref="S7f94d3c531f0"/>
+    <FbasicType type="S7f94d3c539c0" is_value="true" ref="S7f94d3c53890"/>
+    <FfunctionType type="F7f94d3c549b0" result_name="ret_dest" return_type="S7f94d3c54f40" is_private="true" bind="C" bind_name="replaceTime">
+      <params>
+        <name type="S7f94d3c56690">src</name>
+        <name type="S7f94d3c567c0">dest</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c55620" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c55bf0" ref="S7f94d3c55620"/>
+    <FbasicType type="S7f94d3c54f40" ref="S7f94d3c55bf0"/>
+    <FbasicType type="S7f94d3c56560" ref="S7f94d3c55620"/>
+    <FbasicType type="S7f94d3c56690" is_value="true" ref="S7f94d3c56560"/>
+    <FbasicType type="S7f94d3c567c0" is_value="true" ref="S7f94d3c56560"/>
+    <FbasicType type="S7f94d3c55e00" ref="S7f94d3c55bf0"/>
+    <FfunctionType type="F7f94d3c57a00" result_name="string_ptr" return_type="S7f94d3c57f90" is_private="true" bind="C" bind_name="timeToString">
+      <params>
+        <name type="S7f94d3c59680">my_time</name>
+        <name type="A7f94d3c5a1b0">string</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c586f0" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c58da0" ref="S7f94d3c586f0"/>
+    <FbasicType type="S7f94d3c57f90" ref="S7f94d3c58da0"/>
+    <FbasicType type="S7f94d3c59550" ref="S7f94d3c586f0"/>
+    <FbasicType type="S7f94d3c59680" is_value="true" ref="S7f94d3c59550"/>
+    <FbasicType type="A7f94d3c5a1b0" ref="Fcharacter">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7f94d3c58fb0" ref="S7f94d3c58da0"/>
+    <FfunctionType type="F7f94d3c5b460" result_name="string_ptr" return_type="S7f94d3c5bbb0" is_private="true" bind="C" bind_name="timeToPosixString">
+      <params>
+        <name type="S7f94d3c5d3d0">my_time</name>
+        <name type="A7f94d3c5df00">string</name>
+        <name type="A7f94d3c5ea30">fmtstr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c5c440" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c5caf0" ref="S7f94d3c5c440"/>
+    <FbasicType type="S7f94d3c5bbb0" ref="S7f94d3c5caf0"/>
+    <FbasicType type="S7f94d3c5d2a0" ref="S7f94d3c5c440"/>
+    <FbasicType type="S7f94d3c5d3d0" is_value="true" ref="S7f94d3c5d2a0"/>
+    <FbasicType type="A7f94d3c5df00" ref="Fcharacter">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="A7f94d3c5ea30" ref="Fcharacter">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7f94d3c5cd00" ref="S7f94d3c5caf0"/>
+    <FfunctionType type="F7f94d3c795d0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7f94d3c7a180">my_time</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c7a050" is_pointer="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c7a180" is_pointer="true" ref="S7f94d3c7a050"/>
+    <FfunctionType type="F7f94d3c7b4f0" return_type="V7f94d3c7b3c0"/>
+    <FbasicType type="V7f94d3c7b3c0" is_target="true" ref="FnumericAll"/>
+    <FfunctionType type="F7f94d3c7c280" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7f94d3c7dce0">dest</name>
+        <name type="S7f94d3c7d510">src</name>
+        <name type="I7f94d3c7eaf0">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c7dbb0" is_target="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c7dce0" intent="inout" is_target="true" ref="S7f94d3c7dbb0"/>
+    <FbasicType type="S7f94d3c7d3e0" is_target="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c7d510" intent="in" is_target="true" ref="S7f94d3c7d3e0"/>
+    <FbasicType type="I7f94d3c7eaf0" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f94d3c7e1b0" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c7e3c0" ref="S7f94d3c7e1b0"/>
+    <FfunctionType type="F7f94d3c7fae0" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c82270" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c83b30" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7f94d3c84cc0">my_time</name>
+        <name type="C7f94d3c854a0">string</name>
+        <name type="I7f94d3c869f0">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c84b90" is_pointer="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c84cc0" is_pointer="true" ref="S7f94d3c84b90"/>
+    <FbasicType type="C7f94d3c85370" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f94d3c854a0" ref="C7f94d3c85370"/>
+    <FbasicType type="I7f94d3c869f0" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f94d3c85970" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c85b80" ref="S7f94d3c85970"/>
+    <FfunctionType type="F7f94d3c879e0" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c89df0" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c8b830" return_type="Fint"/>
+    <FfunctionType type="F7f94d3c8dc90" return_type="Fint"/>
+    <FbasicType type="C7f94d3c8ca40" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7f94d3c8c650" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">i</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">i</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7f94d3c8e480" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7f94d3c8e090" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">i</Var>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>len</name>
+            <arguments>
+              <Var type="C7f94d3c854a0" scope="local">string</Var>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7f94d3c8f2d0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7f94d3c90750">my_time</name>
+        <name type="C7f94d3c90f30">string</name>
+        <name type="C7f94d3c91890">fmtstr</name>
+        <name type="I7f94d3c92de0">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f94d3c90620" is_pointer="true" ref="S7f94d3c44340"/>
+    <FbasicType type="S7f94d3c90750" is_pointer="true" ref="S7f94d3c90620"/>
+    <FbasicType type="C7f94d3c90e00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f94d3c90f30" ref="C7f94d3c90e00"/>
+    <FbasicType type="C7f94d3c91760" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f94d3c91890" ref="C7f94d3c91760"/>
+    <FbasicType type="I7f94d3c92de0" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f94d3c91d60" ref="S7f94d3c40080"/>
+    <FbasicType type="S7f94d3c91f70" ref="S7f94d3c91d60"/>
+    <FfunctionType type="F7f94d3c93f00" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c964b0" return_type="Flogical"/>
+    <FfunctionType type="F7f94d3c97ef0" return_type="Fint"/>
+    <FfunctionType type="F7f94d3c9a350" return_type="Fint"/>
+    <FbasicType type="C7f94d3c99100" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7f94d3c98d10" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">i</Var>
+        </lowerBound>
+        <upperBound>
+          <Var type="Fint" scope="local">i</Var>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="C7f94d3c9ab40" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="A7f94d3c9a750" ref="Fint">
+      <indexRange>
+        <lowerBound>
+          <Var type="Fint" scope="local">i</Var>
+        </lowerBound>
+        <upperBound>
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>len</name>
+            <arguments>
+              <Var type="C7f94d3c90f30" scope="local">string</Var>
+            </arguments>
+          </functionCall>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FfunctionType type="F7f94d3c78cb0" result_name="dest" return_type="S7f94d3c72e70">
+      <params>
+        <name type="S7f94d3c73540">src</name>
+        <name type="I7f94d3c74350">errno</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f94d3c683c0" result_name="ret_time" return_type="S7f94d3c614d0">
+      <params>
+        <name type="C7f94d3c61e00">string</name>
+        <name type="I7f94d3c62c10">errno</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7f94d3c71500" result_name="ret_time" return_type="S7f94d3c6a780">
+      <params>
+        <name type="I7f94d3c6b510">hour</name>
+        <name type="I7f94d3c6b640">minute</name>
+        <name type="I7f94d3c6b770">second</name>
+        <name type="I7f94d3c6b8a0">ms</name>
+        <name type="I7f94d3c6c6b0">errno</name>
+      </params>
+    </FfunctionType>
+  </typeTable>
+  <identifiers>
+    <id type="I7f94d3f34780" sclass="flocal" original_name="c_int" declared_in="iso_c_binding">
+      <name>c_int</name>
+    </id>
+    <id type="I7f94d3f34a00" sclass="flocal" original_name="c_char" declared_in="iso_c_binding">
+      <name>c_char</name>
+    </id>
+    <id type="C7f94d3f34c80" sclass="flocal" original_name="c_null_char" declared_in="iso_c_binding">
+      <name>c_null_char</name>
+    </id>
+    <id type="S7f94d3c40080" imported_id="S7fe884d2d7d0" sclass="ftype_name" original_name="c_ptr" declared_in="iso_c_binding">
+      <name>c_ptr</name>
+    </id>
+    <id type="F7f94d3c406c0" sclass="ffunc" original_name="c_associated" declared_in="iso_c_binding">
+      <name>c_associated</name>
+    </id>
+    <id type="F7f94d3c40dc0" sclass="ffunc" original_name="c_f_pointer" declared_in="iso_c_binding">
+      <name>c_f_pointer</name>
+    </id>
+    <id type="F7f94d3c41100" sclass="ffunc" original_name="c_loc" declared_in="iso_c_binding">
+      <name>c_loc</name>
+    </id>
+    <id type="I7f94d3c43b30" sclass="flocal" original_name="max_time_str_len" declared_in="mtime_time">
+      <name>max_time_str_len</name>
+    </id>
+    <id type="S7f94d3c44340" sclass="ftype_name" original_name="time" declared_in="mtime_time">
+      <name>time</name>
+    </id>
+    <id type="F7f94d3c47fa0" sclass="ffunc" original_name="newtime" declared_in="mtime_time">
+      <name>newtime</name>
+    </id>
+    <id type="F7f94d3c795d0" sclass="ffunc" original_name="deallocatetime" declared_in="mtime_time">
+      <name>deallocatetime</name>
+    </id>
+    <id type="F7f94d3c7c280" sclass="ffunc" original_name="replacetime" declared_in="mtime_time">
+      <name>replacetime</name>
+    </id>
+    <id type="F7f94d3c83b30" sclass="ffunc" original_name="timetostring" declared_in="mtime_time">
+      <name>timetostring</name>
+    </id>
+    <id type="F7f94d3c8f2d0" sclass="ffunc" original_name="timetoposixstring" declared_in="mtime_time">
+      <name>timetoposixstring</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7f94d3f34780">c_int</name>
+      <value>
+        <FintConstant type="Fint">4</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7f94d3f34a00">c_char</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="C7f94d3f34c80">c_null_char</name>
+      <value>
+        <functionCall type="Fcharacter" is_intrinsic="true">
+          <name>achar</name>
+          <arguments>
+            <FintConstant type="Fint">0</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl lineno="583" file="libmtime.f90">
+      <name type="I7f94d3c43b30">max_time_str_len</name>
+      <value>
+        <FintConstant type="Fint">32</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="newtime" lineno="592" file="libmtime.f90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="593" file="libmtime.f90">
+        <name type="F7f94d3c78cb0">newtimefromconstructandcopy</name>
+        <name type="F7f94d3c683c0">newtimefromstring</name>
+        <name type="F7f94d3c71500">newtimefromraw</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="594" file="libmtime.f90">
+        <name type="F7f94d3c78cb0">newtimefromconstructandcopy</name>
+        <name type="F7f94d3c683c0">newtimefromstring</name>
+        <name type="F7f94d3c71500">newtimefromraw</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="595" file="libmtime.f90">
+        <name type="F7f94d3c78cb0">newtimefromconstructandcopy</name>
+        <name type="F7f94d3c683c0">newtimefromstring</name>
+        <name type="F7f94d3c71500">newtimefromraw</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
