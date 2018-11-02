@@ -38,12 +38,12 @@ OMNI_LATEST=false
 
 # JSBACH related variables
 JSBACH_GIT_REPO="git@git.mpimet.mpg.de:jsbach.git"
-JSBACH_GIT_BRANCH="develop"
+JSBACH_GIT_BRANCH="jsbach4icon-dev"
 JSBACH_GIT_HASH="c08b07ae7834754d54c955731cac18dd862598b2"
 JSBACH_REP="jsbach"
 JSBACH_SRC="./${JSBACH_REP}/pp"
 JSBACH_START="jsb4_driver_dsl4jsb.f90"
-JSBACH_DEP="dependencies_jsbach"
+STANDALONE_DEP="dependencies_jsbach"
 EXTERNAL_XMODS="../jsbach/external_xmods"
 
 # Preprocessor macros definition
@@ -169,18 +169,18 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${JSBACH_DEP} 2> ${JSBACH_DEP}.out" > "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${JSBACH_DEP} 2> ${JSBACH_DEP}.out
+  echo "../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
+  ../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
 
   # Check existence of the dependencies file
-  if [[ ! -f ${JSBACH_DEP} ]]; then
-    echo "ERROR: ${JSBACH_DEP} does not exists!"
+  if [[ ! -f ${STANDALONE_DEP} ]]; then
+    echo "ERROR: ${STANDALONE_DEP} does not exists!"
     exit 1
   fi
 
   # Check that dependencies file has information in it
-  if [[ $(wc -l < ${JSBACH_DEP}) -lt 2 ]]; then
-    echo "ERROR: ${JSBACH_DEP} is empty!"
+  if [[ $(wc -l < ${STANDALONE_DEP}) -lt 2 ]]; then
+    echo "ERROR: ${STANDALONE_DEP} is empty!"
     exit 1
   fi
 
@@ -199,11 +199,13 @@ if [[ ${SKIP_PARSING} == false ]]; then
   mkdir -p ${CLAW_OUTPUT}
 
   parsed_files=0
-  echo ">>> Parsing files"
+  total_files=$(wc -l < ${STANDALONE_DEP})
+  echo ">>> Parsing files ${total_files}"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
-    echo "    Processing file ${JSBACH_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+    (( current_file_nb=parsed_files+1 ))
+    echo "    Processing file [$current_file_nb] ${JSBACH_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${JSBACH_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     echo "cmd: ${CLAWFC} ${JSBACH_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${JSBACH_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
@@ -212,7 +214,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${JSBACH_SRC}""${f90_file}"
     fi
-  done < ./${JSBACH_DEP}
+  done < ./${STANDALONE_DEP}
 fi
 
 
@@ -224,7 +226,7 @@ fi
 omni::check_xmod ${XMOD_DIR} xmod_errors
 
 # Control output fortran file any corruption
-omni::check_fortran ${JSBACH_DEP} ${CLAW_OUTPUT} f90_errors
+omni::check_fortran ${STANDALONE_DEP} ${CLAW_OUTPUT} f90_errors
 
 echo ""
 echo "================================"
