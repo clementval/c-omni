@@ -11,6 +11,7 @@ function show_help(){
   echo "Options:"
   echo " -s                Skip CLAW/OMNI compilation/install"
   echo " -p                Skip parsing step"
+  echo " -b    Specify a branch to test"
   echo " -o                Use the latest OMNI Compiler version for the test"
 }
 
@@ -41,6 +42,7 @@ OMNI_LATEST=false
 # ICON related variables
 ICON_MAIN_REPO="git@github.com:C2SM-RCM/icon-eniac.git"
 ICON_REP="icon-eniac"
+STANDALONE_GIT_BRANCH=""
 ICON_SRC="./${ICON_REP}/src/"
 ICON_START="drivers/icon.f90"
 ICON_DEP="dependencies_icon"
@@ -59,12 +61,13 @@ ICON_DEFINITIONS+="-DHAVE_FC_ATTRIBUTE_CONTIGUOUS"
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
 
-while getopts "hspo" opt; do
+while getopts "hspob:" opt; do
   case "$opt" in
   h)
     show_help
     exit 0
     ;;
+  b) STANDALONE_GIT_BRANCH=$OPTARG ;;
   s) SKIP_CLAW=true;;
   p) SKIP_PARSING=true;;
   o) OMNI_LATEST=true;;
@@ -104,6 +107,7 @@ echo "ICON -> CLAW/OMNI Compiler parse test"
 echo "====================================="
 echo "- ICON information"
 echo "  - Git repository: $ICON_MAIN_REPO"
+echo "  - Git branch: ${STANDALONE_GIT_BRANCH}"
 
 # Fetch the submodules
 git submodule init
@@ -155,7 +159,12 @@ if [[ ${SKIP_PARSING} == false ]]; then
   # 2. ICON-ENIAC step
   ####################
 
-  git clone --depth 1 ${ICON_MAIN_REPO}
+  if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
+    git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}"
+  else
+    git clone --depth 1 "${ICON_MAIN_REPO}"
+  fi
+
   cd ${ICON_REP} || exit 1
   git submodule init
   git submodule update
