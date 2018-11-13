@@ -20,6 +20,7 @@ function show_help(){
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
   echo " -n                Test with NETCDF enabled"
+  echo " -g                Process file for GPU version"
 }
 
 source ./common/utility.sh
@@ -48,6 +49,7 @@ SKIP_PARSING=false
 OMNI_LATEST=false
 NETCDF_ENABLE=false
 PRERELEASE=false
+GPU_VERSION=false
 
 
 # This to avoid the outside OpenACC problem
@@ -56,7 +58,7 @@ PRERELEASE=false
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hb:csponr" opt; do
+while getopts "hb:csponrg" opt; do
   case "$opt" in
   h)
     show_help
@@ -69,6 +71,7 @@ while getopts "hb:csponr" opt; do
   b) CLAW_BRANCH=$OPTARG ;;
   n) NETCDF_ENABLE=true ;;
   r) PRERELEASE=true ;;
+  g) GPU_VERSION=true ;;
   *)
      show_help
      exit 1
@@ -78,13 +81,15 @@ done
 
 if [[ ${PRERELEASE} == true ]]; then
   COSMO_VERSION="COSMO-PRERELEASE"
-  COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-prerelease.git"
+  COSMO_MAIN_REPO="git@github.com:COSMO-ORG/cosmo.git"
   COSMO_REP="cosmo-prerelease"
+  COSMO_BRANCH=""
   COSMO_SRC="./${COSMO_REP}/cosmo/src/"
   COSMO_START="lmorg.f90"
   COSMO_DEP="dependencies_cosmo"
   COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
   COSMO_NETCDF_INC="${COSMO_SRC}/../ACC/include/netcdf/"
+  COSMO_MPI_INCLUDE="${COSMO_SRC}/../ACC/include/mpi/"
 
   COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
   COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
@@ -95,17 +100,28 @@ else
   COSMO_VERSION="COSMO-POMPA"
   COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
   COSMO_REP="cosmo-pompa"
+  COSMO_BRANCH=""
   COSMO_SRC="./${COSMO_REP}/cosmo/src/"
   COSMO_START="lmorg.f90"
   COSMO_DEP="dependencies_cosmo"
   COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
   COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
+  COSMO_MPI_INCLUDE="${COSMO_SRC}/../include/mpi/"
 
-  COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
-  COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
-  COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DPOLLEN -DCPP_DYCORE"
-  COSMO_DEFINITIONS+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
-  COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC"
+  if [[ ${GPU_VERSION} == true ]]; then
+    COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
+    COSMO_DEFINITIONS+=" -DCRAY_FIX_REALLOC -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL"
+    COSMO_DEFINITIONS+=" -DIEEE_INTR  -D__COSMO__ -D_LOC_TIMING -DGSP_FIRST"
+    COSMO_DEFINITIONS+=" -DNUDGING -DPOLLEN -DGRIBDWD -DGRIBAPI -DNETCDF"
+    COSMO_DEFINITIONS+=" -DCPP_DYCORE -DGCL_COMM -D_OPENACC"
+  else
+    COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DASSIM_WKARR_CLEANUP"
+    COSMO_DEFINITIONS+=" -DASSIM_MDARR_CLEANUP"
+    COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
+    COSMO_DEFINITIONS+=" -D__COSMO__ -D_LOC_TIMING -DGSP_FIRST -DNUDGING"
+    COSMO_DEFINITIONS+=" -DPOLLEN -DGRIBDWD -DGRIBAPI"
+    COSMO_DEFINITIONS+=" -DNETCDF -DCPP_DYCORE -DGCL_COMM -D__MPICH2"
+  fi
 fi
 
 if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
@@ -137,69 +153,18 @@ else
   echo "Warning: Compiler file $COMPILER_FILE missing. Default values are used."
 fi
 
-#
-#
-#
-## Load recent version of cmake
-#module load $CMAKE_MOD
-#
-## Load correct PrgEnv
-#case  "$CLAW_BASE_COMPILER" in
-#  "gnu")
-#    module rm PrgEnv-pgi && module rm PrgEnv-cray
-#    module load PrgEnv-gnu
-#    if [[ $COMPUTER == "kesch" ]]
-#    then
-#      CLAW_FC=gfortran
-#      CLAW_CC=gcc
-#      CLAW_CXX=g++
-#    elif [[ $COMPUTER == "daint" ]]
-#    then
-#      CLAW_FC=ftn
-#      CLAW_CC=cc
-#      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc"
-#      OMNI_MPI_FC="MPI_FC=ftn"
-#      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
-#    fi
-#  ;;
-#  "pgi")
-#    module rm PrgEnv-gnu && module rm PrgEnv-cray
-#    module load PrgEnv-pgi
-#    if [[ $COMPUTER == "kesch" ]]
-#    then
-#      CLAW_FC=mpif90
-#      CLAW_CC=mpicc
-#      CLAW_CXX=pgc++
-#    elif [[ $COMPUTER == "daint" ]]
-#    then
-#      module load gcc
-#      CLAW_FC=ftn
-#      CLAW_CC=cc
-#      CLAW_CXX=CC
-#      OMNI_MPI_CC="MPI_CC=cc"
-#      OMNI_MPI_FC="MPI_FC=ftn"
-#      ADDITONAL_OPTIONS="-DOMNI_MPI_CC=$OMNI_MPI_CC -DOMNI_MPI_FC=$OMNI_MPI_FC"
-#    fi
-#  ;;
-#  "cray")
-#    module rm PrgEnv-pgi && module rm PrgEnv-gnu
-#    module load PrgEnv-cray
-#    CLAW_FC=ftn
-#    CLAW_CC=cc
-#    CLAW_CXX=CC
-#  ;;
-#  *)
-#    echo "Error: Unknown compiler ..."
-#    exit 1
-#esac
-
 echo ""
 echo "============================================"
 echo "${COSMO_VERSION} -> CLAW/OMNI Compiler parse test"
 echo "============================================"
 echo "- COMSO information"
-echo "  - Git repository: $COSMO_MAIN_REPO"
+echo "  - Git repository: ${COSMO_MAIN_REPO}"
+echo "  - Git branch: ${COSMO_BRANCH}"
+if [[ ${GPU_VERSION} == true ]]; then
+  echo "  - Verson: GPU"
+else
+  echo "  - Verson: CPU"
+fi
 
 # Fetch the submodules
 git submodule init
@@ -255,7 +220,12 @@ if [[ ${SKIP_FETCH} == false ]]; then
   # 2. COSMO step
   #####################
   print_green "[INFO] Fetching ${COSMO_VERSION}"
-  git clone ${COSMO_MAIN_REPO}
+
+  if [[ "${COSMO_BRANCH}" != "" ]]; then
+    git clone --depth 1 -b "${COSMO_BRANCH}" "${COSMO_MAIN_REPO}"
+  else
+    git clone --depth 1 "${COSMO_MAIN_REPO}"
+  fi
 fi
 
 cd ${COSMO_REP} || exit 1
@@ -319,8 +289,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${INCLUDE_MPI} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -I "${COSMO_NETCDF_INC}" -I "${COSMO_SRC}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
