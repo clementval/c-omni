@@ -9,6 +9,6 @@ export OMNI_CXX="g++-7"
 export OMNI_MPI_CC="MPI_CC=mpicc"
 export OMNI_MPI_FC="MPI_FC=mpif90"
 
-export INCLUDE_MPI="/usr/local/include/"
+export INCLUDE_MPI="/usr/local/Cellar/open-mpi/3.1.3/include/"
 
 export OMNI_CONF="-DOMNI_CONF_OPTION=--with-libxml2=/usr/local/Cellar/libxml2/2.9.7/"
