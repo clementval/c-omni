@@ -9,10 +9,10 @@ function show_help(){
   echo "$0 [-s] [-p] [--with-omni]"
   echo ""
   echo "Options:"
-  echo " -s                Skip CLAW/OMNI compilation/install"
-  echo " -p                Skip parsing step"
-  echo " -b    Specify a branch to test"
-  echo " -o                Use the latest OMNI Compiler version for the test"
+  echo " -s          Skip CLAW/OMNI compilation/install (use current version)"
+  echo " -p          Skip parsing step"
+  echo " -b          Specify a branch to test"
+  echo " -o          Use the latest OMNI Compiler version for the test"
 }
 
 source ./common/utility.sh
@@ -228,7 +228,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force "${ICON_INC}" -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    # shellcheck disable=SC2086
+    ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
