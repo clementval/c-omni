@@ -63,6 +63,7 @@ ICON_DEFINITIONS+="-DHAVE_FC_ATTRIBUTE_CONTIGUOUS"
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
+TIMING_OUTPUT=${TEST_DIR}/icon_timing.log
 
 while getopts "hspob:" opt; do
   case "$opt" in
@@ -220,8 +221,14 @@ if [[ ${SKIP_PARSING} == false ]]; then
   mkdir -p ${XMOD_DIR}
   mkdir -p ${CLAW_OUTPUT}
 
+  start_parsing=$(date +%s)
+
   parsed_files=0
   total_files=$(wc -l < ${ICON_DEP})
+
+  echo "TIMING" > ${TIMING_OUTPUT}
+  echo "START_PARSING: ${start_parsing}" >> ${TIMING_OUTPUT}
+
   echo ">>> Parsing files ${total_files}"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
@@ -231,13 +238,22 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
+
+    echo "$f90_file" >> ${TIMING_OUTPUT}
     # shellcheck disable=SC2086
-    ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    { time ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1 ; } 2>> ${TIMING_OUTPUT}
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
     fi
   done < ./${ICON_DEP}
+
+  end_parsing=$(date +%s)
+
+  parsing_time=$((end_parsing-start_parsing))
+
+  echo "END_PARSING: ${end_parsing}" >> ${TIMING_OUTPUT}
+  echo "PARSING TIME: ${parsing_time}" >> ${TIMING_OUTPUT}
 fi
 
 
