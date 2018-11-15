@@ -226,8 +226,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   parsed_files=0
   total_files=$(wc -l < ${ICON_DEP})
 
-  echo "TIMING" > ${TIMING_OUTPUT}
-  echo "START_PARSING: ${start_parsing}" >> ${TIMING_OUTPUT}
+  echo "START_PARSING: ${start_parsing}" >> ${PARSING_OUTPUT}
 
   echo ">>> Parsing files ${total_files}"
   echo "" >> "${PARSING_OUTPUT}"
@@ -252,8 +251,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   parsing_time=$((end_parsing-start_parsing))
 
-  echo "END_PARSING: ${end_parsing}" >> ${TIMING_OUTPUT}
-  echo "PARSING TIME: ${parsing_time}" >> ${TIMING_OUTPUT}
+  echo "END_PARSING: ${end_parsing}" >> ${PARSING_OUTPUT}
+  echo "PARSING TIME: ${parsing_time}" >> ${PARSING_OUTPUT}
 fi
 
 
