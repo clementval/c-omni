@@ -13,6 +13,7 @@ function show_help(){
   echo " -p          Skip parsing step"
   echo " -b          Specify a branch to test"
   echo " -o          Use the latest OMNI Compiler version for the test"
+  echo " -c          Continue previous test"
 }
 
 source ./common/utility.sh
@@ -39,6 +40,7 @@ BASE_COMPILER="gnu"
 SKIP_CLAW=false
 SKIP_PARSING=false
 OMNI_LATEST=false
+CONTINUE_TEST=false
 
 # ICON related variables
 ICON_MAIN_REPO="git@github.com:C2SM-RCM/icon-eniac.git"
@@ -65,7 +67,7 @@ ICON_DEFINITIONS+="-DHAVE_FC_ATTRIBUTE_CONTIGUOUS"
 PARSING_OUTPUT=${TEST_DIR}/icon_parse_test.log
 TIMING_OUTPUT=${TEST_DIR}/icon_timing.log
 
-while getopts "hspob:" opt; do
+while getopts "hspob:c" opt; do
   case "$opt" in
   h)
     show_help
@@ -75,6 +77,7 @@ while getopts "hspob:" opt; do
   s) SKIP_CLAW=true;;
   p) SKIP_PARSING=true;;
   o) OMNI_LATEST=true;;
+  c) CONTINUE_TEST=true;;
   *) show_help
      exit 1
      ;;
@@ -114,8 +117,10 @@ echo "  - Git repository: $ICON_MAIN_REPO"
 echo "  - Git branch: ${STANDALONE_GIT_BRANCH}"
 
 # Fetch the submodules
-git submodule init
-git submodule update
+if [[ ${CONTINUE_TEST} == false ]]; then
+  git submodule init
+  git submodule update
+fi
 
 if [[ ${SKIP_CLAW} == false ]]; then
   # Specific CLAW/OMNI information
@@ -125,8 +130,10 @@ if [[ ${SKIP_CLAW} == false ]]; then
   echo "  - Base compiler: $BASE_COMPILER"
   echo "  - Target directory: $TEST_DIR"
 
-  rm -rf "$TEST_DIR"
-  mkdir "$TEST_DIR"
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    rm -rf "$TEST_DIR"
+    mkdir "$TEST_DIR"
+  fi
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
@@ -139,7 +146,7 @@ if [[ ${SKIP_CLAW} == false ]]; then
     ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
 else
-  rm -rf "${TEST_DIR:?}"/${ICON_REP}
+  [[ ${CONTINUE_TEST} == false ]] && rm -rf "${TEST_DIR:?}"/${ICON_REP}
 fi
 
 echo "============================================"
@@ -162,18 +169,19 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
   # 2. ICON-ENIAC step
   ####################
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
+      git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}"
+    else
+      git clone --depth 1 "${ICON_MAIN_REPO}"
+    fi
 
-  if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
-    git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}"
-  else
-    git clone --depth 1 "${ICON_MAIN_REPO}"
+    cd ${ICON_REP} || exit 1
+    git submodule init
+    git submodule update
+    ICON_HASH=$(git rev-parse HEAD)
+    cd "${WORKING_DIR}" || exit 1
   fi
-
-  cd ${ICON_REP} || exit 1
-  git submodule init
-  git submodule update
-  ICON_HASH=$(git rev-parse HEAD)
-  cd "${WORKING_DIR}" || exit 1
 
   {
     echo "ICON PARSING TESTS"
@@ -190,10 +198,12 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
 
   # Generate the dependency list for the parsing order
-  print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
-  # shellcheck disable=SC2086
-  ../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    print_green "[INFO] Generate dependencies list"
+    echo "../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
+    # shellcheck disable=SC2086
+    ../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
+  fi
 
   # Check existence of the dependencies file
   if [[ ! -f ${ICON_DEP} ]]; then
@@ -226,7 +236,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   parsed_files=0
   total_files=$(wc -l < ${ICON_DEP})
 
-  echo "START_PARSING: ${start_parsing}" >> ${PARSING_OUTPUT}
+  echo "START_PARSING: ${start_parsing}" >> "${PARSING_OUTPUT}"
 
   echo ">>> Parsing files ${total_files}"
   echo "" >> "${PARSING_OUTPUT}"
@@ -234,13 +244,19 @@ if [[ ${SKIP_PARSING} == false ]]; then
   while IFS= read -r f90_file; do
     (( current_file_nb=parsed_files+1 ))
     echo "    Processing file [$current_file_nb] ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
-    echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
 
-    echo "$f90_file" >> ${TIMING_OUTPUT}
-    # shellcheck disable=SC2086
-    { time ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1 ; } 2>> ${TIMING_OUTPUT}
+    # Skip file if continued test and file already exitsts
+    if [[ ${CONTINUE_TEST} == true ]] && [[ -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+      echo "    Skip ${ICON_SRC}${f90_file}"
+    else
+      echo "    Processing file ${ICON_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+      echo "cmd: ${CLAWFC} ${ICON_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I ${INCLUDE_MPI} -o ${CLAW_OUTPUT}/${f90_file} ${ICON_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
+      echo "$f90_file" >> "${TIMING_OUTPUT}"
+      # shellcheck disable=SC2086
+      { time ${CLAWFC} "${ICON_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${ICON_INC} -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${ICON_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1 ; } 2>> "${TIMING_OUTPUT}"
+    fi
+
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
@@ -251,8 +267,8 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   parsing_time=$((end_parsing-start_parsing))
 
-  echo "END_PARSING: ${end_parsing}" >> ${PARSING_OUTPUT}
-  echo "PARSING TIME: ${parsing_time}" >> ${PARSING_OUTPUT}
+  echo "END_PARSING: ${end_parsing}" >> "${PARSING_OUTPUT}"
+  echo "PARSING TIME: ${parsing_time}" >> "${PARSING_OUTPUT}"
 fi
 
 
