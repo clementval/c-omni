@@ -30,6 +30,12 @@ It is possible to skip the parsing step the test only from the step 5 with the f
 ./icon/parse -p
 ```
 
+#### Test a branch
+It is possible to skip the parsing step the test only from the step 5 with the following command:
+```bash
+./icon/parse -b merge_candidate_2
+```
+
 ## Currently known issues
 
 **Bugs**
