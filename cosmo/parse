@@ -73,7 +73,7 @@ while getopts "hb:csponrg" opt; do
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=$OPTARG ;;
   n) NETCDF_ENABLE=true ;;
-  r) PRERELEASE=true ;;
+  r) PRERELEASE=true; NETCDF_ENABLE=true ;;
   g) GPU_VERSION=true ;;
   *)
      show_help
