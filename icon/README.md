@@ -63,8 +63,8 @@ It is possible to skip the parsing step the test only from the step 5 with the f
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED [PR#226](https://github.com/omni-compiler/omni-compiler/pull/226)
   * Issue on OMNI Compiler repository: [omni-compiler:#225](https://github.com/omni-compiler/omni-compiler/issues/225)
-* `Cannot find procedure subroutine defined later in the translation unit`
+* ~~`Cannot find procedure subroutine defined later in the translation unit`~~
   * Type: Bug
   * Priority: medium
-  * Status: OPEN
-  * Issue on OMNI Compiler repository: [omni-compiler:#225](https://github.com/omni-compiler/omni-compiler/issues/531)
+  * Status: PRE MERGED, ISSUE CLOSED [PR#532](https://github.com/omni-compiler/omni-compiler/pull/532)
+  * Issue on OMNI Compiler repository: [omni-compiler:#531](https://github.com/omni-compiler/omni-compiler/issues/531)
