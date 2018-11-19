@@ -31,7 +31,10 @@ TEST_DIR=${PWD}/build
 CLAW_OUTPUT="./processed/cosmo"
 XMOD_DIR="./xmods/cosmo"
 EXTERNAL_XMODS="../cosmo/external_xmods"
-GLOBAL_XMODS="../global_modules"
+XMOD_POOL="../xmods-pool"
+MPI_XMOD="-J ${XMOD_POOL}/mpi/3.0/"
+NETCDF_XMOD="-J ${XMOD_POOL}/netcdf/4.0/"
+GLOBAL_XMODS="${MPI_XMOD}"
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -132,6 +135,7 @@ fi
 if [[ ${NETCDF_ENABLE} == true ]]; then
   COSMO_DEFINITIONS+=" -DNETCDF"
   COSMO_EXCLUDED_FILES="${COSMO_EXCLUDED_FILES}:dummy_netcdf.f90"
+  GLOBAL_XMODS+=" ${NETCDF_XMOD}"
 fi
 
 COMPUTER=$(hostname)
@@ -289,8 +293,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    # shellcheck disable=SC2086
+    ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
       print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
