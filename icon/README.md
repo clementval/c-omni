@@ -53,10 +53,10 @@ It is possible to skip the parsing step the test only from the step 5 with the f
   * Priority: medium
   * Status: PR MRGED, ISSUE CLOSED [PR#229](https://github.com/omni-compiler/omni-compiler/pull/229)
   * Issue on OMNI Compiler repository: [omni-compiler:#228](https://github.com/omni-compiler/omni-compiler/issues/228)
-* `Declaration of procedure pointer fails`
+* ~~`Declaration of procedure pointer fails`~~
   * Type: Missing feature
   * Priority: medium
-  * Status: OPEN
+  * Status: ISSUE RESOLVED AND CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#227](https://github.com/omni-compiler/omni-compiler/issues/227)
 * ~~`BIND attribute fails compatibility with some other ATTRIBUTE`~~
   * Type: Bug
