@@ -294,6 +294,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     echo "    Processing file ${COSMO_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
     mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
     echo "cmd: ${CLAWFC} ${COSMO_DEFINITIONS} --no-dep --debug-omni -J ${XMOD_DIR} ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o ${CLAW_OUTPUT}/${f90_file} ${COSMO_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    # shellcheck disable=SC2086
     ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
