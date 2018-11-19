@@ -7,9 +7,10 @@ The test is designed to be executed from the root directory of this repository.
 
 Without any option, the test will execute the following actions:
 1) Fetch and compile the CLAW FORTRAN Compiler.
-2) Fetch the code of COSMO-POMPA (need read access).
-3) Generate a dependencies list of the COSMO-POMPA code.
-4) Parse each file using the CLAW FORTRAN Compiler.
+2) Fetch the code of MeteoSwiss-APN/cosmo-pompa 
+   or Official COSMO-ORG/cosmo code with the `-r` option (need read access).
+3) Generate a dependencies list of the COSMO code.
+4) Parse each file using the CLAW Compiler.
 5) Control all the resulting files and report any issues.
 
 ```bash
@@ -33,6 +34,11 @@ It is possible to skip the parsing step the test only from the step 2 with the f
 #### Test with NetCDF enabled
 ```bash
 ./cosmo/parse -n
+```
+
+#### Test official repository
+```bash
+./cosmo/parse -r
 ```
 
 ## Known issues
@@ -144,10 +150,10 @@ Fixed bugs are strikethrough.
   * Priority: high
   * Status: PR MERGED, ISSUE CLOSED ([PR#257](https://github.com/omni-compiler/omni-compiler/pull/257))
   * Issue on OMNI Compiler repository: [omni-compiler#255](https://github.com/omni-compiler/omni-compiler/issues/255)
-* `varDecl from external module in interface declaration`
+* ~~`varDecl from external module in interface declaration`~~
   * Type: Bug
   * Priority: high
-  * Status: PR WAITING TO BE MERGED, ISSUE OPEN ([PR#275](https://github.com/omni-compiler/omni-compiler/pull/275))
+  * Status: PR MERGED, ISSUE CLOSED ([PR#275](https://github.com/omni-compiler/omni-compiler/pull/275))
   * Issue on OMNI Compiler repository: [omni-compiler#274](https://github.com/omni-compiler/omni-compiler/issues/274)
 * ~~`TYPE name from external module is not reachable in decompiler`~~
   * Type: Bug
