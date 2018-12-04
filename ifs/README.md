@@ -42,30 +42,30 @@ Any bugs found during parsing tests that should be/has been addressed.
   * Priority: high
   * Status: PR MERGED, ISSUE CLOSED [PR#313](https://github.com/omni-compiler/omni-compiler/pull/313)
   * Issue on OMNI Compiler repository: [omni-compiler:#302](https://github.com/omni-compiler/omni-compiler/issues/302)
-* `ASSOCIATE construct`
+* ~~`ASSOCIATE construct`~~
   * Type: Missing feature
   * Priority: high
-  * Status: OPEN
+  * Status: CLOSED
   * Issue on OMNI Compiler repository: [omni-compiler:#303](https://github.com/omni-compiler/omni-compiler/issues/303)
 * `incompatible type declarations (fct result with dimension)`
   * Type: Bug
   * Priority: medium
-  * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#305](https://github.com/omni-compiler/omni-compiler/pull/305)
+  * Status: PR MERGED, ISSUE CLOSED [PR#9](https://github.com/omni-compiler/xcodeml-tools/pull/9)
   * Issue on OMNI Compiler repository: [omni-compiler:#304](https://github.com/omni-compiler/omni-compiler/issues/304)
 * ~~`CHARACTER with len=: or len=* and kind fails, syntax error`~~
   * Type: Bug
   * Priority: medium
   * Status: PR MERGED, ISSUE CLOSED [PR#307](https://github.com/omni-compiler/omni-compiler/pull/307)
   * Issue on OMNI Compiler repository: [omni-compiler:#306](https://github.com/omni-compiler/omni-compiler/issues/306)
-* `Wrong information in .xmod`
+* ~~`Wrong information in .xmod`~~
   * Type: Bug
   * Priority: high
-  * Status: OPEN
+  * Status: PR MERGED, ISSUE CLOSED [PR#533](https://github.com/omni-compiler/omni-compiler/issues/533)
   * Issue on OMNI Compiler repository: [omni-compiler:#308](https://github.com/omni-compiler/omni-compiler/issues/308)
 * `type-bound GENERIC statement does not accept access specifier`
   * Type: Bug
   * Priority: medium
-  * Status: PR WAITING TO BE MERGED, ISSUE OPEN [PR#315](https://github.com/omni-compiler/omni-compiler/pull/315)
+  * Status: PR MERGED, ISSUE CLOSED [PR#315](https://github.com/omni-compiler/omni-compiler/pull/315)
   * Issue on OMNI Compiler repository: [omni-compiler:#314](https://github.com/omni-compiler/omni-compiler/issues/314)
 
 
