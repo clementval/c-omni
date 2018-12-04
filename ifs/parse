@@ -14,7 +14,6 @@ function show_help(){
   echo " -c                   Skip fetching step for IFS"
   echo " -p                   Skip parsing step"
   echo " -o                   Use the latest OMNI Compiler version for the test"
-  echo " -i <path-to-ifs>     Path to the directory where ifs dir is located"
   echo " -t <path-to-ifs-int> Path to automatically generated interfaces"
   echo " -x                   Stop on first failure"
 }
@@ -55,16 +54,12 @@ STOP_ON_FAILURE=false
 TEST_MAIN_REPO="ssh://git@git.ecmwf.int/IFS/ifs-bundle.git"
 TEST_ROOT_DIR="ifs-bundle"
 
-IFS_SRC_REP="ifs"
-IFS_AUX_REP="ifsaux"
-IFS_INT_REP="ifs-interfaces"
-IFS_TRANS_INT_REP="trans/interface"
 
 IFS_SRC="${TEST_ROOT_DIR}/source/ifs-source/"
 IFS_START="ifs/programs/master.F90"
 IFS_DEP="dependencies_ifs"
 
-TEST_INCLUDE_DIRS="-I ${IFS_SRC}/ifsaux/include/ -I ${IFS_SRC}/scmec/include/"
+
 
 #
 # IFS_AUX_INCLUDE="./${TEST_ROOT_DIR}/${IFS_AUX_REP}/include"
@@ -84,7 +79,7 @@ TEST_INCLUDE_DIRS="-I ${IFS_SRC}/ifsaux/include/ -I ${IFS_SRC}/scmec/include/"
 # FDEP_EXLUDED_DIRECTORIES+=":nemo/NEMOASSIM_V34:nemo/NEMOASSIM_v43:surf/offline"
 
 FDEP_EXLUDED_DIRECTORIES="bl:external_ok:mpi_serial:radiation:trans:cmake"
-FDEP_EXLUDED_DIRECTORIES+=":fieldman:nemo:satrad:verif:crm:glomap:obstat:scat"
+FDEP_EXLUDED_DIRECTORIES+=":fieldman:nemo:satrad:verif:glomap:obstat:scat"
 FDEP_EXLUDED_DIRECTORIES+="wam:aeolus:dummy:odb:scmec:algor:ecfftw:oopsifs"
 FDEP_EXLUDED_DIRECTORIES+="ssa:atlas_apps:enkf:ifsobs:prepdata:surf"
 
@@ -103,8 +98,10 @@ while getopts "hb:ci:t:spox" opt; do
   c) SKIP_FETCH=true ;;
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=${OPTARG} ;;
-  i) IFS_PATH=${OPTARG} ;;
-  t) IFS_INT_PATH=${OPTARG} ;;
+  t)
+    IFS_INT_PATH=${OPTARG}
+    TEST_INCLUDE_DIRS=" -I ${IFS_INT_PATH}"
+    ;;
   x) STOP_ON_FAILURE=true ;;
   *) show_help
      exit 1
@@ -130,6 +127,10 @@ if [ -f ${COMPILER_FILE} ]; then
 else
   echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
+
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/include/ -I ${INCLUDE_MPI}"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/function/"
+
 #
 # IFS_INCLUDES="-I ${IFS_SRC}"
 # IFS_INCLUDES+=" -I ${INCLUDE_MPI}"
@@ -211,7 +212,7 @@ if [[ ${SKIP_FETCH} == false ]]; then
 
   print_green "[INFO] Fetching IFS from ${TEST_MAIN_REPO}"
   git clone ${TEST_MAIN_REPO}
-  cd ${TEST_ROOT_DIR} || exit 1
+  cd "${TEST_ROOT_DIR}" || exit 1
   ./ifs-create
   cd "${WORKING_DIR}" || exit 1
 
@@ -222,7 +223,7 @@ if [[ ${SKIP_FETCH} == false ]]; then
   # cp -R "${IFS_PATH}/${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
 fi
 
-cd ${TEST_ROOT_DIR} || exit 1
+cd "${TEST_ROOT_DIR}" || exit 1
 TEST_HASH=$(git rev-parse HEAD)
 echo "- IFS git version: ${TEST_HASH}" >> "${PARSING_OUTPUT}"
 cd "${WORKING_DIR}" || exit 1
