@@ -11,11 +11,11 @@ function show_help(){
   echo "Options:"
   echo " -b <branch-name>     Specifiy which CLAW branch to be used for the test"
   echo " -s                   Skip CLAW/OMNI compilation/install"
-  echo " -c                   Skip fetching step for IFS"
   echo " -p                   Skip parsing step"
   echo " -o                   Use the latest OMNI Compiler version for the test"
   echo " -t <path-to-ifs-int> Path to automatically generated interfaces"
   echo " -x                   Stop on first failure"
+  echo " -c                   Continue previous test"
 }
 
 # Ensure location of execution
@@ -45,7 +45,7 @@ BASE_COMPILER="gnu"
 
 # Option switches
 SKIP_CLAW=false
-SKIP_FETCH=false
+CONTINUE_TEST=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 STOP_ON_FAILURE=false
@@ -93,7 +93,7 @@ while getopts "hb:ci:t:spox" opt; do
     ;;
   s) SKIP_CLAW=true ;;
   p) SKIP_PARSING=true ;;
-  c) SKIP_FETCH=true ;;
+  c) CONTINUE_TEST=true ;;
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=${OPTARG} ;;
   t)
@@ -128,6 +128,7 @@ fi
 
 TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/include/ -I ${INCLUDE_MPI}"
 TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/function/ -I ${IFS_SRC}/trans/interface"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/namelist"
 
 #
 # IFS_INCLUDES="-I ${IFS_SRC}"
@@ -203,7 +204,7 @@ cd "${WORKING_DIR}" || exit 1
 
 
 
-if [[ ${SKIP_FETCH} == false ]]; then
+# if [[ ${SKIP_FETCH} == false ]]; then
   #####################
   # 2. IFS step
   #####################
@@ -219,7 +220,7 @@ if [[ ${SKIP_FETCH} == false ]]; then
   # cp -R "${IFS_PATH}/${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
   # cp -R "${IFS_INT_PATH}/${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
   # cp -R "${IFS_PATH}/${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-fi
+# fi
 
 cd "${TEST_ROOT_DIR}" || exit 1
 TEST_HASH=$(git rev-parse HEAD)
@@ -231,11 +232,14 @@ if [[ ${SKIP_PARSING} == false ]]; then
   # 3. Dependency step
   ####################
 
-  # Generate the dependency list for the parsing order
-  print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
-  echo "   ${IFS_DEP}"
+
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    # Generate the dependency list for the parsing order
+    print_green "[INFO] Generate dependencies list"
+    echo "../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
+    ../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
+    echo "   ${IFS_DEP}"
+  fi
 
   # Check existence of the dependencies file
   if [[ ! -f ${IFS_DEP} ]]; then
@@ -273,19 +277,23 @@ if [[ ${SKIP_PARSING} == false ]]; then
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
     (( parsed_files=parsed_files+1 ))
-    echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
-    echo "    s(${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    # shellcheck disable=SC2086
-    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    if [[ ${CONTINUE_TEST} == true ]] && [[ -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+      echo "    Skip ${IFS_SRC}${f90_file}"
+    else
+      echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+      echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+      mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
+      echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      # shellcheck disable=SC2086
+      ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
-    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
-      if [[ ${STOP_ON_FAILURE} == true ]]; then
-        tail -n 20 "${PARSING_OUTPUT}"
-        print_red "[ABORTED]"
-        exit 1
+      if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+        print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
+        if [[ ${STOP_ON_FAILURE} == true ]]; then
+          tail -n 20 "${PARSING_OUTPUT}"
+          print_red "[ABORTED]"
+          exit 1
+        fi
       fi
     fi
   done < ./${IFS_DEP}
