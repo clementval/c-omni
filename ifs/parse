@@ -32,7 +32,8 @@ TEST_DIR=${PWD}/build
 CLAW_OUTPUT="./processed/ifs"
 XMOD_DIR="./xmods/ifs"
 EXTERNAL_XMODS="../ifs/external_xmods"
-GLOBAL_XMODS="../global_modules"
+GLOBAL_XMODS="../global_modules/"
+GLOBAL_INC="../global_include/"
 
 # CLAW repository variables
 CLAW_BRANCH="master"
@@ -126,10 +127,29 @@ else
   warning "Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
-TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/include/ -I ${INCLUDE_MPI}"
-TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/function/ -I ${IFS_SRC}/trans/interface"
-TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/namelist -I ${IFS_SRC}/ifsaux/lfi/"
+TEST_INCLUDE_DIRS+=" -I ${INCLUDE_MPI}"
+TEST_INCLUDE_DIRS+=" -I ${GLOBAL_INC}"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/function/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/namelist/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/common/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/interpol/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/ald_inc/namelist/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/ald_inc/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/trans/interface"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/lfi/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/include/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/lfi/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/fa/"
 TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/module/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/Alt/Include/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/surf/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/algor/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/satrad/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/odb/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/bl/include/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ssa/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ssa/common/"
 
 #
 # IFS_INCLUDES="-I ${IFS_SRC}"
