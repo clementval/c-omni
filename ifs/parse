@@ -38,7 +38,7 @@ GLOBAL_XMODS="../global_modules"
 CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/claw-project/claw-compiler.git"
 CLAW_REPO=${CLAW_MAIN_REPO}
-CLAWFC=./claw/bin/clawfc
+CLAWFC=${TEST_DIR}/claw/bin/clawfc
 
 # Default compiler used
 BASE_COMPILER="gnu"
@@ -78,7 +78,7 @@ IFS_DEP="dependencies_ifs"
 
 FDEP_EXLUDED_DIRECTORIES="bl:external_ok:mpi_serial:radiation:trans:cmake"
 FDEP_EXLUDED_DIRECTORIES+=":fieldman:nemo:satrad:verif:glomap:obstat:scat"
-FDEP_EXLUDED_DIRECTORIES+="wam:aeolus:dummy:odb:scmec:ecfftw:oopsifs"
+FDEP_EXLUDED_DIRECTORIES+="aeolus:dummy:odb:scmec:ecfftw:oopsifs"
 FDEP_EXLUDED_DIRECTORIES+="ssa:atlas_apps:enkf:ifsobs:prepdata:surf"
 
 
@@ -123,12 +123,13 @@ if [ -f ${COMPILER_FILE} ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
   source ${COMPILER_FILE}
 else
-  echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
+  warning "Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
 TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/include/ -I ${INCLUDE_MPI}"
 TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/function/ -I ${IFS_SRC}/trans/interface"
-TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/namelist"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/namelist -I ${IFS_SRC}/ifsaux/lfi/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/interface/"
 
 #
 # IFS_INCLUDES="-I ${IFS_SRC}"
@@ -172,7 +173,7 @@ if [[ ${SKIP_CLAW} == false ]]; then
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
-  print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
+  status "CLAW Compiler step: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
     ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
@@ -209,7 +210,7 @@ cd "${WORKING_DIR}" || exit 1
   # 2. IFS step
   #####################
 
-  print_green "[INFO] Fetching IFS from ${TEST_MAIN_REPO}"
+  status "Fetching IFS from ${TEST_MAIN_REPO}"
   git clone ${TEST_MAIN_REPO}
   cd "${TEST_ROOT_DIR}" || exit 1
   ./ifs-create
@@ -235,7 +236,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   if [[ ${CONTINUE_TEST} == false ]]; then
     # Generate the dependency list for the parsing order
-    print_green "[INFO] Generate dependencies list"
+    status "Generate dependencies list"
     echo "../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
     ../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
     echo "   ${IFS_DEP}"
@@ -243,12 +244,12 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the dependencies file
   if [[ ! -f ${IFS_DEP} ]]; then
-    echo "ERROR: ${IFS_DEP} does not exists!"
+    error "${IFS_DEP} does not exists!"
     exit 1
   fi
 
   if [[ $(wc -l < ${IFS_DEP}) -lt 2 ]]; then
-    echo "ERROR: ${IFS_DEP} is empty!"
+    error "${IFS_DEP} is empty!"
     exit 1
   fi
 
@@ -259,7 +260,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]; then
-    echo "ERROR: CLAW FORTRAN Compiler not found!"
+    error "CLAW Compiler not found!"
     exit 1
   fi
 
@@ -267,12 +268,14 @@ if [[ ${SKIP_PARSING} == false ]]; then
   mkdir -p ${CLAW_OUTPUT}
 
   # Clean-up directories of potential previous run
-  rm -f "${CLAW_OUTPUT}"/*.f90
-  rm -f "${XMOD_DIR}"/*.xmod
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    rm -f "${CLAW_OUTPUT}"
+    rm -f "${XMOD_DIR}"/*.xmod
+  fi
 
   total_files=$(wc -l < ./${IFS_DEP})
   parsed_files=0
-  print_green "[INFO] Parsing files"
+  status "Parsing files"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
@@ -288,10 +291,10 @@ if [[ ${SKIP_PARSING} == false ]]; then
       ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
       if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-        print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
+        error "${IFS_SRC}${f90_file} was not parsed correctly!"
         if [[ ${STOP_ON_FAILURE} == true ]]; then
           tail -n 20 "${PARSING_OUTPUT}"
-          print_red "[ABORTED]"
+          error " Aborted after failure"
           exit 1
         fi
       fi
@@ -319,10 +322,10 @@ echo "===================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
   # Check potential known errors in log file
   omni::check_error_log "${PARSING_OUTPUT}"
-  print_red "FAILED: Parsing test has detected some errors."
+  error "Parsing test has detected some errors."
   exit 1
 else
-  print_green "SUCCESS: Test has be executed correctly."
+  status "Test has be executed correctly."
   echo "================================"
   exit 0
 fi
