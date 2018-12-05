@@ -169,7 +169,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
 
   # Generate the dependency list for the parsing order
-  print_green "[INFO] Generate dependencies list"
+  status "Generate dependencies list"
   echo "../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
   ../fdependencies/generate_dep.py --recursive ${JSBACH_SRC} ${JSBACH_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
 
@@ -213,7 +213,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     ${CLAWFC} "${JSBACH_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} -J ${EXTERNAL_XMODS} --force -I "${INCLUDE_MPI}" -o "${CLAW_OUTPUT}"/"${f90_file}" "${JSBACH_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${JSBACH_SRC}""${f90_file}"
+      error "${JSBACH_SRC}""${f90_file}"
     fi
   done < ./${STANDALONE_DEP}
 fi
@@ -238,10 +238,10 @@ echo "================================"
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
   # Check potential known errors in log file
   omni::check_error_log "${PARSING_OUTPUT}"
-  print_red "FAILED: Parsing test has detected some errors."
+  error "Parsing test has detected some errors."
   exit 1
 else
-  print_green "SUCCESS: Test has be executed correctly."
+  status "SUCCESS Test has be executed correctly."
   echo "================================"
   exit 0
 fi
