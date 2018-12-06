@@ -1,0 +1,194 @@
+<OmniFortranModule version="1.0">
+  <name>fckit_signal_module</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7fa22a46f8a0" return_type="Fvoid" is_public="true" bind="C">
+      <params>
+        <name type="I7fa22a470ea0">signum</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fa22a470d70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa22a470ea0" intent="in" is_value="true" ref="I7fa22a470d70"/>
+    <FbasicType type="I7fa22a470590" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa22a4703f0" is_parameter="true" ref="I7fa22a470590"/>
+    <FstructType type="S7fa22a472000" is_private="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fa22a4728b0" pass="nopass" is_public="true">
+          <name>raise</name>
+          <binding>
+            <name>raise</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a473020" pass="nopass" is_public="true">
+          <name>set_handler</name>
+          <binding>
+            <name>set_handler</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a473790" pass="nopass" is_public="true">
+          <name>set_handlers</name>
+          <binding>
+            <name>set_handlers</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a473f00" pass="nopass" is_public="true">
+          <name>restore_handler</name>
+          <binding>
+            <name>restore_handler</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a474680" pass="nopass" is_public="true">
+          <name>restore_handlers</name>
+          <binding>
+            <name>restore_handlers</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a474df0" pass="nopass" is_public="true">
+          <name>sigabrt</name>
+          <binding>
+            <name>sigabrt</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a475550" pass="nopass" is_public="true">
+          <name>sigint</name>
+          <binding>
+            <name>sigint</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a475cb0" pass="nopass" is_public="true">
+          <name>sigkill</name>
+          <binding>
+            <name>sigkill</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a476410" pass="nopass" is_public="true">
+          <name>sigalrm</name>
+          <binding>
+            <name>sigalrm</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a476b70" pass="nopass" is_public="true">
+          <name>sigterm</name>
+          <binding>
+            <name>sigterm</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a4772d0" pass="nopass" is_public="true">
+          <name>sigill</name>
+          <binding>
+            <name>sigill</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a477a30" pass="nopass" is_public="true">
+          <name>sigsegv</name>
+          <binding>
+            <name>sigsegv</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7fa22a478190" pass="nopass" is_public="true">
+          <name>sigfpe</name>
+          <binding>
+            <name>sigfpe</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7fa22a478850" ref="S7fa22a472000"/>
+    <FbasicType type="S7fa22a478980" is_public="true" is_save="true" ref="S7fa22a478850"/>
+    <FfunctionType type="F7fa22a47fb30" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="Fint">signum</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a4728b0" ref="F7fa22a47fb30"/>
+    <FfunctionType type="F7fa22a479710" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="Fint">signum</name>
+        <name type="F7fa22a47bd00">signal_handler</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a47bd00" is_optional="true" is_procedure="true" ref="F7fa22a46f8a0"/>
+    <FbasicType type="F7fa22a473020" ref="F7fa22a479710"/>
+    <FfunctionType type="F7fa22a47e8f0" return_type="Fvoid" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a473790" ref="F7fa22a47e8f0"/>
+    <FfunctionType type="F7fa22a481a30" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="Fint">signum</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a473f00" ref="F7fa22a481a30"/>
+    <FfunctionType type="F7fa22a483810" return_type="Fvoid" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a474680" ref="F7fa22a483810"/>
+    <FfunctionType type="F7fa22a484980" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a474df0" ref="F7fa22a484980"/>
+    <FfunctionType type="F7fa22a486340" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a475550" ref="F7fa22a486340"/>
+    <FfunctionType type="F7fa22a487d00" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a475cb0" ref="F7fa22a487d00"/>
+    <FfunctionType type="F7fa22a4896c0" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a476410" ref="F7fa22a4896c0"/>
+    <FfunctionType type="F7fa22a48e400" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a476b70" ref="F7fa22a48e400"/>
+    <FfunctionType type="F7fa22a48b080" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a4772d0" ref="F7fa22a48b080"/>
+    <FfunctionType type="F7fa22a48ca40" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a477a30" ref="F7fa22a48ca40"/>
+    <FfunctionType type="F7fa22a48fdc0" result_name="signum" return_type="Fint" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7fa22a478190" ref="F7fa22a48fdc0"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7fa22a46f8a0" sclass="ffunc" original_name="fckit_signal_handler" declared_in="fckit_signal_module">
+      <name>fckit_signal_handler</name>
+    </id>
+    <id type="S7fa22a478980" sclass="fsave" original_name="fckit_signal" declared_in="fckit_signal_module">
+      <name>fckit_signal</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
