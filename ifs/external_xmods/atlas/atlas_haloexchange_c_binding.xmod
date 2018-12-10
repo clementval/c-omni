@@ -1,0 +1,568 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_haloexchange_c_binding</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7f95dfc0a3b0" return_type="S7f95dfc0a5c0" bind="C" bind_name="atlas__HaloExchange__new">
+      <params>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc0ad40" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc53b40">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc19880" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc19dc0" is_parameter="true" ref="I7f95dfc19880"/>
+    <FbasicType type="I7f95dfc53b40" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc53e80" ref="S7f95dfc0ad40"/>
+    <FbasicType type="S7f95dfc0a5c0" ref="S7f95dfc53e80"/>
+    <FfunctionType type="F7f95dfc54d40" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__delete">
+      <params>
+        <name type="S7f95dfc56370">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc55890" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc55c60">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc55c60" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc56240" ref="S7f95dfc55890"/>
+    <FbasicType type="S7f95dfc56370" is_value="true" ref="S7f95dfc56240"/>
+    <FfunctionType type="F7f95dfc57480" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__setup">
+      <params>
+        <name type="S7f95dfc59bc0">this</name>
+        <name type="A7f95dfc5a5b0">part</name>
+        <name type="A7f95dfc5afa0">remote_idx</name>
+        <name type="I7f95dfc5b760">base</name>
+        <name type="I7f95dfc5bf20">size</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc58f90" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc594b0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc594b0" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc59a90" ref="S7f95dfc58f90"/>
+    <FbasicType type="S7f95dfc59bc0" is_value="true" ref="S7f95dfc59a90"/>
+    <FbasicType type="I7f95dfc5a350" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5a480" ref="I7f95dfc5a350"/>
+    <FbasicType type="A7f95dfc5a5b0" ref="I7f95dfc5a480">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5ad40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5ae70" ref="I7f95dfc5ad40"/>
+    <FbasicType type="A7f95dfc5afa0" ref="I7f95dfc5ae70">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5b630" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5b760" is_value="true" ref="I7f95dfc5b630"/>
+    <FbasicType type="I7f95dfc5bdf0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5bf20" is_value="true" ref="I7f95dfc5bdf0"/>
+    <FbasicType type="I7f95dfc59130" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc58d10" is_parameter="true" ref="I7f95dfc59130"/>
+    <FfunctionType type="F7f95dfc5d6b0" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_strided_int">
+      <params>
+        <name type="S7f95dfc5fdf0">this</name>
+        <name type="A7f95dfc607e0">field</name>
+        <name type="A7f95dfc611d0">var_strides</name>
+        <name type="A7f95dfc61bc0">var_shape</name>
+        <name type="I7f95dfc62380">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc5f1c0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc5f6e0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc5f6e0" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc5fcc0" ref="S7f95dfc5f1c0"/>
+    <FbasicType type="S7f95dfc5fdf0" is_value="true" ref="S7f95dfc5fcc0"/>
+    <FbasicType type="I7f95dfc60580" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc606b0" ref="I7f95dfc60580"/>
+    <FbasicType type="A7f95dfc607e0" ref="I7f95dfc606b0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc60f70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc610a0" ref="I7f95dfc60f70"/>
+    <FbasicType type="A7f95dfc611d0" ref="I7f95dfc610a0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc61960" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc61a90" ref="I7f95dfc61960"/>
+    <FbasicType type="A7f95dfc61bc0" ref="I7f95dfc61a90">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc62250" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc62380" is_value="true" ref="I7f95dfc62250"/>
+    <FbasicType type="I7f95dfc5f360" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc5ef40" is_parameter="true" ref="I7f95dfc5f360"/>
+    <FfunctionType type="F7f95dfc63a50" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_strided_long">
+      <params>
+        <name type="S7f95dfc666e0">this</name>
+        <name type="A7f95dfc670d0">field</name>
+        <name type="A7f95dfc67ac0">var_strides</name>
+        <name type="A7f95dfc684b0">var_shape</name>
+        <name type="I7f95dfc68c70">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc65960" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc65fd0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc65fd0" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc665b0" ref="S7f95dfc65960"/>
+    <FbasicType type="S7f95dfc666e0" is_value="true" ref="S7f95dfc665b0"/>
+    <FbasicType type="I7f95dfc66e70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc66fa0" ref="I7f95dfc66e70"/>
+    <FbasicType type="A7f95dfc670d0" ref="I7f95dfc66fa0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc67860" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc67990" ref="I7f95dfc67860"/>
+    <FbasicType type="A7f95dfc67ac0" ref="I7f95dfc67990">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc68250" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc68380" ref="I7f95dfc68250"/>
+    <FbasicType type="A7f95dfc684b0" ref="I7f95dfc68380">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc68b40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc68c70" is_value="true" ref="I7f95dfc68b40"/>
+    <FbasicType type="I7f95dfc65b00" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc65460" is_parameter="true" ref="I7f95dfc65b00"/>
+    <FbasicType type="I7f95dfc65c50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc656e0" is_parameter="true" ref="I7f95dfc65c50"/>
+    <FfunctionType type="F7f95dfc6a300" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_strided_float">
+      <params>
+        <name type="S7f95dfc6cf90">this</name>
+        <name type="A7f95dfc6d980">field</name>
+        <name type="A7f95dfc6e370">var_strides</name>
+        <name type="A7f95dfc6ed60">var_shape</name>
+        <name type="I7f95dfc6f520">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc6c210" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc6c880">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc6c880" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc6ce60" ref="S7f95dfc6c210"/>
+    <FbasicType type="S7f95dfc6cf90" is_value="true" ref="S7f95dfc6ce60"/>
+    <FbasicType type="R7f95dfc6d720" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f95dfc6d850" ref="R7f95dfc6d720"/>
+    <FbasicType type="A7f95dfc6d980" ref="R7f95dfc6d850">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6e110" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6e240" ref="I7f95dfc6e110"/>
+    <FbasicType type="A7f95dfc6e370" ref="I7f95dfc6e240">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6eb00" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6ec30" ref="I7f95dfc6eb00"/>
+    <FbasicType type="A7f95dfc6ed60" ref="I7f95dfc6ec30">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6f3f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6f520" is_value="true" ref="I7f95dfc6f3f0"/>
+    <FbasicType type="I7f95dfc6c3b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6bd10" is_parameter="true" ref="I7f95dfc6c3b0"/>
+    <FbasicType type="I7f95dfc6c500" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc6bf90" is_parameter="true" ref="I7f95dfc6c500"/>
+    <FfunctionType type="F7f95dfc70bb0" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_strided_double">
+      <params>
+        <name type="S7f95dfc73840">this</name>
+        <name type="A7f95dfc74230">field</name>
+        <name type="A7f95dfc74c20">var_strides</name>
+        <name type="A7f95dfc75610">var_shape</name>
+        <name type="I7f95dfc75dd0">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc72ac0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc73130">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc73130" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc73710" ref="S7f95dfc72ac0"/>
+    <FbasicType type="S7f95dfc73840" is_value="true" ref="S7f95dfc73710"/>
+    <FbasicType type="R7f95dfc73fd0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f95dfc74100" ref="R7f95dfc73fd0"/>
+    <FbasicType type="A7f95dfc74230" ref="R7f95dfc74100">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc749c0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc74af0" ref="I7f95dfc749c0"/>
+    <FbasicType type="A7f95dfc74c20" ref="I7f95dfc74af0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc753b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc754e0" ref="I7f95dfc753b0"/>
+    <FbasicType type="A7f95dfc75610" ref="I7f95dfc754e0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc75ca0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc75dd0" is_value="true" ref="I7f95dfc75ca0"/>
+    <FbasicType type="I7f95dfc72c60" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc725c0" is_parameter="true" ref="I7f95dfc72c60"/>
+    <FbasicType type="I7f95dfc72db0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc72840" is_parameter="true" ref="I7f95dfc72db0"/>
+    <FfunctionType type="F7f95dfc77360" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_int">
+      <params>
+        <name type="S7f95dfc794c0">this</name>
+        <name type="A7f95dfc79eb0">field</name>
+        <name type="I7f95dfc7a670">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc78890" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc78db0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc78db0" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc79390" ref="S7f95dfc78890"/>
+    <FbasicType type="S7f95dfc794c0" is_value="true" ref="S7f95dfc79390"/>
+    <FbasicType type="I7f95dfc79c50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc79d80" ref="I7f95dfc79c50"/>
+    <FbasicType type="A7f95dfc79eb0" ref="I7f95dfc79d80">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc7a540" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc7a670" is_value="true" ref="I7f95dfc7a540"/>
+    <FbasicType type="I7f95dfc78a30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc78610" is_parameter="true" ref="I7f95dfc78a30"/>
+    <FfunctionType type="F7f95dfc7b920" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_float">
+      <params>
+        <name type="S7f95dfc7dfd0">this</name>
+        <name type="A7f95dfc7e9c0">field</name>
+        <name type="I7f95dfc7f180">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc7d250" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc7d8c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc7d8c0" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc7dea0" ref="S7f95dfc7d250"/>
+    <FbasicType type="S7f95dfc7dfd0" is_value="true" ref="S7f95dfc7dea0"/>
+    <FbasicType type="R7f95dfc7e760" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f95dfc7e890" ref="R7f95dfc7e760"/>
+    <FbasicType type="A7f95dfc7e9c0" ref="R7f95dfc7e890">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc7f050" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc7f180" is_value="true" ref="I7f95dfc7f050"/>
+    <FbasicType type="I7f95dfc7d3f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc7cd50" is_parameter="true" ref="I7f95dfc7d3f0"/>
+    <FbasicType type="I7f95dfc7d540" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc7cfd0" is_parameter="true" ref="I7f95dfc7d540"/>
+    <FfunctionType type="F7f95dfc803f0" return_type="Fvoid" bind="C" bind_name="atlas__HaloExchange__execute_double">
+      <params>
+        <name type="S7f95dfc82aa0">this</name>
+        <name type="A7f95dfc83490">field</name>
+        <name type="I7f95dfc83c50">var_rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7f95dfc81d20" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7f95dfc82390">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f95dfc82390" ref="Fint">
+      <kind>
+        <Var type="I7f95dfc19dc0" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f95dfc82970" ref="S7f95dfc81d20"/>
+    <FbasicType type="S7f95dfc82aa0" is_value="true" ref="S7f95dfc82970"/>
+    <FbasicType type="R7f95dfc83230" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f95dfc83360" ref="R7f95dfc83230"/>
+    <FbasicType type="A7f95dfc83490" ref="R7f95dfc83360">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7f95dfc83b20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc83c50" is_value="true" ref="I7f95dfc83b20"/>
+    <FbasicType type="I7f95dfc81ec0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc81820" is_parameter="true" ref="I7f95dfc81ec0"/>
+    <FbasicType type="I7f95dfc82010" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f95dfc81aa0" is_parameter="true" ref="I7f95dfc82010"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7f95dfc0a3b0" sclass="ffunc" original_name="atlas__haloexchange__new" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__new</name>
+    </id>
+    <id type="F7f95dfc54d40" sclass="ffunc" original_name="atlas__haloexchange__delete" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__delete</name>
+    </id>
+    <id type="F7f95dfc57480" sclass="ffunc" original_name="atlas__haloexchange__setup" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__setup</name>
+    </id>
+    <id type="F7f95dfc5d6b0" sclass="ffunc" original_name="atlas__haloexchange__execute_strided_int" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_strided_int</name>
+    </id>
+    <id type="F7f95dfc63a50" sclass="ffunc" original_name="atlas__haloexchange__execute_strided_long" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_strided_long</name>
+    </id>
+    <id type="F7f95dfc6a300" sclass="ffunc" original_name="atlas__haloexchange__execute_strided_float" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_strided_float</name>
+    </id>
+    <id type="F7f95dfc70bb0" sclass="ffunc" original_name="atlas__haloexchange__execute_strided_double" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_strided_double</name>
+    </id>
+    <id type="F7f95dfc77360" sclass="ffunc" original_name="atlas__haloexchange__execute_int" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_int</name>
+    </id>
+    <id type="F7f95dfc7b920" sclass="ffunc" original_name="atlas__haloexchange__execute_float" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_float</name>
+    </id>
+    <id type="F7f95dfc803f0" sclass="ffunc" original_name="atlas__haloexchange__execute_double" declared_in="atlas_haloexchange_c_binding">
+      <name>atlas__haloexchange__execute_double</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
