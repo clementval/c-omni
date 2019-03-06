@@ -11,12 +11,11 @@ function show_help(){
   echo "Options:"
   echo " -b <branch-name>     Specifiy which CLAW branch to be used for the test"
   echo " -s                   Skip CLAW/OMNI compilation/install"
-  echo " -c                   Skip fetching step for IFS"
   echo " -p                   Skip parsing step"
   echo " -o                   Use the latest OMNI Compiler version for the test"
-  echo " -i <path-to-ifs>     Path to the directory where ifs dir is located"
   echo " -t <path-to-ifs-int> Path to automatically generated interfaces"
   echo " -x                   Stop on first failure"
+  echo " -c                   Continue previous test"
 }
 
 # Ensure location of execution
@@ -33,51 +32,56 @@ TEST_DIR=${PWD}/build
 CLAW_OUTPUT="./processed/ifs"
 XMOD_DIR="./xmods/ifs"
 EXTERNAL_XMODS="../ifs/external_xmods"
-GLOBAL_XMODS="../global_modules"
+GLOBAL_XMODS="../global_modules/"
+GLOBAL_INC="../global_include/"
 
 # CLAW repository variables
 CLAW_BRANCH="master"
 CLAW_MAIN_REPO="https://github.com/claw-project/claw-compiler.git"
 CLAW_REPO=${CLAW_MAIN_REPO}
-CLAWFC=./claw/bin/clawfc
+CLAWFC=${TEST_DIR}/claw/bin/clawfc
 
 # Default compiler used
 BASE_COMPILER="gnu"
 
 # Option switches
 SKIP_CLAW=false
-SKIP_FETCH=false
+CONTINUE_TEST=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 STOP_ON_FAILURE=false
 
 # IFS related variables
-IFS_PATH=""
-IFS_INT_PATH=""
-IFS_MAIN_REPO="Local"
-IFS_WRK_DIR="ifs-wrk"
-IFS_SRC_REP="ifs"
-IFS_AUX_REP="ifsaux"
-IFS_INT_REP="ifs-interfaces"
-IFS_TRANS_INT_REP="trans/interface"
-IFS_SRC="./${IFS_WRK_DIR}/"
+TEST_MAIN_REPO="ssh://git@git.ecmwf.int/IFS/ifs-bundle.git"
+TEST_ROOT_DIR="ifs-bundle"
 
-IFS_START="programs/master.F90"
+
+IFS_SRC="${TEST_ROOT_DIR}/source/ifs-source/"
+IFS_START="ifs/programs/master.F90"
 IFS_DEP="dependencies_ifs"
 
-IFS_AUX_INCLUDE="./${IFS_WRK_DIR}/${IFS_AUX_REP}/include"
-IFS_INT_INCLUDE="./${IFS_WRK_DIR}/${IFS_INT_REP}"
-IFS_TRANS_INT_INCLUDE="./${IFS_WRK_DIR}/${IFS_TRANS_INT_REP}"
 
-IFS_NAMELIST_INCLUDE="${IFS_SRC}/namelist"
-IFS_ALD_INC_NAMELIST="${IFS_SRC}/ald_inc/namelist"
-IFS_ALD_INC_INT="${IFS_SRC}/ald_inc/interface"
-IFS_ALD_INC_FCT="${IFS_SRC}/ald_inc/function"
+
+#
+# IFS_AUX_INCLUDE="./${TEST_ROOT_DIR}/${IFS_AUX_REP}/include"
+# IFS_INT_INCLUDE="./${TEST_ROOT_DIR}/${IFS_INT_REP}"
+# IFS_TRANS_INT_INCLUDE="./${TEST_ROOT_DIR}/${IFS_TRANS_INT_REP}"
+#
+# IFS_NAMELIST_INCLUDE="${IFS_SRC}/namelist"
+# IFS_ALD_INC_NAMELIST="${IFS_SRC}/ald_inc/namelist"
+# IFS_ALD_INC_INT="${IFS_SRC}/ald_inc/interface"
+# IFS_ALD_INC_FCT="${IFS_SRC}/ald_inc/function"
 
 # IFS_DEFINITIONS="-DBLAS  -DECMWF -DINTEGER_IS_INT -DPATHSCALE -D_ABI64"
 # IFS_DEFINITIONS+=" -DF90 -DPARAL -DNONCRAYF -D_RTTOV_DO_DISTRIBCOEF"
 # IFS_DEFINITIONS+=" -D_RTTOV_NETCDF -DWITH_WAVE -DWITH_ATLAS"
-IFS_EXCLUDED_FILES="module/coupling.F90" # ASSOCIATE construct not supported yet
+
+
+FDEP_EXLUDED_DIRECTORIES="bl:external_ok:mpi_serial:trans:cmake:"
+FDEP_EXLUDED_DIRECTORIES+="fieldman:nemo:satrad:verif:glomap:obstat:scat:"
+FDEP_EXLUDED_DIRECTORIES+="aeolus:dummy:odb:scmec:ecfftw:oopsifs:"
+FDEP_EXLUDED_DIRECTORIES+="ssa:enkf:ifsobs:prepdata:surf:atlas_apps"
+
 
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/ifs_parse_test.log
@@ -90,22 +94,19 @@ while getopts "hb:ci:t:spox" opt; do
     ;;
   s) SKIP_CLAW=true ;;
   p) SKIP_PARSING=true ;;
-  c) SKIP_FETCH=true ;;
+  c) CONTINUE_TEST=true ;;
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=${OPTARG} ;;
-  i) IFS_PATH=${OPTARG} ;;
-  t) IFS_INT_PATH=${OPTARG} ;;
+  t)
+    IFS_INT_PATH=${OPTARG}
+    TEST_INCLUDE_DIRS=" -I ${IFS_INT_PATH}"
+    ;;
   x) STOP_ON_FAILURE=true ;;
   *) show_help
      exit 1
      ;;
   esac
 done
-
-if [[ "${IFS_PATH}" == "" ]] || [[ "${IFS_INT_PATH}" == "" ]]; then
-  echo "ERROR: ifs and ifs-interface path must be specified"
-  exit 1
-fi
 
 COMPUTER=$(hostname)
 
@@ -123,18 +124,43 @@ if [ -f ${COMPILER_FILE} ]; then
   # shellcheck source=./compiler/clementon2.gnu.sh
   source ${COMPILER_FILE}
 else
-  echo "Warning: Compiler file ${COMPILER_FILE} missing. Default values are used."
+  warning "Compiler file ${COMPILER_FILE} missing. Default values are used."
 fi
 
-IFS_INCLUDES="-I ${IFS_SRC}"
-IFS_INCLUDES+=" -I ${INCLUDE_MPI}"
-IFS_INCLUDES+=" -I ${IFS_INT_INCLUDE}"
-IFS_INCLUDES+=" -I ${IFS_AUX_INCLUDE}"
-IFS_INCLUDES+=" -I ${IFS_TRANS_INT_INCLUDE}"
-IFS_INCLUDES+=" -I ${IFS_ALD_INC_NAMELIST}"
-IFS_INCLUDES+=" -I ${IFS_NAMELIST_INCLUDE}"
-IFS_INCLUDES+=" -I ${IFS_ALD_INC_INT}"
-IFS_INCLUDES+=" -I ${IFS_ALD_INC_FCT}"
+TEST_INCLUDE_DIRS+=" -I ${INCLUDE_MPI}"
+TEST_INCLUDE_DIRS+=" -I ${GLOBAL_INC}"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/function/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/namelist/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/common/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/interpol/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/ald_inc/namelist/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifs/ald_inc/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/trans/interface"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/lfi/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/include/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/lfi/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ifsaux/fa/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/module/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/wam/Alt/Include/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/surf/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/algor/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/satrad/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/odb/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/bl/include/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ssa/interface/"
+TEST_INCLUDE_DIRS+=" -I ${IFS_SRC}/ssa/common/"
+
+#
+# IFS_INCLUDES="-I ${IFS_SRC}"
+# IFS_INCLUDES+=" -I ${INCLUDE_MPI}"
+# IFS_INCLUDES+=" -I ${IFS_INT_INCLUDE}"
+# IFS_INCLUDES+=" -I ${IFS_AUX_INCLUDE}"
+# IFS_INCLUDES+=" -I ${IFS_TRANS_INT_INCLUDE}"
+# IFS_INCLUDES+=" -I ${IFS_ALD_INC_NAMELIST}"
+# IFS_INCLUDES+=" -I ${IFS_NAMELIST_INCLUDE}"
+# IFS_INCLUDES+=" -I ${IFS_ALD_INC_INT}"
+# IFS_INCLUDES+=" -I ${IFS_ALD_INC_FCT}"
 
 echo ""
 echo "============================================"
@@ -160,21 +186,21 @@ if [[ ${SKIP_CLAW} == false ]]; then
   echo "  - Base compiler: ${BASE_COMPILER}"
   echo "  - Target directory: ${TEST_DIR}"
 
-  rm -rf "${TEST_DIR}"
+  # rm -rf "${TEST_DIR}"
   mkdir "${TEST_DIR}"
 
   ###############################
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
-  print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
+  status "CLAW Compiler step: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
     ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
     ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}"
   fi
-elif [[ ${SKIP_FETCH} == false ]]; then
-  rm -rf "${TEST_DIR:?}"/${IFS_WRK_DIR}
+# elif [[ ${SKIP_FETCH} == false ]]; then
+  # rm -rf "${TEST_DIR:?}"/${IFS_WRK_DIR}
 fi
 
 echo "============================================"
@@ -199,22 +225,27 @@ cd "${WORKING_DIR}" || exit 1
 
 
 
-if [[ ${SKIP_FETCH} == false ]]; then
+# if [[ ${SKIP_FETCH} == false ]]; then
   #####################
   # 2. IFS step
   #####################
 
-  print_green "[INFO] Fetching IFS from ${IFS_PATH}"
-  rm -rf "${IFS_SRC}"
-  cp -R "${IFS_PATH}/${IFS_SRC_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-  cp -R "${IFS_PATH}/${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-  cp -R "${IFS_INT_PATH}/${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-  cp -R "${IFS_PATH}/${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
-fi
+  status "Fetching IFS from ${TEST_MAIN_REPO}"
+  git clone ${TEST_MAIN_REPO}
+  cd "${TEST_ROOT_DIR}" || exit 1
+  ./ifs-create
+  cd "${WORKING_DIR}" || exit 1
 
-cd "${IFS_WRK_DIR}" || exit 1
-IFS_HASH=$(git rev-parse HEAD)
-echo "- IFS git version: ${IFS_HASH}" >> "${PARSING_OUTPUT}"
+  # rm -rf "${IFS_SRC}"
+  # cp -R "${IFS_PATH}/${IFS_SRC_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  # cp -R "${IFS_PATH}/${IFS_AUX_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  # cp -R "${IFS_INT_PATH}/${IFS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+  # cp -R "${IFS_PATH}/${IFS_TRANS_INT_REP}" "${TEST_DIR}/${IFS_WRK_DIR}"
+# fi
+
+cd "${TEST_ROOT_DIR}" || exit 1
+TEST_HASH=$(git rev-parse HEAD)
+echo "- IFS git version: ${TEST_HASH}" >> "${PARSING_OUTPUT}"
 cd "${WORKING_DIR}" || exit 1
 
 if [[ ${SKIP_PARSING} == false ]]; then
@@ -222,20 +253,23 @@ if [[ ${SKIP_PARSING} == false ]]; then
   # 3. Dependency step
   ####################
 
-  # Generate the dependency list for the parsing order
-  print_green "[INFO] Generate dependencies list"
-  echo "../fdependencies/generate_dep.py --exclude ${IFS_EXCLUDED_FILES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
-  ../fdependencies/generate_dep.py --exclude ${IFS_EXCLUDED_FILES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
-  echo "   ${IFS_DEP}"
+
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    # Generate the dependency list for the parsing order
+    status "Generate dependencies list"
+    echo "../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
+    ../fdependencies/generate_dep.py --exclude-dir ${FDEP_EXLUDED_DIRECTORIES} --recursive ${IFS_SRC} ${IFS_START} > ${IFS_DEP} 2> dependencies_ifs.out
+    echo "   ${IFS_DEP}"
+  fi
 
   # Check existence of the dependencies file
   if [[ ! -f ${IFS_DEP} ]]; then
-    echo "ERROR: ${IFS_DEP} does not exists!"
+    error "${IFS_DEP} does not exists!"
     exit 1
   fi
 
   if [[ $(wc -l < ${IFS_DEP}) -lt 2 ]]; then
-    echo "ERROR: ${IFS_DEP} is empty!"
+    error "${IFS_DEP} is empty!"
     exit 1
   fi
 
@@ -246,7 +280,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]; then
-    echo "ERROR: CLAW FORTRAN Compiler not found!"
+    error "CLAW Compiler not found!"
     exit 1
   fi
 
@@ -254,29 +288,35 @@ if [[ ${SKIP_PARSING} == false ]]; then
   mkdir -p ${CLAW_OUTPUT}
 
   # Clean-up directories of potential previous run
-  rm -f "${CLAW_OUTPUT}"/*.f90
-  rm -f "${XMOD_DIR}"/*.xmod
+  if [[ ${CONTINUE_TEST} == false ]]; then
+    rm -f "${CLAW_OUTPUT}"
+    rm -f "${XMOD_DIR}"/*.xmod
+  fi
 
   total_files=$(wc -l < ./${IFS_DEP})
   parsed_files=0
-  print_green "[INFO] Parsing files"
+  status "Parsing files"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
     (( parsed_files=parsed_files+1 ))
-    echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
-    echo "    s(${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
-    mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
-    echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${IFS_INCLUDES} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
-    # shellcheck disable=SC2086
-    ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${IFS_INCLUDES} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+    if [[ ${CONTINUE_TEST} == true ]] && [[ -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+      echo "    Skip ${IFS_SRC}${f90_file}"
+    else
+      echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}"
+      echo "    (${parsed_files}/${total_files}) Processing file ${IFS_SRC}${f90_file} -> ${CLAW_OUTPUT}/${f90_file}" >> "${PARSING_OUTPUT}"
+      mkdir -p "$(dirname "${CLAW_OUTPUT}"/"${f90_file}")"
+      echo "cmd: ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o ${CLAW_OUTPUT}/${f90_file} ${IFS_SRC}${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
+      # shellcheck disable=SC2086
+      ${CLAWFC} --no-dep --debug-omni -J ${XMOD_DIR} -J ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force ${TEST_INCLUDE_DIRS} -o "${CLAW_OUTPUT}"/"${f90_file}" "${IFS_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
 
-    if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${IFS_SRC}""${f90_file}"
-      if [[ ${STOP_ON_FAILURE} == true ]]; then
-        tail -n 20 "${PARSING_OUTPUT}"
-        print_red "[ABORTED]"
-        exit 1
+      if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
+        error "${IFS_SRC}${f90_file} was not parsed correctly!"
+        if [[ ${STOP_ON_FAILURE} == true ]]; then
+          tail -n 20 "${PARSING_OUTPUT}"
+          error " Aborted after failure"
+          exit 1
+        fi
       fi
     fi
   done < ./${IFS_DEP}
@@ -302,10 +342,10 @@ echo "===================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
   # Check potential known errors in log file
   omni::check_error_log "${PARSING_OUTPUT}"
-  print_red "FAILED: Parsing test has detected some errors."
+  error "Parsing test has detected some errors."
   exit 1
 else
-  print_green "SUCCESS: Test has be executed correctly."
+  status "Test has be executed correctly."
   echo "================================"
   exit 0
 fi

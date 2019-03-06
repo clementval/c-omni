@@ -194,7 +194,7 @@ if [[ ${SKIP_CLAW} == false ]]; then
   # 1. CLAW FORTRAN Compiler step
   ###############################
 
-  print_green "[INFO] CLAW FORTRAN COMPILER STEP: Clone and compile"
+  status "CLAW Compiler step: Clone and compile"
   if [[ ${OMNI_LATEST} == true ]]; then
     ./common/compile.claw -d "${TEST_DIR}" -c "${BASE_COMPILER}" -r "${CLAW_REPO}" -b "${CLAW_BRANCH}" -o
   else
@@ -223,7 +223,7 @@ if [[ ${SKIP_FETCH} == false ]]; then
   #####################
   # 2. COSMO step
   #####################
-  print_green "[INFO] Fetching ${COSMO_VERSION}"
+  status "Fetching ${COSMO_VERSION}"
 
   if [[ "${COSMO_BRANCH}" != "" ]]; then
     git clone --depth 1 -b "${COSMO_BRANCH}" "${COSMO_MAIN_REPO}"
@@ -251,7 +251,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
 
   # Generate the dependency list for the parsing order
-  print_green "[INFO] Generate dependencies list"
+  status "Generate dependencies list"
   echo "../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} --exclude ${COSMO_EXCLUDED_FILES} > ${COSMO_DEP} 2> dependencies_cosmo.out" >> "${PARSING_OUTPUT}"
   ../fdependencies/generate_dep.py ${COSMO_SRC} ${COSMO_START} --exclude ${COSMO_EXCLUDED_FILES} > ${COSMO_DEP} 2> dependencies_cosmo.out
   echo "   ${COSMO_DEP}"
@@ -286,7 +286,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
   rm "${XMOD_DIR}"/*.xmod
 
   parsed_files=0
-  print_green "[INFO] Parsing files"
+  status "Parsing files"
   echo "" >> "${PARSING_OUTPUT}"
   echo "Parsing files:" >> "${PARSING_OUTPUT}"
   while IFS= read -r f90_file; do
@@ -298,7 +298,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     ${CLAWFC} "${COSMO_DEFINITIONS}" --no-dep --debug-omni -J ${XMOD_DIR} ${GLOBAL_XMODS} -J ${EXTERNAL_XMODS} --force -I ${COSMO_MPI_INCLUDE} -I ${COSMO_NETCDF_INC} -I ${COSMO_SRC} -o "${CLAW_OUTPUT}"/"${f90_file}" "${COSMO_SRC}""${f90_file}" >> "${PARSING_OUTPUT}" 2>&1
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${COSMO_SRC}""${f90_file}"
+      error "${COSMO_SRC}${f90_file}"
     fi
   done < ./${COSMO_DEP}
 fi
@@ -323,10 +323,10 @@ echo "====================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
   # Check potential known errors in log file
   omni::check_error_log "${PARSING_OUTPUT}"
-  print_red "FAILED: Parsing test has detected some errors."
+  error "Parsing test has detected some errors."
   exit 1
 else
-  print_green "SUCCESS: Test has be executed correctly."
+  status "Test has be executed correctly."
   echo "================================"
   exit 0
 fi

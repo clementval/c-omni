@@ -1,0 +1,1266 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_trans_c_binding</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7ff34ee08430" return_type="S7ff34ee089c0" bind="C" bind_name="atlas__Trans__new">
+      <params>
+        <name type="S7ff34ed0be50">grid</name>
+        <name type="I7ff34ed0c610">nsmax</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed0ad10" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed0b1d0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ec098f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ec09e30" is_parameter="true" ref="I7ff34ec098f0"/>
+    <FbasicType type="I7ff34ed0b1d0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed0b660" ref="S7ff34ed0ad10"/>
+    <FbasicType type="S7ff34ee089c0" ref="S7ff34ed0b660"/>
+    <FbasicType type="S7ff34ed0bd20" ref="S7ff34ed0ad10"/>
+    <FbasicType type="S7ff34ed0be50" is_value="true" ref="S7ff34ed0bd20"/>
+    <FbasicType type="I7ff34ed0c4e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed0c610" is_value="true" ref="I7ff34ed0c4e0"/>
+    <FbasicType type="I7ff34ed0ae90" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed0ab00" is_parameter="true" ref="I7ff34ed0ae90"/>
+    <FfunctionType type="F7ff34ed0d6c0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__delete">
+      <params>
+        <name type="S7ff34ed0ecf0">trans</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed0e210" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed0e5e0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed0e5e0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed0ebc0" ref="S7ff34ed0e210"/>
+    <FbasicType type="S7ff34ed0ecf0" is_value="true" ref="S7ff34ed0ebc0"/>
+    <FfunctionType type="F7ff34ed0fe90" return_type="Fvoid" bind="C" bind_name="atlas__Trans__distspec">
+      <params>
+        <name type="S7ff34ed12b20">t</name>
+        <name type="I7ff34ed132e0">nb_fields</name>
+        <name type="A7ff34ed13cd0">origin</name>
+        <name type="A7ff34ed146c0">global_spectra</name>
+        <name type="A7ff34ed150b0">spectra</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed11da0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed12410">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed12410" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed129f0" ref="S7ff34ed11da0"/>
+    <FbasicType type="S7ff34ed12b20" is_value="true" ref="S7ff34ed129f0"/>
+    <FbasicType type="I7ff34ed131b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed132e0" is_value="true" ref="I7ff34ed131b0"/>
+    <FbasicType type="I7ff34ed13a70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed13ba0" ref="I7ff34ed13a70"/>
+    <FbasicType type="A7ff34ed13cd0" ref="I7ff34ed13ba0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed14460" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed14590" ref="R7ff34ed14460"/>
+    <FbasicType type="A7ff34ed146c0" ref="R7ff34ed14590">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed14e50" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed14f80" ref="R7ff34ed14e50"/>
+    <FbasicType type="A7ff34ed150b0" ref="R7ff34ed14f80">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed11f40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed118a0" is_parameter="true" ref="I7ff34ed11f40"/>
+    <FbasicType type="I7ff34ed12090" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed11b20" is_parameter="true" ref="I7ff34ed12090"/>
+    <FfunctionType type="F7ff34ed16750" return_type="Fvoid" bind="C" bind_name="atlas__Trans__gathspec">
+      <params>
+        <name type="S7ff34ed193e0">t</name>
+        <name type="I7ff34ed19ba0">nb_fields</name>
+        <name type="A7ff34ed1a590">destination</name>
+        <name type="A7ff34ed1af80">spectra</name>
+        <name type="A7ff34ed1b970">global_spectra</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed18660" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed18cd0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed18cd0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed192b0" ref="S7ff34ed18660"/>
+    <FbasicType type="S7ff34ed193e0" is_value="true" ref="S7ff34ed192b0"/>
+    <FbasicType type="I7ff34ed19a70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed19ba0" is_value="true" ref="I7ff34ed19a70"/>
+    <FbasicType type="I7ff34ed1a330" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed1a460" ref="I7ff34ed1a330"/>
+    <FbasicType type="A7ff34ed1a590" ref="I7ff34ed1a460">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed1ad20" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed1ae50" ref="R7ff34ed1ad20"/>
+    <FbasicType type="A7ff34ed1af80" ref="R7ff34ed1ae50">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed1b710" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed1b840" ref="R7ff34ed1b710"/>
+    <FbasicType type="A7ff34ed1b970" ref="R7ff34ed1b840">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed18800" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed18160" is_parameter="true" ref="I7ff34ed18800"/>
+    <FbasicType type="I7ff34ed18950" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed183e0" is_parameter="true" ref="I7ff34ed18950"/>
+    <FfunctionType type="F7ff34ed1d040" return_type="Fvoid" bind="C" bind_name="atlas__Trans__distgrid">
+      <params>
+        <name type="S7ff34ed1fcd0">t</name>
+        <name type="I7ff34ed20490">nb_fields</name>
+        <name type="A7ff34ed20e80">origin</name>
+        <name type="A7ff34ed21870">global_fields</name>
+        <name type="A7ff34ed22260">fields</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed1ef50" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed1f5c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed1f5c0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed1fba0" ref="S7ff34ed1ef50"/>
+    <FbasicType type="S7ff34ed1fcd0" is_value="true" ref="S7ff34ed1fba0"/>
+    <FbasicType type="I7ff34ed20360" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed20490" is_value="true" ref="I7ff34ed20360"/>
+    <FbasicType type="I7ff34ed20c20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed20d50" ref="I7ff34ed20c20"/>
+    <FbasicType type="A7ff34ed20e80" ref="I7ff34ed20d50">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed21610" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed21740" ref="R7ff34ed21610"/>
+    <FbasicType type="A7ff34ed21870" ref="R7ff34ed21740">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed22000" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed22130" ref="R7ff34ed22000"/>
+    <FbasicType type="A7ff34ed22260" ref="R7ff34ed22130">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed1f0f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed1ea50" is_parameter="true" ref="I7ff34ed1f0f0"/>
+    <FbasicType type="I7ff34ed1f240" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed1ecd0" is_parameter="true" ref="I7ff34ed1f240"/>
+    <FfunctionType type="F7ff34ed238d0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__gathgrid">
+      <params>
+        <name type="S7ff34ed26560">t</name>
+        <name type="I7ff34ed26d20">nb_fields</name>
+        <name type="A7ff34ed27710">destination</name>
+        <name type="A7ff34ed28100">fields</name>
+        <name type="A7ff34ed28af0">global_fields</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed257e0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed25e50">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed25e50" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed26430" ref="S7ff34ed257e0"/>
+    <FbasicType type="S7ff34ed26560" is_value="true" ref="S7ff34ed26430"/>
+    <FbasicType type="I7ff34ed26bf0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed26d20" is_value="true" ref="I7ff34ed26bf0"/>
+    <FbasicType type="I7ff34ed274b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed275e0" ref="I7ff34ed274b0"/>
+    <FbasicType type="A7ff34ed27710" ref="I7ff34ed275e0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed27ea0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed27fd0" ref="R7ff34ed27ea0"/>
+    <FbasicType type="A7ff34ed28100" ref="R7ff34ed27fd0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed28890" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed289c0" ref="R7ff34ed28890"/>
+    <FbasicType type="A7ff34ed28af0" ref="R7ff34ed289c0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed25980" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed252e0" is_parameter="true" ref="I7ff34ed25980"/>
+    <FbasicType type="I7ff34ed25ad0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed25560" is_parameter="true" ref="I7ff34ed25ad0"/>
+    <FfunctionType type="F7ff34ed2a470" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans">
+      <params>
+        <name type="S7ff34ed2d9d0">t</name>
+        <name type="I7ff34ed2e190">nb_scalar_fields</name>
+        <name type="A7ff34ed2eb80">scalar_spectra</name>
+        <name type="I7ff34ed2f340">nb_vordiv_fields</name>
+        <name type="A7ff34ed2fd30">vorticity_spectra</name>
+        <name type="A7ff34ed30720">divergence_spectra</name>
+        <name type="A7ff34ed31110">gp_fields</name>
+        <name type="S7ff34ed317d0">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed2cc50" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed2d2c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed2d2c0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed2d8a0" ref="S7ff34ed2cc50"/>
+    <FbasicType type="S7ff34ed2d9d0" is_value="true" ref="S7ff34ed2d8a0"/>
+    <FbasicType type="I7ff34ed2e060" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed2e190" is_value="true" ref="I7ff34ed2e060"/>
+    <FbasicType type="R7ff34ed2e920" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed2ea50" ref="R7ff34ed2e920"/>
+    <FbasicType type="A7ff34ed2eb80" ref="R7ff34ed2ea50">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed2f210" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed2f340" is_value="true" ref="I7ff34ed2f210"/>
+    <FbasicType type="R7ff34ed2fad0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed2fc00" ref="R7ff34ed2fad0"/>
+    <FbasicType type="A7ff34ed2fd30" ref="R7ff34ed2fc00">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed304c0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed305f0" ref="R7ff34ed304c0"/>
+    <FbasicType type="A7ff34ed30720" ref="R7ff34ed305f0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed30eb0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed30fe0" ref="R7ff34ed30eb0"/>
+    <FbasicType type="A7ff34ed31110" ref="R7ff34ed30fe0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7ff34ed316a0" ref="S7ff34ed2cc50"/>
+    <FbasicType type="S7ff34ed317d0" is_value="true" ref="S7ff34ed316a0"/>
+    <FbasicType type="I7ff34ed2cdf0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed2c750" is_parameter="true" ref="I7ff34ed2cdf0"/>
+    <FbasicType type="I7ff34ed2cf40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed2c9d0" is_parameter="true" ref="I7ff34ed2cf40"/>
+    <FfunctionType type="F7ff34ed332a0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans_scalar">
+      <params>
+        <name type="S7ff34ed35c40">t</name>
+        <name type="I7ff34ed36400">nb_fields</name>
+        <name type="A7ff34ed36df0">scalar_spectra</name>
+        <name type="A7ff34ed377e0">scalar_fields</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed34ec0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed35530">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed35530" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed35b10" ref="S7ff34ed34ec0"/>
+    <FbasicType type="S7ff34ed35c40" is_value="true" ref="S7ff34ed35b10"/>
+    <FbasicType type="I7ff34ed362d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed36400" is_value="true" ref="I7ff34ed362d0"/>
+    <FbasicType type="R7ff34ed36b90" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed36cc0" ref="R7ff34ed36b90"/>
+    <FbasicType type="A7ff34ed36df0" ref="R7ff34ed36cc0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed37580" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed376b0" ref="R7ff34ed37580"/>
+    <FbasicType type="A7ff34ed377e0" ref="R7ff34ed376b0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed35060" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed349c0" is_parameter="true" ref="I7ff34ed35060"/>
+    <FbasicType type="I7ff34ed351b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed34c40" is_parameter="true" ref="I7ff34ed351b0"/>
+    <FfunctionType type="F7ff34ed38d10" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans_vordiv2wind">
+      <params>
+        <name type="S7ff34ed3b9a0">t</name>
+        <name type="I7ff34ed3c160">nb_fields</name>
+        <name type="A7ff34ed3cb50">vorticity_spectra</name>
+        <name type="A7ff34ed3d540">divergence_spectra</name>
+        <name type="A7ff34ed3df30">wind_fields</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed3ac20" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed3b290">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed3b290" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed3b870" ref="S7ff34ed3ac20"/>
+    <FbasicType type="S7ff34ed3b9a0" is_value="true" ref="S7ff34ed3b870"/>
+    <FbasicType type="I7ff34ed3c030" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed3c160" is_value="true" ref="I7ff34ed3c030"/>
+    <FbasicType type="R7ff34ed3c8f0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed3ca20" ref="R7ff34ed3c8f0"/>
+    <FbasicType type="A7ff34ed3cb50" ref="R7ff34ed3ca20">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed3d2e0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed3d410" ref="R7ff34ed3d2e0"/>
+    <FbasicType type="A7ff34ed3d540" ref="R7ff34ed3d410">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed3dcd0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed3de00" ref="R7ff34ed3dcd0"/>
+    <FbasicType type="A7ff34ed3df30" ref="R7ff34ed3de00">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed3adc0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed3a720" is_parameter="true" ref="I7ff34ed3adc0"/>
+    <FbasicType type="I7ff34ed3af10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed3a9a0" is_parameter="true" ref="I7ff34ed3af10"/>
+    <FfunctionType type="F7ff34ed3f520" return_type="Fvoid" bind="C" bind_name="atlas__Trans__dirtrans_scalar">
+      <params>
+        <name type="S7ff34ed41ec0">t</name>
+        <name type="I7ff34ed42680">nb_fields</name>
+        <name type="A7ff34ed43070">scalar_fields</name>
+        <name type="A7ff34ed43a60">scalar_spectra</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed41140" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed417b0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed417b0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed41d90" ref="S7ff34ed41140"/>
+    <FbasicType type="S7ff34ed41ec0" is_value="true" ref="S7ff34ed41d90"/>
+    <FbasicType type="I7ff34ed42550" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed42680" is_value="true" ref="I7ff34ed42550"/>
+    <FbasicType type="R7ff34ed42e10" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed42f40" ref="R7ff34ed42e10"/>
+    <FbasicType type="A7ff34ed43070" ref="R7ff34ed42f40">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed43800" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed43930" ref="R7ff34ed43800"/>
+    <FbasicType type="A7ff34ed43a60" ref="R7ff34ed43930">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed412e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed40c40" is_parameter="true" ref="I7ff34ed412e0"/>
+    <FbasicType type="I7ff34ed41430" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed40ec0" is_parameter="true" ref="I7ff34ed41430"/>
+    <FfunctionType type="F7ff34ed44f60" return_type="Fvoid" bind="C" bind_name="atlas__Trans__dirtrans_wind2vordiv">
+      <params>
+        <name type="S7ff34ed47bf0">t</name>
+        <name type="I7ff34ed483b0">nb_fields</name>
+        <name type="A7ff34ed48da0">wind_fields</name>
+        <name type="A7ff34ed49790">vorticity_spectra</name>
+        <name type="A7ff34ed4a180">divergence_spectra</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed46e70" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed474e0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed474e0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed47ac0" ref="S7ff34ed46e70"/>
+    <FbasicType type="S7ff34ed47bf0" is_value="true" ref="S7ff34ed47ac0"/>
+    <FbasicType type="I7ff34ed48280" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed483b0" is_value="true" ref="I7ff34ed48280"/>
+    <FbasicType type="R7ff34ed48b40" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed48c70" ref="R7ff34ed48b40"/>
+    <FbasicType type="A7ff34ed48da0" ref="R7ff34ed48c70">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed49530" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed49660" ref="R7ff34ed49530"/>
+    <FbasicType type="A7ff34ed49790" ref="R7ff34ed49660">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed49f20" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed4a050" ref="R7ff34ed49f20"/>
+    <FbasicType type="A7ff34ed4a180" ref="R7ff34ed4a050">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed47010" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed46970" is_parameter="true" ref="I7ff34ed47010"/>
+    <FbasicType type="I7ff34ed47160" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed46bf0" is_parameter="true" ref="I7ff34ed47160"/>
+    <FfunctionType type="F7ff34ed4b8d0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__dirtrans_wind2vordiv_field">
+      <params>
+        <name type="S7ff34ed4dac0">this</name>
+        <name type="S7ff34ed4e180">gpwind</name>
+        <name type="S7ff34ed4e840">spvor</name>
+        <name type="S7ff34ed4ef00">spdiv</name>
+        <name type="S7ff34ed4f5d0">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed4cfe0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed4d3b0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed4d3b0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed4d990" ref="S7ff34ed4cfe0"/>
+    <FbasicType type="S7ff34ed4dac0" is_value="true" ref="S7ff34ed4d990"/>
+    <FbasicType type="S7ff34ed4e050" ref="S7ff34ed4cfe0"/>
+    <FbasicType type="S7ff34ed4e180" is_value="true" ref="S7ff34ed4e050"/>
+    <FbasicType type="S7ff34ed4e710" ref="S7ff34ed4cfe0"/>
+    <FbasicType type="S7ff34ed4e840" is_value="true" ref="S7ff34ed4e710"/>
+    <FbasicType type="S7ff34ed4edd0" ref="S7ff34ed4cfe0"/>
+    <FbasicType type="S7ff34ed4ef00" is_value="true" ref="S7ff34ed4edd0"/>
+    <FbasicType type="S7ff34ed4f4a0" ref="S7ff34ed4cfe0"/>
+    <FbasicType type="S7ff34ed4f5d0" is_value="true" ref="S7ff34ed4f4a0"/>
+    <FfunctionType type="F7ff34ed50ce0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__specnorm">
+      <params>
+        <name type="S7ff34ed53970">t</name>
+        <name type="I7ff34ed54130">nb_fields</name>
+        <name type="A7ff34ed54b20">spectra</name>
+        <name type="A7ff34ed55510">norms</name>
+        <name type="I7ff34ed55cd0">rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed52bf0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed53260">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed53260" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed53840" ref="S7ff34ed52bf0"/>
+    <FbasicType type="S7ff34ed53970" is_value="true" ref="S7ff34ed53840"/>
+    <FbasicType type="I7ff34ed54000" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed54130" is_value="true" ref="I7ff34ed54000"/>
+    <FbasicType type="R7ff34ed548c0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed549f0" ref="R7ff34ed548c0"/>
+    <FbasicType type="A7ff34ed54b20" ref="R7ff34ed549f0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7ff34ed552b0" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7ff34ed553e0" ref="R7ff34ed552b0"/>
+    <FbasicType type="A7ff34ed55510" ref="R7ff34ed553e0">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7ff34ed55ba0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed55cd0" is_value="true" ref="I7ff34ed55ba0"/>
+    <FbasicType type="I7ff34ed52d90" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed526f0" is_parameter="true" ref="I7ff34ed52d90"/>
+    <FbasicType type="I7ff34ed52ee0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ed52970" is_parameter="true" ref="I7ff34ed52ee0"/>
+    <FfunctionType type="F7ff34ed57320" return_type="Fvoid" bind="C" bind_name="atlas__Trans__dirtrans_fieldset">
+      <params>
+        <name type="S7ff34ed59220">this</name>
+        <name type="S7ff34ed598e0">gpfields</name>
+        <name type="S7ff34ed59fa0">spfields</name>
+        <name type="S7ff34ed5a660">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed58740" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed58b10">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed58b10" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed590f0" ref="S7ff34ed58740"/>
+    <FbasicType type="S7ff34ed59220" is_value="true" ref="S7ff34ed590f0"/>
+    <FbasicType type="S7ff34ed597b0" ref="S7ff34ed58740"/>
+    <FbasicType type="S7ff34ed598e0" is_value="true" ref="S7ff34ed597b0"/>
+    <FbasicType type="S7ff34ed59e70" ref="S7ff34ed58740"/>
+    <FbasicType type="S7ff34ed59fa0" is_value="true" ref="S7ff34ed59e70"/>
+    <FbasicType type="S7ff34ed5a530" ref="S7ff34ed58740"/>
+    <FbasicType type="S7ff34ed5a660" is_value="true" ref="S7ff34ed5a530"/>
+    <FfunctionType type="F7ff34ed5bba0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__dirtrans_field">
+      <params>
+        <name type="S7ff34ed5daa0">this</name>
+        <name type="S7ff34ed5e160">gpfield</name>
+        <name type="S7ff34ed5e820">spfield</name>
+        <name type="S7ff34ed5eee0">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed5cfc0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed5d390">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed5d390" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed5d970" ref="S7ff34ed5cfc0"/>
+    <FbasicType type="S7ff34ed5daa0" is_value="true" ref="S7ff34ed5d970"/>
+    <FbasicType type="S7ff34ed5e030" ref="S7ff34ed5cfc0"/>
+    <FbasicType type="S7ff34ed5e160" is_value="true" ref="S7ff34ed5e030"/>
+    <FbasicType type="S7ff34ed5e6f0" ref="S7ff34ed5cfc0"/>
+    <FbasicType type="S7ff34ed5e820" is_value="true" ref="S7ff34ed5e6f0"/>
+    <FbasicType type="S7ff34ed5edb0" ref="S7ff34ed5cfc0"/>
+    <FbasicType type="S7ff34ed5eee0" is_value="true" ref="S7ff34ed5edb0"/>
+    <FfunctionType type="F7ff34ed603c0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans_fieldset">
+      <params>
+        <name type="S7ff34ef01020">this</name>
+        <name type="S7ff34ef016e0">spfields</name>
+        <name type="S7ff34ef01da0">gpfields</name>
+        <name type="S7ff34ef02460">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ef00540" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef00910">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef00910" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef00ef0" ref="S7ff34ef00540"/>
+    <FbasicType type="S7ff34ef01020" is_value="true" ref="S7ff34ef00ef0"/>
+    <FbasicType type="S7ff34ef015b0" ref="S7ff34ef00540"/>
+    <FbasicType type="S7ff34ef016e0" is_value="true" ref="S7ff34ef015b0"/>
+    <FbasicType type="S7ff34ef01c70" ref="S7ff34ef00540"/>
+    <FbasicType type="S7ff34ef01da0" is_value="true" ref="S7ff34ef01c70"/>
+    <FbasicType type="S7ff34ef02330" ref="S7ff34ef00540"/>
+    <FbasicType type="S7ff34ef02460" is_value="true" ref="S7ff34ef02330"/>
+    <FfunctionType type="F7ff34ef03990" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans_field">
+      <params>
+        <name type="S7ff34ef05890">this</name>
+        <name type="S7ff34ef05f50">spfield</name>
+        <name type="S7ff34ef06610">gpfield</name>
+        <name type="S7ff34ef06cd0">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ef04db0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef05180">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef05180" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef05760" ref="S7ff34ef04db0"/>
+    <FbasicType type="S7ff34ef05890" is_value="true" ref="S7ff34ef05760"/>
+    <FbasicType type="S7ff34ef05e20" ref="S7ff34ef04db0"/>
+    <FbasicType type="S7ff34ef05f50" is_value="true" ref="S7ff34ef05e20"/>
+    <FbasicType type="S7ff34ef064e0" ref="S7ff34ef04db0"/>
+    <FbasicType type="S7ff34ef06610" is_value="true" ref="S7ff34ef064e0"/>
+    <FbasicType type="S7ff34ef06ba0" ref="S7ff34ef04db0"/>
+    <FbasicType type="S7ff34ef06cd0" is_value="true" ref="S7ff34ef06ba0"/>
+    <FfunctionType type="F7ff34ef081d0" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans_grad_field">
+      <params>
+        <name type="S7ff34ef0a0d0">this</name>
+        <name type="S7ff34ef0a790">spfield</name>
+        <name type="S7ff34ef0ae50">gpfield</name>
+        <name type="S7ff34ef0b510">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ef095f0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef099c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef099c0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef09fa0" ref="S7ff34ef095f0"/>
+    <FbasicType type="S7ff34ef0a0d0" is_value="true" ref="S7ff34ef09fa0"/>
+    <FbasicType type="S7ff34ef0a660" ref="S7ff34ef095f0"/>
+    <FbasicType type="S7ff34ef0a790" is_value="true" ref="S7ff34ef0a660"/>
+    <FbasicType type="S7ff34ef0ad20" ref="S7ff34ef095f0"/>
+    <FbasicType type="S7ff34ef0ae50" is_value="true" ref="S7ff34ef0ad20"/>
+    <FbasicType type="S7ff34ef0b3e0" ref="S7ff34ef095f0"/>
+    <FbasicType type="S7ff34ef0b510" is_value="true" ref="S7ff34ef0b3e0"/>
+    <FfunctionType type="F7ff34ef0ca90" return_type="Fvoid" bind="C" bind_name="atlas__Trans__invtrans_vordiv2wind_field">
+      <params>
+        <name type="S7ff34ef0ec80">this</name>
+        <name type="S7ff34ef0f340">spvor</name>
+        <name type="S7ff34ef0fa00">spdiv</name>
+        <name type="S7ff34ef100c0">gpwind</name>
+        <name type="S7ff34ef10790">parameters</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ef0e1a0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef0e570">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef0e570" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef0eb50" ref="S7ff34ef0e1a0"/>
+    <FbasicType type="S7ff34ef0ec80" is_value="true" ref="S7ff34ef0eb50"/>
+    <FbasicType type="S7ff34ef0f210" ref="S7ff34ef0e1a0"/>
+    <FbasicType type="S7ff34ef0f340" is_value="true" ref="S7ff34ef0f210"/>
+    <FbasicType type="S7ff34ef0f8d0" ref="S7ff34ef0e1a0"/>
+    <FbasicType type="S7ff34ef0fa00" is_value="true" ref="S7ff34ef0f8d0"/>
+    <FbasicType type="S7ff34ef0ff90" ref="S7ff34ef0e1a0"/>
+    <FbasicType type="S7ff34ef100c0" is_value="true" ref="S7ff34ef0ff90"/>
+    <FbasicType type="S7ff34ef10660" ref="S7ff34ef0e1a0"/>
+    <FbasicType type="S7ff34ef10790" is_value="true" ref="S7ff34ef10660"/>
+    <FfunctionType type="F7ff34ef11c20" return_type="I7ff34ef11ff0" bind="C" bind_name="atlas__Trans__handle">
+      <params>
+        <name type="S7ff34ef13fc0">trans</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff34ef137d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef11ff0" ref="I7ff34ef137d0"/>
+    <FstructType type="S7ff34ef12ca0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef131c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef131c0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef13e90" ref="S7ff34ef12ca0"/>
+    <FbasicType type="S7ff34ef13fc0" is_value="true" ref="S7ff34ef13e90"/>
+    <FbasicType type="I7ff34ef12e40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef12a20" is_parameter="true" ref="I7ff34ef12e40"/>
+    <FfunctionType type="F7ff34ef14df0" return_type="I7ff34ef151c0" bind="C" bind_name="atlas__Trans__truncation">
+      <params>
+        <name type="S7ff34ef17190">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff34ef169a0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef151c0" ref="I7ff34ef169a0"/>
+    <FstructType type="S7ff34ef15e70" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef16390">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef16390" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef17060" ref="S7ff34ef15e70"/>
+    <FbasicType type="S7ff34ef17190" is_value="true" ref="S7ff34ef17060"/>
+    <FbasicType type="I7ff34ef16010" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef15bf0" is_parameter="true" ref="I7ff34ef16010"/>
+    <FfunctionType type="F7ff34ef17fc0" return_type="I7ff34ef18390" bind="C" bind_name="atlas__Trans__nspec2">
+      <params>
+        <name type="S7ff34ef1a360">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff34ef19b70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef18390" ref="I7ff34ef19b70"/>
+    <FstructType type="S7ff34ef19040" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef19560">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef19560" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef1a230" ref="S7ff34ef19040"/>
+    <FbasicType type="S7ff34ef1a360" is_value="true" ref="S7ff34ef1a230"/>
+    <FbasicType type="I7ff34ef191e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef18dc0" is_parameter="true" ref="I7ff34ef191e0"/>
+    <FfunctionType type="F7ff34ef1b190" return_type="I7ff34ef1b560" bind="C" bind_name="atlas__Trans__nspec2g">
+      <params>
+        <name type="S7ff34ef1d530">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff34ef1cd40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef1b560" ref="I7ff34ef1cd40"/>
+    <FstructType type="S7ff34ef1c210" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef1c730">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef1c730" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef1d400" ref="S7ff34ef1c210"/>
+    <FbasicType type="S7ff34ef1d530" is_value="true" ref="S7ff34ef1d400"/>
+    <FbasicType type="I7ff34ef1c3b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef1bf90" is_parameter="true" ref="I7ff34ef1c3b0"/>
+    <FfunctionType type="F7ff34ef1e360" return_type="I7ff34ef1e730" bind="C" bind_name="atlas__Trans__ngptot">
+      <params>
+        <name type="S7ff34ef20700">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff34ef1ff10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef1e730" ref="I7ff34ef1ff10"/>
+    <FstructType type="S7ff34ef1f3e0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef1f900">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef1f900" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef205d0" ref="S7ff34ef1f3e0"/>
+    <FbasicType type="S7ff34ef20700" is_value="true" ref="S7ff34ef205d0"/>
+    <FbasicType type="I7ff34ef1f580" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef1f160" is_parameter="true" ref="I7ff34ef1f580"/>
+    <FfunctionType type="F7ff34ef21530" return_type="I7ff34ef21900" bind="C" bind_name="atlas__Trans__ngptotg">
+      <params>
+        <name type="S7ff34ef238d0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff34ef230e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef21900" ref="I7ff34ef230e0"/>
+    <FstructType type="S7ff34ef225b0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ef22ad0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ef22ad0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ef237a0" ref="S7ff34ef225b0"/>
+    <FbasicType type="S7ff34ef238d0" is_value="true" ref="S7ff34ef237a0"/>
+    <FbasicType type="I7ff34ef22750" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff34ef22330" is_parameter="true" ref="I7ff34ef22750"/>
+    <FfunctionType type="F7ff34ef24700" return_type="S7ff34ef24ad0" bind="C" bind_name="atlas__Trans__grid">
+      <params>
+        <name type="S7ff34ed625d0">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff34ed61500" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff34ed618d0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff34ed618d0" ref="Fint">
+      <kind>
+        <Var type="I7ff34ec09e30" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff34ed61de0" ref="S7ff34ed61500"/>
+    <FbasicType type="S7ff34ef24ad0" ref="S7ff34ed61de0"/>
+    <FbasicType type="S7ff34ed624a0" ref="S7ff34ed61500"/>
+    <FbasicType type="S7ff34ed625d0" is_value="true" ref="S7ff34ed624a0"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7ff34ee08430" sclass="ffunc" original_name="atlas__trans__new" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__new</name>
+    </id>
+    <id type="F7ff34ed0d6c0" sclass="ffunc" original_name="atlas__trans__delete" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__delete</name>
+    </id>
+    <id type="F7ff34ed0fe90" sclass="ffunc" original_name="atlas__trans__distspec" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__distspec</name>
+    </id>
+    <id type="F7ff34ed16750" sclass="ffunc" original_name="atlas__trans__gathspec" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__gathspec</name>
+    </id>
+    <id type="F7ff34ed1d040" sclass="ffunc" original_name="atlas__trans__distgrid" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__distgrid</name>
+    </id>
+    <id type="F7ff34ed238d0" sclass="ffunc" original_name="atlas__trans__gathgrid" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__gathgrid</name>
+    </id>
+    <id type="F7ff34ed2a470" sclass="ffunc" original_name="atlas__trans__invtrans" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans</name>
+    </id>
+    <id type="F7ff34ed332a0" sclass="ffunc" original_name="atlas__trans__invtrans_scalar" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans_scalar</name>
+    </id>
+    <id type="F7ff34ed38d10" sclass="ffunc" original_name="atlas__trans__invtrans_vordiv2wind" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans_vordiv2wind</name>
+    </id>
+    <id type="F7ff34ed3f520" sclass="ffunc" original_name="atlas__trans__dirtrans_scalar" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__dirtrans_scalar</name>
+    </id>
+    <id type="F7ff34ed44f60" sclass="ffunc" original_name="atlas__trans__dirtrans_wind2vordiv" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__dirtrans_wind2vordiv</name>
+    </id>
+    <id type="F7ff34ed4b8d0" sclass="ffunc" original_name="atlas__trans__dirtrans_wind2vordiv_field" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__dirtrans_wind2vordiv_field</name>
+    </id>
+    <id type="F7ff34ed50ce0" sclass="ffunc" original_name="atlas__trans__specnorm" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__specnorm</name>
+    </id>
+    <id type="F7ff34ed57320" sclass="ffunc" original_name="atlas__trans__dirtrans_fieldset" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__dirtrans_fieldset</name>
+    </id>
+    <id type="F7ff34ed5bba0" sclass="ffunc" original_name="atlas__trans__dirtrans_field" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__dirtrans_field</name>
+    </id>
+    <id type="F7ff34ed603c0" sclass="ffunc" original_name="atlas__trans__invtrans_fieldset" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans_fieldset</name>
+    </id>
+    <id type="F7ff34ef03990" sclass="ffunc" original_name="atlas__trans__invtrans_field" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans_field</name>
+    </id>
+    <id type="F7ff34ef081d0" sclass="ffunc" original_name="atlas__trans__invtrans_grad_field" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans_grad_field</name>
+    </id>
+    <id type="F7ff34ef0ca90" sclass="ffunc" original_name="atlas__trans__invtrans_vordiv2wind_field" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__invtrans_vordiv2wind_field</name>
+    </id>
+    <id type="F7ff34ef11c20" sclass="ffunc" original_name="atlas__trans__handle" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__handle</name>
+    </id>
+    <id type="F7ff34ef14df0" sclass="ffunc" original_name="atlas__trans__truncation" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__truncation</name>
+    </id>
+    <id type="F7ff34ef17fc0" sclass="ffunc" original_name="atlas__trans__nspec2" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__nspec2</name>
+    </id>
+    <id type="F7ff34ef1b190" sclass="ffunc" original_name="atlas__trans__nspec2g" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__nspec2g</name>
+    </id>
+    <id type="F7ff34ef1e360" sclass="ffunc" original_name="atlas__trans__ngptot" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__ngptot</name>
+    </id>
+    <id type="F7ff34ef21530" sclass="ffunc" original_name="atlas__trans__ngptotg" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__ngptotg</name>
+    </id>
+    <id type="F7ff34ef24700" sclass="ffunc" original_name="atlas__trans__grid" declared_in="atlas_trans_c_binding">
+      <name>atlas__trans__grid</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

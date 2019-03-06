@@ -1,0 +1,288 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_functionspace_spectral_c_binding</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7fa4fae00f90" return_type="S7fa4fae01360" bind="C" bind_name="atlas__SpectralFunctionSpace__new__config">
+      <params>
+        <name type="S7fa4fae49e90">config</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fae01c10" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fae49360">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fae10750" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa4fae10c90" is_parameter="true" ref="I7fa4fae10750"/>
+    <FbasicType type="I7fa4fae49360" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fae496a0" ref="S7fa4fae01c10"/>
+    <FbasicType type="S7fa4fae01360" ref="S7fa4fae496a0"/>
+    <FbasicType type="S7fa4fae49d60" ref="S7fa4fae01c10"/>
+    <FbasicType type="S7fa4fae49e90" is_value="true" ref="S7fa4fae49d60"/>
+    <FfunctionType type="F7fa4fae4ae00" return_type="S7fa4fae4b390" bind="C" bind_name="atlas__SpectralFunctionSpace__new__trans">
+      <params>
+        <name type="S7fa4fae4ce40">trans</name>
+        <name type="S7fa4fae4d500">config</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fae4bd70" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fae4c140">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fae4c140" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fae4c650" ref="S7fa4fae4bd70"/>
+    <FbasicType type="S7fa4fae4b390" ref="S7fa4fae4c650"/>
+    <FbasicType type="S7fa4fae4cd10" ref="S7fa4fae4bd70"/>
+    <FbasicType type="S7fa4fae4ce40" is_value="true" ref="S7fa4fae4cd10"/>
+    <FbasicType type="S7fa4fae4d3d0" ref="S7fa4fae4bd70"/>
+    <FbasicType type="S7fa4fae4d500" is_value="true" ref="S7fa4fae4d3d0"/>
+    <FfunctionType type="F7fa4fac094b0" return_type="Fvoid" bind="C" bind_name="atlas__SpectralFunctionSpace__delete">
+      <params>
+        <name type="S7fa4fac0aae0">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac0a000" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac0a3d0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac0a3d0" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac0a9b0" ref="S7fa4fac0a000"/>
+    <FbasicType type="S7fa4fac0aae0" is_value="true" ref="S7fa4fac0a9b0"/>
+    <FfunctionType type="F7fa4fac0ba60" return_type="S7fa4fac0bff0" bind="C" bind_name="atlas__fs__Spectral__create_field">
+      <params>
+        <name type="S7fa4fac0daa0">this</name>
+        <name type="S7fa4fac0e160">options</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac0c9d0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac0cda0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac0cda0" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac0d2b0" ref="S7fa4fac0c9d0"/>
+    <FbasicType type="S7fa4fac0bff0" ref="S7fa4fac0d2b0"/>
+    <FbasicType type="S7fa4fac0d970" ref="S7fa4fac0c9d0"/>
+    <FbasicType type="S7fa4fac0daa0" is_value="true" ref="S7fa4fac0d970"/>
+    <FbasicType type="S7fa4fac0e030" ref="S7fa4fac0c9d0"/>
+    <FbasicType type="S7fa4fac0e160" is_value="true" ref="S7fa4fac0e030"/>
+    <FfunctionType type="F7fa4fac0f330" return_type="Fvoid" bind="C" bind_name="atlas__SpectralFunctionSpace__gather">
+      <params>
+        <name type="S7fa4fac10f40">this</name>
+        <name type="S7fa4fac11600">local</name>
+        <name type="S7fa4fac11cc0">global</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac10460" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac10830">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac10830" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac10e10" ref="S7fa4fac10460"/>
+    <FbasicType type="S7fa4fac10f40" is_value="true" ref="S7fa4fac10e10"/>
+    <FbasicType type="S7fa4fac114d0" ref="S7fa4fac10460"/>
+    <FbasicType type="S7fa4fac11600" is_value="true" ref="S7fa4fac114d0"/>
+    <FbasicType type="S7fa4fac11b90" ref="S7fa4fac10460"/>
+    <FbasicType type="S7fa4fac11cc0" is_value="true" ref="S7fa4fac11b90"/>
+    <FfunctionType type="F7fa4faf006b0" return_type="Fvoid" bind="C" bind_name="atlas__SpectralFunctionSpace__gather_fieldset">
+      <params>
+        <name type="S7fa4fac13920">this</name>
+        <name type="S7fa4fac13fe0">local</name>
+        <name type="S7fa4fac146a0">global</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac12e40" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac13210">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac13210" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac137f0" ref="S7fa4fac12e40"/>
+    <FbasicType type="S7fa4fac13920" is_value="true" ref="S7fa4fac137f0"/>
+    <FbasicType type="S7fa4fac13eb0" ref="S7fa4fac12e40"/>
+    <FbasicType type="S7fa4fac13fe0" is_value="true" ref="S7fa4fac13eb0"/>
+    <FbasicType type="S7fa4fac14570" ref="S7fa4fac12e40"/>
+    <FbasicType type="S7fa4fac146a0" is_value="true" ref="S7fa4fac14570"/>
+    <FfunctionType type="F7fa4fac15990" return_type="Fvoid" bind="C" bind_name="atlas__SpectralFunctionSpace__scatter">
+      <params>
+        <name type="S7fa4fac175a0">this</name>
+        <name type="S7fa4fac17c60">global</name>
+        <name type="S7fa4fac18320">local</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac16ac0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac16e90">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac16e90" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac17470" ref="S7fa4fac16ac0"/>
+    <FbasicType type="S7fa4fac175a0" is_value="true" ref="S7fa4fac17470"/>
+    <FbasicType type="S7fa4fac17b30" ref="S7fa4fac16ac0"/>
+    <FbasicType type="S7fa4fac17c60" is_value="true" ref="S7fa4fac17b30"/>
+    <FbasicType type="S7fa4fac181f0" ref="S7fa4fac16ac0"/>
+    <FbasicType type="S7fa4fac18320" is_value="true" ref="S7fa4fac181f0"/>
+    <FfunctionType type="F7fa4fac19610" return_type="Fvoid" bind="C" bind_name="atlas__SpectralFunctionSpace__scatter_fieldset">
+      <params>
+        <name type="S7fa4fac1b220">this</name>
+        <name type="S7fa4fac1b8e0">global</name>
+        <name type="S7fa4fac1bfa0">local</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac1a740" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac1ab10">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac1ab10" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac1b0f0" ref="S7fa4fac1a740"/>
+    <FbasicType type="S7fa4fac1b220" is_value="true" ref="S7fa4fac1b0f0"/>
+    <FbasicType type="S7fa4fac1b7b0" ref="S7fa4fac1a740"/>
+    <FbasicType type="S7fa4fac1b8e0" is_value="true" ref="S7fa4fac1b7b0"/>
+    <FbasicType type="S7fa4fac1be70" ref="S7fa4fac1a740"/>
+    <FbasicType type="S7fa4fac1bfa0" is_value="true" ref="S7fa4fac1be70"/>
+    <FfunctionType type="F7fa4fac1d370" return_type="Fvoid" bind="C" bind_name="atlas__SpectralFunctionSpace__norm">
+      <params>
+        <name type="S7fa4fac1fd10">this</name>
+        <name type="S7fa4fac203d0">field</name>
+        <name type="A7fa4fac20dc0">norm</name>
+        <name type="I7fa4fac21580">rank</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fa4fac1ef90" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fa4fac1f600">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fa4fac1f600" ref="Fint">
+      <kind>
+        <Var type="I7fa4fae10c90" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fa4fac1fbe0" ref="S7fa4fac1ef90"/>
+    <FbasicType type="S7fa4fac1fd10" is_value="true" ref="S7fa4fac1fbe0"/>
+    <FbasicType type="S7fa4fac202a0" ref="S7fa4fac1ef90"/>
+    <FbasicType type="S7fa4fac203d0" is_value="true" ref="S7fa4fac202a0"/>
+    <FbasicType type="R7fa4fac20b60" ref="Freal">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7fa4fac20c90" ref="R7fa4fac20b60"/>
+    <FbasicType type="A7fa4fac20dc0" ref="R7fa4fac20c90">
+      <indexRange is_assumed_size="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="I7fa4fac21450" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa4fac21580" is_value="true" ref="I7fa4fac21450"/>
+    <FbasicType type="I7fa4fac1f130" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa4fac1ea90" is_parameter="true" ref="I7fa4fac1f130"/>
+    <FbasicType type="I7fa4fac1f280" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fa4fac1ed10" is_parameter="true" ref="I7fa4fac1f280"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7fa4fae00f90" sclass="ffunc" original_name="atlas__spectralfunctionspace__new__config" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__new__config</name>
+    </id>
+    <id type="F7fa4fae4ae00" sclass="ffunc" original_name="atlas__spectralfunctionspace__new__trans" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__new__trans</name>
+    </id>
+    <id type="F7fa4fac094b0" sclass="ffunc" original_name="atlas__spectralfunctionspace__delete" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__delete</name>
+    </id>
+    <id type="F7fa4fac0ba60" sclass="ffunc" original_name="atlas__fs__spectral__create_field" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__fs__spectral__create_field</name>
+    </id>
+    <id type="F7fa4fac0f330" sclass="ffunc" original_name="atlas__spectralfunctionspace__gather" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__gather</name>
+    </id>
+    <id type="F7fa4faf006b0" sclass="ffunc" original_name="atlas__spectralfunctionspace__gather_fieldset" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__gather_fieldset</name>
+    </id>
+    <id type="F7fa4fac15990" sclass="ffunc" original_name="atlas__spectralfunctionspace__scatter" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__scatter</name>
+    </id>
+    <id type="F7fa4fac19610" sclass="ffunc" original_name="atlas__spectralfunctionspace__scatter_fieldset" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__scatter_fieldset</name>
+    </id>
+    <id type="F7fa4fac1d370" sclass="ffunc" original_name="atlas__spectralfunctionspace__norm" declared_in="atlas_functionspace_spectral_c_binding">
+      <name>atlas__spectralfunctionspace__norm</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

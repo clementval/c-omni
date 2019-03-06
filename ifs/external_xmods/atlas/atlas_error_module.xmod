@@ -1,0 +1,1055 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_error_module</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FstructType type="S7fe646417e70" is_public="true">
+      <symbols>
+        <id type="Fint">
+          <name>line</name>
+        </id>
+        <id type="C7fe646418f60">
+          <name>file</name>
+        </id>
+        <id type="C7fe646500260">
+          <name>function</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7fe646500a10" pass="pass">
+          <name>str</name>
+          <binding>
+            <name>codelocation__str</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="C7fe646418d50" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646418f60" ref="C7fe646418d50"/>
+    <FbasicType type="C7fe646500050" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646500260" ref="C7fe646500050"/>
+    <FfunctionType type="F7fe646501d10" return_type="V7fe646501be0" is_public="true"/>
+    <FbasicType type="V7fe646501be0" ref="FnumericAll"/>
+    <FfunctionType type="F7fe646724360" result_name="str" return_type="C7fe646726f30" is_private="true">
+      <params>
+        <name type="C7fe646725460">file</name>
+        <name type="I7fe646725c10">line</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646725330" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646725460" intent="in" ref="C7fe646725330"/>
+    <FbasicType type="C7fe646726f30" ref="Fcharacter">
+      <len>
+        <plusExpr type="Fint">
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>len</name>
+            <arguments>
+              <Var type="C7fe646725460" scope="local">file</Var>
+            </arguments>
+          </functionCall>
+          <FintConstant type="Fint">5</FintConstant>
+        </plusExpr>
+      </len>
+    </FbasicType>
+    <FbasicType type="I7fe646725c10" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe646726a40" return_type="Fint"/>
+    <FbasicType type="S7fe646727620" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe646727830" ref="S7fe646727620"/>
+    <FfunctionType type="F7fe646728340" return_type="FnumericAll"/>
+    <FfunctionType type="F7fe64672c770" result_name="code_location" return_type="S7fe64672e700" is_private="true">
+      <params>
+        <name type="C7fe64672d870">file</name>
+        <name type="I7fe64672e020">line</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe64672e4f0" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64672e700" ref="S7fe64672e4f0"/>
+    <FbasicType type="C7fe64672d740" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64672d870" intent="in" ref="C7fe64672d740"/>
+    <FbasicType type="I7fe64672e020" intent="in" ref="Fint"/>
+    <FfunctionType type="F7fe646557cf0" return_type="Fvoid" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646558c40" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646559a50">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646559920" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646559a50" intent="in" ref="C7fe646559920"/>
+    <FfunctionType type="F7fe64655a9b0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe64655bab0">msg</name>
+        <name type="S7fe64655c200">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe64655b980" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64655bab0" intent="in" ref="C7fe64655b980"/>
+    <FbasicType type="S7fe64655c0d0" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64655c200" intent="in" ref="S7fe64655c0d0"/>
+    <FfunctionType type="F7fe646503780" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe64655d240" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe64655e050">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe64655df20" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64655e050" intent="in" ref="C7fe64655df20"/>
+    <FfunctionType type="F7fe646560a60" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646561b60">msg</name>
+        <name type="S7fe6465622b0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646561a30" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646561b60" intent="in" ref="C7fe646561a30"/>
+    <FbasicType type="S7fe646562180" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe6465622b0" intent="in" ref="S7fe646562180"/>
+    <FfunctionType type="F7fe64655ef00" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe64655fb30">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe64655fa00" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64655fb30" intent="in" ref="S7fe64655fa00"/>
+    <FfunctionType type="F7fe646505240" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe646564b80" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646565990">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646565860" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646565990" intent="in" ref="C7fe646565860"/>
+    <FfunctionType type="F7fe646563050" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe646563c80">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe646563b50" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe646563c80" intent="in" ref="S7fe646563b50"/>
+    <FfunctionType type="F7fe6465668c0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe6465679c0">msg</name>
+        <name type="S7fe646568110">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646567890" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe6465679c0" intent="in" ref="C7fe646567890"/>
+    <FbasicType type="S7fe646567fe0" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe646568110" intent="in" ref="S7fe646567fe0"/>
+    <FfunctionType type="F7fe646506d30" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe646606b50" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe6467309e0">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe6467308b0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe6467309e0" intent="in" ref="C7fe6467308b0"/>
+    <FfunctionType type="F7fe646605070" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe646605ca0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe646605b70" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe646605ca0" intent="in" ref="S7fe646605b70"/>
+    <FfunctionType type="F7fe646731960" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646732a60">msg</name>
+        <name type="S7fe6467331b0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646732930" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646732a60" intent="in" ref="C7fe646732930"/>
+    <FbasicType type="S7fe646733080" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe6467331b0" intent="in" ref="S7fe646733080"/>
+    <FfunctionType type="F7fe646738b50" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646739f40">arrayname</name>
+        <name type="I7fe64673a8b0">idx</name>
+        <name type="I7fe64673a9e0">max</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646739e10" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646739f40" intent="in" ref="C7fe646739e10"/>
+    <FbasicType type="I7fe64673a8b0" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe64673a9e0" intent="in" ref="Fint"/>
+    <FbasicType type="C7fe64673b210" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">80</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64673b420" ref="C7fe64673b210"/>
+    <FfunctionType type="F7fe6467343c0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646735aa0">arrayname</name>
+        <name type="I7fe646736410">idx</name>
+        <name type="I7fe646736540">max</name>
+        <name type="S7fe646736c90">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646735970" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646735aa0" intent="in" ref="C7fe646735970"/>
+    <FbasicType type="I7fe646736410" intent="in" ref="Fint"/>
+    <FbasicType type="I7fe646736540" intent="in" ref="Fint"/>
+    <FbasicType type="S7fe646736b60" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe646736c90" intent="in" ref="S7fe646736b60"/>
+    <FbasicType type="C7fe6467374c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">80</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe6467376d0" ref="C7fe6467374c0"/>
+    <FfunctionType type="F7fe6465090a0" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe64660f350" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646610160">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646610030" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646610160" intent="in" ref="C7fe646610030"/>
+    <FfunctionType type="F7fe64660d870" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe64660e4a0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe64660e370" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64660e4a0" intent="in" ref="S7fe64660e370"/>
+    <FfunctionType type="F7fe646611090" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe646612190">msg</name>
+        <name type="S7fe6466128e0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646612060" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646612190" intent="in" ref="C7fe646612060"/>
+    <FbasicType type="S7fe6466127b0" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe6466128e0" intent="in" ref="S7fe6466127b0"/>
+    <FfunctionType type="F7fe64650ab60" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe646607820" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe647800b00">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe6478009d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe647800b00" intent="in" ref="C7fe6478009d0"/>
+    <FfunctionType type="F7fe64673c630" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe64673d260">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe64673d130" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64673d260" intent="in" ref="S7fe64673d130"/>
+    <FfunctionType type="F7fe647801a80" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe647802b80">msg</name>
+        <name type="S7fe6478032d0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe647802a50" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe647802b80" intent="in" ref="C7fe647802a50"/>
+    <FbasicType type="S7fe6478031a0" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe6478032d0" intent="in" ref="S7fe6478031a0"/>
+    <FfunctionType type="F7fe64650c620" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe6466092a0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe64660a0b0">msg</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646609f80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64660a0b0" intent="in" ref="C7fe646609f80"/>
+    <FfunctionType type="F7fe64673dc30" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7fe6466083a0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe646608270" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe6466083a0" intent="in" ref="S7fe646608270"/>
+    <FfunctionType type="F7fe64660afe0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7fe64660c0e0">msg</name>
+        <name type="S7fe64660c830">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe64660bfb0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64660c0e0" intent="in" ref="C7fe64660bfb0"/>
+    <FbasicType type="S7fe64660c700" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64660c830" intent="in" ref="S7fe64660c700"/>
+    <FfunctionType type="F7fe64650e110" return_type="Fvoid" is_public="true"/>
+    <FfunctionType type="F7fe646729a00" result_name="code_location" return_type="S7fe64672a2d0" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe64672a0c0" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe64672a2d0" ref="S7fe64672a0c0"/>
+    <FfunctionType type="F7fe6465533f0" result_name="code_location" return_type="S7fe646555940" is_private="true">
+      <params>
+        <name type="C7fe646554990">file</name>
+        <name type="I7fe646555260">line</name>
+        <name type="C7fe646554ac0">func</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7fe646555730" ref="S7fe646417e70"/>
+    <FbasicType type="S7fe646555940" ref="S7fe646555730"/>
+    <FbasicType type="C7fe646554860" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646554990" intent="in" ref="C7fe646554860"/>
+    <FbasicType type="I7fe646555260" intent="in" ref="Fint"/>
+    <FbasicType type="C7fe646554ac0" intent="in" ref="C7fe646554860"/>
+    <FfunctionType type="F7fe64650fbe0" return_type="V7fe64650fab0" is_public="true"/>
+    <FbasicType type="V7fe64650fab0" ref="FnumericAll"/>
+    <FfunctionType type="F7fe6465107d0" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fe64641c3c0" imported_id="S7fb021c36540" is_internal_private="true">
+      <symbols>
+        <id type="I7fe64641c700">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe64651fb40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe646520080" is_parameter="true" ref="I7fe64651fb40"/>
+    <FbasicType type="I7fe64641c700" ref="Fint">
+      <kind>
+        <Var type="I7fe646520080" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe64641d3a0" return_type="FnumericAll"/>
+    <FfunctionType type="F7fe64641df40" return_type="C7fe64671aa80" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe64671a950" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64671aa80" is_allocatable="true" ref="C7fe64671a950"/>
+    <FstructType type="S7fe64641e7a0" imported_id="S7fb021c36540" is_internal_private="true">
+      <symbols>
+        <id type="I7fe64641eb70">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe64641eb70" ref="Fint">
+      <kind>
+        <Var type="I7fe646520080" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7fe6467190f0" return_type="C7fe646719220">
+      <params>
+        <name type="S7fe646719560" imported_id="S7fb032522980">cptr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646719350" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646719220" is_allocatable="true" ref="C7fe646719350"/>
+    <FstructType type="S7fe6467197c0" imported_id="S7fb021c36540" is_internal_private="true">
+      <symbols>
+        <id type="I7fe646719b00">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe646422d90" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe646423200" is_parameter="true" ref="I7fe646422d90"/>
+    <FbasicType type="I7fe646719b00" ref="Fint">
+      <kind>
+        <Var type="I7fe646423200" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fe646719690" imported_id="S7fb032522850" ref="S7fe6467197c0"/>
+    <FbasicType type="S7fe646719560" imported_id="S7fb032522980" intent="in" ref="S7fe646719690"/>
+    <FbasicType type="S7fe646719f80" ref="S7fe64641e7a0"/>
+    <FbasicType type="S7fe64671a190" ref="S7fe646719f80"/>
+    <FfunctionType type="F7fe64671b550" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7fe64671c1d0">aborts</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7fe64671c1d0" intent="in" ref="Flogical"/>
+    <FfunctionType type="F7fe64671ce80" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7fe64671db10">throws</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7fe64671db10" intent="in" ref="Flogical"/>
+    <FfunctionType type="F7fe64671e7b0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="L7fe64671f440">backtrace</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="L7fe64671f440" intent="in" ref="Flogical"/>
+    <FfunctionType type="F7fe646720170" result_name="str" return_type="C7fe6467221f0" is_private="true">
+      <params>
+        <name type="S7fe646720ba0">self</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646721840" ref="C7fe646418f60"/>
+    <FbasicType type="S7fe646720ba0" is_class="true" ref="S7fe646417e70"/>
+    <FbasicType type="C7fe6467221f0" ref="Fcharacter">
+      <len>
+        <plusExpr type="Fint">
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>len</name>
+            <arguments>
+              <FmemberRef type="C7fe646721840" member="file">
+                <varRef type="S7fe646720ba0">
+                  <Var type="S7fe646720ba0" scope="local">self</Var>
+                </varRef>
+              </FmemberRef>
+            </arguments>
+          </functionCall>
+          <FintConstant type="Fint">5</FintConstant>
+        </plusExpr>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7fe646721d00" return_type="Fint"/>
+    <FbasicType type="C7fe646722ed0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">9</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646723180" ref="C7fe646418f60"/>
+    <FbasicType type="C7fe64672a8d0" ref="C7fe646418f60"/>
+    <FbasicType type="C7fe64672aab0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64672b770" ref="C7fe646500260"/>
+    <FbasicType type="C7fe64672b950" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe64672ef50" ref="C7fe646418f60"/>
+    <FbasicType type="C7fe64672fc20" ref="C7fe646500260"/>
+    <FbasicType type="C7fe64672fe00" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">0</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7fe646556310" ref="C7fe646418f60"/>
+    <FbasicType type="C7fe646556fd0" ref="C7fe646500260"/>
+    <FfunctionType type="F7fe6466137f0" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe6466143e0" return_type="Fvoid" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646614f80" return_type="Flogical" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646617420" return_type="Flogical" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7fe64640f470" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe64640fab0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6464100f0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646410880" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646411010" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6464117a0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646411f30" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6464126c0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646412e50" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe6464135e0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646413d70" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646414500" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646414c90" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646415420" is_public="true" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7fe646415bb0" is_public="true" is_parameter="true" ref="Fint"/>
+    <FfunctionType type="F7fe646608930" return_type="Fvoid">
+      <params>
+        <name type="S7fe6466083a0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64660a5f0" return_type="Fvoid">
+      <params>
+        <name type="C7fe64660a0b0">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64660cef0" return_type="Fvoid">
+      <params>
+        <name type="C7fe64660c0e0">msg</name>
+        <name type="S7fe64660c830">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64673d7a0" return_type="Fvoid">
+      <params>
+        <name type="S7fe64673d260">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe647801090" return_type="Fvoid">
+      <params>
+        <name type="C7fe647800b00">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe647803990" return_type="Fvoid">
+      <params>
+        <name type="C7fe647802b80">msg</name>
+        <name type="S7fe6478032d0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646564210" return_type="Fvoid">
+      <params>
+        <name type="S7fe646563c80">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646565ed0" return_type="Fvoid">
+      <params>
+        <name type="C7fe646565990">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646604740" return_type="Fvoid">
+      <params>
+        <name type="C7fe6465679c0">msg</name>
+        <name type="S7fe646568110">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646559f90" return_type="Fvoid">
+      <params>
+        <name type="C7fe646559a50">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe6465582a0" return_type="Fvoid">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64655c8c0" return_type="Fvoid">
+      <params>
+        <name type="C7fe64655bab0">msg</name>
+        <name type="S7fe64655c200">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646733870" return_type="Fvoid">
+      <params>
+        <name type="C7fe646732a60">msg</name>
+        <name type="S7fe6467331b0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64673bcb0" return_type="Fvoid">
+      <params>
+        <name type="C7fe646739f40">arrayname</name>
+        <name type="I7fe64673a8b0">idx</name>
+        <name type="I7fe64673a9e0">max</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe6467380e0" return_type="Fvoid">
+      <params>
+        <name type="C7fe646735aa0">arrayname</name>
+        <name type="I7fe646736410">idx</name>
+        <name type="I7fe646736540">max</name>
+        <name type="S7fe646736c90">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe6466061e0" return_type="Fvoid">
+      <params>
+        <name type="S7fe646605ca0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646730f70" return_type="Fvoid">
+      <params>
+        <name type="C7fe6467309e0">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64655e590" return_type="Fvoid">
+      <params>
+        <name type="C7fe64655e050">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646562720" return_type="Fvoid">
+      <params>
+        <name type="C7fe646561b60">msg</name>
+        <name type="S7fe6465622b0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646560070" return_type="Fvoid">
+      <params>
+        <name type="S7fe64655fb30">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe6465574a0" result_name="code_location" return_type="S7fe646555940">
+      <params>
+        <name type="C7fe646554990">file</name>
+        <name type="I7fe646555260">line</name>
+        <name type="C7fe646554ac0">func</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646511030" result_name="code_location" return_type="S7fe64672e700">
+      <params>
+        <name type="C7fe64672d870">file</name>
+        <name type="I7fe64672e020">line</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64672bd30" result_name="code_location" return_type="S7fe64672a2d0">
+      <params>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe64660e9e0" return_type="Fvoid">
+      <params>
+        <name type="S7fe64660e4a0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe6466106a0" return_type="Fvoid">
+      <params>
+        <name type="C7fe646610160">msg</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646612fa0" return_type="Fvoid">
+      <params>
+        <name type="C7fe646612190">msg</name>
+        <name type="S7fe6466128e0">code_loc</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7fe646729150" result_name="str" return_type="C7fe646727140">
+      <params>
+        <name type="C7fe646725460">file</name>
+        <name type="I7fe646725c10">line</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7fe646727140" ref="C7fe646726f30"/>
+    <FbasicType type="F7fe646500a10" ref="F7fe646720170"/>
+  </typeTable>
+  <identifiers>
+    <id type="S7fe646417e70" sclass="ftype_name" original_name="atlas_codelocation" declared_in="atlas_error_module">
+      <name>atlas_codelocation</name>
+    </id>
+    <id type="F7fe646501d10" sclass="ffunc" original_name="atlas_code_location_str" declared_in="atlas_error_module">
+      <name>atlas_code_location_str</name>
+    </id>
+    <id type="F7fe64650fbe0" sclass="ffunc" original_name="atlas_code_location" declared_in="atlas_error_module">
+      <name>atlas_code_location</name>
+    </id>
+    <id type="F7fe646503780" sclass="ffunc" original_name="atlas_abort" declared_in="atlas_error_module">
+      <name>atlas_abort</name>
+    </id>
+    <id type="F7fe646505240" sclass="ffunc" original_name="atlas_throw_exception" declared_in="atlas_error_module">
+      <name>atlas_throw_exception</name>
+    </id>
+    <id type="F7fe646506d30" sclass="ffunc" original_name="atlas_throw_notimplemented" declared_in="atlas_error_module">
+      <name>atlas_throw_notimplemented</name>
+    </id>
+    <id type="F7fe6465090a0" sclass="ffunc" original_name="atlas_throw_outofrange" declared_in="atlas_error_module">
+      <name>atlas_throw_outofrange</name>
+    </id>
+    <id type="F7fe64650ab60" sclass="ffunc" original_name="atlas_throw_seriousbug" declared_in="atlas_error_module">
+      <name>atlas_throw_seriousbug</name>
+    </id>
+    <id type="F7fe64650c620" sclass="ffunc" original_name="atlas_throw_usererror" declared_in="atlas_error_module">
+      <name>atlas_throw_usererror</name>
+    </id>
+    <id type="F7fe64650e110" sclass="ffunc" original_name="atlas_throw_assertionfailed" declared_in="atlas_error_module">
+      <name>atlas_throw_assertionfailed</name>
+    </id>
+    <id type="F7fe6465107d0" sclass="ffunc" original_name="atlas_err_code" declared_in="atlas_error_module">
+      <name>atlas_err_code</name>
+    </id>
+    <id type="F7fe64641df40" sclass="ffunc" original_name="atlas_err_msg" declared_in="atlas_error_module">
+      <name>atlas_err_msg</name>
+    </id>
+    <id type="F7fe64671b550" sclass="ffunc" original_name="atlas_err_set_aborts" declared_in="atlas_error_module">
+      <name>atlas_err_set_aborts</name>
+    </id>
+    <id type="F7fe64671ce80" sclass="ffunc" original_name="atlas_err_set_throws" declared_in="atlas_error_module">
+      <name>atlas_err_set_throws</name>
+    </id>
+    <id type="F7fe64671e7b0" sclass="ffunc" original_name="atlas_err_set_backtrace" declared_in="atlas_error_module">
+      <name>atlas_err_set_backtrace</name>
+    </id>
+    <id type="F7fe646617420" sclass="ffunc" original_name="atlas_err" declared_in="atlas_error_module">
+      <name>atlas_err</name>
+    </id>
+    <id type="F7fe646614f80" sclass="ffunc" original_name="atlas_noerr" declared_in="atlas_error_module">
+      <name>atlas_noerr</name>
+    </id>
+    <id type="F7fe6466137f0" sclass="ffunc" original_name="atlas_err_clear" declared_in="atlas_error_module">
+      <name>atlas_err_clear</name>
+    </id>
+    <id type="F7fe6466143e0" sclass="ffunc" original_name="atlas_err_success" declared_in="atlas_error_module">
+      <name>atlas_err_success</name>
+    </id>
+    <id type="I7fe64640f470" sclass="flocal" original_name="atlas_err_cleared" declared_in="atlas_error_module">
+      <name>atlas_err_cleared</name>
+    </id>
+    <id type="I7fe64640fab0" sclass="flocal" original_name="atlas_err_noerr" declared_in="atlas_error_module">
+      <name>atlas_err_noerr</name>
+    </id>
+    <id type="I7fe6464100f0" sclass="flocal" original_name="atlas_err_exception" declared_in="atlas_error_module">
+      <name>atlas_err_exception</name>
+    </id>
+    <id type="I7fe646410880" sclass="flocal" original_name="atlas_err_usererror" declared_in="atlas_error_module">
+      <name>atlas_err_usererror</name>
+    </id>
+    <id type="I7fe646411010" sclass="flocal" original_name="atlas_err_seriousbug" declared_in="atlas_error_module">
+      <name>atlas_err_seriousbug</name>
+    </id>
+    <id type="I7fe6464117a0" sclass="flocal" original_name="atlas_err_notimplemented" declared_in="atlas_error_module">
+      <name>atlas_err_notimplemented</name>
+    </id>
+    <id type="I7fe646411f30" sclass="flocal" original_name="atlas_err_assertionfailed" declared_in="atlas_error_module">
+      <name>atlas_err_assertionfailed</name>
+    </id>
+    <id type="I7fe6464126c0" sclass="flocal" original_name="atlas_err_badparameter" declared_in="atlas_error_module">
+      <name>atlas_err_badparameter</name>
+    </id>
+    <id type="I7fe646412e50" sclass="flocal" original_name="atlas_err_outofrange" declared_in="atlas_error_module">
+      <name>atlas_err_outofrange</name>
+    </id>
+    <id type="I7fe6464135e0" sclass="flocal" original_name="atlas_err_stop" declared_in="atlas_error_module">
+      <name>atlas_err_stop</name>
+    </id>
+    <id type="I7fe646413d70" sclass="flocal" original_name="atlas_err_abort" declared_in="atlas_error_module">
+      <name>atlas_err_abort</name>
+    </id>
+    <id type="I7fe646414500" sclass="flocal" original_name="atlas_err_cancel" declared_in="atlas_error_module">
+      <name>atlas_err_cancel</name>
+    </id>
+    <id type="I7fe646414c90" sclass="flocal" original_name="atlas_err_readerror" declared_in="atlas_error_module">
+      <name>atlas_err_readerror</name>
+    </id>
+    <id type="I7fe646415420" sclass="flocal" original_name="atlas_err_writeerror" declared_in="atlas_error_module">
+      <name>atlas_err_writeerror</name>
+    </id>
+    <id type="I7fe646415bb0" sclass="flocal" original_name="atlas_err_unknown" declared_in="atlas_error_module">
+      <name>atlas_err_unknown</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe64640f470">atlas_err_cleared</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe64640fab0">atlas_err_noerr</name>
+      <value>
+        <FintConstant type="Fint">0</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe6464100f0">atlas_err_exception</name>
+      <value>
+        <FintConstant type="Fint">-1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646410880">atlas_err_usererror</name>
+      <value>
+        <FintConstant type="Fint">-2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646411010">atlas_err_seriousbug</name>
+      <value>
+        <FintConstant type="Fint">-3</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe6464117a0">atlas_err_notimplemented</name>
+      <value>
+        <FintConstant type="Fint">-4</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646411f30">atlas_err_assertionfailed</name>
+      <value>
+        <FintConstant type="Fint">-5</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe6464126c0">atlas_err_badparameter</name>
+      <value>
+        <FintConstant type="Fint">-6</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646412e50">atlas_err_outofrange</name>
+      <value>
+        <FintConstant type="Fint">-7</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe6464135e0">atlas_err_stop</name>
+      <value>
+        <FintConstant type="Fint">-100</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646413d70">atlas_err_abort</name>
+      <value>
+        <FintConstant type="Fint">-101</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646414500">atlas_err_cancel</name>
+      <value>
+        <FintConstant type="Fint">-102</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646414c90">atlas_err_readerror</name>
+      <value>
+        <FintConstant type="Fint">-200</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646415420">atlas_err_writeerror</name>
+      <value>
+        <FintConstant type="Fint">-201</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl lineno="29" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <name type="I7fe646415bb0">atlas_err_unknown</name>
+      <value>
+        <FintConstant type="Fint">-999</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="atlas_code_location_str" lineno="57" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="58" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646729150">code_location_str_file_line</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_code_location" lineno="106" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="107" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe6465574a0">code_location_file_line_func</name>
+        <name type="F7fe646511030">code_location_file_line</name>
+        <name type="F7fe64672bd30">code_location_null</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="108" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe6465574a0">code_location_file_line_func</name>
+        <name type="F7fe646511030">code_location_file_line</name>
+        <name type="F7fe64672bd30">code_location_null</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="109" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe6465574a0">code_location_file_line_func</name>
+        <name type="F7fe646511030">code_location_file_line</name>
+        <name type="F7fe64672bd30">code_location_null</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_abort" lineno="61" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="62" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646559f90">atlas_abort_msg</name>
+        <name type="F7fe6465582a0">atlas_abort_null</name>
+        <name type="F7fe64655c8c0">atlas_abort_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="63" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646559f90">atlas_abort_msg</name>
+        <name type="F7fe6465582a0">atlas_abort_null</name>
+        <name type="F7fe64655c8c0">atlas_abort_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="64" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646559f90">atlas_abort_msg</name>
+        <name type="F7fe6465582a0">atlas_abort_null</name>
+        <name type="F7fe64655c8c0">atlas_abort_msg_loc</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_throw_exception" lineno="67" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="68" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64655e590">atlas_throw_exception_msg</name>
+        <name type="F7fe646562720">atlas_throw_exception_msg_loc</name>
+        <name type="F7fe646560070">atlas_throw_exception_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="69" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64655e590">atlas_throw_exception_msg</name>
+        <name type="F7fe646562720">atlas_throw_exception_msg_loc</name>
+        <name type="F7fe646560070">atlas_throw_exception_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="70" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64655e590">atlas_throw_exception_msg</name>
+        <name type="F7fe646562720">atlas_throw_exception_msg_loc</name>
+        <name type="F7fe646560070">atlas_throw_exception_loc</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_throw_notimplemented" lineno="73" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="74" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646564210">atlas_throw_notimplemented_loc</name>
+        <name type="F7fe646565ed0">atlas_throw_notimplemented_msg</name>
+        <name type="F7fe646604740">atlas_throw_notimplemented_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="75" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646564210">atlas_throw_notimplemented_loc</name>
+        <name type="F7fe646565ed0">atlas_throw_notimplemented_msg</name>
+        <name type="F7fe646604740">atlas_throw_notimplemented_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="76" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646564210">atlas_throw_notimplemented_loc</name>
+        <name type="F7fe646565ed0">atlas_throw_notimplemented_msg</name>
+        <name type="F7fe646604740">atlas_throw_notimplemented_msg_loc</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_throw_outofrange" lineno="79" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="80" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646733870">atlas_throw_outofrange_msg_loc</name>
+        <name type="F7fe64673bcb0">atlas_throw_outofrange_range</name>
+        <name type="F7fe6467380e0">atlas_throw_outofrange_range_loc</name>
+        <name type="F7fe6466061e0">atlas_throw_outofrange_loc</name>
+        <name type="F7fe646730f70">atlas_throw_outofrange_msg</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="81" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646733870">atlas_throw_outofrange_msg_loc</name>
+        <name type="F7fe64673bcb0">atlas_throw_outofrange_range</name>
+        <name type="F7fe6467380e0">atlas_throw_outofrange_range_loc</name>
+        <name type="F7fe6466061e0">atlas_throw_outofrange_loc</name>
+        <name type="F7fe646730f70">atlas_throw_outofrange_msg</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="82" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646733870">atlas_throw_outofrange_msg_loc</name>
+        <name type="F7fe64673bcb0">atlas_throw_outofrange_range</name>
+        <name type="F7fe6467380e0">atlas_throw_outofrange_range_loc</name>
+        <name type="F7fe6466061e0">atlas_throw_outofrange_loc</name>
+        <name type="F7fe646730f70">atlas_throw_outofrange_msg</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="83" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646733870">atlas_throw_outofrange_msg_loc</name>
+        <name type="F7fe64673bcb0">atlas_throw_outofrange_range</name>
+        <name type="F7fe6467380e0">atlas_throw_outofrange_range_loc</name>
+        <name type="F7fe6466061e0">atlas_throw_outofrange_loc</name>
+        <name type="F7fe646730f70">atlas_throw_outofrange_msg</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="84" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646733870">atlas_throw_outofrange_msg_loc</name>
+        <name type="F7fe64673bcb0">atlas_throw_outofrange_range</name>
+        <name type="F7fe6467380e0">atlas_throw_outofrange_range_loc</name>
+        <name type="F7fe6466061e0">atlas_throw_outofrange_loc</name>
+        <name type="F7fe646730f70">atlas_throw_outofrange_msg</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_throw_seriousbug" lineno="87" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="88" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64660e9e0">atlas_throw_seriousbug_loc</name>
+        <name type="F7fe6466106a0">atlas_throw_seriousbug_msg</name>
+        <name type="F7fe646612fa0">atlas_throw_seriousbug_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="89" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64660e9e0">atlas_throw_seriousbug_loc</name>
+        <name type="F7fe6466106a0">atlas_throw_seriousbug_msg</name>
+        <name type="F7fe646612fa0">atlas_throw_seriousbug_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="90" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64660e9e0">atlas_throw_seriousbug_loc</name>
+        <name type="F7fe6466106a0">atlas_throw_seriousbug_msg</name>
+        <name type="F7fe646612fa0">atlas_throw_seriousbug_msg_loc</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_throw_usererror" lineno="93" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="94" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64673d7a0">atlas_throw_usererror_loc</name>
+        <name type="F7fe647801090">atlas_throw_usererror_msg</name>
+        <name type="F7fe647803990">atlas_throw_usererror_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="95" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64673d7a0">atlas_throw_usererror_loc</name>
+        <name type="F7fe647801090">atlas_throw_usererror_msg</name>
+        <name type="F7fe647803990">atlas_throw_usererror_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="96" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe64673d7a0">atlas_throw_usererror_loc</name>
+        <name type="F7fe647801090">atlas_throw_usererror_msg</name>
+        <name type="F7fe647803990">atlas_throw_usererror_msg_loc</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_throw_assertionfailed" lineno="99" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="100" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646608930">atlas_throw_assertionfailed_loc</name>
+        <name type="F7fe64660a5f0">atlas_throw_assertionfailed_msg</name>
+        <name type="F7fe64660cef0">atlas_throw_assertionfailed_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="101" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646608930">atlas_throw_assertionfailed_loc</name>
+        <name type="F7fe64660a5f0">atlas_throw_assertionfailed_msg</name>
+        <name type="F7fe64660cef0">atlas_throw_assertionfailed_msg_loc</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="102" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.EzckBaHc/atlas_Error_module.F90">
+        <name type="F7fe646608930">atlas_throw_assertionfailed_loc</name>
+        <name type="F7fe64660a5f0">atlas_throw_assertionfailed_msg</name>
+        <name type="F7fe64660cef0">atlas_throw_assertionfailed_msg_loc</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

@@ -200,7 +200,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Generate the dependency list for the parsing order
   if [[ ${CONTINUE_TEST} == false ]]; then
-    print_green "[INFO] Generate dependencies list"
+    status "Generate dependencies list"
     echo "../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out" > "${PARSING_OUTPUT}"
     # shellcheck disable=SC2086
     ../fdependencies/generate_dep.py --recursive ${FDEP_EXCLUDED} ${FDEP_EXCLUDED_DIR} ${ICON_SRC} ${ICON_START} > ${ICON_DEP} 2> dependencies_icon.out
@@ -208,13 +208,13 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the dependencies file
   if [[ ! -f ${ICON_DEP} ]]; then
-    echo "ERROR: ${ICON_DEP} does not exists!"
+    error "${ICON_DEP} does not exists!"
     exit 1
   fi
 
   # Check that dependencies file has information in it
   if [[ $(wc -l < ${ICON_DEP}) -lt 2 ]]; then
-    echo "ERROR: ${ICON_DEP} is empty!"
+    error "${ICON_DEP} is empty!"
     exit 1
   fi
 
@@ -225,7 +225,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]; then
-    echo "ERROR: ${CLAWFC} does not exists!"
+    error "${CLAWFC} does not exists!"
     exit 1
   fi
 
@@ -260,7 +260,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${ICON_SRC}""${f90_file}"
+      error "[FAILED] ""${ICON_SRC}""${f90_file}"
     fi
   done < ./${ICON_DEP}
 
@@ -292,10 +292,10 @@ echo "===================================="
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
   # Check potential known errors in log file
   omni::check_error_log "${PARSING_OUTPUT}"
-  print_red "FAILED: Parsing test has detected some errors."
+  error "Parsing test has detected some errors."
   exit 1
 else
-  print_green "SUCCESS: Test has be executed correctly."
+  status "Test has be executed correctly."
   echo "================================"
   exit 0
 fi

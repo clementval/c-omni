@@ -1,0 +1,299 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_json_module</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7ff4d2d0fe20" return_type="V7ff4d2d0fcf0"/>
+    <FbasicType type="V7ff4d2d0fcf0" ref="FnumericAll"/>
+    <FfunctionType type="F7ff4d2d1efd0" result_name="json" return_type="S7ff4d2d1fb90" is_private="true">
+      <params>
+        <name type="C7ff4d2d204c0">str</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff4d2d0c6c0" is_public="true">
+      <symbols>
+        <id type="A7ff4d2d0d590">
+          <name>string</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7ff4d2d0dd00" pass="pass">
+          <name>str</name>
+          <binding>
+            <name>atlas_json__str</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7ff4d2d0e530" pass="pass" is_public="true">
+          <name>delete</name>
+          <binding>
+            <name>atlas_json__delete</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="C7ff4d2d0d460" is_private="true" is_allocatable="true" ref="Fcharacter"/>
+    <FbasicType type="A7ff4d2d0d590" is_private="true" is_allocatable="true" ref="C7ff4d2d0d460">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7ff4d2d1f980" ref="S7ff4d2d0c6c0"/>
+    <FbasicType type="S7ff4d2d1fb90" ref="S7ff4d2d1f980"/>
+    <FbasicType type="C7ff4d2d20390" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2d204c0" intent="in" ref="C7ff4d2d20390"/>
+    <FfunctionType type="F7ff4d2d21bd0" return_type="Fint"/>
+    <FfunctionType type="F7ff4d2d26610" result_name="json" return_type="S7ff4d2f07ac0" is_private="true">
+      <params>
+        <name type="S7ff4d2f08200">path</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7ff4d2f078b0" ref="S7ff4d2d0c6c0"/>
+    <FbasicType type="S7ff4d2f07ac0" ref="S7ff4d2f078b0"/>
+    <FstructType type="S7ff4d2d09880" is_public="true">
+      <symbols>
+        <id type="A7ff4d2d0a780">
+          <name>string</name>
+        </id>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7ff4d2d0af30" pass="pass">
+          <name>str</name>
+          <binding>
+            <name>atlas_pathname__str</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="C7ff4d2d0a650" is_private="true" is_allocatable="true" ref="Fcharacter"/>
+    <FbasicType type="A7ff4d2d0a780" is_private="true" is_allocatable="true" ref="C7ff4d2d0a650">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7ff4d2f080d0" ref="S7ff4d2d09880"/>
+    <FbasicType type="S7ff4d2f08200" intent="in" ref="S7ff4d2f080d0"/>
+    <FbasicType type="I7ff4d2c0dc10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff4d2c0d620" is_parameter="true" ref="I7ff4d2c0dc10"/>
+    <FbasicType type="I7ff4d2c0dd40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff4d2c0d830" is_parameter="true" ref="I7ff4d2c0dd40"/>
+    <FstructType type="S7ff4d2c0da90" imported_id="S7fb021c36540" is_internal_private="true">
+      <symbols>
+        <id type="I7ff4d2c0e080">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff4d2d35fd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff4d2d36510" is_parameter="true" ref="I7ff4d2d35fd0"/>
+    <FbasicType type="I7ff4d2c0e080" ref="Fint">
+      <kind>
+        <Var type="I7ff4d2d36510" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7ff4d2f05410" return_type="Fvoid">
+      <params>
+        <name type="S7ff4d2f05cf0" imported_id="S7fb0326290b0">ptr</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff4d2f05f50" imported_id="S7fb021c36540" is_internal_private="true">
+      <symbols>
+        <id type="I7ff4d2f062d0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff4d2c12540" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff4d2e00090" is_parameter="true" ref="I7ff4d2c12540"/>
+    <FbasicType type="I7ff4d2f062d0" ref="Fint">
+      <kind>
+        <Var type="I7ff4d2e00090" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff4d2f05e20" imported_id="S7fb032628f80" ref="S7ff4d2f05f50"/>
+    <FbasicType type="S7ff4d2f05cf0" imported_id="S7fb0326290b0" ref="S7ff4d2f05e20"/>
+    <FfunctionType type="F7ff4d2f056e0" return_type="C7ff4d2f06500">
+      <params>
+        <name type="S7ff4d2f06880" imported_id="S7fb032522980">cptr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d2f06650" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2f06500" is_allocatable="true" ref="C7ff4d2f06650"/>
+    <FstructType type="S7ff4d2f06b20" imported_id="S7fb021c36540" is_internal_private="true">
+      <symbols>
+        <id type="I7ff4d2f06ea0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff4d2f06ea0" ref="Fint">
+      <kind>
+        <Var type="I7ff4d2e00090" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff4d2f069d0" imported_id="S7fb032522850" ref="S7ff4d2f06b20"/>
+    <FbasicType type="S7ff4d2f06880" imported_id="S7fb032522980" intent="in" ref="S7ff4d2f069d0"/>
+    <FfunctionType type="F7ff4d2f059b0" return_type="C7ff4d2f070d0">
+      <params>
+        <name type="C7ff4d2f07300">f_str</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d2ca09c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2ca0620" intent="in" ref="C7ff4d2ca09c0"/>
+    <FbasicType type="C7ff4d2f070d0" ref="Fcharacter">
+      <len>
+        <plusExpr type="Fint">
+          <functionCall type="Fint" is_intrinsic="true">
+            <name>len_trim</name>
+            <arguments>
+              <Var type="C7ff4d2ca0620" scope="local">f_str</Var>
+            </arguments>
+          </functionCall>
+          <FintConstant type="Fint">1</FintConstant>
+        </plusExpr>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2f07450" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2f07300" intent="in" ref="C7ff4d2f07450"/>
+    <FbasicType type="C7ff4d2f089c0" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2f08bd0" is_allocatable="true" ref="C7ff4d2f089c0"/>
+    <FbasicType type="I7ff4d2f09190" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff4d2f093a0" ref="I7ff4d2f09190"/>
+    <FbasicType type="S7ff4d2f09860" ref="S7ff4d2c0da90"/>
+    <FbasicType type="S7ff4d2f09a70" ref="S7ff4d2f09860"/>
+    <FbasicType type="I7ff4d2f0a030" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff4d2f0a240" ref="I7ff4d2f0a030"/>
+    <FfunctionType type="F7ff4d2d0c420" return_type="V7ff4d2d0c2f0"/>
+    <FbasicType type="V7ff4d2d0c2f0" ref="FnumericAll"/>
+    <FfunctionType type="F7ff4d2d10ba0" result_name="pathname" return_type="S7ff4d2d11760" is_private="true">
+      <params>
+        <name type="C7ff4d2d12090">str</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7ff4d2d11550" ref="S7ff4d2d09880"/>
+    <FbasicType type="S7ff4d2d11760" ref="S7ff4d2d11550"/>
+    <FbasicType type="C7ff4d2d11f60" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2d12090" intent="in" ref="C7ff4d2d11f60"/>
+    <FfunctionType type="F7ff4d2d13800" return_type="Fint"/>
+    <FfunctionType type="F7ff4d2f0c3e0" result_name="json" return_type="S7ff4d2f07ac0">
+      <params>
+        <name type="S7ff4d2f08200">path</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7ff4d2d25c20" result_name="json" return_type="S7ff4d2d1fb90">
+      <params>
+        <name type="C7ff4d2d204c0">str</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7ff4d2d17850" result_name="pathname" return_type="S7ff4d2d11760">
+      <params>
+        <name type="C7ff4d2d12090">str</name>
+      </params>
+    </FfunctionType>
+    <FfunctionType type="F7ff4d2f0cd00" result_name="str" return_type="C7ff4d2f0dbb0" is_private="true">
+      <params>
+        <name type="S7ff4d2f0e0f0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d2f0d9a0" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2f0dbb0" is_allocatable="true" ref="C7ff4d2f0d9a0"/>
+    <FbasicType type="S7ff4d2f0e0f0" is_class="true" ref="S7ff4d2d0c6c0"/>
+    <FbasicType type="F7ff4d2d0dd00" ref="F7ff4d2f0cd00"/>
+    <FfunctionType type="F7ff4d2f13950" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="S7ff4d2f144d0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7ff4d2f144d0" intent="inout" is_class="true" ref="S7ff4d2d0c6c0"/>
+    <FbasicType type="F7ff4d2d0e530" ref="F7ff4d2f13950"/>
+    <FfunctionType type="F7ff4d2d18270" result_name="str" return_type="C7ff4d2d19130" is_private="true">
+      <params>
+        <name type="S7ff4d2d19680">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7ff4d2d18f20" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7ff4d2d19130" is_allocatable="true" ref="C7ff4d2d18f20"/>
+    <FbasicType type="S7ff4d2d19680" is_class="true" ref="S7ff4d2d09880"/>
+    <FbasicType type="F7ff4d2d0af30" ref="F7ff4d2d18270"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7ff4d2d0fe20" sclass="ffunc" original_name="atlas_json" declared_in="atlas_json_module">
+      <name>atlas_json</name>
+    </id>
+    <id type="S7ff4d2d0c6c0" sclass="ftype_name" original_name="atlas_json" declared_in="atlas_json_module">
+      <name>atlas_json</name>
+    </id>
+    <id type="F7ff4d2d0c420" sclass="ffunc" original_name="atlas_pathname" declared_in="atlas_json_module">
+      <name>atlas_pathname</name>
+    </id>
+    <id type="S7ff4d2d09880" sclass="ftype_name" original_name="atlas_pathname" declared_in="atlas_json_module">
+      <name>atlas_pathname</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+    <FinterfaceDecl name="atlas_json" lineno="34" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.wF2Wt2Xl/atlas_JSON_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="35" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.wF2Wt2Xl/atlas_JSON_module.F90">
+        <name type="F7ff4d2f0c3e0">atlas_json__ctor_path</name>
+        <name type="F7ff4d2d25c20">atlas_json__ctor_str</name>
+      </FmoduleProcedureDecl>
+      <FmoduleProcedureDecl is_module_specified="true" lineno="36" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.wF2Wt2Xl/atlas_JSON_module.F90">
+        <name type="F7ff4d2f0c3e0">atlas_json__ctor_path</name>
+        <name type="F7ff4d2d25c20">atlas_json__ctor_str</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+    <FinterfaceDecl name="atlas_pathname" lineno="19" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.wF2Wt2Xl/atlas_JSON_module.F90">
+      <FmoduleProcedureDecl is_module_specified="true" lineno="20" file="/var/folders/pm/5w7885tn1j70szfgqc924g980000gn/T/tmp.wF2Wt2Xl/atlas_JSON_module.F90">
+        <name type="F7ff4d2d17850">atlas_pathname__ctor_str</name>
+      </FmoduleProcedureDecl>
+    </FinterfaceDecl>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
