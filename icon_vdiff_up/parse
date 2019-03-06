@@ -174,19 +174,19 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
 
   # Generate the dependency list for the parsing order
-  print_green "[INFO] Generate dependencies list"
+  status "Generate dependencies list"
   echo "../fdependencies/generate_dep.py --stop-after-start --exclude ${EXCLUDE_FILES} --recursive ${STANDALONE_SRC} ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out" > "${PARSING_OUTPUT}"
   ../fdependencies/generate_dep.py --stop-after-start --exclude ${EXCLUDE_FILES} --recursive ${STANDALONE_SRC} --exclude-dir externals/jsbach/src ${STANDALONE_START} > ${STANDALONE_DEP} 2> ${STANDALONE_DEP}.out
 
   # Check existence of the dependencies file
   if [[ ! -f ${STANDALONE_DEP} ]]; then
-    echo "ERROR: ${STANDALONE_DEP} does not exists!"
+    error "${STANDALONE_DEP} does not exists!"
     exit 1
   fi
 
   # Check that dependencies file has information in it
   if [[ $(wc -l < ${STANDALONE_DEP}) -lt 2 ]]; then
-    echo "ERROR: ${STANDALONE_DEP} is empty!"
+    error  "${STANDALONE_DEP} is empty!"
     exit 1
   fi
 
@@ -197,7 +197,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
 
   # Check existence of the CLAW FORTRAN Compiler
   if [[ ! -f ${CLAWFC} ]]; then
-    echo "ERROR: ${CLAWFC} does not exists!"
+    error "${CLAWFC} does not exists!"
     exit 1
   fi
 
@@ -222,7 +222,7 @@ if [[ ${SKIP_PARSING} == false ]]; then
     fi
     (( parsed_files=parsed_files+1 ))
     if [[ ! -f ${CLAW_OUTPUT}/${f90_file} ]]; then
-      print_red "[FAILED] ""${STANDALONE_SRC}""${f90_file}"
+      error "${STANDALONE_SRC}""${f90_file}"
     fi
   done < ./${STANDALONE_DEP}
 fi
@@ -251,10 +251,10 @@ echo "================================"
 if [[ ${xmod_errors} -ne 0 ]] || [[ ${f90_errors} -ne 0 ]]; then
   # Check potential known errors in log file
   omni::check_error_log "${PARSING_OUTPUT}"
-  print_red "FAILED: Parsing test has detected some errors."
+  error "Parsing test has detected some errors."
   exit 1
 else
-  print_green "SUCCESS: Test has be executed correctly."
+  status "Test has be executed correctly."
   echo "================================"
   exit 0
 fi

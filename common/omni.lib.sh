@@ -46,9 +46,9 @@ function omni::check_xmod {
   done
 
   if [[ ${__errors} -ne 0 ]]; then
-    print_red "> ERROR: ${__errors} .xmod files didn't pass the check"
+    error "${__errors} .xmod files didn't pass the check"
   else
-    print_green "> XMOD check succeed"
+    status "XMOD check succeed"
   fi
 
   # shellcheck disable=SC2086
@@ -79,9 +79,9 @@ function omni::check_fortran {
 
   # Report number of detected errors
   if [[ ${__errors} -ne 0 ]]; then
-    print_red "> ERROR: ${__errors} .f90 files have not been parsed correctly"
+    error "${__errors} .f90 files have not been parsed correctly"
   else
-    print_green "> Fortran check succeed"
+    status "Fortran check succeed"
   fi
 
   # shellcheck disable=SC2086

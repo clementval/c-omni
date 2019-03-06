@@ -1,0 +1,730 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_functionspace_structuredcolumns_c_binding</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7ff6a140a650" return_type="S7ff6a140abe0" bind="C" bind_name="atlas__functionspace__StructuredColumns__new__grid">
+      <params>
+        <name type="S7ff6a143a290">grid</name>
+        <name type="S7ff6a143a950">config</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a140b5c0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1439730">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a141a100" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a141a640" is_parameter="true" ref="I7ff6a141a100"/>
+    <FbasicType type="I7ff6a1439730" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1439aa0" ref="S7ff6a140b5c0"/>
+    <FbasicType type="S7ff6a140abe0" ref="S7ff6a1439aa0"/>
+    <FbasicType type="S7ff6a143a160" ref="S7ff6a140b5c0"/>
+    <FbasicType type="S7ff6a143a290" is_value="true" ref="S7ff6a143a160"/>
+    <FbasicType type="S7ff6a143a820" ref="S7ff6a140b5c0"/>
+    <FbasicType type="S7ff6a143a950" is_value="true" ref="S7ff6a143a820"/>
+    <FfunctionType type="F7ff6a143b9f0" return_type="Fvoid" bind="C" bind_name="atlas__functionspace__StructuredColumns__delete">
+      <params>
+        <name type="S7ff6a143d020">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a143c540" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a143c910">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a143c910" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a143cef0" ref="S7ff6a143c540"/>
+    <FbasicType type="S7ff6a143d020" is_value="true" ref="S7ff6a143cef0"/>
+    <FfunctionType type="F7ff6a143df50" return_type="S7ff6a143e4e0" bind="C" bind_name="atlas__fs__StructuredColumns__create_field">
+      <params>
+        <name type="S7ff6a143ff90">this</name>
+        <name type="S7ff6a1440650">options</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a143eec0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a143f290">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a143f290" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a143f7a0" ref="S7ff6a143eec0"/>
+    <FbasicType type="S7ff6a143e4e0" ref="S7ff6a143f7a0"/>
+    <FbasicType type="S7ff6a143fe60" ref="S7ff6a143eec0"/>
+    <FbasicType type="S7ff6a143ff90" is_value="true" ref="S7ff6a143fe60"/>
+    <FbasicType type="S7ff6a1440520" ref="S7ff6a143eec0"/>
+    <FbasicType type="S7ff6a1440650" is_value="true" ref="S7ff6a1440520"/>
+    <FfunctionType type="F7ff6a1441820" return_type="Fvoid" bind="C" bind_name="atlas__functionspace__StructuredColumns__gather">
+      <params>
+        <name type="S7ff6a1443430">this</name>
+        <name type="S7ff6a1443af0">local</name>
+        <name type="S7ff6a14441b0">global</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a1442950" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1442d20">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1442d20" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1443300" ref="S7ff6a1442950"/>
+    <FbasicType type="S7ff6a1443430" is_value="true" ref="S7ff6a1443300"/>
+    <FbasicType type="S7ff6a14439c0" ref="S7ff6a1442950"/>
+    <FbasicType type="S7ff6a1443af0" is_value="true" ref="S7ff6a14439c0"/>
+    <FbasicType type="S7ff6a1444080" ref="S7ff6a1442950"/>
+    <FbasicType type="S7ff6a14441b0" is_value="true" ref="S7ff6a1444080"/>
+    <FfunctionType type="F7ff6a14454c0" return_type="Fvoid" bind="C" bind_name="atlas__functionspace__StructuredColumns__scatter">
+      <params>
+        <name type="S7ff6a14470d0">this</name>
+        <name type="S7ff6a1447790">global</name>
+        <name type="S7ff6a1447e50">local</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a14465f0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a14469c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a14469c0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1446fa0" ref="S7ff6a14465f0"/>
+    <FbasicType type="S7ff6a14470d0" is_value="true" ref="S7ff6a1446fa0"/>
+    <FbasicType type="S7ff6a1447660" ref="S7ff6a14465f0"/>
+    <FbasicType type="S7ff6a1447790" is_value="true" ref="S7ff6a1447660"/>
+    <FbasicType type="S7ff6a1447d20" ref="S7ff6a14465f0"/>
+    <FbasicType type="S7ff6a1447e50" is_value="true" ref="S7ff6a1447d20"/>
+    <FfunctionType type="F7ff6a14492a0" return_type="Fvoid" bind="C" bind_name="atlas__fs__StructuredColumns__checksum_fieldset">
+      <params>
+        <name type="S7ff6a144b9e0">this</name>
+        <name type="S7ff6a144c0a0">fieldset</name>
+        <name type="S7ff6a144c690">checksum</name>
+        <name type="I7ff6a144cd80">size</name>
+        <name type="I7ff6a144d470">allocated</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a144adb0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a144b2d0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a144b2d0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a144b8b0" ref="S7ff6a144adb0"/>
+    <FbasicType type="S7ff6a144b9e0" is_value="true" ref="S7ff6a144b8b0"/>
+    <FbasicType type="S7ff6a144bf70" ref="S7ff6a144adb0"/>
+    <FbasicType type="S7ff6a144c0a0" is_value="true" ref="S7ff6a144bf70"/>
+    <FbasicType type="S7ff6a144c560" ref="S7ff6a144adb0"/>
+    <FbasicType type="S7ff6a144c690" ref="S7ff6a144c560"/>
+    <FbasicType type="I7ff6a144cc50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a144cd80" ref="I7ff6a144cc50"/>
+    <FbasicType type="I7ff6a144d340" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a144d470" ref="I7ff6a144d340"/>
+    <FbasicType type="I7ff6a144af50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a144ab30" is_parameter="true" ref="I7ff6a144af50"/>
+    <FfunctionType type="F7ff6a144eb70" return_type="Fvoid" bind="C" bind_name="atlas__fs__StructuredColumns__checksum_field">
+      <params>
+        <name type="S7ff6a14512b0">this</name>
+        <name type="S7ff6a1451970">field</name>
+        <name type="S7ff6a1451f60">checksum</name>
+        <name type="I7ff6a1452650">size</name>
+        <name type="I7ff6a1452d40">allocated</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a1450680" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1450ba0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1450ba0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1451180" ref="S7ff6a1450680"/>
+    <FbasicType type="S7ff6a14512b0" is_value="true" ref="S7ff6a1451180"/>
+    <FbasicType type="S7ff6a1451840" ref="S7ff6a1450680"/>
+    <FbasicType type="S7ff6a1451970" is_value="true" ref="S7ff6a1451840"/>
+    <FbasicType type="S7ff6a1451e30" ref="S7ff6a1450680"/>
+    <FbasicType type="S7ff6a1451f60" ref="S7ff6a1451e30"/>
+    <FbasicType type="I7ff6a1452520" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1452650" ref="I7ff6a1452520"/>
+    <FbasicType type="I7ff6a1452c10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1452d40" ref="I7ff6a1452c10"/>
+    <FbasicType type="I7ff6a1450820" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1450400" is_parameter="true" ref="I7ff6a1450820"/>
+    <FfunctionType type="F7ff6a14542b0" return_type="Fvoid" bind="C" bind_name="atlas__fs__StructuredColumns__halo_exchange_field">
+      <params>
+        <name type="S7ff6a1455bd0">this</name>
+        <name type="S7ff6a1456290">field</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a14550f0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a14554c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a14554c0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1455aa0" ref="S7ff6a14550f0"/>
+    <FbasicType type="S7ff6a1455bd0" is_value="true" ref="S7ff6a1455aa0"/>
+    <FbasicType type="S7ff6a1456160" ref="S7ff6a14550f0"/>
+    <FbasicType type="S7ff6a1456290" is_value="true" ref="S7ff6a1456160"/>
+    <FfunctionType type="F7ff6a1457390" return_type="Fvoid" bind="C" bind_name="atlas__fs__StructuredColumns__halo_exchange_fieldset">
+      <params>
+        <name type="S7ff6a1458cb0">this</name>
+        <name type="S7ff6a1459370">fieldset</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a14581d0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a14585a0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a14585a0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1458b80" ref="S7ff6a14581d0"/>
+    <FbasicType type="S7ff6a1458cb0" is_value="true" ref="S7ff6a1458b80"/>
+    <FbasicType type="S7ff6a1459240" ref="S7ff6a14581d0"/>
+    <FbasicType type="S7ff6a1459370" is_value="true" ref="S7ff6a1459240"/>
+    <FfunctionType type="F7ff6a145a740" return_type="Fvoid" bind="C" bind_name="atlas__fs__StructuredColumns__index_host">
+      <params>
+        <name type="S7ff6a145d170">this</name>
+        <name type="S7ff6a145d760">data</name>
+        <name type="I7ff6a145de50">i_min</name>
+        <name type="I7ff6a145e540">i_max</name>
+        <name type="I7ff6a145ec30">j_min</name>
+        <name type="I7ff6a145f320">j_max</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a145c540" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a145ca60">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a145ca60" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a145d040" ref="S7ff6a145c540"/>
+    <FbasicType type="S7ff6a145d170" is_value="true" ref="S7ff6a145d040"/>
+    <FbasicType type="S7ff6a145d630" ref="S7ff6a145c540"/>
+    <FbasicType type="S7ff6a145d760" ref="S7ff6a145d630"/>
+    <FbasicType type="I7ff6a145dd20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a145de50" ref="I7ff6a145dd20"/>
+    <FbasicType type="I7ff6a145e410" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a145e540" ref="I7ff6a145e410"/>
+    <FbasicType type="I7ff6a145eb00" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a145ec30" ref="I7ff6a145eb00"/>
+    <FbasicType type="I7ff6a145f1f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a145f320" ref="I7ff6a145f1f0"/>
+    <FbasicType type="I7ff6a145c6e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a145c2c0" is_parameter="true" ref="I7ff6a145c6e0"/>
+    <FfunctionType type="F7ff6a1460930" return_type="I7ff6a1460d00" bind="C" bind_name="atlas__fs__StructuredColumns__j_begin">
+      <params>
+        <name type="S7ff6a1462cd0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a14624e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1460d00" ref="I7ff6a14624e0"/>
+    <FstructType type="S7ff6a14619b0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1461ed0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1461ed0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1462ba0" ref="S7ff6a14619b0"/>
+    <FbasicType type="S7ff6a1462cd0" is_value="true" ref="S7ff6a1462ba0"/>
+    <FbasicType type="I7ff6a1461b50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1461730" is_parameter="true" ref="I7ff6a1461b50"/>
+    <FfunctionType type="F7ff6a1463b20" return_type="I7ff6a1463ef0" bind="C" bind_name="atlas__fs__StructuredColumns__j_end">
+      <params>
+        <name type="S7ff6a1465ec0">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a14656d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1463ef0" ref="I7ff6a14656d0"/>
+    <FstructType type="S7ff6a1464ba0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a14650c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a14650c0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1465d90" ref="S7ff6a1464ba0"/>
+    <FbasicType type="S7ff6a1465ec0" is_value="true" ref="S7ff6a1465d90"/>
+    <FbasicType type="I7ff6a1464d40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1464920" is_parameter="true" ref="I7ff6a1464d40"/>
+    <FfunctionType type="F7ff6a1466dc0" return_type="I7ff6a1467350" bind="C" bind_name="atlas__fs__StructuredColumns__i_begin">
+      <params>
+        <name type="S7ff6a1469450">this</name>
+        <name type="I7ff6a1469c10">j</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a1468c60" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1467350" ref="I7ff6a1468c60"/>
+    <FstructType type="S7ff6a1468130" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1468650">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1468650" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1469320" ref="S7ff6a1468130"/>
+    <FbasicType type="S7ff6a1469450" is_value="true" ref="S7ff6a1469320"/>
+    <FbasicType type="I7ff6a1469ae0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1469c10" is_value="true" ref="I7ff6a1469ae0"/>
+    <FbasicType type="I7ff6a14682d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1467eb0" is_parameter="true" ref="I7ff6a14682d0"/>
+    <FfunctionType type="F7ff6a146ac70" return_type="I7ff6a146b200" bind="C" bind_name="atlas__fs__StructuredColumns__i_end">
+      <params>
+        <name type="S7ff6a146d300">this</name>
+        <name type="I7ff6a146dac0">j</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a146cb10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a146b200" ref="I7ff6a146cb10"/>
+    <FstructType type="S7ff6a146bfe0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a146c500">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a146c500" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a146d1d0" ref="S7ff6a146bfe0"/>
+    <FbasicType type="S7ff6a146d300" is_value="true" ref="S7ff6a146d1d0"/>
+    <FbasicType type="I7ff6a146d990" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a146dac0" is_value="true" ref="I7ff6a146d990"/>
+    <FbasicType type="I7ff6a146c180" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a146bd60" is_parameter="true" ref="I7ff6a146c180"/>
+    <FfunctionType type="F7ff6a146eaa0" return_type="I7ff6a146ee70" bind="C" bind_name="atlas__fs__StructuredColumns__j_begin_halo">
+      <params>
+        <name type="S7ff6a1470e40">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a1470650" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a146ee70" ref="I7ff6a1470650"/>
+    <FstructType type="S7ff6a146fb20" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1470040">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1470040" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1470d10" ref="S7ff6a146fb20"/>
+    <FbasicType type="S7ff6a1470e40" is_value="true" ref="S7ff6a1470d10"/>
+    <FbasicType type="I7ff6a146fcc0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a146f8a0" is_parameter="true" ref="I7ff6a146fcc0"/>
+    <FfunctionType type="F7ff6a1471c90" return_type="I7ff6a1472060" bind="C" bind_name="atlas__fs__StructuredColumns__j_end_halo">
+      <params>
+        <name type="S7ff6a1474030">this</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a1473840" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1472060" ref="I7ff6a1473840"/>
+    <FstructType type="S7ff6a1472d10" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1473230">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1473230" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1473f00" ref="S7ff6a1472d10"/>
+    <FbasicType type="S7ff6a1474030" is_value="true" ref="S7ff6a1473f00"/>
+    <FbasicType type="I7ff6a1472eb0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1472a90" is_parameter="true" ref="I7ff6a1472eb0"/>
+    <FfunctionType type="F7ff6a1474f00" return_type="I7ff6a1475490" bind="C" bind_name="atlas__fs__StructuredColumns__i_begin_halo">
+      <params>
+        <name type="S7ff6a1477590">this</name>
+        <name type="I7ff6a1477d50">j</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a1476da0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1475490" ref="I7ff6a1476da0"/>
+    <FstructType type="S7ff6a1476270" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1476790">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1476790" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1477460" ref="S7ff6a1476270"/>
+    <FbasicType type="S7ff6a1477590" is_value="true" ref="S7ff6a1477460"/>
+    <FbasicType type="I7ff6a1477c20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1477d50" is_value="true" ref="I7ff6a1477c20"/>
+    <FbasicType type="I7ff6a1476410" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1475ff0" is_parameter="true" ref="I7ff6a1476410"/>
+    <FfunctionType type="F7ff6a1478db0" return_type="I7ff6a1479340" bind="C" bind_name="atlas__fs__StructuredColumns__i_end_halo">
+      <params>
+        <name type="S7ff6a147b440">this</name>
+        <name type="I7ff6a147bc00">j</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7ff6a147ac50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1479340" ref="I7ff6a147ac50"/>
+    <FstructType type="S7ff6a147a120" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a147a640">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a147a640" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a147b310" ref="S7ff6a147a120"/>
+    <FbasicType type="S7ff6a147b440" is_value="true" ref="S7ff6a147b310"/>
+    <FbasicType type="I7ff6a147bad0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a147bc00" is_value="true" ref="I7ff6a147bad0"/>
+    <FbasicType type="I7ff6a147a2c0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7ff6a1479ea0" is_parameter="true" ref="I7ff6a147a2c0"/>
+    <FfunctionType type="F7ff6a147cbe0" return_type="S7ff6a147cfb0" bind="C" bind_name="atlas__fs__StructuredColumns__xy">
+      <params>
+        <name type="S7ff6a147e930">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a147d860" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a147dc30">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a147dc30" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a147e140" ref="S7ff6a147d860"/>
+    <FbasicType type="S7ff6a147cfb0" ref="S7ff6a147e140"/>
+    <FbasicType type="S7ff6a147e800" ref="S7ff6a147d860"/>
+    <FbasicType type="S7ff6a147e930" is_value="true" ref="S7ff6a147e800"/>
+    <FfunctionType type="F7ff6a147f7c0" return_type="S7ff6a147fb90" bind="C" bind_name="atlas__fs__StructuredColumns__partition">
+      <params>
+        <name type="S7ff6a1481510">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a1480440" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a1480810">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a1480810" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1480d20" ref="S7ff6a1480440"/>
+    <FbasicType type="S7ff6a147fb90" ref="S7ff6a1480d20"/>
+    <FbasicType type="S7ff6a14813e0" ref="S7ff6a1480440"/>
+    <FbasicType type="S7ff6a1481510" is_value="true" ref="S7ff6a14813e0"/>
+    <FfunctionType type="F7ff6a14823a0" return_type="S7ff6a1482770" bind="C" bind_name="atlas__fs__StructuredColumns__global_index">
+      <params>
+        <name type="S7ff6a14840f0">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7ff6a1483020" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7ff6a14833f0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7ff6a14833f0" ref="Fint">
+      <kind>
+        <Var type="I7ff6a141a640" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7ff6a1483900" ref="S7ff6a1483020"/>
+    <FbasicType type="S7ff6a1482770" ref="S7ff6a1483900"/>
+    <FbasicType type="S7ff6a1483fc0" ref="S7ff6a1483020"/>
+    <FbasicType type="S7ff6a14840f0" is_value="true" ref="S7ff6a1483fc0"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7ff6a140a650" sclass="ffunc" original_name="atlas__functionspace__structuredcolumns__new__grid" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__functionspace__structuredcolumns__new__grid</name>
+    </id>
+    <id type="F7ff6a143b9f0" sclass="ffunc" original_name="atlas__functionspace__structuredcolumns__delete" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__functionspace__structuredcolumns__delete</name>
+    </id>
+    <id type="F7ff6a143df50" sclass="ffunc" original_name="atlas__fs__structuredcolumns__create_field" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__create_field</name>
+    </id>
+    <id type="F7ff6a1441820" sclass="ffunc" original_name="atlas__functionspace__structuredcolumns__gather" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__functionspace__structuredcolumns__gather</name>
+    </id>
+    <id type="F7ff6a14454c0" sclass="ffunc" original_name="atlas__functionspace__structuredcolumns__scatter" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__functionspace__structuredcolumns__scatter</name>
+    </id>
+    <id type="F7ff6a14492a0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__checksum_fieldset" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__checksum_fieldset</name>
+    </id>
+    <id type="F7ff6a144eb70" sclass="ffunc" original_name="atlas__fs__structuredcolumns__checksum_field" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__checksum_field</name>
+    </id>
+    <id type="F7ff6a14542b0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__halo_exchange_field" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__halo_exchange_field</name>
+    </id>
+    <id type="F7ff6a1457390" sclass="ffunc" original_name="atlas__fs__structuredcolumns__halo_exchange_fieldset" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__halo_exchange_fieldset</name>
+    </id>
+    <id type="F7ff6a145a740" sclass="ffunc" original_name="atlas__fs__structuredcolumns__index_host" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__index_host</name>
+    </id>
+    <id type="F7ff6a1460930" sclass="ffunc" original_name="atlas__fs__structuredcolumns__j_begin" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__j_begin</name>
+    </id>
+    <id type="F7ff6a1463b20" sclass="ffunc" original_name="atlas__fs__structuredcolumns__j_end" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__j_end</name>
+    </id>
+    <id type="F7ff6a1466dc0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__i_begin" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__i_begin</name>
+    </id>
+    <id type="F7ff6a146ac70" sclass="ffunc" original_name="atlas__fs__structuredcolumns__i_end" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__i_end</name>
+    </id>
+    <id type="F7ff6a146eaa0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__j_begin_halo" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__j_begin_halo</name>
+    </id>
+    <id type="F7ff6a1471c90" sclass="ffunc" original_name="atlas__fs__structuredcolumns__j_end_halo" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__j_end_halo</name>
+    </id>
+    <id type="F7ff6a1474f00" sclass="ffunc" original_name="atlas__fs__structuredcolumns__i_begin_halo" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__i_begin_halo</name>
+    </id>
+    <id type="F7ff6a1478db0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__i_end_halo" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__i_end_halo</name>
+    </id>
+    <id type="F7ff6a147cbe0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__xy" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__xy</name>
+    </id>
+    <id type="F7ff6a147f7c0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__partition" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__partition</name>
+    </id>
+    <id type="F7ff6a14823a0" sclass="ffunc" original_name="atlas__fs__structuredcolumns__global_index" declared_in="atlas_functionspace_structuredcolumns_c_binding">
+      <name>atlas__fs__structuredcolumns__global_index</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

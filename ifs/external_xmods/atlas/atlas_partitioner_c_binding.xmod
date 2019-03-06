@@ -1,0 +1,121 @@
+<OmniFortranModule version="1.0">
+  <name>atlas_partitioner_c_binding</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FfunctionType type="F7fe5c4508610" return_type="S7fe5c45089e0" bind="C" bind_name="atlas__grid__Partitioner__new">
+      <params>
+        <name type="S7fe5c44024f0">config</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fe5c4509290" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fe5c45521d0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe5c4517dd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7fe5c4518310" is_parameter="true" ref="I7fe5c4517dd0"/>
+    <FbasicType type="I7fe5c45521d0" ref="Fint">
+      <kind>
+        <Var type="I7fe5c4518310" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fe5c4552510" ref="S7fe5c4509290"/>
+    <FbasicType type="S7fe5c45089e0" ref="S7fe5c4552510"/>
+    <FbasicType type="S7fe5c44023c0" ref="S7fe5c4509290"/>
+    <FbasicType type="S7fe5c44024f0" is_value="true" ref="S7fe5c44023c0"/>
+    <FfunctionType type="F7fe5c4403480" return_type="S7fe5c4403a10" bind="C" bind_name="atlas__grid__MatchingMeshPartitioner__new">
+      <params>
+        <name type="S7fe5c44054c0">mesh</name>
+        <name type="S7fe5c4405b80">config</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fe5c44043f0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fe5c44047c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe5c44047c0" ref="Fint">
+      <kind>
+        <Var type="I7fe5c4518310" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fe5c4404cd0" ref="S7fe5c44043f0"/>
+    <FbasicType type="S7fe5c4403a10" ref="S7fe5c4404cd0"/>
+    <FbasicType type="S7fe5c4405390" ref="S7fe5c44043f0"/>
+    <FbasicType type="S7fe5c44054c0" is_value="true" ref="S7fe5c4405390"/>
+    <FbasicType type="S7fe5c4405a50" ref="S7fe5c44043f0"/>
+    <FbasicType type="S7fe5c4405b80" is_value="true" ref="S7fe5c4405a50"/>
+    <FfunctionType type="F7fe5c4406c20" return_type="Fvoid" bind="C" bind_name="atlas__grid__Partitioner__delete">
+      <params>
+        <name type="S7fe5c4408250">this</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fe5c4407770" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fe5c4407b40">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe5c4407b40" ref="Fint">
+      <kind>
+        <Var type="I7fe5c4518310" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fe5c4408120" ref="S7fe5c4407770"/>
+    <FbasicType type="S7fe5c4408250" is_value="true" ref="S7fe5c4408120"/>
+    <FfunctionType type="F7fe5c4409180" return_type="S7fe5c4409710" bind="C" bind_name="atlas__grid__Partitioner__partition">
+      <params>
+        <name type="S7fe5c440b1c0">this</name>
+        <name type="S7fe5c440b880">grid</name>
+      </params>
+    </FfunctionType>
+    <FstructType type="S7fe5c440a0f0" imported_id="S7fe686c02f00" is_internal_private="true">
+      <symbols>
+        <id type="I7fe5c440a4c0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7fe5c440a4c0" ref="Fint">
+      <kind>
+        <Var type="I7fe5c4518310" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7fe5c440a9d0" ref="S7fe5c440a0f0"/>
+    <FbasicType type="S7fe5c4409710" ref="S7fe5c440a9d0"/>
+    <FbasicType type="S7fe5c440b090" ref="S7fe5c440a0f0"/>
+    <FbasicType type="S7fe5c440b1c0" is_value="true" ref="S7fe5c440b090"/>
+    <FbasicType type="S7fe5c440b750" ref="S7fe5c440a0f0"/>
+    <FbasicType type="S7fe5c440b880" is_value="true" ref="S7fe5c440b750"/>
+  </typeTable>
+  <identifiers>
+    <id type="F7fe5c4508610" sclass="ffunc" original_name="atlas__grid__partitioner__new" declared_in="atlas_partitioner_c_binding">
+      <name>atlas__grid__partitioner__new</name>
+    </id>
+    <id type="F7fe5c4403480" sclass="ffunc" original_name="atlas__grid__matchingmeshpartitioner__new" declared_in="atlas_partitioner_c_binding">
+      <name>atlas__grid__matchingmeshpartitioner__new</name>
+    </id>
+    <id type="F7fe5c4406c20" sclass="ffunc" original_name="atlas__grid__partitioner__delete" declared_in="atlas_partitioner_c_binding">
+      <name>atlas__grid__partitioner__delete</name>
+    </id>
+    <id type="F7fe5c4409180" sclass="ffunc" original_name="atlas__grid__partitioner__partition" declared_in="atlas_partitioner_c_binding">
+      <name>atlas__grid__partitioner__partition</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>

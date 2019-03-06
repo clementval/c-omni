@@ -1,0 +1,153 @@
+<OmniFortranModule version="1.0">
+  <name>fckit_main_module</name>
+  <depends>
+  </depends>
+  <typeTable>
+    <FstructType type="S7f93e6e40af0" is_private="true">
+      <symbols>
+      </symbols>
+      <typeBoundProcedures>
+        <typeBoundProcedure type="F7f93e6e41380" pass="nopass" is_public="true">
+          <name>ready</name>
+          <binding>
+            <name>ready</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e41af0" pass="nopass" is_public="true">
+          <name>initialise</name>
+          <binding>
+            <name>initialise</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e42260" pass="nopass" is_public="true">
+          <name>finalise</name>
+          <binding>
+            <name>finalise</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e429a0" pass="nopass" is_public="true">
+          <name>taskid</name>
+          <binding>
+            <name>taskid</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e43110" pass="nopass" is_public="true">
+          <name>set_taskid</name>
+          <binding>
+            <name>set_taskid</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e43850" pass="nopass" is_public="true">
+          <name>debug</name>
+          <binding>
+            <name>debug</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e440c0" pass="nopass" is_public="true">
+          <name>name</name>
+          <binding>
+            <name>main_name</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e44830" pass="nopass" is_public="true">
+          <name>displayname</name>
+          <binding>
+            <name>displayname</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e450a0" pass="nopass" is_public="true">
+          <name>init</name>
+          <binding>
+            <name>initialise</name>
+          </binding>
+        </typeBoundProcedure>
+        <typeBoundProcedure type="F7f93e6e45910" pass="nopass" is_public="true">
+          <name>final</name>
+          <binding>
+            <name>finalise</name>
+          </binding>
+        </typeBoundProcedure>
+      </typeBoundProcedures>
+    </FstructType>
+    <FbasicType type="S7f93e6e46030" ref="S7f93e6e40af0"/>
+    <FbasicType type="S7f93e6e46160" is_public="true" is_save="true" ref="S7f93e6e46030"/>
+    <FfunctionType type="F7f93e800c330" return_type="Flogical" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7f93e6e41380" ref="F7f93e800c330"/>
+    <FfunctionType type="F7f93e6e46d90" return_type="Fvoid" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7f93e6e41af0" ref="F7f93e6e46d90"/>
+    <FfunctionType type="F7f93e800b330" return_type="Fvoid" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7f93e6e42260" ref="F7f93e800b330"/>
+    <FfunctionType type="F7f93e8019780" return_type="I7f93e8023ac0" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f93e8023990" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f93e8023ac0" ref="I7f93e8023990"/>
+    <FbasicType type="F7f93e6e429a0" ref="F7f93e8019780"/>
+    <FfunctionType type="F7f93e80253e0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="I7f93e802fae0">taskid</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f93e802f9b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f93e802fae0" intent="in" ref="I7f93e802f9b0"/>
+    <FbasicType type="F7f93e6e43110" ref="F7f93e80253e0"/>
+    <FfunctionType type="F7f93e8031410" return_type="Flogical" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="F7f93e6e43850" ref="F7f93e8031410"/>
+    <FfunctionType type="F7f93e8034cb0" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7f93e80545d0">name</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f93e80544a0" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f93e80545d0" intent="inout" is_allocatable="true" ref="C7f93e80544a0"/>
+    <FbasicType type="F7f93e6e440c0" ref="F7f93e8034cb0"/>
+    <FfunctionType type="F7f93e8058540" return_type="Fvoid" is_private="true">
+      <params>
+        <name type="C7f93e6f12d80">name</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f93e6f12c50" is_allocatable="true" ref="Fcharacter">
+      <len is_assumed_shape="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f93e6f12d80" intent="inout" is_allocatable="true" ref="C7f93e6f12c50"/>
+    <FbasicType type="F7f93e6e44830" ref="F7f93e8058540"/>
+    <FbasicType type="F7f93e6e450a0" ref="F7f93e6e46d90"/>
+    <FbasicType type="F7f93e6e45910" ref="F7f93e800b330"/>
+  </typeTable>
+  <identifiers>
+    <id type="S7f93e6e46160" sclass="fsave" original_name="fckit_main" declared_in="fckit_main_module">
+      <name>fckit_main</name>
+    </id>
+  </identifiers>
+  <declarations>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
