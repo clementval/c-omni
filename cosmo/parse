@@ -21,7 +21,7 @@ function show_help(){
   echo " -o                Use the latest OMNI Compiler version for the test"
   echo " -n                Test with NETCDF enabled"
   echo " -g                Process file for GPU version"
-  echo " -h                specify COSMO hash to checkout"
+  echo " -a                specify COSMO hash to checkout"
 }
 
 source ./common/utility.sh
@@ -63,7 +63,7 @@ COSMO_HASH=""
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hb:csponrgh:" opt; do
+while getopts "hb:csponrga:" opt; do
   case "$opt" in
   h)
     show_help
@@ -77,7 +77,7 @@ while getopts "hb:csponrgh:" opt; do
   n) NETCDF_ENABLE=true ;;
   r) PRERELEASE=true; NETCDF_ENABLE=true ;;
   g) GPU_VERSION=true ;;
-  h) COSMO_HASH=$OPTARG ;;
+  a) COSMO_HASH=$OPTARG ;;
   *)
      show_help
      exit 1
