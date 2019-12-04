@@ -15,12 +15,12 @@ function show_help(){
 #  echo " -i <install-path> Set an install path"
 
   echo " -s                Skip CLAW/OMNI compilation/install"
-  echo " -r                Test cosmo-prerelease instead of cosmo-pompa"
   echo " -c                Skip fetching step for COSMO"
   echo " -p                Skip parsing step"
   echo " -o                Use the latest OMNI Compiler version for the test"
   echo " -n                Test with NETCDF enabled"
   echo " -g                Process file for GPU version"
+  echo " -a                specify COSMO hash to checkout"
 }
 
 source ./common/utility.sh
@@ -51,8 +51,8 @@ SKIP_FETCH=false
 SKIP_PARSING=false
 OMNI_LATEST=false
 NETCDF_ENABLE=false
-PRERELEASE=false
 GPU_VERSION=false
+COSMO_HASH=""
 
 
 # This to avoid the outside OpenACC problem
@@ -61,7 +61,7 @@ GPU_VERSION=false
 # Parsing output
 PARSING_OUTPUT=${TEST_DIR}/cosmo_parse_test.log
 
-while getopts "hb:csponrg" opt; do
+while getopts "hb:csponrga:" opt; do
   case "$opt" in
   h)
     show_help
@@ -73,8 +73,8 @@ while getopts "hb:csponrg" opt; do
   o) OMNI_LATEST=true ;;
   b) CLAW_BRANCH=$OPTARG ;;
   n) NETCDF_ENABLE=true ;;
-  r) PRERELEASE=true; NETCDF_ENABLE=true ;;
   g) GPU_VERSION=true ;;
+  a) COSMO_HASH=$OPTARG ;;
   *)
      show_help
      exit 1
@@ -82,50 +82,23 @@ while getopts "hb:csponrg" opt; do
   esac
 done
 
-if [[ ${PRERELEASE} == true ]]; then
-  COSMO_VERSION="COSMO-PRERELEASE"
-  COSMO_MAIN_REPO="git@github.com:COSMO-ORG/cosmo.git"
-  COSMO_REP="cosmo"
-  COSMO_BRANCH=""
-  COSMO_SRC="./${COSMO_REP}/cosmo/src/"
-  COSMO_START="lmorg.f90"
-  COSMO_DEP="dependencies_cosmo"
-  COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
-  COSMO_NETCDF_INC="${COSMO_SRC}/../ACC/include/netcdf/"
-  COSMO_MPI_INCLUDE="${COSMO_SRC}/../ACC/include/mpi/"
 
-  COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
-  COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
-  COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING -DCPP_DYCORE"
-  COSMO_DEFINITIONS+=" -DGCL_COMM -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
-  COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC -DALLOC_WKARR"
-else
-  COSMO_VERSION="COSMO-POMPA"
-  COSMO_MAIN_REPO="git@github.com:MeteoSwiss-APN/cosmo-pompa.git"
-  COSMO_REP="cosmo-pompa"
-  COSMO_BRANCH=""
-  COSMO_SRC="./${COSMO_REP}/cosmo/src/"
-  COSMO_START="lmorg.f90"
-  COSMO_DEP="dependencies_cosmo"
-  COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
-  COSMO_NETCDF_INC="${COSMO_SRC}/../include/netcdf/"
-  COSMO_MPI_INCLUDE="${COSMO_SRC}/../include/mpi/"
+COSMO_VERSION="COSMO"
+COSMO_MAIN_REPO="git@github.com:COSMO-ORG/cosmo.git"
+COSMO_REP="cosmo"
+COSMO_BRANCH=""
+COSMO_SRC="./${COSMO_REP}/cosmo/src/"
+COSMO_START="lmorg.f90"
+COSMO_DEP="dependencies_cosmo"
+COSMO_EXCLUDED_FILES="test_src_lbc.f90:cosmo_ppser.f90"
+COSMO_NETCDF_INC="${COSMO_SRC}/../ACC/include/netcdf/"
+COSMO_MPI_INCLUDE="${COSMO_SRC}/../ACC/include/mpi/"
 
-  if [[ ${GPU_VERSION} == true ]]; then
-    COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
-    COSMO_DEFINITIONS+=" -DCRAY_FIX_REALLOC -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL"
-    COSMO_DEFINITIONS+=" -DIEEE_INTR  -D__COSMO__ -D_LOC_TIMING -DGSP_FIRST"
-    COSMO_DEFINITIONS+=" -DNUDGING -DPOLLEN -DGRIBDWD -DGRIBAPI -DNETCDF"
-    COSMO_DEFINITIONS+=" -DCPP_DYCORE -DGCL_COMM -D_OPENACC"
-  else
-    COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DASSIM_WKARR_CLEANUP"
-    COSMO_DEFINITIONS+=" -DASSIM_MDARR_CLEANUP"
-    COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
-    COSMO_DEFINITIONS+=" -D__COSMO__ -D_LOC_TIMING -DGSP_FIRST -DNUDGING"
-    COSMO_DEFINITIONS+=" -DPOLLEN -DGRIBDWD -DGRIBAPI"
-    COSMO_DEFINITIONS+=" -DNETCDF -DCPP_DYCORE -DGCL_COMM -D__MPICH2"
-  fi
-fi
+COSMO_DEFINITIONS="-D__CRAY_FORTRAN__ -DHAS_IOMSG -DCRAY_FIX_WKARR"
+COSMO_DEFINITIONS+=" -DCRAY_FIX_PARALLEL_OPTIONAL_LOGICAL -DIEEE_INTR"
+COSMO_DEFINITIONS+=" -D_LOC_TIMING -DGSP_FIRST -DNUDGING"
+COSMO_DEFINITIONS+=" -DGRIBDWD -DGRIBAPI -D_OPENACC -D__COSMO__"
+COSMO_DEFINITIONS+=" -DPGI_FIX_ACCROUTINE_PLACEMENT -DCRAY_FIX_REALLOC -DALLOC_WKARR"
 
 if [[ ${OMNI_LATEST} == true ]] && [[ ${SKIP_CLAW} == true ]]; then
   echo "Incompatible options -o and -s ..."
@@ -164,6 +137,7 @@ echo "============================================"
 echo "- COMSO information"
 echo "  - Git repository: ${COSMO_MAIN_REPO}"
 echo "  - Git branch: ${COSMO_BRANCH}"
+echo "  - Git commit: ${COSMO_HASH}"
 if [[ ${GPU_VERSION} == true ]]; then
   echo "  - Verson: GPU"
 else
@@ -225,7 +199,12 @@ if [[ ${SKIP_FETCH} == false ]]; then
   #####################
   status "Fetching ${COSMO_VERSION}"
 
-  if [[ "${COSMO_BRANCH}" != "" ]]; then
+  if [[ "${COSMO_HASH}" != "" ]]; then
+    git clone "${COSMO_MAIN_REPO}"
+    cd "${COSMO_REP}" || exit 1
+    git checkout "${COSMO_HASH}"
+    cd ..
+  elif [[ "${COSMO_BRANCH}" != "" ]]; then
     git clone --depth 1 -b "${COSMO_BRANCH}" "${COSMO_MAIN_REPO}"
   else
     git clone --depth 1 "${COSMO_MAIN_REPO}"
