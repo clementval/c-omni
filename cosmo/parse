@@ -201,8 +201,8 @@ if [[ ${SKIP_FETCH} == false ]]; then
 
   if [[ "${COSMO_HASH}" != "" ]]; then
     git clone "${COSMO_MAIN_REPO}"
-    cd ${COSMO_REP}
-        git checkout ${COSMO_HASH}
+    cd "${COSMO_REP}" || exit 1
+    git checkout "${COSMO_HASH}"
     cd ..
   elif [[ "${COSMO_BRANCH}" != "" ]]; then
     git clone --depth 1 -b "${COSMO_BRANCH}" "${COSMO_MAIN_REPO}"
