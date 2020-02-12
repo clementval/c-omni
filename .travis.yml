@@ -6,25 +6,9 @@ addons:
   apt:
     packages:
     - realpath # required by script
-    - cabal-install
-    - ghc
 
 git:
   submodules: false
-
-before_install:
-- cabal update && cabal install ShellCheck
-- export PATH=$PATH:$HOME/.cabal/bin
-- shellcheck --version
-
-before_cache:
-- rm $HOME/.cabal/logs/build.log
-
-cache:
-  directories:
-  - "$HOME/.ghc"
-  - "$HOME/.cabal"
-  - "$HOME/.stack"
 
 script:
 - "./run.shellcheck"
