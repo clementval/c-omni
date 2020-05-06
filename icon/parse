@@ -44,7 +44,7 @@ CONTINUE_TEST=false
 
 # ICON related variables
 ICON_MAIN_REPO="git@gitlab.dkrz.de:icon/icon.git"
-ICON_REP="icon"
+ICON_REP="icon-clone"
 STANDALONE_GIT_BRANCH="icon-2.6.2-rc"
 ICON_SRC="./${ICON_REP}/src/"
 ICON_START="drivers/icon.f90"
@@ -172,9 +172,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
   if [[ ${CONTINUE_TEST} == false ]]; then
     if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
-      git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}"
+      git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}" ${ICON_REP}
     else
-      git clone --depth 1 "${ICON_MAIN_REPO}"
+      git clone --depth 1 "${ICON_MAIN_REPO}" ${ICON_REP}
     fi
 
     cd ${ICON_REP} || exit 1
