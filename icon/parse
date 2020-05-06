@@ -92,10 +92,9 @@ fi
 
 COMPUTER=$(hostname)
 
-if [[ $COMPUTER == *"daint"* ]]
-then
+if [[ $COMPUTER == *"daint"* ]]; then
   COMPUTER="daint"
-if [[ ${COMPUTER} == *"kesch"* ]]; then
+elif [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
 
