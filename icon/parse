@@ -43,8 +43,8 @@ OMNI_LATEST=false
 CONTINUE_TEST=false
 
 # ICON related variables
-ICON_MAIN_REPO="git@github.com:C2SM-RCM/icon-eniac.git"
-ICON_REP="icon-eniac"
+ICON_MAIN_REPO="git@gitlab.dkrz.de:icon/icon.git"
+ICON_REP="icon-clone"
 STANDALONE_GIT_BRANCH=""
 ICON_SRC="./${ICON_REP}/src/"
 ICON_START="drivers/icon.f90"
@@ -92,11 +92,9 @@ fi
 
 COMPUTER=$(hostname)
 
-#if [[ $COMPUTER == *"daint"* ]]
-#then
-#  COMPUTER="daint"
-#  CMAKE_MOD="CMake"
-if [[ ${COMPUTER} == *"kesch"* ]]; then
+if [[ $COMPUTER == *"daint"* ]]; then
+  COMPUTER="daint"
+elif [[ ${COMPUTER} == *"kesch"* ]]; then
   COMPUTER="kesch"
 fi
 
@@ -172,9 +170,9 @@ if [[ ${SKIP_PARSING} == false ]]; then
   ####################
   if [[ ${CONTINUE_TEST} == false ]]; then
     if [[ "${STANDALONE_GIT_BRANCH}" != "" ]]; then
-      git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}"
+      git clone -b "${STANDALONE_GIT_BRANCH}" "${ICON_MAIN_REPO}" ${ICON_REP}
     else
-      git clone --depth 1 "${ICON_MAIN_REPO}"
+      git clone --depth 1 "${ICON_MAIN_REPO}" ${ICON_REP}
     fi
 
     cd ${ICON_REP} || exit 1
