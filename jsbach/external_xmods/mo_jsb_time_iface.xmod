@@ -1,0 +1,2501 @@
+<OmniFortranModule version="1.0">
+  <name>mo_jsb_time_iface</name>
+  <depends>
+    <name>mo_kind</name>
+    <name>mo_exception</name>
+    <name>mtime</name>
+    <name>mo_time_config</name>
+    <name>mo_time_nml</name>
+    <name>mo_dynamics_config</name>
+    <name>mo_impl_constants</name>
+    <name>mo_ha_dyn_config</name>
+    <name>mo_bcs_time_interpolation</name>
+    <name>mo_echam_phy_config</name>
+    <name>mo_run_config</name>
+  </depends>
+  <typeTable>
+    <FbasicType type="I7f9f2a8917e0" is_parameter="true" ref="Fint"/>
+    <FbasicType type="C7f9f2a89fa40" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">1024</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2a89f240" ref="C7f9f2a89fa40"/>
+    <FfunctionType type="F7f9f2a89f5a0" return_type="Fvoid">
+      <params>
+        <name type="C7f9f2a89fe00">name</name>
+        <name type="C7f9f2a8a0240">text</name>
+        <name type="I7f9f2a8a0580">out</name>
+        <name type="I7f9f2a8a08c0">level</name>
+        <name type="L7f9f2a8a0d20">all_print</name>
+        <name type="L7f9f2a8a1060">adjust_right</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f9f2a89ff30" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2a89fe00" intent="in" ref="C7f9f2a89ff30"/>
+    <FbasicType type="C7f9f2a8a0370" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2a8a0240" intent="in" ref="C7f9f2a8a0370"/>
+    <FbasicType type="I7f9f2a8a0580" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f2a8a08c0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7f9f2a8a0d20" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7f9f2a8a1060" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="C7f9f29354d80" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f29353750" intent="in" ref="C7f9f29354d80"/>
+    <FbasicType type="C7f9f29355330" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f29353ad0" intent="in" ref="C7f9f29355330"/>
+    <FbasicType type="I7f9f29353e40" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f293541b0" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="L7f9f29354520" intent="in" is_optional="true" ref="Flogical"/>
+    <FbasicType type="L7f9f29354a00" intent="in" is_optional="true" ref="Flogical"/>
+    <FfunctionType type="F7f9f2a89f8c0" return_type="Fvoid">
+      <params>
+        <name type="C7f9f2a8a13a0">name</name>
+        <name type="C7f9f2a8a16e0">text</name>
+        <name type="I7f9f2a8a1a40">exit_no</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f9f2a8a14d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2a8a13a0" intent="in" ref="C7f9f2a8a14d0"/>
+    <FbasicType type="C7f9f2a8a1820" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2a8a16e0" intent="in" is_optional="true" ref="C7f9f2a8a1820"/>
+    <FbasicType type="I7f9f2a8a1a40" intent="in" is_optional="true" ref="Fint"/>
+    <FbasicType type="C7f9f2937c190" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2937b740" intent="in" ref="C7f9f2937c190"/>
+    <FbasicType type="C7f9f2937c7f0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2937bab0" intent="in" is_optional="true" ref="C7f9f2937c7f0"/>
+    <FbasicType type="I7f9f2937be20" intent="in" is_optional="true" ref="Fint"/>
+    <FstructType type="S7f9f297661c0" imported_id="S7f90da397d90" is_public="true">
+      <symbols>
+        <id type="S7f9f29769aa0">
+          <name>date</name>
+        </id>
+        <id type="S7f9f2976aed0">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f29769d20" imported_id="S7f90da39cbc0">
+      <symbols>
+        <id type="I7f9f2976a080">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2976a3e0">
+          <name>month</name>
+        </id>
+        <id type="I7f9f29768950">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2976a080" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2976a3e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29768950" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f29769be0" imported_id="S7f90da39ca90" ref="S7f9f29769d20"/>
+    <FbasicType type="S7f9f29769aa0" imported_id="S7f90da39c960" ref="S7f9f29769be0"/>
+    <FstructType type="S7f9f2976b130" imported_id="S7f90da39dc90">
+      <symbols>
+        <id type="I7f9f2976b470">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2976b7b0">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2976baf0">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2976be30">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2976b470" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2976b7b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2976baf0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2976be30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2976b000" imported_id="S7f90da39db60" ref="S7f9f2976b130"/>
+    <FbasicType type="S7f9f2976aed0" imported_id="S7f90da39da30" ref="S7f9f2976b000"/>
+    <FfunctionType type="F7f9f29766500" return_type="FnumericAll"/>
+    <FfunctionType type="F7f9f29766820" return_type="Fvoid">
+      <params>
+        <name type="S7f9f2976c760" imported_id="S7f90da39f180">my_datetime</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2976c8a0" imported_id="S7f90da39f2b0" is_pointer="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2976c760" imported_id="S7f90da39f180" is_pointer="true" ref="S7f9f2976c8a0"/>
+    <FstructType type="S7f9f2a939630" imported_id="S7f90da397d90">
+      <symbols>
+        <id type="S7f9f2a9397c0">
+          <name>date</name>
+        </id>
+        <id type="S7f9f2a939a30">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2a939c70" imported_id="S7f90da39cbc0">
+      <symbols>
+        <id type="I7f9f2a93a770">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2a93aed0">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2a93b710">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2a93a770" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a93aed0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a93b710" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2a93bcc0" imported_id="S7f90da39ca90" ref="S7f9f2a939c70"/>
+    <FbasicType type="S7f9f2a9397c0" imported_id="S7f90da39c960" ref="S7f9f2a93bcc0"/>
+    <FstructType type="S7f9f2a93be70" imported_id="S7f90da39dc90">
+      <symbols>
+        <id type="I7f9f2a93cbd0">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2a93d400">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2a93db60">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2a93e2c0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2a93cbd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a93d400" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a93db60" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a93e2c0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2a93e990" imported_id="S7f90da39db60" ref="S7f9f2a93be70"/>
+    <FbasicType type="S7f9f2a939a30" imported_id="S7f90da39da30" ref="S7f9f2a93e990"/>
+    <FbasicType type="S7f9f293a32a0" imported_id="S7f90da39f2b0" is_pointer="true" ref="S7f9f2a939630"/>
+    <FbasicType type="S7f9f293a2e20" imported_id="S7f90da39f180" is_pointer="true" ref="S7f9f293a32a0"/>
+    <FfunctionType type="F7f9f29766b50" return_type="I7f9f2976cce0">
+      <params>
+        <name type="S7f9f2976cf00" imported_id="S7f90da3a1580">dt</name>
+        <name type="I7f9f2976d420">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2976cce0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2976d040" imported_id="S7f90da3a16b0" is_target="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2976cf00" imported_id="S7f90da3a1580" is_target="true" ref="S7f9f2976d040"/>
+    <FbasicType type="I7f9f2976d420" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f9f293b8b80" imported_id="S7f90da3a16b0" is_target="true" ref="S7f9f2a939630"/>
+    <FbasicType type="S7f9f293b7c50" imported_id="S7f90da3a1580" is_target="true" ref="S7f9f293b8b80"/>
+    <FbasicType type="I7f9f293b7fd0" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f29766f10" return_type="I7f9f2976a750">
+      <params>
+        <name type="S7f9f2976a960" imported_id="S7f90da3a2020">dt</name>
+        <name type="I7f9f2976dbd0">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2976a750" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2976d800" imported_id="S7f90da3a2150" is_target="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2976a960" imported_id="S7f90da3a2020" is_target="true" ref="S7f9f2976d800"/>
+    <FbasicType type="I7f9f2976dbd0" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f9f293bd6f0" imported_id="S7f90da3a2150" is_target="true" ref="S7f9f2a939630"/>
+    <FbasicType type="S7f9f293bc7b0" imported_id="S7f90da3a2020" is_target="true" ref="S7f9f293bd6f0"/>
+    <FbasicType type="I7f9f293bcb30" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f29767230" return_type="I7f9f2976df60">
+      <params>
+        <name type="S7f9f2976e170" imported_id="S7f90da3a2ac0">dt</name>
+        <name type="I7f9f2976e670">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2976df60" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2976e2a0" imported_id="S7f90da3a2bf0" is_target="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2976e170" imported_id="S7f90da3a2ac0" is_target="true" ref="S7f9f2976e2a0"/>
+    <FbasicType type="I7f9f2976e670" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f9f293c2250" imported_id="S7f90da3a2bf0" is_target="true" ref="S7f9f2a939630"/>
+    <FbasicType type="S7f9f293c12f0" imported_id="S7f90da3a2ac0" is_target="true" ref="S7f9f293c2250"/>
+    <FbasicType type="I7f9f293c1670" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f29767550" return_type="I7f9f2976ea00">
+      <params>
+        <name type="S7f9f2976ec10" imported_id="S7f90da3a4000">dt</name>
+        <name type="I7f9f2976f130">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2976ea00" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2976ed50" imported_id="S7f90da3a4130" is_target="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2976ec10" imported_id="S7f90da3a4000" is_target="true" ref="S7f9f2976ed50"/>
+    <FbasicType type="I7f9f2976f130" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f9f293cb910" imported_id="S7f90da3a4130" is_target="true" ref="S7f9f2a939630"/>
+    <FbasicType type="S7f9f293ca9b0" imported_id="S7f90da3a4000" is_target="true" ref="S7f9f293cb910"/>
+    <FbasicType type="I7f9f293cad30" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f29767920" return_type="FnumericAll"/>
+    <FfunctionType type="F7f9f29767c40" return_type="FnumericAll"/>
+    <FfunctionType type="F7f9f29767f60" return_type="FnumericAll"/>
+    <FstructType type="S7f9f297681c0" imported_id="S7f90da3a9700">
+      <symbols>
+        <id type="I7f9f2976fd50">
+          <name>quotient</name>
+        </id>
+        <id type="I7f9f297700b0">
+          <name>remainder_in_ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2976fd50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297700b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f297684e0" return_type="I7f9f29770330">
+      <params>
+        <name type="S7f9f29770550" imported_id="S7f90da3b65d0">td</name>
+        <name type="S7f9f29772ef0" imported_id="S7f90da3b70f0">dt</name>
+        <name type="I7f9f29775c90">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f29770330" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7f9f297707d0" imported_id="S7f90da3a94a0">
+      <symbols>
+        <id type="I7f9f29770b30">
+          <name>flag_std_form</name>
+        </id>
+        <id type="Fcharacter">
+          <name>sign</name>
+        </id>
+        <id type="I7f9f297710b0">
+          <name>year</name>
+        </id>
+        <id type="I7f9f29771410">
+          <name>month</name>
+        </id>
+        <id type="I7f9f29771770">
+          <name>day</name>
+        </id>
+        <id type="I7f9f29771ad0">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f29771e30">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f29772190">
+          <name>second</name>
+        </id>
+        <id type="I7f9f297724f0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f29770b30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297710b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29771410" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29771770" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29771ad0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29771e30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29772190" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297724f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f29770690" imported_id="S7f90da3b6700" is_target="true" ref="S7f9f297707d0"/>
+    <FbasicType type="S7f9f29770550" imported_id="S7f90da3b65d0" intent="in" is_target="true" ref="S7f9f29770690"/>
+    <FstructType type="S7f9f297731b0" imported_id="S7f90da3b42c0">
+      <symbols>
+        <id type="S7f9f297733d0">
+          <name>date</name>
+        </id>
+        <id type="S7f9f29774530">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f29773650" imported_id="S7f90da3b25a0">
+      <symbols>
+        <id type="I7f9f297739b0">
+          <name>year</name>
+        </id>
+        <id type="I7f9f29773d10">
+          <name>month</name>
+        </id>
+        <id type="I7f9f29774070">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f297739b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29773d10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29774070" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f29773510" imported_id="S7f90da3b4600" ref="S7f9f29773650"/>
+    <FbasicType type="S7f9f297733d0" imported_id="S7f90da3b44d0" ref="S7f9f29773510"/>
+    <FstructType type="S7f9f297747b0" imported_id="S7f90da3b4d10">
+      <symbols>
+        <id type="I7f9f29774b10">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f29774e70">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f297751d0">
+          <name>second</name>
+        </id>
+        <id type="I7f9f29775530">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f29774b10" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29774e70" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297751d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f29775530" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f29774670" imported_id="S7f90da3b4be0" ref="S7f9f297747b0"/>
+    <FbasicType type="S7f9f29774530" imported_id="S7f90da3b4ab0" ref="S7f9f29774670"/>
+    <FbasicType type="S7f9f29773070" imported_id="S7f90da3b7220" is_target="true" ref="S7f9f297731b0"/>
+    <FbasicType type="S7f9f29772ef0" imported_id="S7f90da3b70f0" intent="in" is_target="true" ref="S7f9f29773070"/>
+    <FbasicType type="I7f9f29775c90" is_optional="true" ref="Fint"/>
+    <FstructType type="S7f9f293fae10" imported_id="S7f90da3a94a0">
+      <symbols>
+        <id type="I7f9f2aa008e0">
+          <name>flag_std_form</name>
+        </id>
+        <id type="Fcharacter">
+          <name>sign</name>
+        </id>
+        <id type="I7f9f2aa01040">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2aa01870">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2aa01fd0">
+          <name>day</name>
+        </id>
+        <id type="I7f9f2aa02730">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2aa02f50">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2aa036a0">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2aa03ec0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2aa008e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa01040" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa01870" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa01fd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa02730" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa02f50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa036a0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa03ec0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2aa2b6a0" imported_id="S7f90da3b6700" is_target="true" ref="S7f9f293fae10"/>
+    <FbasicType type="S7f9f2aa2a3d0" imported_id="S7f90da3b65d0" intent="in" is_target="true" ref="S7f9f2aa2b6a0"/>
+    <FstructType type="S7f9f2aa20ba0" imported_id="S7f90da3b42c0">
+      <symbols>
+        <id type="S7f9f2aa20d30">
+          <name>date</name>
+        </id>
+        <id type="S7f9f2aa21030">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2aa193d0" imported_id="S7f90da3b25a0">
+      <symbols>
+        <id type="I7f9f2aa19ec0">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2aa1a620">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2aa1ae40">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2aa19ec0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa1a620" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa1ae40" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2aa212b0" imported_id="S7f90da3b4600" ref="S7f9f2aa193d0"/>
+    <FbasicType type="S7f9f2aa20d30" imported_id="S7f90da3b44d0" ref="S7f9f2aa212b0"/>
+    <FstructType type="S7f9f2aa21440" imported_id="S7f90da3b4d10">
+      <symbols>
+        <id type="I7f9f2aa22190">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2aa228f0">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2aa23120">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2aa23880">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2aa22190" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa228f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa23120" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa23880" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2aa23e30" imported_id="S7f90da3b4be0" ref="S7f9f2aa21440"/>
+    <FbasicType type="S7f9f2aa21030" imported_id="S7f90da3b4ab0" ref="S7f9f2aa23e30"/>
+    <FbasicType type="S7f9f2aa2b850" imported_id="S7f90da3b7220" is_target="true" ref="S7f9f2aa20ba0"/>
+    <FbasicType type="S7f9f2aa2a770" imported_id="S7f90da3b70f0" intent="in" is_target="true" ref="S7f9f2aa2b850"/>
+    <FbasicType type="I7f9f2aa2aaf0" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f29768800" return_type="I7f9f29776050">
+      <params>
+        <name type="S7f9f29776270" imported_id="S7f90da3b7b90">td</name>
+        <name type="S7f9f29776db0" imported_id="S7f90da3b86b0">dt</name>
+        <name type="I7f9f297772d0">errno</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f29776050" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f297763b0" imported_id="S7f90da3b7cc0" is_target="true" ref="S7f9f297707d0"/>
+    <FbasicType type="S7f9f29776270" imported_id="S7f90da3b7b90" intent="in" is_target="true" ref="S7f9f297763b0"/>
+    <FbasicType type="S7f9f29776ef0" imported_id="S7f90da3b87e0" is_target="true" ref="S7f9f297731b0"/>
+    <FbasicType type="S7f9f29776db0" imported_id="S7f90da3b86b0" intent="in" is_target="true" ref="S7f9f29776ef0"/>
+    <FbasicType type="I7f9f297772d0" is_optional="true" ref="Fint"/>
+    <FbasicType type="S7f9f2aa31040" imported_id="S7f90da3b7cc0" is_target="true" ref="S7f9f293fae10"/>
+    <FbasicType type="S7f9f2aa2fda0" imported_id="S7f90da3b7b90" intent="in" is_target="true" ref="S7f9f2aa31040"/>
+    <FbasicType type="S7f9f2aa311e0" imported_id="S7f90da3b87e0" is_target="true" ref="S7f9f2aa20ba0"/>
+    <FbasicType type="S7f9f2aa30120" imported_id="S7f90da3b86b0" intent="in" is_target="true" ref="S7f9f2aa311e0"/>
+    <FbasicType type="I7f9f2aa30490" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f29768cf0" return_type="Fvoid">
+      <params>
+        <name type="S7f9f29777630" imported_id="S7f90da3c3cd0">dt1</name>
+        <name type="S7f9f29777b50" imported_id="S7f90da3c41d0">dt2</name>
+        <name type="S7f9f29778070" imported_id="S7f90da3c46d0">divisor</name>
+        <name type="S7f9f29778bb0" imported_id="S7f90da3c51f0">quotient</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f29777770" imported_id="S7f90da3c3e00" is_target="true" ref="S7f9f297731b0"/>
+    <FbasicType type="S7f9f29777630" imported_id="S7f90da3c3cd0" intent="in" is_target="true" ref="S7f9f29777770"/>
+    <FbasicType type="S7f9f29777c90" imported_id="S7f90da3c4300" is_target="true" ref="S7f9f297731b0"/>
+    <FbasicType type="S7f9f29777b50" imported_id="S7f90da3c41d0" intent="in" is_target="true" ref="S7f9f29777c90"/>
+    <FbasicType type="S7f9f297781b0" imported_id="S7f90da3c4800" is_target="true" ref="S7f9f297707d0"/>
+    <FbasicType type="S7f9f29778070" imported_id="S7f90da3c46d0" intent="in" is_target="true" ref="S7f9f297781b0"/>
+    <FbasicType type="S7f9f29778cf0" imported_id="S7f90da3c5320" is_target="true" ref="S7f9f297681c0"/>
+    <FbasicType type="S7f9f29778bb0" imported_id="S7f90da3c51f0" intent="out" is_target="true" ref="S7f9f29778cf0"/>
+    <FbasicType type="S7f9f29142000" imported_id="S7f90da3c3e00" is_target="true" ref="S7f9f2aa20ba0"/>
+    <FbasicType type="S7f9f291411d0" imported_id="S7f90da3c3cd0" intent="in" is_target="true" ref="S7f9f29142000"/>
+    <FbasicType type="S7f9f29142250" imported_id="S7f90da3c4300" is_target="true" ref="S7f9f2aa20ba0"/>
+    <FbasicType type="S7f9f29141570" imported_id="S7f90da3c41d0" intent="in" is_target="true" ref="S7f9f29142250"/>
+    <FbasicType type="S7f9f29142400" imported_id="S7f90da3c4800" is_target="true" ref="S7f9f293fae10"/>
+    <FbasicType type="S7f9f29141910" imported_id="S7f90da3c46d0" intent="in" is_target="true" ref="S7f9f29142400"/>
+    <FstructType type="S7f9f2aa04470" imported_id="S7f90da3a9700">
+      <symbols>
+        <id type="I7f9f2aa04d90">
+          <name>quotient</name>
+        </id>
+        <id type="I7f9f2aa05500">
+          <name>remainder_in_ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2aa04d90" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2aa05500" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f29142590" imported_id="S7f90da3c5320" is_target="true" ref="S7f9f2aa04470"/>
+    <FbasicType type="S7f9f29141c90" imported_id="S7f90da3c51f0" intent="out" is_target="true" ref="S7f9f29142590"/>
+    <FfunctionType type="F7f9f29768fc0" return_type="FnumericAll"/>
+    <FfunctionType type="F7f9f29769290" return_type="FnumericAll"/>
+    <FfunctionType type="F7f9f297695c0" return_type="FnumericAll"/>
+    <FbasicType type="I7f9f29769830" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7f9f297cd540" imported_id="S7ff69a2f6420">
+      <symbols>
+        <id type="R7f9f297cd880">
+          <name>dt_restart</name>
+        </id>
+        <id type="Fint">
+          <name>calendar</name>
+        </id>
+        <id type="Flogical">
+          <name>is_relative_time</name>
+        </id>
+        <id type="S7f9f297cdfb0">
+          <name>tc_exp_refdate</name>
+          <value>
+            <functionCall type="V7f9f297a9310" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d0f60">
+          <name>tc_exp_startdate</name>
+          <value>
+            <functionCall type="V7f9f297a9f40" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d1470">
+          <name>tc_exp_stopdate</name>
+          <value>
+            <functionCall type="V7f9f297aaa80" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d1990">
+          <name>tc_startdate</name>
+          <value>
+            <functionCall type="V7f9f297ab690" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d1eb0">
+          <name>tc_stopdate</name>
+          <value>
+            <functionCall type="V7f9f297ac1f0" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d23d0">
+          <name>tc_current_date</name>
+          <value>
+            <functionCall type="V7f9f297ace00" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d28f0">
+          <name>tc_dt_checkpoint</name>
+          <value>
+            <functionCall type="V7f9f297ad980" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="S7f9f297d4ed0">
+          <name>tc_dt_restart</name>
+          <value>
+            <functionCall type="V7f9f297ae560" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="Flogical">
+          <name>tc_write_restart</name>
+          <value>
+            <FlogicalConstant type="Flogical">.TRUE.</FlogicalConstant>
+          </value>
+        </id>
+        <id type="S7f9f297d5c00">
+          <name>tc_dt_model</name>
+          <value>
+            <functionCall type="V7f9f297af580" is_intrinsic="true">
+              <name>null</name>
+            </functionCall>
+          </value>
+        </id>
+        <id type="A7f9f297d6740">
+          <name>tc_dt_dyn</name>
+        </id>
+        <id type="A7f9f297d7500">
+          <name>dt_dyn_sec</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2977c720" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7f9f297cd880" ref="Freal">
+      <kind>
+        <Var type="I7f9f2977c720" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FstructType type="S7f9f297ce210" imported_id="S7f90da397d90">
+      <symbols>
+        <id type="S7f9f297ce420">
+          <name>date</name>
+        </id>
+        <id type="S7f9f297cf610">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f297ce680" imported_id="S7f90da39cbc0">
+      <symbols>
+        <id type="I7f9f297ceae0">
+          <name>year</name>
+        </id>
+        <id type="I7f9f297cee20">
+          <name>month</name>
+        </id>
+        <id type="I7f9f297cf160">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f297ceae0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297cee20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297cf160" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f297ce550" imported_id="S7f90da39ca90" ref="S7f9f297ce680"/>
+    <FbasicType type="S7f9f297ce420" imported_id="S7f90da39c960" ref="S7f9f297ce550"/>
+    <FstructType type="S7f9f297cf870" imported_id="S7f90da39dc90">
+      <symbols>
+        <id type="I7f9f297cfbd0">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f297cff30">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f297d05b0">
+          <name>second</name>
+        </id>
+        <id type="I7f9f297d0810">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f297cfbd0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297cff30" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d05b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d0810" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f297cf740" imported_id="S7f90da39db60" ref="S7f9f297cf870"/>
+    <FbasicType type="S7f9f297cf610" imported_id="S7f90da39da30" ref="S7f9f297cf740"/>
+    <FbasicType type="S7f9f297ce0e0" imported_id="S7ff69a2f82e0" ref="S7f9f297ce210"/>
+    <FbasicType type="S7f9f297cdfb0" imported_id="S7ff69a2f84f0" is_pointer="true" ref="S7f9f297ce0e0"/>
+    <FbasicType type="V7f9f297a9310" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d1090" imported_id="S7ff69a2f9260" ref="S7f9f297ce210"/>
+    <FbasicType type="S7f9f297d0f60" imported_id="S7ff69a2f9470" is_pointer="true" ref="S7f9f297d1090"/>
+    <FbasicType type="V7f9f297a9f40" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d15b0" imported_id="S7ff69a2fa0e0" ref="S7f9f297ce210"/>
+    <FbasicType type="S7f9f297d1470" imported_id="S7ff69a2fa2f0" is_pointer="true" ref="S7f9f297d15b0"/>
+    <FbasicType type="V7f9f297aaa80" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d1ad0" imported_id="S7ff69a2faf80" ref="S7f9f297ce210"/>
+    <FbasicType type="S7f9f297d1990" imported_id="S7ff69a2fb190" is_pointer="true" ref="S7f9f297d1ad0"/>
+    <FbasicType type="V7f9f297ab690" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d1ff0" imported_id="S7ff69a2fbe00" ref="S7f9f297ce210"/>
+    <FbasicType type="S7f9f297d1eb0" imported_id="S7ff69a300000" is_pointer="true" ref="S7f9f297d1ff0"/>
+    <FbasicType type="V7f9f297ac1f0" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d2510" imported_id="S7ff69a300c20" ref="S7f9f297ce210"/>
+    <FbasicType type="S7f9f297d23d0" imported_id="S7ff69a300e30" is_pointer="true" ref="S7f9f297d2510"/>
+    <FbasicType type="V7f9f297ace00" is_target="true" ref="FnumericAll"/>
+    <FstructType type="S7f9f297d2b70" imported_id="S7f90da3a94a0">
+      <symbols>
+        <id type="I7f9f297d2ed0">
+          <name>flag_std_form</name>
+        </id>
+        <id type="Fcharacter">
+          <name>sign</name>
+        </id>
+        <id type="I7f9f297d3450">
+          <name>year</name>
+        </id>
+        <id type="I7f9f297d37b0">
+          <name>month</name>
+        </id>
+        <id type="I7f9f297d0290">
+          <name>day</name>
+        </id>
+        <id type="I7f9f297d3b20">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f297d3e60">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f297d41a0">
+          <name>second</name>
+        </id>
+        <id type="I7f9f297d44e0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f297d2ed0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d3450" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d37b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d0290" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d3b20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d3e60" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d41a0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f297d44e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f297d2a30" imported_id="S7ff69a301ad0" ref="S7f9f297d2b70"/>
+    <FbasicType type="S7f9f297d28f0" imported_id="S7ff69a301ce0" is_pointer="true" ref="S7f9f297d2a30"/>
+    <FbasicType type="V7f9f297ad980" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d5000" imported_id="S7ff69a302950" ref="S7f9f297d2b70"/>
+    <FbasicType type="S7f9f297d4ed0" imported_id="S7ff69a302b60" is_pointer="true" ref="S7f9f297d5000"/>
+    <FbasicType type="V7f9f297ae560" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d5d40" imported_id="S7ff69a304160" ref="S7f9f297d2b70"/>
+    <FbasicType type="S7f9f297d5c00" imported_id="S7ff69a304370" is_pointer="true" ref="S7f9f297d5d40"/>
+    <FbasicType type="V7f9f297af580" is_target="true" ref="FnumericAll"/>
+    <FbasicType type="S7f9f297d6b00" imported_id="S7ff69a305010" ref="S7f9f297d2b70"/>
+    <FbasicType type="S7f9f297d69c0" imported_id="S7ff69a305220" is_allocatable="true" ref="S7f9f297d6b00"/>
+    <FbasicType type="S7f9f297d6880" imported_id="A7ff69a305350" is_allocatable="true" ref="S7f9f297d69c0"/>
+    <FbasicType type="A7f9f297d6740" is_allocatable="true" ref="S7f9f297d6880">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="R7f9f297d78c0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2977c720" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f297d7780" is_allocatable="true" ref="R7f9f297d78c0"/>
+    <FbasicType type="R7f9f297d7640" is_allocatable="true" ref="R7f9f297d7780"/>
+    <FbasicType type="A7f9f297d7500" is_allocatable="true" ref="R7f9f297d7640">
+      <indexRange is_assumed_shape="true">
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7f9f297cd410" imported_id="S7ff69a306620" is_target="true" ref="S7f9f297cd540"/>
+    <FbasicType type="S7f9f29779b80" imported_id="S7ff69a306750" is_target="true" is_save="true" ref="S7f9f297cd410"/>
+    <FfunctionType type="F7f9f2aa8bf70" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f9f2aa8c300">filename</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f9f2aa8c430" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2aa8c300" intent="in" ref="C7f9f2aa8c430"/>
+    <FbasicType type="C7f9f2aa814a0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2aa81120" intent="in" ref="C7f9f2aa814a0"/>
+    <FbasicType type="I7f9f297f5fa0" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f9f297f6240" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f9f297f64a0" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f9f297f6700" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f9f297f69e0" is_parameter="true" ref="Fint"/>
+    <FstructType type="S7f9f2a979fa0" imported_id="S7f7fc6485300">
+      <symbols>
+        <id type="Fint">
+          <name>itime_scheme</name>
+        </id>
+        <id type="Fint">
+          <name>ileapfrog_startup</name>
+        </id>
+        <id type="R7f9f2a97a7a0">
+          <name>asselin_coeff</name>
+        </id>
+        <id type="Fint">
+          <name>si_expl_scheme</name>
+        </id>
+        <id type="R7f9f2a97adf0">
+          <name>si_2tls</name>
+        </id>
+        <id type="R7f9f2a97b130">
+          <name>si_coeff</name>
+        </id>
+        <id type="R7f9f2a97b670">
+          <name>si_offctr</name>
+        </id>
+        <id type="R7f9f2a97b8d0">
+          <name>si_cmin</name>
+        </id>
+        <id type="R7f9f2a97bc10">
+          <name>si_rtol</name>
+        </id>
+        <id type="Flogical">
+          <name>lsi_3d</name>
+        </id>
+        <id type="Flogical">
+          <name>ldry_dycore</name>
+        </id>
+        <id type="Flogical">
+          <name>lref_temp</name>
+        </id>
+        <id type="Flogical">
+          <name>ltheta_dyn</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2ab22290" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7f9f2a97a7a0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab22290" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2a97adf0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab22290" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2a97b130" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab22290" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2a97b670" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab22290" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2a97b8d0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab22290" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2a97bc10" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab22290" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2a979e70" imported_id="S7f7fc648c070" ref="S7f9f2a979fa0"/>
+    <FbasicType type="S7f9f2a979cd0" imported_id="S7f7fc648c1a0" ref="S7f9f2a979e70"/>
+    <FstructType type="S7f9f2a99e070" imported_id="S7f97c98d3fc0">
+      <symbols>
+        <id type="S7f9f2a99e5a0">
+          <name>reference_date</name>
+        </id>
+        <id type="R7f9f2a99f770">
+          <name>weight1</name>
+        </id>
+        <id type="R7f9f2a99f770">
+          <name>weight2</name>
+        </id>
+        <id type="Fint">
+          <name>month1</name>
+        </id>
+        <id type="Fint">
+          <name>month2</name>
+        </id>
+        <id type="I7f9f2a9a21e0">
+          <name>year1</name>
+        </id>
+        <id type="I7f9f2a9a21e0">
+          <name>year2</name>
+        </id>
+        <id type="Fint">
+          <name>month1_index</name>
+        </id>
+        <id type="Fint">
+          <name>month2_index</name>
+        </id>
+        <id type="Flogical">
+          <name>initialized</name>
+          <value>
+            <FlogicalConstant type="Flogical">.FALSE.</FlogicalConstant>
+          </value>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2a99e840" imported_id="S7f90da397d90">
+      <symbols>
+        <id type="S7f9f2a99ea50">
+          <name>date</name>
+        </id>
+        <id type="S7f9f2a99fd40">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2a99edb0" imported_id="S7f90da39cbc0">
+      <symbols>
+        <id type="I7f9f2a99f0f0">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2a99f430">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2a99f970">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2a99f0f0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a99f430" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a99f970" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2a99eb80" imported_id="S7f90da39ca90" ref="S7f9f2a99edb0"/>
+    <FbasicType type="S7f9f2a99ea50" imported_id="S7f90da39c960" ref="S7f9f2a99eb80"/>
+    <FstructType type="S7f9f2a99ffa0" imported_id="S7f90da39dc90">
+      <symbols>
+        <id type="I7f9f2a9a02e0">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2a9a0630">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2a9a0990">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2a9a0cf0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2a9a02e0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a9a0630" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a9a0990" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a9a0cf0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2a99fe70" imported_id="S7f90da39db60" ref="S7f9f2a99ffa0"/>
+    <FbasicType type="S7f9f2a99fd40" imported_id="S7f90da39da30" ref="S7f9f2a99fe70"/>
+    <FbasicType type="S7f9f2a99e6d0" imported_id="S7f97c98d45a0" ref="S7f9f2a99e840"/>
+    <FbasicType type="S7f9f2a99e5a0" imported_id="S7f97c98d47b0" ref="S7f9f2a99e6d0"/>
+    <FbasicType type="I7f9f2ab2f600" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7f9f2a99f770" ref="Freal">
+      <kind>
+        <Var type="I7f9f2ab2f600" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ab2fa50" is_parameter="true" ref="Fint"/>
+    <FbasicType type="I7f9f2a9a21e0" ref="Fint">
+      <kind>
+        <Var type="I7f9f2ab2fa50" scope="local">i8</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2a99e340" return_type="S7f9f2a9a2b50">
+      <params>
+        <name type="S7f9f2a9a3750" imported_id="S7f97c8e30400">current_date</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2a9a2c80" imported_id="S7f97c8e2fa20" ref="S7f9f2a99e070"/>
+    <FbasicType type="S7f9f2a9a2b50" imported_id="S7f97c8e2fc30" ref="S7f9f2a9a2c80"/>
+    <FbasicType type="S7f9f2a9a3880" imported_id="S7f97c8e302d0" is_pointer="true" ref="S7f9f2a99e840"/>
+    <FbasicType type="S7f9f2a9a3750" imported_id="S7f97c8e30400" intent="in" is_pointer="true" ref="S7f9f2a9a3880"/>
+    <FstructType type="S7f9f2ab2fea0" imported_id="S7f90da397d90">
+      <symbols>
+        <id type="S7f9f2ab30030">
+          <name>date</name>
+        </id>
+        <id type="S7f9f2ab302a0">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2ab30a20" imported_id="S7f90da39cbc0">
+      <symbols>
+        <id type="I7f9f2ab312d0">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2ab31990">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2ab31e00">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2ab312d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ab31990" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ab31e00" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ab32240" imported_id="S7f90da39ca90" ref="S7f9f2ab30a20"/>
+    <FbasicType type="S7f9f2ab30030" imported_id="S7f90da39c960" ref="S7f9f2ab32240"/>
+    <FstructType type="S7f9f2ab32480" imported_id="S7f90da39dc90">
+      <symbols>
+        <id type="I7f9f2ab33050">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2ab33540">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2ab339b0">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2ab33df0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2ab33050" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ab33540" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ab339b0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ab33df0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ab343c0" imported_id="S7f90da39db60" ref="S7f9f2ab32480"/>
+    <FbasicType type="S7f9f2ab302a0" imported_id="S7f90da39da30" ref="S7f9f2ab343c0"/>
+    <FbasicType type="S7f9f2a990b00" imported_id="S7f97c8e302d0" is_pointer="true" ref="S7f9f2ab2fea0"/>
+    <FbasicType type="S7f9f2a9904f0" imported_id="S7f97c8e30400" intent="in" is_pointer="true" ref="S7f9f2a990b00"/>
+    <FstructType type="S7f9f2ad0b200" imported_id="S7feec7aa5a90">
+      <symbols>
+        <id type="S7f9f2ad0b410">
+          <name>dt_rad</name>
+        </id>
+        <id type="S7f9f2ad0e120">
+          <name>sd_rad</name>
+        </id>
+        <id type="S7f9f2ad10e30">
+          <name>ed_rad</name>
+        </id>
+        <id type="S7f9f2ad10f90">
+          <name>ev_rad</name>
+        </id>
+        <id type="R7f9f2ad16e40">
+          <name>dt_rad_sec</name>
+        </id>
+        <id type="S7f9f2ad17060">
+          <name>dt_vdf</name>
+        </id>
+        <id type="S7f9f2ad17ba0">
+          <name>sd_vdf</name>
+        </id>
+        <id type="S7f9f2ad180c0">
+          <name>ed_vdf</name>
+        </id>
+        <id type="S7f9f2ad18620">
+          <name>ev_vdf</name>
+        </id>
+        <id type="R7f9f2ad19a80">
+          <name>dt_vdf_sec</name>
+        </id>
+        <id type="S7f9f2ad19ca0">
+          <name>dt_cnv</name>
+        </id>
+        <id type="S7f9f2ad1a7e0">
+          <name>sd_cnv</name>
+        </id>
+        <id type="S7f9f2ad1ad00">
+          <name>ed_cnv</name>
+        </id>
+        <id type="S7f9f2ad1b220">
+          <name>ev_cnv</name>
+        </id>
+        <id type="R7f9f2ad1c680">
+          <name>dt_cnv_sec</name>
+        </id>
+        <id type="S7f9f2ad1c8a0">
+          <name>dt_cld</name>
+        </id>
+        <id type="S7f9f2ad1d3e0">
+          <name>sd_cld</name>
+        </id>
+        <id type="S7f9f2ad1d900">
+          <name>ed_cld</name>
+        </id>
+        <id type="S7f9f2ad1de20">
+          <name>ev_cld</name>
+        </id>
+        <id type="R7f9f2ad1f280">
+          <name>dt_cld_sec</name>
+        </id>
+        <id type="S7f9f2ad1f4a0">
+          <name>dt_gwd</name>
+        </id>
+        <id type="S7f9f2ad1ffe0">
+          <name>sd_gwd</name>
+        </id>
+        <id type="S7f9f2ad20500">
+          <name>ed_gwd</name>
+        </id>
+        <id type="S7f9f2ad20a20">
+          <name>ev_gwd</name>
+        </id>
+        <id type="R7f9f2ad21e80">
+          <name>dt_gwd_sec</name>
+        </id>
+        <id type="S7f9f2ad220a0">
+          <name>dt_sso</name>
+        </id>
+        <id type="S7f9f2ad22be0">
+          <name>sd_sso</name>
+        </id>
+        <id type="S7f9f2ad23100">
+          <name>ed_sso</name>
+        </id>
+        <id type="S7f9f2ad23620">
+          <name>ev_sso</name>
+        </id>
+        <id type="R7f9f2ad24a80">
+          <name>dt_sso_sec</name>
+        </id>
+        <id type="S7f9f2ad24ca0">
+          <name>dt_mox</name>
+        </id>
+        <id type="S7f9f2ad257e0">
+          <name>sd_mox</name>
+        </id>
+        <id type="S7f9f2ad25d00">
+          <name>ed_mox</name>
+        </id>
+        <id type="S7f9f2ad26220">
+          <name>ev_mox</name>
+        </id>
+        <id type="R7f9f2ad27680">
+          <name>dt_mox_sec</name>
+        </id>
+        <id type="S7f9f2ad278a0">
+          <name>dt_car</name>
+        </id>
+        <id type="S7f9f2ad283e0">
+          <name>sd_car</name>
+        </id>
+        <id type="S7f9f2ad28900">
+          <name>ed_car</name>
+        </id>
+        <id type="S7f9f2ad28e20">
+          <name>ev_car</name>
+        </id>
+        <id type="R7f9f2ad2a280">
+          <name>dt_car_sec</name>
+        </id>
+        <id type="S7f9f2ad2a4a0">
+          <name>dt_art</name>
+        </id>
+        <id type="S7f9f2ad2afe0">
+          <name>sd_art</name>
+        </id>
+        <id type="S7f9f2ad2b500">
+          <name>ed_art</name>
+        </id>
+        <id type="S7f9f2ad2ba20">
+          <name>ev_art</name>
+        </id>
+        <id type="R7f9f2ad2ce80">
+          <name>dt_art_sec</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2ad0b770" imported_id="S7f90da3a94a0">
+      <symbols>
+        <id type="I7f9f2ad0bab0">
+          <name>flag_std_form</name>
+        </id>
+        <id type="Fcharacter">
+          <name>sign</name>
+        </id>
+        <id type="I7f9f2ad0c200">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2ad0c460">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2ad0c7a0">
+          <name>day</name>
+        </id>
+        <id type="I7f9f2ad0cae0">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2ad0ce20">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2ad0d170">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2ad0d4d0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2ad0bab0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0c200" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0c460" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0c7a0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0cae0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0ce20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0d170" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0d4d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad0b640" imported_id="S7feec7aa6110" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad0b410" imported_id="S7feec7aa6320" is_pointer="true" ref="S7f9f2ad0b640"/>
+    <FstructType type="S7f9f2ad0e380" imported_id="S7f90da397d90">
+      <symbols>
+        <id type="S7f9f2ad0e590">
+          <name>date</name>
+        </id>
+        <id type="S7f9f2ad0f6d0">
+          <name>time</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2ad0e7f0" imported_id="S7f90da39cbc0">
+      <symbols>
+        <id type="I7f9f2ad0eb50">
+          <name>year</name>
+        </id>
+        <id type="I7f9f2ad0eeb0">
+          <name>month</name>
+        </id>
+        <id type="I7f9f2ad0f210">
+          <name>day</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2ad0eb50" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0eeb0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad0f210" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad0e6c0" imported_id="S7f90da39ca90" ref="S7f9f2ad0e7f0"/>
+    <FbasicType type="S7f9f2ad0e590" imported_id="S7f90da39c960" ref="S7f9f2ad0e6c0"/>
+    <FstructType type="S7f9f2ad0f950" imported_id="S7f90da39dc90">
+      <symbols>
+        <id type="I7f9f2ad0fcb0">
+          <name>hour</name>
+        </id>
+        <id type="I7f9f2ad10010">
+          <name>minute</name>
+        </id>
+        <id type="I7f9f2ad10370">
+          <name>second</name>
+        </id>
+        <id type="I7f9f2ad106d0">
+          <name>ms</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2ad0fcb0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad10010" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad10370" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2ad106d0" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad0f810" imported_id="S7f90da39db60" ref="S7f9f2ad0f950"/>
+    <FbasicType type="S7f9f2ad0f6d0" imported_id="S7f90da39da30" ref="S7f9f2ad0f810"/>
+    <FbasicType type="S7f9f2ad0e250" imported_id="S7feec7aa68c0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad0e120" imported_id="S7feec7aa6ad0" is_pointer="true" ref="S7f9f2ad0e250"/>
+    <FbasicType type="S7f9f2ad0d620" imported_id="S7feec7aa7070" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad10e30" imported_id="S7feec7aa7280" is_pointer="true" ref="S7f9f2ad0d620"/>
+    <FstructType type="S7f9f2ad111f0" imported_id="S7f90da3c8d20">
+      <symbols>
+        <id type="S7f9f2ad11400">
+          <name>nexteventingroup</name>
+        </id>
+        <id type="I7f9f2ad11e20">
+          <name>eventid</name>
+        </id>
+        <id type="S7f9f2ad12040">
+          <name>eventname</name>
+        </id>
+        <id type="S7f9f2ad12480">
+          <name>eventslastevaluationdatetime</name>
+        </id>
+        <id type="S7f9f2ad128c0">
+          <name>eventreferencedatetime</name>
+        </id>
+        <id type="S7f9f2ad12d00">
+          <name>eventfirstdatetime</name>
+        </id>
+        <id type="S7f9f2ad13140">
+          <name>eventlastdatetime</name>
+        </id>
+        <id type="S7f9f2ad13580">
+          <name>eventinterval</name>
+        </id>
+        <id type="L7f9f2ad13b00">
+          <name>triggercurrentevent</name>
+        </id>
+        <id type="L7f9f2ad13e60">
+          <name>nexteventisfirst</name>
+        </id>
+        <id type="L7f9f2ad141c0">
+          <name>eventisfirstinday</name>
+        </id>
+        <id type="L7f9f2ad14520">
+          <name>eventisfirstinmonth</name>
+        </id>
+        <id type="L7f9f2ad14880">
+          <name>eventisfirstinyear</name>
+        </id>
+        <id type="L7f9f2ad14be0">
+          <name>eventislastinday</name>
+        </id>
+        <id type="L7f9f2ad14f40">
+          <name>eventislastinmonth</name>
+        </id>
+        <id type="L7f9f2ad152a0">
+          <name>eventislastinyear</name>
+        </id>
+        <id type="S7f9f2ad154c0">
+          <name>triggernexteventdatetime</name>
+        </id>
+        <id type="S7f9f2ad15900">
+          <name>triggeredpreviouseventdatetime</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FstructType type="S7f9f2ad11680" imported_id="S7fe884d2d7d0" is_internal_private="true">
+      <symbols>
+        <id type="I7f9f2ad119e0">
+          <name>ptr</name>
+        </id>
+      </symbols>
+    </FstructType>
+    <FbasicType type="I7f9f2a9db400" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">4</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="I7f9f2a9db870" is_parameter="true" ref="I7f9f2a9db400"/>
+    <FbasicType type="I7f9f2ad119e0" ref="Fint">
+      <kind>
+        <Var type="I7f9f2a9db870" scope="local">c_intptr_t</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad11540" imported_id="S7f90da3cdd70" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad11400" imported_id="S7f90da3cdc40" ref="S7f9f2ad11540"/>
+    <FbasicType type="I7f9f2ad11e20" ref="Fint">
+      <kind>
+        <FintConstant type="Fint">8</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad12180" imported_id="S7f90da3ce4d0" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad12040" imported_id="S7f90da3ce3a0" ref="S7f9f2ad12180"/>
+    <FbasicType type="S7f9f2ad125c0" imported_id="S7f90da3ce8f0" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad12480" imported_id="S7f90da3ce7c0" ref="S7f9f2ad125c0"/>
+    <FbasicType type="S7f9f2ad12a00" imported_id="S7f90da3ced10" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad128c0" imported_id="S7f90da3cebe0" ref="S7f9f2ad12a00"/>
+    <FbasicType type="S7f9f2ad12e40" imported_id="S7f90da3cf130" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad12d00" imported_id="S7f90da3cf000" ref="S7f9f2ad12e40"/>
+    <FbasicType type="S7f9f2ad13280" imported_id="S7f90da3cf550" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad13140" imported_id="S7f90da3cf420" ref="S7f9f2ad13280"/>
+    <FbasicType type="S7f9f2ad136c0" imported_id="S7f90da3cf970" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad13580" imported_id="S7f90da3cf840" ref="S7f9f2ad136c0"/>
+    <FbasicType type="L7f9f2ad13b00" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad13e60" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad141c0" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad14520" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad14880" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad14be0" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad14f40" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="L7f9f2ad152a0" ref="Flogical">
+      <kind>
+        <FintConstant type="Fint">1</FintConstant>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad15600" imported_id="S7f90da3d1790" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad154c0" imported_id="S7f90da3d1660" ref="S7f9f2ad15600"/>
+    <FbasicType type="S7f9f2ad15a40" imported_id="S7f90da3d1bb0" ref="S7f9f2ad11680"/>
+    <FbasicType type="S7f9f2ad15900" imported_id="S7f90da3d1a80" ref="S7f9f2ad15a40"/>
+    <FbasicType type="S7f9f2ad110c0" imported_id="S7feec7aa7850" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad10f90" imported_id="S7feec7aa7a60" is_pointer="true" ref="S7f9f2ad110c0"/>
+    <FbasicType type="I7f9f2a9a6990" is_parameter="true" ref="Fint"/>
+    <FbasicType type="R7f9f2ad16e40" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad171a0" imported_id="S7feec7aa88b0" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad17060" imported_id="S7feec7aa8ac0" is_pointer="true" ref="S7f9f2ad171a0"/>
+    <FbasicType type="S7f9f2ad17ce0" imported_id="S7feec7aa9060" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad17ba0" imported_id="S7feec7aa9270" is_pointer="true" ref="S7f9f2ad17ce0"/>
+    <FbasicType type="S7f9f2ad18240" imported_id="S7feec7aa9810" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad180c0" imported_id="S7feec7aa9a20" is_pointer="true" ref="S7f9f2ad18240"/>
+    <FbasicType type="S7f9f2ad18760" imported_id="S7feec7aa9ff0" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad18620" imported_id="S7feec7aaa200" is_pointer="true" ref="S7f9f2ad18760"/>
+    <FbasicType type="R7f9f2ad19a80" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad19de0" imported_id="S7feec7aab000" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad19ca0" imported_id="S7feec7aab210" is_pointer="true" ref="S7f9f2ad19de0"/>
+    <FbasicType type="S7f9f2ad1a920" imported_id="S7feec7aab7b0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad1a7e0" imported_id="S7feec7aab9c0" is_pointer="true" ref="S7f9f2ad1a920"/>
+    <FbasicType type="S7f9f2ad1ae40" imported_id="S7feec7aabf60" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad1ad00" imported_id="S7feec7aac170" is_pointer="true" ref="S7f9f2ad1ae40"/>
+    <FbasicType type="S7f9f2ad1b360" imported_id="S7feec7aac740" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad1b220" imported_id="S7feec7aac950" is_pointer="true" ref="S7f9f2ad1b360"/>
+    <FbasicType type="R7f9f2ad1c680" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad1c9e0" imported_id="S7feec7aad750" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad1c8a0" imported_id="S7feec7aad960" is_pointer="true" ref="S7f9f2ad1c9e0"/>
+    <FbasicType type="S7f9f2ad1d520" imported_id="S7feec7aadf00" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad1d3e0" imported_id="S7feec7aae110" is_pointer="true" ref="S7f9f2ad1d520"/>
+    <FbasicType type="S7f9f2ad1da40" imported_id="S7feec7aae6b0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad1d900" imported_id="S7feec7aae8c0" is_pointer="true" ref="S7f9f2ad1da40"/>
+    <FbasicType type="S7f9f2ad1df60" imported_id="S7feec7aaee90" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad1de20" imported_id="S7feec7aaf0a0" is_pointer="true" ref="S7f9f2ad1df60"/>
+    <FbasicType type="R7f9f2ad1f280" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad1f5e0" imported_id="S7feec7aafea0" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad1f4a0" imported_id="S7feec7ab00b0" is_pointer="true" ref="S7f9f2ad1f5e0"/>
+    <FbasicType type="S7f9f2ad20120" imported_id="S7feec7ab0650" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad1ffe0" imported_id="S7feec7ab0860" is_pointer="true" ref="S7f9f2ad20120"/>
+    <FbasicType type="S7f9f2ad20640" imported_id="S7feec7ab0e00" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad20500" imported_id="S7feec7ab1010" is_pointer="true" ref="S7f9f2ad20640"/>
+    <FbasicType type="S7f9f2ad20b60" imported_id="S7feec7ab15e0" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad20a20" imported_id="S7feec7ab17f0" is_pointer="true" ref="S7f9f2ad20b60"/>
+    <FbasicType type="R7f9f2ad21e80" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad221e0" imported_id="S7feec7ab25f0" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad220a0" imported_id="S7feec7ab2800" is_pointer="true" ref="S7f9f2ad221e0"/>
+    <FbasicType type="S7f9f2ad22d20" imported_id="S7feec7ab2da0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad22be0" imported_id="S7feec7ab2fb0" is_pointer="true" ref="S7f9f2ad22d20"/>
+    <FbasicType type="S7f9f2ad23240" imported_id="S7feec7ab3550" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad23100" imported_id="S7feec7ab3760" is_pointer="true" ref="S7f9f2ad23240"/>
+    <FbasicType type="S7f9f2ad23760" imported_id="S7feec7ab3d30" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad23620" imported_id="S7feec7ab3f40" is_pointer="true" ref="S7f9f2ad23760"/>
+    <FbasicType type="R7f9f2ad24a80" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad24de0" imported_id="S7feec7ab4d40" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad24ca0" imported_id="S7feec7ab4f50" is_pointer="true" ref="S7f9f2ad24de0"/>
+    <FbasicType type="S7f9f2ad25920" imported_id="S7feec7ab54f0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad257e0" imported_id="S7feec7ab5700" is_pointer="true" ref="S7f9f2ad25920"/>
+    <FbasicType type="S7f9f2ad25e40" imported_id="S7feec7ab5ca0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad25d00" imported_id="S7feec7ab5eb0" is_pointer="true" ref="S7f9f2ad25e40"/>
+    <FbasicType type="S7f9f2ad26360" imported_id="S7feec7ab6480" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad26220" imported_id="S7feec7ab6690" is_pointer="true" ref="S7f9f2ad26360"/>
+    <FbasicType type="R7f9f2ad27680" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad279e0" imported_id="S7feec7ab7490" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad278a0" imported_id="S7feec7ab76a0" is_pointer="true" ref="S7f9f2ad279e0"/>
+    <FbasicType type="S7f9f2ad28520" imported_id="S7feec7ab7c40" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad283e0" imported_id="S7feec7ab7e50" is_pointer="true" ref="S7f9f2ad28520"/>
+    <FbasicType type="S7f9f2ad28a40" imported_id="S7feec7ab83f0" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad28900" imported_id="S7feec7ab8600" is_pointer="true" ref="S7f9f2ad28a40"/>
+    <FbasicType type="S7f9f2ad28f60" imported_id="S7feec7ab8bd0" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad28e20" imported_id="S7feec7ab8de0" is_pointer="true" ref="S7f9f2ad28f60"/>
+    <FbasicType type="R7f9f2ad2a280" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad2a5e0" imported_id="S7feec7ab9be0" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad2a4a0" imported_id="S7feec7ab9df0" is_pointer="true" ref="S7f9f2ad2a5e0"/>
+    <FbasicType type="S7f9f2ad2b120" imported_id="S7feec7aba390" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad2afe0" imported_id="S7feec7aba5a0" is_pointer="true" ref="S7f9f2ad2b120"/>
+    <FbasicType type="S7f9f2ad2b640" imported_id="S7feec7abab40" ref="S7f9f2ad0e380"/>
+    <FbasicType type="S7f9f2ad2b500" imported_id="S7feec7abad50" is_pointer="true" ref="S7f9f2ad2b640"/>
+    <FbasicType type="S7f9f2ad2bb60" imported_id="S7feec7abb320" ref="S7f9f2ad111f0"/>
+    <FbasicType type="S7f9f2ad2ba20" imported_id="S7feec7abb530" is_pointer="true" ref="S7f9f2ad2bb60"/>
+    <FbasicType type="R7f9f2ad2ce80" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a9a6990" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad0b0d0" imported_id="S7feec7abce90" is_target="true" ref="S7f9f2ad0b200"/>
+    <FbasicType type="S7f9f2ad0af40" imported_id="S7feec7abcfc0" is_target="true" ref="S7f9f2ad0b0d0"/>
+    <FbasicType type="S7f9f2ad0ae10" imported_id="A7feec7abd0f0" is_target="true" ref="S7f9f2ad0af40"/>
+    <FbasicType type="A7f9f2ad0a9f0" is_target="true" ref="S7f9f2ad0ae10">
+      <indexRange>
+        <lowerBound>
+          <FintConstant type="Fint">1</FintConstant>
+        </lowerBound>
+        <upperBound>
+          <FintConstant type="Fint">10</FintConstant>
+        </upperBound>
+      </indexRange>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad2f720" imported_id="S7feec7abe620" is_pointer="true" ref="S7f9f2ad0b770"/>
+    <FbasicType type="S7f9f2ad0ac90" imported_id="S7feec7abe750" is_pointer="true" ref="S7f9f2ad2f720"/>
+    <FbasicType type="L7f9f2ad30580" is_public="true" ref="Flogical"/>
+    <FfunctionType type="F7f9f2ad97780" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7f9f2ad98410">yr</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2ad98410" intent="in" ref="Fint"/>
+    <FbasicType type="S7f9f2ad989f0" is_pointer="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad98c00" is_pointer="true" ref="S7f9f2ad989f0"/>
+    <FfunctionType type="F7f9f2ad9bc50" return_type="Fint" is_public="true">
+      <params>
+        <name type="I7f9f2ad9cd90">yr</name>
+        <name type="I7f9f2ad9cec0">mo</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2ad9cd90" intent="in" ref="Fint"/>
+    <FbasicType type="I7f9f2ad9cec0" intent="in" ref="Fint"/>
+    <FbasicType type="S7f9f2ad9d470" is_pointer="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad9d680" is_pointer="true" ref="S7f9f2ad9d470"/>
+    <FfunctionType type="F7f9f2ada0690" return_type="R7f9f2ada0560" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7f9f2ada0560" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ada1410" return_type="R7f9f2ada12e0"/>
+    <FbasicType type="R7f9f2ada12e0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ada2460" return_type="R7f9f2ada2330" is_public="true">
+      <params>
+        <name type="S7f9f2ada30a0">date</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7f9f2ada2330" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ada2f70" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ada30a0" intent="in" ref="S7f9f2ada2f70"/>
+    <FfunctionType type="F7f9f2ada49a0" return_type="R7f9f2ada5760"/>
+    <FbasicType type="R7f9f2ada5760" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ada5890" return_type="R7f9f2ada5760"/>
+    <FbasicType type="R7f9f2ada4870" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2ada50c0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ada68e0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="R7f9f2ada8100">w1</name>
+        <name type="R7f9f2ada8230">w2</name>
+        <name type="I7f9f2ada8ba0">n1</name>
+        <name type="I7f9f2ada8cd0">n2</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7f9f2ada7fd0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2ada8100" intent="out" ref="R7f9f2ada7fd0"/>
+    <FbasicType type="R7f9f2ada8230" intent="out" ref="R7f9f2ada7fd0"/>
+    <FbasicType type="I7f9f2ada8ba0" intent="out" ref="Fint"/>
+    <FbasicType type="I7f9f2ada8cd0" intent="out" ref="Fint"/>
+    <FbasicType type="C7f9f2ada95d0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ada97e0" is_parameter="true" ref="C7f9f2ada95d0"/>
+    <FbasicType type="C7f9f2ada9f60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">48</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad5c320" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">17</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ada9dc0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">31</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7f9f2adaa540" ref="S7f9f2a99e070"/>
+    <FbasicType type="S7f9f2adaa750" ref="S7f9f2adaa540"/>
+    <FbasicType type="S7f9f2adab3e0" is_pointer="true" is_target="true" ref="S7f9f297d23d0"/>
+    <FfunctionType type="F7f9f2adadbf0" return_type="R7f9f2adadac0" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7f9f2adadac0" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2adb1a50" return_type="Fint"/>
+    <FbasicType type="R7f9f2adb0f90" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad601c0" return_type="R7f9f2ad60090" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="R7f9f2ad60090" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad60ca0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad60eb0" is_parameter="true" ref="C7f9f2ad60ca0"/>
+    <FbasicType type="C7f9f2ad61610" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">29</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad61480" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">12</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f9f2ad61d10" ref="Freal">
+      <kind>
+        <Var type="I7f9f2a8917e0" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="R7f9f2ad61f20" ref="R7f9f2ad61d10"/>
+    <FbasicType type="S7f9f2ad62500" is_pointer="true" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad62710" is_pointer="true" ref="S7f9f2ad62500"/>
+    <FfunctionType type="F7f9f2ad64320" return_type="Fint"/>
+    <FfunctionType type="F7f9f2ad662e0" return_type="Fint"/>
+    <FbasicType type="C7f9f2ad62d70" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">23</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="R7f9f2ad63860" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad64750" is_pointer="true" is_target="true" ref="S7f9f297d5c00"/>
+    <FbasicType type="R7f9f2ad65950" ref="Freal">
+      <kind>
+        <Var type="Fint" scope="local">wp</Var>
+      </kind>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad66a10" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">29</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad67c80" return_type="Fint" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f9f2ad68770" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad68980" is_parameter="true" ref="C7f9f2ad68770"/>
+    <FbasicType type="C7f9f2ad69100" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">33</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad68f60" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="S7f9f2ad69e40" ref="S7f9f297681c0"/>
+    <FbasicType type="S7f9f2ad6a050" ref="S7f9f2ad69e40"/>
+    <FfunctionType type="F7f9f2ad6c080" return_type="Fint"/>
+    <FbasicType type="S7f9f2ad6aa50" is_pointer="true" is_target="true" ref="S7f9f297d1eb0"/>
+    <FbasicType type="S7f9f2ad6ad00" is_pointer="true" is_target="true" ref="S7f9f297d1990"/>
+    <FbasicType type="S7f9f2ad6afb0" is_pointer="true" is_target="true" ref="S7f9f297d5c00"/>
+    <FbasicType type="C7f9f2ad6cfe0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">40</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad6e200" return_type="S7f9f2ad6e0d0" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad6e0d0" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad6e9a0" is_pointer="true" is_target="true" ref="S7f9f297d1990"/>
+    <FfunctionType type="F7f9f2ad6f6c0" return_type="S7f9f2ad6f590" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad6f590" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad6fe60" is_pointer="true" is_target="true" ref="S7f9f297d1eb0"/>
+    <FfunctionType type="F7f9f2ad70b80" return_type="S7f9f2ad70a50" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad70a50" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad71320" is_pointer="true" is_target="true" ref="S7f9f297d23d0"/>
+    <FfunctionType type="F7f9f2ad71e70" result_name="previous" return_type="S7f9f2ad72750" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad72540" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad72750" ref="S7f9f2ad72540"/>
+    <FbasicType type="S7f9f2ad730d0" is_pointer="true" is_target="true" ref="S7f9f297d23d0"/>
+    <FbasicType type="S7f9f2ad73550" is_pointer="true" is_target="true" ref="S7f9f297d5c00"/>
+    <FfunctionType type="F7f9f2ad74200" result_name="next" return_type="S7f9f2ad74ae0" is_private="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad748d0" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad74ae0" ref="S7f9f2ad748d0"/>
+    <FbasicType type="S7f9f2ad75430" is_pointer="true" is_target="true" ref="S7f9f297d23d0"/>
+    <FbasicType type="S7f9f2ad75830" is_pointer="true" is_target="true" ref="S7f9f297d5c00"/>
+    <FfunctionType type="F7f9f2ad76710" result_name="ltrig_rad_m1" return_type="Flogical" is_public="true">
+      <params>
+        <name type="I7f9f2ad773b0">model_id</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2ad773b0" intent="in" ref="Fint"/>
+    <FbasicType type="S7f9f2ad77ff0" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad78200" ref="S7f9f2ad77ff0"/>
+    <FfunctionType type="F7f9f2ad7ce40" return_type="I7f9f2976ea00"/>
+    <FbasicType type="S7f9f2ad7a4c0" is_pointer="true" is_target="true" ref="S7f9f2ad0b410"/>
+    <FbasicType type="S7f9f2ad7bd20" is_pointer="true" is_target="true" ref="S7f9f2ad0b410"/>
+    <FfunctionType type="F7f9f2ad7e4e0" return_type="Flogical" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad7f000" is_pointer="true" is_target="true" ref="S7f9f297d0f60"/>
+    <FfunctionType type="F7f9f2ad7fe30" return_type="Flogical" is_public="true">
+      <params>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad80dd0" is_pointer="true" is_target="true" ref="S7f9f297d1990"/>
+    <FfunctionType type="F7f9f2ad81db0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7f9f2ad82a50">istep</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2ad82a50" intent="in" ref="Fint"/>
+    <FbasicType type="C7f9f2ad83340" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad83550" is_parameter="true" ref="C7f9f2ad83340"/>
+    <FbasicType type="C7f9f2ad83cb0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad83b20" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">15</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad852e0" return_type="C7f9f2ad851b0"/>
+    <FbasicType type="C7f9f2ad851b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">32</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad845a0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad847b0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">27</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad861f0" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="I7f9f2ad86e90">istep</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="I7f9f2ad86e90" intent="in" ref="Fint"/>
+    <FbasicType type="C7f9f2ad87790" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad879a0" is_parameter="true" ref="C7f9f2ad87790"/>
+    <FbasicType type="C7f9f2ad88120" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">33</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad87f80" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">16</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad89700" return_type="C7f9f2ad895d0"/>
+    <FbasicType type="C7f9f2ad895d0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">33</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad889c0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">7</FintConstant>
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad88bd0" ref="Fcharacter">
+      <len>
+        <FintConstant type="Fint">28</FintConstant>
+      </len>
+    </FbasicType>
+    <FfunctionType type="F7f9f2ad8a910" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="S7f9f2ad8c6f0">this_datetime</name>
+        <name type="I7f9f2ad8d7e0">year</name>
+        <name type="I7f9f2ad8d910">month</name>
+        <name type="I7f9f2ad8da40">day</name>
+        <name type="I7f9f2ad8db70">hour</name>
+        <name type="I7f9f2ad8dca0">minute</name>
+        <name type="I7f9f2ad8ddd0">second</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="S7f9f2ad8c5c0" ref="S7f9f297661c0"/>
+    <FbasicType type="S7f9f2ad8c6f0" intent="in" ref="S7f9f2ad8c5c0"/>
+    <FbasicType type="I7f9f2ad8d7e0" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f2ad8d910" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f2ad8da40" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f2ad8db70" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f2ad8dca0" intent="out" is_optional="true" ref="Fint"/>
+    <FbasicType type="I7f9f2ad8ddd0" intent="out" is_optional="true" ref="Fint"/>
+    <FfunctionType type="F7f9f2ad8f490" return_type="Flogical"/>
+    <FfunctionType type="F7f9f2ad96100" return_type="Flogical"/>
+    <FbasicType type="S7f9f2ad8fa30" ref="S7f9f29769aa0"/>
+    <FbasicType type="S7f9f2ad90fd0" ref="S7f9f29769aa0"/>
+    <FbasicType type="S7f9f2ad92570" ref="S7f9f29769aa0"/>
+    <FbasicType type="S7f9f2ad93b10" ref="S7f9f2976aed0"/>
+    <FbasicType type="S7f9f2ad950b0" ref="S7f9f2976aed0"/>
+    <FbasicType type="S7f9f2ad96650" ref="S7f9f2976aed0"/>
+    <FfunctionType type="F7f9f2ad5d450" return_type="Fvoid" is_public="true">
+      <params>
+        <name type="C7f9f2ad5e2f0">model_shortname</name>
+      </params>
+    </FfunctionType>
+    <FbasicType type="C7f9f2ad5e1c0" ref="Fcharacter">
+      <len is_assumed_size="true">
+      </len>
+    </FbasicType>
+    <FbasicType type="C7f9f2ad5e2f0" intent="in" is_optional="true" ref="C7f9f2ad5e1c0"/>
+    <FfunctionType type="F7f9f2ad5ef40" return_type="Flogical"/>
+  </typeTable>
+  <identifiers>
+    <id type="I7f9f2a8917e0" sclass="flocal" original_name="wp" declared_in="mo_kind">
+      <name>wp</name>
+    </id>
+    <id type="C7f9f2a89f240" sclass="flocal" original_name="message_text" declared_in="mo_exception">
+      <name>message_text</name>
+    </id>
+    <id type="F7f9f2a89f5a0" sclass="ffunc" original_name="message" declared_in="mo_exception">
+      <name>message</name>
+    </id>
+    <id type="F7f9f2a89f8c0" sclass="ffunc" original_name="finish" declared_in="mo_exception">
+      <name>finish</name>
+    </id>
+    <id type="S7f9f297661c0" imported_id="S7f90da397d90" sclass="ftype_name" original_name="datetime" declared_in="mtime_datetime">
+      <name>t_datetime</name>
+    </id>
+    <id type="F7f9f29766500" sclass="ffunc" original_name="newdatetime" declared_in="mtime_datetime">
+      <name>newdatetime</name>
+    </id>
+    <id type="F7f9f29766820" sclass="ffunc" original_name="deallocatedatetime" declared_in="mtime_datetime">
+      <name>deallocatedatetime</name>
+    </id>
+    <id type="F7f9f29766b50" sclass="ffunc" original_name="getnoofdaysinmonthdatetime" declared_in="mtime_datetime">
+      <name>getnoofdaysinmonthdatetime</name>
+    </id>
+    <id type="F7f9f29766f10" sclass="ffunc" original_name="getnoofdaysinyeardatetime" declared_in="mtime_datetime">
+      <name>getnoofdaysinyeardatetime</name>
+    </id>
+    <id type="F7f9f29767230" sclass="ffunc" original_name="getdayofyearfromdatetime" declared_in="mtime_datetime">
+      <name>getdayofyearfromdatetime</name>
+    </id>
+    <id type="F7f9f29767550" sclass="ffunc" original_name="getnoofsecondselapsedindaydatetime" declared_in="mtime_datetime">
+      <name>getnoofsecondselapsedindaydatetime</name>
+    </id>
+    <id type="F7f9f29767920" sclass="ffunc" original_name="&gt;" declared_in="mtime_datetime">
+      <name>&gt;</name>
+    </id>
+    <id type="F7f9f29767c40" sclass="ffunc" original_name="&lt;=" declared_in="mtime_datetime">
+      <name>&lt;=</name>
+    </id>
+    <id type="F7f9f29767f60" sclass="ffunc" original_name="==" declared_in="mtime_datetime">
+      <name>==</name>
+    </id>
+    <id type="S7f9f297681c0" imported_id="S7f90da3a9700" sclass="ftype_name" original_name="divisionquotienttimespan" declared_in="mtime_timedelta">
+      <name>divisionquotienttimespan</name>
+    </id>
+    <id type="F7f9f297684e0" sclass="ffunc" original_name="gettotalmillisecondstimedelta" declared_in="mtime_timedelta">
+      <name>gettotalmillisecondstimedelta</name>
+    </id>
+    <id type="F7f9f29768800" sclass="ffunc" original_name="gettotalsecondstimedelta" declared_in="mtime_timedelta">
+      <name>gettotalsecondstimedelta</name>
+    </id>
+    <id type="F7f9f29768cf0" sclass="ffunc" original_name="dividedatetimedifferenceinseconds" declared_in="mtime_timedelta">
+      <name>dividedatetimedifferenceinseconds</name>
+    </id>
+    <id type="F7f9f29768fc0" sclass="ffunc" original_name="+" declared_in="mtime_timedelta">
+      <name>+</name>
+    </id>
+    <id type="F7f9f29769290" sclass="ffunc" original_name="-" declared_in="mtime_timedelta">
+      <name>-</name>
+    </id>
+    <id type="F7f9f297695c0" sclass="ffunc" original_name="*" declared_in="mtime_timedelta">
+      <name>*</name>
+    </id>
+    <id type="I7f9f29769830" sclass="flocal" original_name="no_of_sec_in_a_day" declared_in="mtime">
+      <name>no_of_sec_in_a_day</name>
+    </id>
+    <id type="S7f9f29779b80" imported_id="S7ff69a306750" sclass="fsave" original_name="time_config" declared_in="mo_time_config">
+      <name>time_config</name>
+    </id>
+    <id type="F7f9f2aa8bf70" sclass="ffunc" original_name="read_time_namelist" declared_in="mo_time_nml">
+      <name>read_time_namelist</name>
+    </id>
+    <id type="Fint" sclass="fsave" original_name="iequations" declared_in="mo_dynamics_config">
+      <name>iequations</name>
+    </id>
+    <id type="I7f9f297f5fa0" sclass="flocal" original_name="leapfrog_expl" declared_in="mo_impl_constants">
+      <name>leapfrog_expl</name>
+    </id>
+    <id type="I7f9f297f6240" sclass="flocal" original_name="leapfrog_si" declared_in="mo_impl_constants">
+      <name>leapfrog_si</name>
+    </id>
+    <id type="I7f9f297f64a0" sclass="flocal" original_name="ihs_atm_temp" declared_in="mo_impl_constants">
+      <name>ihs_atm_temp</name>
+    </id>
+    <id type="I7f9f297f6700" sclass="flocal" original_name="ihs_atm_theta" declared_in="mo_impl_constants">
+      <name>ihs_atm_theta</name>
+    </id>
+    <id type="I7f9f297f69e0" sclass="flocal" original_name="ishallow_water" declared_in="mo_impl_constants">
+      <name>ishallow_water</name>
+    </id>
+    <id type="S7f9f2a979cd0" imported_id="S7f7fc648c1a0" sclass="flocal" original_name="ha_dyn_config" declared_in="mo_ha_dyn_config">
+      <name>ha_dyn_config</name>
+    </id>
+    <id type="S7f9f2a99e070" imported_id="S7f97c98d3fc0" sclass="ftype_name" original_name="t_time_interpolation_weights" declared_in="mo_bcs_time_interpolation">
+      <name>t_time_interpolation_weights</name>
+    </id>
+    <id type="F7f9f2a99e340" sclass="ffunc" original_name="calculate_time_interpolation_weights" declared_in="mo_bcs_time_interpolation">
+      <name>calculate_time_interpolation_weights</name>
+    </id>
+    <id type="A7f9f2ad0a9f0" sclass="fsave" original_name="echam_phy_tc" declared_in="mo_echam_phy_config">
+      <name>echam_phy_tc</name>
+    </id>
+    <id type="S7f9f2ad0ac90" imported_id="S7feec7abe750" sclass="flocal" original_name="dt_zero" declared_in="mo_echam_phy_config">
+      <name>dt_zero</name>
+    </id>
+    <id type="L7f9f2ad30580" sclass="fsave" original_name="ltimer" declared_in="mo_run_config">
+      <name>l_timer_host</name>
+    </id>
+    <id type="F7f9f2ad97780" sclass="ffunc" original_name="get_year_length" declared_in="mo_jsb_time_iface">
+      <name>get_year_length</name>
+    </id>
+    <id type="F7f9f2ad9bc50" sclass="ffunc" original_name="get_month_length" declared_in="mo_jsb_time_iface">
+      <name>get_month_length</name>
+    </id>
+    <id type="F7f9f2ada0690" sclass="ffunc" original_name="get_day_length" declared_in="mo_jsb_time_iface">
+      <name>get_day_length</name>
+    </id>
+    <id type="F7f9f2ada2460" sclass="ffunc" original_name="get_year_day" declared_in="mo_jsb_time_iface">
+      <name>get_year_day</name>
+    </id>
+    <id type="F7f9f2ad601c0" sclass="ffunc" original_name="get_time_dt" declared_in="mo_jsb_time_iface">
+      <name>get_time_dt</name>
+    </id>
+    <id type="F7f9f2ad67c80" sclass="ffunc" original_name="get_time_nsteps" declared_in="mo_jsb_time_iface">
+      <name>get_time_nsteps</name>
+    </id>
+    <id type="F7f9f2ad6e200" sclass="ffunc" original_name="get_time_start" declared_in="mo_jsb_time_iface">
+      <name>get_time_start</name>
+    </id>
+    <id type="F7f9f2ad6f6c0" sclass="ffunc" original_name="get_time_stop" declared_in="mo_jsb_time_iface">
+      <name>get_time_stop</name>
+    </id>
+    <id type="F7f9f2ad70b80" sclass="ffunc" original_name="get_time_current" declared_in="mo_jsb_time_iface">
+      <name>get_time_current</name>
+    </id>
+    <id type="F7f9f2ad71e70" sclass="ffunc" original_name="get_time_previous" declared_in="mo_jsb_time_iface">
+      <name>get_time_previous</name>
+    </id>
+    <id type="F7f9f2ad7e4e0" sclass="ffunc" original_name="is_time_experiment_start" declared_in="mo_jsb_time_iface">
+      <name>is_time_experiment_start</name>
+    </id>
+    <id type="F7f9f2ad7fe30" sclass="ffunc" original_name="is_time_restart" declared_in="mo_jsb_time_iface">
+      <name>is_time_restart</name>
+    </id>
+    <id type="F7f9f2ad76710" sclass="ffunc" original_name="is_time_ltrig_rad_m1" declared_in="mo_jsb_time_iface">
+      <name>is_time_ltrig_rad_m1</name>
+    </id>
+    <id type="F7f9f2ad81db0" sclass="ffunc" original_name="start_timestep" declared_in="mo_jsb_time_iface">
+      <name>start_timestep</name>
+    </id>
+    <id type="F7f9f2ad861f0" sclass="ffunc" original_name="finish_timestep" declared_in="mo_jsb_time_iface">
+      <name>finish_timestep</name>
+    </id>
+    <id type="F7f9f2ad5d450" sclass="ffunc" original_name="configure_time_and_events" declared_in="mo_jsb_time_iface">
+      <name>configure_time_and_events</name>
+    </id>
+    <id type="F7f9f2ad8a910" sclass="ffunc" original_name="get_date_components" declared_in="mo_jsb_time_iface">
+      <name>get_date_components</name>
+    </id>
+    <id type="F7f9f2ada68e0" sclass="ffunc" original_name="get_time_interpolation_weights" declared_in="mo_jsb_time_iface">
+      <name>get_time_interpolation_weights</name>
+    </id>
+    <id type="F7f9f2adadbf0" sclass="ffunc" original_name="get_asselin_coef" declared_in="mo_jsb_time_iface">
+      <name>get_asselin_coef</name>
+    </id>
+  </identifiers>
+  <declarations>
+    <varDecl>
+      <name type="I7f9f2a8917e0">wp</name>
+      <value>
+        <functionCall type="Fint" is_intrinsic="true">
+          <name>selected_real_kind</name>
+          <arguments>
+            <FintConstant type="Fint">12</FintConstant>
+            <FintConstant type="Fint">307</FintConstant>
+          </arguments>
+        </functionCall>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7f9f297f5fa0">leapfrog_expl</name>
+      <value>
+        <FintConstant type="Fint">13</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7f9f297f6240">leapfrog_si</name>
+      <value>
+        <FintConstant type="Fint">14</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7f9f297f64a0">ihs_atm_temp</name>
+      <value>
+        <FintConstant type="Fint">1</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7f9f297f6700">ihs_atm_theta</name>
+      <value>
+        <FintConstant type="Fint">2</FintConstant>
+      </value>
+    </varDecl>
+    <varDecl>
+      <name type="I7f9f297f69e0">ishallow_water</name>
+      <value>
+        <FintConstant type="Fint">0</FintConstant>
+      </value>
+    </varDecl>
+  </declarations>
+  <interfaceDecls>
+  </interfaceDecls>
+  <aux_info>
+  </aux_info>
+</OmniFortranModule>
